@@ -1,0 +1,5 @@
+C:\Proyectos\FaceTest\FaceWebApi\bin\FaceWebApi.dll
+C:\Proyectos\FaceTest\FaceWebApi\bin\FaceWebApi.pdb
+C:\Proyectos\FaceTest\FaceWebApi\obj\Debug\FaceWebApi.csprojResolveAssemblyReference.cache
+C:\Proyectos\FaceTest\FaceWebApi\obj\Debug\FaceWebApi.dll
+C:\Proyectos\FaceTest\FaceWebApi\obj\Debug\FaceWebApi.pdb
