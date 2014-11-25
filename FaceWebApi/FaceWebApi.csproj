@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministradorApi.aspx" />
     <Content Include="ajax\demowidget.php" />
     <Content Include="ajax\email-compose.html" />
     <Content Include="ajax\email-opened.html" />
@@ -69,6 +71,10 @@
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
     <Content Include="blank_.html" />
+    <Content Include="VersionApi.aspx" />
+    <Content Include="img\ariface\AriFace128.png" />
+    <Content Include="img\ariface\AriFace48.png" />
+    <Content Include="js\ariface\login.js" />
     <Content Include="login.html" />
     <Content Include="prueba_cargas.html" />
     <Content Include="css\bootstrap.min.css" />
@@ -712,6 +718,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministradorApi.aspx.cs">
+      <DependentUpon>AdministradorApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministradorApi.aspx.designer.cs">
+      <DependentUpon>AdministradorApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VersionApi.aspx.cs">
+      <DependentUpon>VersionApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VersionApi.aspx.designer.cs">
+      <DependentUpon>VersionApi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -736,12 +756,19 @@
     <Content Include="js\plugin\ckeditor\README.md" />
     <Content Include="js\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="js\plugin\ckeditor\skins\moono\readme.md" />
+    <None Include="Properties\PublishProfiles\AriFace.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AriFaceLib\AriFaceLib.csproj">
+      <Project>{7a9e3108-1ca4-4f3a-8777-42e1b0e3c706}</Project>
+      <Name>AriFaceLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -756,7 +783,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>65222</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:55839/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
