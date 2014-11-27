@@ -39,6 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft WSE\v3.0\Microsoft.Web.Services3.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -71,6 +75,12 @@
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
     <Content Include="blank_.html" />
+    <Content Include="js\ariface\ariface.js" />
+    <Content Include="js\ariface\blank.js" />
+    <Content Include="js\ariface\testFace.js" />
+    <Content Include="TestFace.html" />
+    <Content Include="FaceApi.aspx" />
+    <Content Include="img\ariface\AriFace48Black.png" />
     <Content Include="VersionApi.aspx" />
     <Content Include="img\ariface\AriFace128.png" />
     <Content Include="img\ariface\AriFace48.png" />
@@ -725,6 +735,20 @@
     <Compile Include="AdministradorApi.aspx.designer.cs">
       <DependentUpon>AdministradorApi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="clsEncoder64.cs" />
+    <Compile Include="FaceApi.aspx.cs">
+      <DependentUpon>FaceApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FaceApi.aspx.designer.cs">
+      <DependentUpon>FaceApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SenderFace.cs" />
     <Compile Include="VersionApi.aspx.cs">
       <DependentUpon>VersionApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -733,6 +757,11 @@
       <DependentUpon>VersionApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web References\SSPP\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -757,6 +786,33 @@
     <Content Include="js\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="js\plugin\ckeditor\skins\moono\readme.md" />
     <None Include="Properties\PublishProfiles\AriFace.pubxml" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\SSPP\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPEstados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPResultadoAnularFactura.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPResultadoConsultarFactura.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPResultadoConsultarUnidades.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPResultadoEnviarFactura.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPUnidadDir.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\SSPPWebServiceProxy.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -769,6 +825,25 @@
       <Project>{7a9e3108-1ca4-4f3a-8777-42e1b0e3c706}</Project>
       <Name>AriFaceLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://se-face-webservice.redsara.es/sspp%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SSPP\</RelPath>
+      <UpdateFromURL>https://se-face-webservice.redsara.es/sspp%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FaceWebApi_SSPP_SSPPWebServiceProxyService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

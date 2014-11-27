@@ -103,13 +103,13 @@
 		<header id="header">
 			<!-- #PROJECTS: projects dropdown -->
 			<div>
-				
+				<span id="logo"> <img src="img/ariface/AriFace48Black.png" alt="AriFace" style="height:30px; width:30px;"> </span>
 			</div>
 			<div>
 				 
 			</div>
 			<div>
-				<h1>Tele Taxi Valencia</h1>
+				<h1>AriFace</h1>
 			</div>
 			<!-- end projects dropdown -->
 
@@ -295,6 +295,7 @@
 									<div class="widget-body">
 										
 										<!-- this is what the user will see -->
+                                        <button id="btnTest" class="btn btn-lg btn-warning">Prueba a su riesgo</button>
 				
 									</div>
 									<!-- end widget content -->
@@ -491,64 +492,14 @@
 
 		<!-- PAGE RELATED PLUGIN(S) 
 		<script src="..."></script>-->
+        <script src="js/ariface/blank.js"></script>
 
 		<script type="text/javascript">
-
-			$(document).ready(function() {
-			 	
-				/* DO NOT REMOVE : GLOBAL FUNCTIONS!
-				 *
-				 * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
-				 *
-				 * // activate tooltips
-				 * $("[rel=tooltip]").tooltip();
-				 *
-				 * // activate popovers
-				 * $("[rel=popover]").popover();
-				 *
-				 * // activate popovers with hover states
-				 * $("[rel=popover-hover]").popover({ trigger: "hover" });
-				 *
-				 * // activate inline charts
-				 * runAllCharts();
-				 *
-				 * // setup widgets
-				 * setup_widgets_desktop();
-				 *
-				 * // run form elements
-				 * runAllForms();
-				 *
-				 ********************************
-				 *
-				 * pageSetUp() is needed whenever you load a page.
-				 * It initializes and checks for all basic elements of the page
-				 * and makes rendering easier.
-				 *
-				 */
-				
-				 pageSetUp();
-				 
-				/*
-				 * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
-				 * eg alert("my home function");
-				 * 
-				 * var pagefunction = function() {
-				 *   ...
-				 * }
-				 * loadScript("js/plugin/_PLUGIN_NAME_.js", pagefunction);
-				 * 
-				 * TO LOAD A SCRIPT:
-				 * var pagefunction = function (){ 
-				 *  loadScript(".../plugin.js", run_after_loaded);	
-				 * }
-				 * 
-				 * OR
-				 * 
-				 * loadScript(".../plugin.js", run_after_loaded);
-				 */
-				
-			})
-		
+		    (function ($) {
+		        $(document).ready(function () {
+		            initForm();
+		        });
+		    })(jQuery);
 		</script>
 
 		<!-- Your GOOGLE ANALYTICS CODE Below -->

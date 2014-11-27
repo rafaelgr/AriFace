@@ -42,7 +42,12 @@
   <ItemGroup>
     <Compile Include="Administrador.cs" />
     <Compile Include="CntAriFaceLib.cs" />
+    <Compile Include="Estado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespuestaAnularFactura.cs" />
+    <Compile Include="RespuestaConsultaFactura.cs" />
+    <Compile Include="RespuestaFactura.cs" />
+    <Compile Include="Unidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DiagramaLibreria.cd" />

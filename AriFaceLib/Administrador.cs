@@ -43,5 +43,13 @@ namespace AriFaceLib
             get { return email; }
             set { email = value; }
         }
+
+        private string certsn;
+
+        public string Certsn
+        {
+            get { return certsn; }
+            set { certsn = value; }
+        }
     }
 }

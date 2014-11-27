@@ -1,10 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AriFaceLib.Administrador">
-    <Position X="2" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAACgAAAAiAAAgAAAAAACAAAQAgAAEAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAACgAAACiAAAggAAAAACAAAQAgAAEAA=</HashCode>
       <FileName>Administrador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Unidad">
+    <Position X="2.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAACAAAIAAIAAEAAAAABACAIAQIAAEgAAAAA=</HashCode>
+      <FileName>Unidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Estado">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAACAAAEAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.RespuestaFactura">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEoAABAAAAAEAAAAiAgAAAAEAgAAAAIggAAAAARGABA=</HashCode>
+      <FileName>RespuestaFactura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.RespuestaConsultaFactura">
+    <Position X="10" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAaAAAAEAAAAAQBAAAWAABBEAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>RespuestaConsultaFactura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.RespuestaAnularFactura">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>RespuestaAnularFactura.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

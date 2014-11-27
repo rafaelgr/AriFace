@@ -9,6 +9,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <_PublishTargetUrl>C:\Publicaciones\AriFace</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="AdministradorApi.aspx">
+      <publishTime>11/25/2014 16:35:55</publishTime>
+    </File>
     <File Include="ajax/demowidget.php">
       <publishTime>05/17/2014 05:56:24</publishTime>
     </File>
@@ -43,13 +46,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>11/25/2014 12:48:20</publishTime>
+      <publishTime>11/27/2014 11:03:40</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>11/25/2014 12:48:21</publishTime>
+      <publishTime>11/27/2014 11:04:27</publishTime>
+    </File>
+    <File Include="bin/FaceWebApi.XmlSerializers.dll">
+      <publishTime>11/27/2014 11:04:29</publishTime>
     </File>
     <File Include="blank_.html">
-      <publishTime>11/24/2014 17:22:05</publishTime>
+      <publishTime>11/26/2014 18:40:28</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>10/30/2014 10:13:20</publishTime>
@@ -80,6 +86,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="css/your_style.css">
       <publishTime>04/21/2014 12:22:42</publishTime>
+    </File>
+    <File Include="FaceApi.aspx">
+      <publishTime>11/26/2014 11:04:11</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>05/23/2014 18:22:34</publishTime>
@@ -140,6 +149,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="img/ariface/AriFace48.png">
       <publishTime>11/25/2014 10:06:43</publishTime>
+    </File>
+    <File Include="img/ariface/AriFace48Black.png">
+      <publishTime>11/25/2014 18:31:58</publishTime>
     </File>
     <File Include="img/avatars/1.png">
       <publishTime>12/23/2013 01:22:50</publishTime>
@@ -689,6 +701,18 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="js/app.min.js">
       <publishTime>10/16/2014 21:32:36</publishTime>
+    </File>
+    <File Include="js/ariface/ariface.js">
+      <publishTime>11/27/2014 09:03:20</publishTime>
+    </File>
+    <File Include="js/ariface/blank.js">
+      <publishTime>11/26/2014 18:53:09</publishTime>
+    </File>
+    <File Include="js/ariface/login.js">
+      <publishTime>11/25/2014 18:18:24</publishTime>
+    </File>
+    <File Include="js/ariface/testFace.js">
+      <publishTime>11/27/2014 10:37:21</publishTime>
     </File>
     <File Include="js/bootstrap/bootstrap.min.js">
       <publishTime>10/16/2014 21:32:36</publishTime>
@@ -1567,7 +1591,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/22/2013 22:52:04</publishTime>
     </File>
     <File Include="js/plugin/ckeditor/plugins/wsc/dialogs/tmpFrameset.html">
-      <publishTime>10/22/2013 22:52:04</publishTime>
+      <publishTime>11/26/2014 09:40:43</publishTime>
     </File>
     <File Include="js/plugin/ckeditor/plugins/wsc/dialogs/wsc.css">
       <publishTime>10/22/2013 22:52:04</publishTime>
@@ -2035,16 +2059,46 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/27/2014 06:25:16</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>11/25/2014 12:23:30</publishTime>
+      <publishTime>11/25/2014 18:39:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/25/2014 12:48:41</publishTime>
+      <publishTime>11/27/2014 11:04:52</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
     </File>
+    <File Include="TestFace.html">
+      <publishTime>11/27/2014 09:19:41</publishTime>
+    </File>
+    <File Include="VersionApi.aspx">
+      <publishTime>11/25/2014 18:06:47</publishTime>
+    </File>
+    <File Include="Web References/SSPP/Reference.map">
+      <publishTime>11/25/2014 18:50:16</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPEstados.datasource">
+      <publishTime>11/25/2014 18:50:23</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPResultadoAnularFactura.datasource">
+      <publishTime>11/25/2014 18:50:23</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPResultadoConsultarFactura.datasource">
+      <publishTime>11/25/2014 18:50:23</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPResultadoConsultarUnidades.datasource">
+      <publishTime>11/25/2014 18:50:23</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPResultadoEnviarFactura.datasource">
+      <publishTime>11/25/2014 18:50:23</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPUnidadDir.datasource">
+      <publishTime>11/25/2014 18:50:22</publishTime>
+    </File>
+    <File Include="Web References/SSPP/SSPPWebServiceProxy.wsdl">
+      <publishTime>11/25/2014 18:50:16</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>11/25/2014 12:48:29</publishTime>
+      <publishTime>11/27/2014 11:04:39</publishTime>
     </File>
   </ItemGroup>
 </Project>
