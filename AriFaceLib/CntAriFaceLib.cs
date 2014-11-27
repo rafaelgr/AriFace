@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AriFaceLib
 {
@@ -140,6 +141,24 @@ namespace AriFaceLib
             string sql = String.Format("DELETE FROM administrador WHERE administrador_id={0}", a.AdministradorId);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
+        }
+        #endregion
+
+        #region Certificados
+        public static IList<Certificado> GetCertificados()
+        {
+            IList<Certificado> lc = new List<Certificado>();
+            X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadOnly);
+            for (int i = 0; i < store.Certificates.Count; i++)
+            {
+                Certificado c = new Certificado();
+                c.SerialNumber = store.Certificates[i].SerialNumber;
+                c.FriendlyName = store.Certificates[i].FriendlyName;
+                c.ExpirationDateString = store.Certificates[i].GetExpirationDateString();
+                lc.Add(c);
+            }
+            return lc;
         }
         #endregion
     }
