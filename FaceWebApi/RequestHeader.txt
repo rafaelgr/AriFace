@@ -1,0 +1,9 @@
+POST https://se-face-webservice.redsara.es/sspp HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; MS Web Services Client Protocol 4.0.30319.34014)
+VsDebuggerCausalityData: uIDPoyf/H4zRi9xGpDSfoIY/aDMAAAAAT6xyoSD3l0qKaaYXzo3U4fZjtW9O9BVDiHgfghbaKUEACQAA
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "https://se-face-webservice.redsara.es#consultarEstados"
+Host: se-face-webservice.redsara.es
+Content-Length: 6370
+Expect: 100-continue
+Connection: Keep-Alive

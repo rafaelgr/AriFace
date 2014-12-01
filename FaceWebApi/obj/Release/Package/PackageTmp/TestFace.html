@@ -272,6 +272,98 @@
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
 
+                    <!-- row  (CONSULTAR CERTIFICADOS)-->
+                    <div class="row">
+
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget" id="Div1" data-widget-editbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>Consultar certificados</h2>
+
+                                </header>
+
+                                <!-- widget div -->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmCertificados" class="smart-form">
+                                            <header>
+                                                Consultar los certificados instalados.
+                                            </header>
+                                            <fieldset>
+                                                <legend>Parámetros (no hay parámetros)</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="input">
+                                                            <span id="txtCertificados"></span>
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="pull-right">
+                                                    <button id="btnCertificados" class="btn btn-primary btn-circle btn-lg">
+                                                        <i class="fa fa-lg fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                        <div id="tbCertificado" style="display:none;">
+                                            <table id="dt_certificados" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand">
+                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> N.Serie
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            <i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Nombre
+                                                        </th>
+                                                        <th data-hide="phone">Fecha de caducidad</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
+                    </div>
+                    <!-- end row -->
+
                     <!-- row  (CONSULTAR ESTADOS)-->
                     <div class="row">
 
@@ -467,6 +559,13 @@
         <script src="js/ariface/testFace.js"></script>
         <script src="js/ariface/ariface.js"></script>
 
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.colVis.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+
         <script type="text/javascript">
             (function ($) {
                 $(document).ready(function () {
@@ -491,7 +590,7 @@
             })();
             
         </script>
-            
+
     </body>
 
 </html>

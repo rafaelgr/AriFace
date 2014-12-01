@@ -90,7 +90,7 @@ namespace AriFaceLib
         {
             IList<Administrador> la = new List<Administrador>();
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = "SELECT * FROM administrador WHERE nombre LIKE '%{0}%';";
+            string sql = "SELECT * FROM administrador WHERE nombre LIKE '%{0}%' ORDER BY nombre;";
             sql = String.Format(sql, parNom);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();

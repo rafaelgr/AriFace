@@ -17,3 +17,21 @@ function mostrarMensajeSmart(mens) {
         }
     });
 }
+
+var errorAjax = function (xhr, textStatus, errorThrwon) {
+    var m = xhr.responseText;
+    if (!m) m = "Error general posiblemente falla la conexión";
+    mostrarMensaje(m);
+}
+
+// gup stands from Get Url Parameters
+function gup(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(window.location.href);
+    if (results == null)
+        return "";
+    else
+        return results[1];
+}

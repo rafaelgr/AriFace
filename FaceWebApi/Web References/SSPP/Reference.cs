@@ -27,7 +27,7 @@ namespace FaceWebApi.SSPP {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="SSPPWebServiceProxyBinding", Namespace="https://webservice.face.gob.es")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="SSPPWebServiceProxyBinding", Namespace="https://se-face-webservice.redsara.es")]
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(SSPPOrganoGestorUnidadTramitadora))]
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(SSPPEstado))]
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(SSPPFicheroAnexo))]
@@ -113,7 +113,7 @@ namespace FaceWebApi.SSPP {
         public event consultarListadoFacturasCompletedEventHandler consultarListadoFacturasCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#enviarFactura", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#enviarFactura", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoEnviarFactura enviarFactura(SSPPFactura facturaWS) {
             object[] results = this.Invoke("enviarFactura", new object[] {
@@ -143,7 +143,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarFactura", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarFactura", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoConsultarFactura consultarFactura(string numeroRegistro) {
             object[] results = this.Invoke("consultarFactura", new object[] {
@@ -173,7 +173,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#anularFactura", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#anularFactura", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoAnularFactura anularFactura(string numeroRegistro, string motivo) {
             object[] results = this.Invoke("anularFactura", new object[] {
@@ -205,7 +205,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarEstados", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarEstados", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPEstados consultarEstados() {
             object[] results = this.Invoke("consultarEstados", new object[0]);
@@ -233,7 +233,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarUnidades", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarUnidades", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoConsultarUnidades consultarUnidades() {
             object[] results = this.Invoke("consultarUnidades", new object[0]);
@@ -261,7 +261,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarAdministraciones", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarAdministraciones", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPUnidadDir[] consultarAdministraciones() {
             object[] results = this.Invoke("consultarAdministraciones", new object[0]);
@@ -289,7 +289,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarUnidadesPorAdministracion", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarUnidadesPorAdministracion", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoConsultarUnidades consultarUnidadesPorAdministracion(string codigoDir) {
             object[] results = this.Invoke("consultarUnidadesPorAdministracion", new object[] {
@@ -319,7 +319,7 @@ namespace FaceWebApi.SSPP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarListadoFacturas", RequestNamespace = "https://webservice.face.gob.es", ResponseNamespace = "https://webservice.face.gob.es")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://se-face-webservice.redsara.es#consultarListadoFacturas", RequestNamespace = "https://se-face-webservice.redsara.es", ResponseNamespace = "https://se-face-webservice.redsara.es")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public SSPPResultadoConsultarFactura[] consultarListadoFacturas(object[] listadoFacturas) {
             object[] results = this.Invoke("consultarListadoFacturas", new object[] {
@@ -372,7 +372,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPFactura {
         
         private string correoField;
@@ -420,7 +420,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPFicheroFactura {
         
         private string facturaField;
@@ -468,7 +468,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPUnidadDir {
         
         private string codigo_dirField;
@@ -503,7 +503,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPOrganoGestorUnidadTramitadora {
         
         private SSPPUnidadDir organo_gestorField;
@@ -551,7 +551,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPResultadoConsultarUnidades {
         
         private SSPPOrganoGestorUnidadTramitadora[] unidadesField;
@@ -573,7 +573,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPEstado {
         
         private string nombreField;
@@ -621,7 +621,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPEstados {
         
         private SSPPEstado[] estadosField;
@@ -642,7 +642,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPResultadoAnularFactura {
         
         private string numero_registroField;
@@ -677,7 +677,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPResultadoConsultarFacturaEstado {
         
         private string codigo_estadoField;
@@ -725,7 +725,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPResultadoConsultarFactura {
         
         private string numero_registroField;
@@ -773,7 +773,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPResultadoEnviarFactura {
         
         private string codigo_registroField;
@@ -899,7 +899,7 @@ namespace FaceWebApi.SSPP {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://webservice.face.gob.es")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="https://se-face-webservice.redsara.es")]
     public partial class SSPPFicheroAnexo {
         
         private string anexoField;

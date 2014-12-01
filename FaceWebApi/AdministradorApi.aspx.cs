@@ -34,6 +34,37 @@ namespace FaceWebApi
             }
             return a;
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<Administrador> BuscarAdministradores(string aBuscar)
+        {
+            IList<Administrador> la = new List<Administrador>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                la = CntAriFaceLib.GetAdministradores(aBuscar, conn);
+                conn.Close();
+            }
+            return la;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static Administrador GetAdministradorById(string id)
+        {
+            Administrador a = null;
+            int mId = int.Parse(id);
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                a = CntAriFaceLib.GetAdministrador(mId, conn);
+                conn.Close();
+            }
+            return a;
+        }
         #endregion
     }
 }

@@ -12,6 +12,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="AdministradorApi.aspx">
       <publishTime>11/25/2014 16:35:55</publishTime>
     </File>
+    <File Include="AdministradorGeneral.html">
+      <publishTime>12/01/2014 17:19:16</publishTime>
+    </File>
     <File Include="ajax/demowidget.php">
       <publishTime>05/17/2014 05:56:24</publishTime>
     </File>
@@ -46,16 +49,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>11/27/2014 11:03:40</publishTime>
+      <publishTime>12/01/2014 17:30:55</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>11/27/2014 11:04:27</publishTime>
+      <publishTime>12/01/2014 17:30:56</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>11/27/2014 11:04:29</publishTime>
+      <publishTime>12/01/2014 17:30:57</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
+    </File>
+    <File Include="CertificadoApi.aspx">
+      <publishTime>11/28/2014 10:32:10</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>10/30/2014 10:13:20</publishTime>
@@ -379,7 +385,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/02/2013 20:51:06</publishTime>
     </File>
     <File Include="img/loading.gif">
-      <publishTime>12/11/2013 21:11:42</publishTime>
+      <publishTime>11/28/2014 16:36:33</publishTime>
     </File>
     <File Include="img/logo-blacknwhite.png">
       <publishTime>02/27/2014 06:45:52</publishTime>
@@ -702,6 +708,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/app.min.js">
       <publishTime>10/16/2014 21:32:36</publishTime>
     </File>
+    <File Include="js/ariface/administradorGeneral.js">
+      <publishTime>12/01/2014 17:25:53</publishTime>
+    </File>
     <File Include="js/ariface/ariface.js">
       <publishTime>11/27/2014 09:03:20</publishTime>
     </File>
@@ -712,7 +721,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:18:24</publishTime>
     </File>
     <File Include="js/ariface/testFace.js">
-      <publishTime>11/27/2014 10:37:21</publishTime>
+      <publishTime>11/28/2014 13:45:57</publishTime>
     </File>
     <File Include="js/bootstrap/bootstrap.min.js">
       <publishTime>10/16/2014 21:32:36</publishTime>
@@ -2062,13 +2071,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:39:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/27/2014 11:04:52</publishTime>
+      <publishTime>12/01/2014 17:31:10</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
     </File>
+    <File Include="Request.xml">
+      <publishTime>12/01/2014 09:11:43</publishTime>
+    </File>
+    <File Include="Response.xml">
+      <publishTime>12/01/2014 11:40:25</publishTime>
+    </File>
     <File Include="TestFace.html">
-      <publishTime>11/27/2014 09:19:41</publishTime>
+      <publishTime>12/01/2014 10:46:57</publishTime>
     </File>
     <File Include="VersionApi.aspx">
       <publishTime>11/25/2014 18:06:47</publishTime>

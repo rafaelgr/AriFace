@@ -1,0 +1,33 @@
+{"WSE910: An error happened during the processing of a response message, and you can find the error in the inner exception.  You can also find the response message in the Response property."}
+    [Microsoft.Web.Services3.ResponseProcessingException]: {"WSE910: An error happened during the processing of a response message, and you can find the error in the inner exception.  You can also find the response message in the Response property."}
+    _className: null
+    _data: {System.Collections.ListDictionaryInternal}
+    _dynamicMethods: null
+    _exceptionMethod: {System.Collections.Generic.IList`1[AriFaceLib.Estado] GetEstados(System.String)}
+    _exceptionMethodString: null
+    _helpURL: null
+    _HResult: -2146232832
+    _innerException: {"The security token could not be authenticated or authorized"}
+    _ipForWatsonBuckets: 206954540
+    _message: "WSE910: An error happened during the processing of a response message, and you can find the error in the inner exception.  You can also find the response message in the Response property."
+    _remoteStackIndex: 0
+    _remoteStackTraceString: null
+    _safeSerializationManager: {System.Runtime.Serialization.SafeSerializationManager}
+    _source: "FaceWebApi"
+    _stackTrace: {sbyte[24]}
+    _stackTraceString: null
+    _watsonBuckets: null
+    _xcode: -532462766
+    _xptrs: 0
+    Data: {System.Collections.ListDictionaryInternal}
+    HelpLink: null
+    HResult: -2146232832
+    InnerException: {"The security token could not be authenticated or authorized"}
+    IPForWatsonBuckets: 206954540
+    IsTransient: false
+    Message: "WSE910: An error happened during the processing of a response message, and you can find the error in the inner exception.  You can also find the response message in the Response property."
+    RemoteStackTrace: null
+    Source: "FaceWebApi"
+    StackTrace: "   en FaceWebApi.FaceApi.GetEstados(String certSn) en c:\\Proyectos\\FaceTest\\FaceWebApi\\FaceApi.aspx.cs:línea 80"
+    TargetSite: {System.Collections.Generic.IList`1[AriFaceLib.Estado] GetEstados(System.String)}
+    WatsonBuckets: null

@@ -1,0 +1,95 @@
+Versión: V3
+Número de serie: ‎09 c0 42 d4 51 f3 f4 66
+Algoritmo de firma: sha1RSA
+Algoritmo hash de firma: sha1
+Emisor:
+CN = AC Camerfirma Certificados Camerales
+O = AC Camerfirma SA
+SERIALNUMBER = A82743287
+L = Madrid (see current address at www.camerfirma.com/address)
+E = ac_camerfirma_cc@camerfirma.com
+C = ES
+Válido desde: viernes, ‎3‎ de ‎mayo‎ de ‎2013 11:37:42
+Válido hasta: ‎domingo, ‎3‎ de ‎mayo‎ de ‎2015 11:37:42
+Sujeto:
+Description = Qualified Certificate: CAM-PJ-SW-KPSC
+T = ADMINISTRADOR
+OU = ADMINISTRACION GERENCIA
+O = ARIADNA SOFTWARE  S.L.
+1.3.6.1.4.1.18838.1.1 = 25375586P
+G = RAFAEL
+SN = GARCIA REDONDO
+SERIALNUMBER = B96470190
+E = rafael.garcia@ariadnasoftware.com
+CN = ARIADNA SOFTWARE  S.L.
+C = ES
+Clave publica: RSA(2049 bits)
+Uso mejorado de claves: 
+Autenticación del cliente (1.3.6.1.5.5.7.3.2)
+Correo seguro (1.3.6.1.5.5.7.3.4)
+Tipo de certificado NetScape: Autenticación del cliente SSL, SMIME (a0)
+URL de revocación NetScape: URI:http://www.camerfirma.com/ac_camerfirma_cc.cgi?
+URL de directiva CA de NetScape: URI:http://cps.camerfirma.com/cps/ac_camerfirma_cc.html
+Identifcador de la clave del titular:
+b1 4f 6c cf 26 9e bc 34 71 03 d8 60 72 c8 92 d1 76 ad 54 83
+Acceso a la información de entidad:
+[1]Acceso a información de autoridad
+     Método de acceso=Emisor de la entidad de certificación (1.3.6.1.5.5.7.48.2)
+     Nombre alternativo:
+          Dirección URL=http://www.camerfirma.com/certs/ac_camerfirma_cc.crt
+[2]Acceso a información de autoridad
+     Método de acceso=Protocolo de estado de certificado en línea (1.3.6.1.5.5.7.48.1)
+     Nombre alternativo:
+          Dirección URL=http://ocsp.camerfirma.com
+Identificación de clave de entidad emisora:
+Id. de clave=b6 1f 4e 9d 1c 68 91 2e 37 72 60 e1 46 8f 5a a5 2a 31 31 b9
+Emisor de certificado:
+     Dirección del directorio:
+          CN=Chambers of Commerce Root
+          OU=http://www.chambersign.org
+          O=AC Camerfirma SA CIF A82743287
+          C=EU
+Número de serie del certificado=05
+Puntos de distribución CRL:
+[1]Punto de distribución CRL
+     Nombre del punto de distribución:
+          Nombre completo:
+               Dirección URL=http://crl.camerfirma.com/ac_camerfirma_cc.crl
+[2]Punto de distribución CRL
+     Nombre del punto de distribución:
+          Nombre completo:
+               Dirección URL=http://crl1.camerfirma.com/ac_camerfirma_cc.crl
+Nombre alternativo del titular:
+Nombre RFC822=rafael.garcia@ariadnasoftware.com
+Nombre alternativo del emisor:
+Nombre RFC822=ac_camerfirma_cc@camerfirma.com
+Directivas del certificado:
+[1]Directiva de certificados:
+     Identificador de directiva=1.3.6.1.4.1.17326.10.9.4.1.1
+     [1,1]Información de certificador de directiva:
+          Id. de certificador de directiva=CPS
+          Certificador:
+               http://cps.camerfirma.com/cps/ac_camerfirma_cc.html
+     [1,2]Información de certificador de directiva:
+          Id. de certificador de directiva=Aviso de usuario
+          Certificador:
+               Texto de aviso=RA: CC46 - DECLARACION ADICIONAL: https://raonline.camerfirma.com/pdoce/declaraciones/09C042D451F3F466.html
+Comentario de NetScape:
+RA: CC46 - DECLARACION ADICIONAL: https://raonline.camerfirma.com/pdoce/declaraciones/09C042D451F3F466.html
+Restricciones básicas:
+Tipo de asunto=Entidad final
+Restricción de longitud de ruta=Ninguno
+Uso de la clave:
+Firma digital, Sin repudio, Cifrado de clave, Cifrado de datos, Acuerdo de clave (f8)
+Algoritmo de identificación: sha1
+Huella digital: ‎e9 6b b1 8c 1e 7c 20 15 85 67 01 81 df ec 04 fa 62 88 e0 c4
+Nombre descriptivo:
+(PJ)_CIF_B96470190_NIF_25375586P_ARIADNA_SOFTWARE__S.L.
+
+			   
+
+
+
+
+
+

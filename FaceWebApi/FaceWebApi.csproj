@@ -75,9 +75,16 @@
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
     <Content Include="blank_.html" />
+    <Content Include="CertificadoApi.aspx" />
+    <Content Include="AdministradorGeneral.html" />
+    <Content Include="AdministradorDetalle.html" />
+    <Content Include="js\ariface\administradorDetalle.js" />
+    <Content Include="js\ariface\administradorGeneral.js" />
+    <Content Include="Response.xml" />
     <Content Include="js\ariface\ariface.js" />
     <Content Include="js\ariface\blank.js" />
     <Content Include="js\ariface\testFace.js" />
+    <Content Include="Request.xml" />
     <Content Include="TestFace.html" />
     <Content Include="FaceApi.aspx" />
     <Content Include="img\ariface\AriFace48Black.png" />
@@ -734,6 +741,13 @@
     </Compile>
     <Compile Include="AdministradorApi.aspx.designer.cs">
       <DependentUpon>AdministradorApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CertificadoApi.aspx.cs">
+      <DependentUpon>CertificadoApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CertificadoApi.aspx.designer.cs">
+      <DependentUpon>CertificadoApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
     <Compile Include="FaceApi.aspx.cs">
