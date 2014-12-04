@@ -11,13 +11,28 @@ function initForm() {
     // asignación de eventos al clic
     $("#btnAceptar").click(aceptar());
     $("#btnSalir").click(salir());
-    var adminId = gup('AdministradorId');
     $("#frmAdministrador").submit(function () {
         return false;
     });
-    if (adminId !== '') {
-        // hay que buscar ese elemento en concreto
 
+    var adminId = gup('AdministradorId');
+    if (adminId !== '') {
+        var data = {
+            id: adminId
+        }
+        // hay que buscar ese elemento en concreto
+        $.ajax({
+            type: "POST",
+            url: "AdministradorApi.aspx/GetAdministradorById",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadData(data.d);
+            },
+            error: errorAjax
+        });
     }
 }
 
@@ -28,7 +43,7 @@ function admData() {
     self.Login = ko.observable();
     self.Password = ko.observable();
     self.Email = ko.observable();
-    self.CertSn = ko.observable();
+    self.Certsn = ko.observable();
 }
 
 function loadData(data) {
@@ -37,7 +52,7 @@ function loadData(data) {
     vm.Login(data.Login);
     vm.Password(data.Password);
     vm.Email(data.Email);
-    vm.CertSn(data.CertSn);
+    vm.Certsn(data.Certsn);
 }
 
 function datosOK() {
@@ -53,7 +68,7 @@ function datosOK() {
         rules: {
             txtNombre: { required: true },
             txtLogin: { required: true },
-            txtEmail: { required: true },
+            txtEmail: { required: true, email:true },
             txtCertSn: { required: true }
         },
         // Messages for form validation
@@ -65,7 +80,8 @@ function datosOK() {
                 required: 'Introduzca el login'
             },
             txtEmail: {
-                required: 'Introduzca el correo'
+                required: 'Introduzca el correo',
+                email: 'Debe usar un correo válido'
             },
             txtCertSn: {
                 required: 'Introduzca la clave de su certificado'
@@ -83,9 +99,34 @@ function datosOK() {
 function aceptar() {
     var mf = function () {
         if (!datosOK()) return;
+        var data = {
+            "AdministradorId": vm.AdministradorId(),
+            "Nombre": vm.Nombre(),
+            "Login": vm.Login(),
+            "Password": vm.Password(),
+            "Email": vm.Email(),
+            "Certsn": vm.Certsn()
+        };
+        $.ajax({
+            type: "POST",
+            url: "AdministradorApi.aspx/GetAdministradorById",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadData(data.d);
+            },
+            error: errorAjax
+        });
     };
     return mf;
 }
 
 function salir() {
+    var mf = function () {
+        var url = "AdministradorGeneral.html";
+        window.open(url, '_self');
+    }
+    return mf;
 }

@@ -32,5 +32,15 @@ namespace FaceWebApi.Properties {
                 return ((string)(this["FaceWebApi_SSPP_SSPPWebServiceProxyService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://se-face-webservice.redsara.es/sspp2")]
+        public string FaceWebApi_SPP2_SSPPWebServiceProxyService {
+            get {
+                return ((string)(this["FaceWebApi_SPP2_SSPPWebServiceProxyService"]));
+            }
+        }
     }
 }

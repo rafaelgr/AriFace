@@ -68,32 +68,7 @@ function sendConsultarEstados() {
                    data: JSON.stringify(data),
                    success: function (data, status) {
                        // hay que mostrarlo en la zona de datos
-                   },
-                   error: errorAjax
-               });
-    };
-    return mf;
-}
-
-function sendConsultarEstados() {
-    var mf = function () {
-        if (!datosOK()) {
-            return;
-        }
-        // obtener el n.serie del certificado para la firma.
-        var certSn = $('#txtCertSn1').val();
-        // enviar la consulta por la red (AJAX)
-        var data = {
-            "certSn": certSn
-        };
-        $.ajax({
-                   type: "POST",
-                   url: "FaceApi.aspx/GetEstados",
-                   dataType: "json",
-                   contentType: "application/json",
-                   data: JSON.stringify(data),
-                   success: function (data, status) {
-                       // hay que mostrarlo en la zona de datos
+                       alert('Leido');
                    },
                    error: errorAjax
                });

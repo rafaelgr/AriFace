@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using FaceWebApi.SSPP;
+using FaceWebApi.SPP2;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Security;
@@ -167,7 +167,15 @@ namespace FaceWebApi
             }
         }
         #endregion
-
+        public string LeerXmlElemento(string tg, string xml)
+        {
+            string iniTg = String.Format("<{0}>", tg);
+            string endTg = String.Format("</{0}>", tg);
+            int pos1 = xml.IndexOf(iniTg);
+            int pos2 = xml.IndexOf(endTg);
+            string valor = xml.Substring(pos1 + iniTg.Length, pos2 - (pos1 + iniTg.Length));
+            return valor;
+        }
 
     }
 }

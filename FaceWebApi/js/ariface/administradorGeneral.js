@@ -129,8 +129,40 @@ function initTablaAdministradores() {
             data: "Login"
         }, {
             data: "Email"
+        }, {
+            data: "AdministradorId",
+            render: function (data, type, row) {
+                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteAdministrador(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editAdministrador(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
+                var html = "<div class='pull-right'>" + bt1 + " " +  bt2 + "</div>";
+                return html;
+            }
         }]
     });
+}
+
+function deleteAdministrador(id) {
+    // mensaje de confirmación
+    var mens = "¿Realmente desea borrar este registro?";
+    $.SmartMessageBox({
+        title: "<i class='fa fa-info'></i> Mensaje",
+        content: mens,
+        buttons: '[Aceptar][Cancelar]'
+    }, function (ButtonPressed) {
+        if (ButtonPressed === "Aceptar") {
+            alert("SI");
+        }
+        if (ButtonPressed === "Cancelar") {
+            alert("N");
+        }
+    });
+}
+
+function editAdministrador(id) {
+    // hay que abrir la página de detalle de administrador
+    // pasando en la url ese ID
+    var url = "AdministradorDetalle.html?AdministradorId=" + id;
+    window.open(url, '_self');
 }
 
 var errorAjax = function (xhr, textStatus, errorThrwon) {

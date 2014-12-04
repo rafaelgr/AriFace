@@ -135,10 +135,10 @@ namespace AriFaceLib
             }
             return a;
         }
-        public static void DeleteAdministrador(Administrador a, MySqlConnection conn)
+        public static void DeleteAdministrador(int id, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = String.Format("DELETE FROM administrador WHERE administrador_id={0}", a.AdministradorId);
+            string sql = String.Format("DELETE FROM administrador WHERE administrador_id={0}", id);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }

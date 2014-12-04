@@ -18,6 +18,21 @@ function mostrarMensajeSmart(mens) {
     });
 }
 
+function mostrarMensajeSmartSiNo(mens) {
+    $.SmartMessageBox({
+        title: "<i class='fa fa-info'></i> Mensaje",
+        content: mens,
+        buttons: '[Aceptar][Cancelar]'
+    }, function (ButtonPressed) {
+        if (ButtonPressed === "Aceptar") {
+            return 'S';
+        }
+        if (ButtonPressed === "Cancelar") {
+            return 'N';
+        }
+    });
+}
+
 var errorAjax = function (xhr, textStatus, errorThrwon) {
     var m = xhr.responseText;
     if (!m) m = "Error general posiblemente falla la conexión";
@@ -30,7 +45,7 @@ function gup(name) {
     var regexS = "[\\?&]" + name + "=([^&#]*)";
     var regex = new RegExp(regexS);
     var results = regex.exec(window.location.href);
-    if (results == null)
+    if (results === null)
         return "";
     else
         return results[1];
