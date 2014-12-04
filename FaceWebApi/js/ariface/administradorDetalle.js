@@ -16,7 +16,7 @@ function initForm() {
     });
 
     var adminId = gup('AdministradorId');
-    if (adminId !== '') {
+    if (adminId != 0) {
         var data = {
             id: adminId
         }
@@ -33,6 +33,9 @@ function initForm() {
             },
             error: errorAjax
         });
+    } else {
+        // se trata de un alta ponemos el id a cero para indicarlo.
+        vm.AdministradorId(0);
     }
 }
 
@@ -63,62 +66,72 @@ function datosOK() {
             mostrarMensajeSmart('Las contraseñas no coinciden');
             return false;
         }
+        vm.Password($("#txtPassword1").val());
+    } else {
+        vm.Password("");
+    }
+    // controlamos que si es un alta debe dar una contraseña.
+    if (vm.AdministradorId() === 0 && $('#txtPassword1').val() === ""){
+        mostrarMensajeSmart('Debe introducir una contraseña en el alta');
+        return false;
     }
     $('#frmAdministrador').validate({
-        rules: {
+                                        rules: {
             txtNombre: { required: true },
             txtLogin: { required: true },
             txtEmail: { required: true, email:true },
             txtCertSn: { required: true }
         },
-        // Messages for form validation
-        messages: {
+                                        // Messages for form validation
+                                        messages: {
             txtNombre: {
-                required: 'Introduzca el nombre'
-            },
+                                                required: 'Introduzca el nombre'
+                                            },
             txtLogin: {
-                required: 'Introduzca el login'
-            },
+                                                required: 'Introduzca el login'
+                                            },
             txtEmail: {
-                required: 'Introduzca el correo',
-                email: 'Debe usar un correo válido'
-            },
+                                                required: 'Introduzca el correo',
+                                                email: 'Debe usar un correo válido'
+                                            },
             txtCertSn: {
-                required: 'Introduzca la clave de su certificado'
-            }
+                                                required: 'Introduzca la clave de su certificado'
+                                            }
         },
-        // Do not change code below
-        errorPlacement: function (error, element) {
-            error.insertAfter(element.parent());
-        }
-    });
+                                        // Do not change code below
+                                        errorPlacement: function (error, element) {
+                                            error.insertAfter(element.parent());
+                                        }
+                                    });
     return $('#frmAdministrador').valid();
 }
 
-
 function aceptar() {
     var mf = function () {
-        if (!datosOK()) return;
+        if (!datosOK())
+            return;
         var data = {
-            "AdministradorId": vm.AdministradorId(),
-            "Nombre": vm.Nombre(),
-            "Login": vm.Login(),
-            "Password": vm.Password(),
-            "Email": vm.Email(),
-            "Certsn": vm.Certsn()
+            administrador: {
+                "AdministradorId": vm.AdministradorId(),
+                "Certsn": vm.Certsn(),
+                "Login": vm.Login(),
+                "Email": vm.Email(),
+                "Nombre": vm.Nombre(),
+                "Password": vm.Password()
+            }
         };
         $.ajax({
-            type: "POST",
-            url: "AdministradorApi.aspx/GetAdministradorById",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            success: function (data, status) {
-                // hay que mostrarlo en la zona de datos
-                loadData(data.d);
-            },
-            error: errorAjax
-        });
+                   type: "POST",
+                   url: "AdministradorApi.aspx/SetAdministrador",
+                   dataType: "json",
+                   contentType: "application/json",
+                   data: JSON.stringify(data),
+                   success: function (data, status) {
+                       // hay que mostrarlo en la zona de datos
+                       loadData(data.d);
+                   },
+                   error: errorAjax
+               });
     };
     return mf;
 }

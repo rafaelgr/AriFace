@@ -12,7 +12,6 @@ var breakpointDefinition = {
     phone: 480
 };
 
-
 function initForm() {
     // de smart admin
     pageSetUp();
@@ -67,8 +66,25 @@ function sendConsultarEstados() {
                    contentType: "application/json",
                    data: JSON.stringify(data),
                    success: function (data, status) {
-                       // hay que mostrarlo en la zona de datos
-                       alert('Leido');
+                       // debemos eliminat la propiedad _type
+                       var estados = data.d;
+                       for (var i = 0; i < estados.length; i++) {
+                           var estado = estados[i];
+                           delete estado.__type;
+                       }
+                       // actualización de la base de datos
+                       $.ajax({
+                                  type: "POST",
+                                  url: "EstadoApi.aspx/SetEstados",
+                                  dataType: "json",
+                                  contentType: "application/json",
+                                  data: JSON.stringify(data.d),
+                                  success: function (data, status) {
+                                      // actualización de la base de datos
+                                      alert('Grabado');
+                                  },
+                                  error: errorAjax
+                              });
                    },
                    error: errorAjax
                });
@@ -78,6 +94,8 @@ function sendConsultarEstados() {
 
 function sendConsultarCertificados() {
     var mf = function () {
+        $('#btnCertificados').hide();
+        $('#CertAnimate').show();
         $.ajax({
                    type: "POST",
                    url: "CertificadoApi.aspx/GetCertificados",
@@ -86,6 +104,8 @@ function sendConsultarCertificados() {
                    success: function (data, status) {
                        // hay que mostrarlo en la zona de datos
                        loadTablaCertificados(data.d);
+                       $('#btnCertificados').show();
+                       $('#CertAnimate').hide();
                    },
                    error: errorAjax
                });
@@ -100,7 +120,6 @@ var errorAjax = function (xhr, textStatus, errorThrwon) {
     mostrarMensajeSmart(m);
 }
 
-
 function loadTablaCertificados(data) {
     var dt = $('#dt_certificados').dataTable();
     dt.fnClearTable();
@@ -111,12 +130,12 @@ function loadTablaCertificados(data) {
 
 function initTablaCertificados() {
     tablaCarro = $('#dt_certificados').dataTable({
-        autoWidth: true,
-        preDrawCallback: function () {
-            // Initialize the responsive datatables helper once.
-            if (!responsiveHelper_dt_basic) {
-                responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_certificados'), breakpointDefinition);
-            }
+    autoWidth: true,
+    preDrawCallback: function () {
+        // Initialize the responsive datatables helper once.
+        if (!responsiveHelper_dt_basic) {
+            responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_certificados'), breakpointDefinition);
+        }
         },
         rowCallback : function(nRow) {
             responsiveHelper_dt_basic.createExpandIcon(nRow);
@@ -145,12 +164,14 @@ function initTablaCertificados() {
             }
         },
         data: certData,
-        columns: [{
-            data: "SerialNumber"
-        }, {
-            data: "FriendlyName"
-        }, {
-            data: "ExpirationDateString"
-        }]
+        columns: [
+            {
+                data: "SerialNumber"
+            }, {
+                data: "FriendlyName"
+            }, {
+                data: "ExpirationDateString"
+            }
+        ]
     });
 }

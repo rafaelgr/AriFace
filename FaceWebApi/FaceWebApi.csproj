@@ -78,6 +78,8 @@
     <Content Include="CertificadoApi.aspx" />
     <Content Include="AdministradorGeneral.html" />
     <Content Include="AdministradorDetalle.html" />
+    <Content Include="EstadoApi.aspx" />
+    <Content Include="img\loading-animation.gif" />
     <Content Include="js\ariface\administradorDetalle.js" />
     <Content Include="js\ariface\administradorGeneral.js" />
     <Content Include="Response.xml" />
@@ -752,6 +754,13 @@
       <DependentUpon>CertificadoApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
+    <Compile Include="EstadoApi.aspx.cs">
+      <DependentUpon>EstadoApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstadoApi.aspx.designer.cs">
+      <DependentUpon>EstadoApi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FaceApi.aspx.cs">
       <DependentUpon>FaceApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

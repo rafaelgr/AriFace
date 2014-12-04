@@ -49,5 +49,12 @@
       <FileName>Certificado.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="AriFaceLib.CntAriFaceLib">
+    <Position X="13.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAABAAAEAAAAAAAAAAAQAAIQAAAJAAAAA=</HashCode>
+      <FileName>CntAriFaceLib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

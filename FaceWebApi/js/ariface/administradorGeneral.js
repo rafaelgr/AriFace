@@ -21,70 +21,12 @@ function initForm() {
     pageSetUp();
     //
     $('#btnBuscar').click(buscarAdministradores());
+    $('#btnAlta').click(crearAdministrador());
     $('#frmBuscar').submit(function () {
         return false
     });
     //
     initTablaAdministradores();
-}
-function datosOK() {
-    //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
-    $('#frmBuscar').validate({
-        rules: {
-            txtBuscar: { required: true },
-        },
-        // Messages for form validation
-        messages: {
-            txtBuscar: {
-                required: 'Introduzca el texto a buscar'
-            }
-        },
-        // Do not change code below
-        errorPlacement: function (error, element) {
-            error.insertAfter(element.parent());
-        }
-    });
-    return $('#frmBuscar').valid();
-}
-
-function buscarAdministradores() {
-    var mf = function () {
-        if (!datosOK()) {
-            return;
-        }
-        // obtener el n.serie del certificado para la firma.
-        var aBuscar = $('#txtBuscar').val();
-        // enviar la consulta por la red (AJAX)
-        var data = {
-            "aBuscar": aBuscar
-        };
-        $.ajax({
-            type: "POST",
-            url: "AdministradorApi.aspx/BuscarAdministradores",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            success: function (data, status) {
-                // hay que mostrarlo en la zona de datos
-                loadTablaAdministradores(data.d);
-            },
-            error: errorAjax
-        });
-    };
-    return mf;
-}
-
-function loadTablaAdministradores(data) {
-    var dt = $('#dt_administrador').dataTable();
-    if (data !== null && data.length === 0) {
-        mostrarMensajeSmart('No se han encontrado registros');
-        $("#tbAdministrador").hide();
-    } else {
-        dt.fnClearTable();
-        dt.fnAddData(data);
-        dt.fnDraw();
-        $("#tbAdministrador").show();
-    }
 }
 
 function initTablaAdministradores() {
@@ -134,11 +76,79 @@ function initTablaAdministradores() {
             render: function (data, type, row) {
                 var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteAdministrador(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editAdministrador(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt1 + " " +  bt2 + "</div>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }]
     });
+}
+
+function datosOK() {
+    //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
+    $('#frmBuscar').validate({
+        rules: {
+            txtBuscar: { required: true },
+        },
+        // Messages for form validation
+        messages: {
+            txtBuscar: {
+                required: 'Introduzca el texto a buscar'
+            }
+        },
+        // Do not change code below
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent());
+        }
+    });
+    return $('#frmBuscar').valid();
+}
+
+function loadTablaAdministradores(data) {
+    var dt = $('#dt_administrador').dataTable();
+    if (data !== null && data.length === 0) {
+        mostrarMensajeSmart('No se han encontrado registros');
+        $("#tbAdministrador").hide();
+    } else {
+        dt.fnClearTable();
+        dt.fnAddData(data);
+        dt.fnDraw();
+        $("#tbAdministrador").show();
+    }
+}
+
+function buscarAdministradores() {
+    var mf = function () {
+        if (!datosOK()) {
+            return;
+        }
+        // obtener el n.serie del certificado para la firma.
+        var aBuscar = $('#txtBuscar').val();
+        // enviar la consulta por la red (AJAX)
+        var data = {
+            "aBuscar": aBuscar
+        };
+        $.ajax({
+            type: "POST",
+            url: "AdministradorApi.aspx/BuscarAdministradores",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadTablaAdministradores(data.d);
+            },
+            error: errorAjax
+        });
+    };
+    return mf;
+}
+
+function crearAdministrador() {
+    var mf = function () {
+        var url = "AdministradorDetalle.html?AdministradorId=0";
+        window.open(url, '_self');
+    };
+    return mf;
 }
 
 function deleteAdministrador(id) {
@@ -150,10 +160,24 @@ function deleteAdministrador(id) {
         buttons: '[Aceptar][Cancelar]'
     }, function (ButtonPressed) {
         if (ButtonPressed === "Aceptar") {
-            alert("SI");
+            var data = {
+                id: id
+            };
+            $.ajax({
+                type: "POST",
+                url: "AdministradorApi.aspx/DeleteAdministrador",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (data, status) {
+                    var fn = buscarAdministradores();
+                    fn();
+                },
+                error: errorAjax
+            });
         }
         if (ButtonPressed === "Cancelar") {
-            alert("N");
+            // no hacemos nada (no quiere borrar)
         }
     });
 }
@@ -165,9 +189,4 @@ function editAdministrador(id) {
     window.open(url, '_self');
 }
 
-var errorAjax = function (xhr, textStatus, errorThrwon) {
-    var m = xhr.responseText;
-    if (!m)
-        m = "Error general posiblemente falla la conexión";
-    mostrarMensajeSmart(m);
-}
+
