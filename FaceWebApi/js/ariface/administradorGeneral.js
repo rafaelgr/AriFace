@@ -9,6 +9,7 @@ var responsiveHelper_datatable_col_reorder = undefined;
 var responsiveHelper_datatable_tabletools = undefined;
 
 var dataAdministradores;
+var administradorId;
 
 var breakpointDefinition = {
     tablet: 1024,
@@ -27,6 +28,28 @@ function initForm() {
     });
     //
     initTablaAdministradores();
+    // comprobamos parámetros
+    administradorId = gup('AdministradorId');
+    if (administradorId !== '') {
+        // cargar la tabla con un único valor que es el que corresponde.
+        var data = {
+            id: administradorId
+        }
+        // hay que buscar ese elemento en concreto
+        $.ajax({
+            type: "POST",
+            url: "AdministradorApi.aspx/GetAdministradorById",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                var data2 = [data.d];
+                loadTablaAdministradores(data2);
+            },
+            error: errorAjax
+        });
+    }
 }
 
 function initTablaAdministradores() {

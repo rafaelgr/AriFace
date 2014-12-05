@@ -96,6 +96,8 @@ namespace AriFaceLib
             IList<Administrador> la = new List<Administrador>();
             MySqlCommand cmd = conn.CreateCommand();
             string sql = "SELECT * FROM administrador WHERE nombre LIKE '%{0}%' ORDER BY nombre;";
+            if (parNom == "*")
+                sql = "SELECT * FROM administrador ORDER BY nombre;";
             sql = String.Format(sql, parNom);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -147,7 +149,7 @@ namespace AriFaceLib
                 sql = @"
                     UPDATE administrador
                     SET
-                    login='{2}',
+                    login='{1}',
                     nombre='{3}',
                     email='{4}',
                     certsn='{5}'
@@ -264,6 +266,7 @@ namespace AriFaceLib
                 rdr.Read();
                 e = GetEstado(rdr);
             }
+            rdr.Close();
             return e;
         }
 
@@ -279,6 +282,143 @@ namespace AriFaceLib
         {
             MySqlCommand cmd = conn.CreateCommand();
             string sql = String.Format("DELETE FROM estado WHERE codigo='{0}'", codigo);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        #endregion
+
+        #region Unidades
+        public static Unidad GetUnidad(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("organoGestorCodigo"))) return null;
+            Unidad u = new Unidad();
+            u.OrganoGestorCodigo = rdr.GetString("organoGestorCodigo");
+            u.OrganoGestorNombre = rdr.GetString("organoGestorNombre");
+            u.UnidadTramitadoraCodigo = rdr.GetString("unidadTramitadoraCodigo");
+            u.UnidadTramitadoraNombre = rdr.GetString("unidadTramitadoraNombre");
+            u.OficinaContableCodigo = rdr.GetString("oficinaContableCodigo");
+            u.OficinaContableNombre = rdr.GetString("oficinaContableNombre");
+            return u;
+        }
+
+        public static Unidad GetUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
+        {
+            Unidad u = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT * FROM unidad WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'";
+            sql = String.Format(sql, organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                u = GetUnidad(rdr);
+            }
+            return u;
+        }
+
+        public static IList<Unidad> GetUnidades(MySqlConnection conn)
+        {
+            IList<Unidad> lu = new List<Unidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM unidad";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Unidad u = GetUnidad(rdr);
+                    lu.Add(u);
+                }
+            }
+            return lu;
+        }
+
+        public static IList<Unidad> GetUnidades(string organoGestorCodigo, MySqlConnection conn)
+        {
+            IList<Unidad> lu = new List<Unidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM unidad WHERE organoGestorCodigo='{0}'";
+            sql = String.Format(sql, organoGestorCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Unidad u = GetUnidad(rdr);
+                    lu.Add(u);
+                }
+            }
+            return lu;
+        }
+
+        public static IList<Unidad> GetUnidades(string organoGestorCodigo, string unidadTramitadoraCodigo, MySqlConnection conn)
+        {
+            IList<Unidad> lu = new List<Unidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM unidad WHERE organoGestorCodigo='{0}' AND unidadTramitadoraCodigo='{1}'";
+            sql = String.Format(sql, organoGestorCodigo, unidadTramitadoraCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Unidad u = GetUnidad(rdr);
+                    lu.Add(u);
+                }
+            }
+            return lu;
+        }
+
+        public static Unidad SetUnidad(Unidad u, MySqlConnection conn)
+        {
+            // si el id es 0 se crea el objeto, si no se actualiza.
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"
+                    INSERT INTO unidad
+                    (organoGestorCodigo, organoGestorNombre, unidadTramitadoraCodigo, unidadTramitadoraNombre, oficinaContableCodigo, oficinaContableNombre)
+                    VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')
+                    ON DUPLICATE KEY UPDATE
+                    organoGestorCodigo='{0}',
+                    organoGestorNombre='{1}',
+                    unidadTramitadoraCodigo='{2}',
+                    unidadTramitadoraNombre='{3}',
+                    oficinaContableCodigo='{4}',
+                    oficinaContableNombre='{5}'
+            ";
+            sql = String.Format(sql, u.OrganoGestorCodigo, u.OrganoGestorNombre, u.UnidadTramitadoraCodigo, u.UnidadTramitadoraNombre, u.OficinaContableCodigo, u.OficinaContableNombre);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            sql = @"SELECT * FROM unidad WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'";
+            sql = String.Format(sql,u.OrganoGestorCodigo, u.UnidadTramitadoraCodigo, u.OficinaContableCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                u = GetUnidad(rdr);
+            }
+            rdr.Close();
+            return u;
+        }
+
+        public static void SetUnidades(IList<Unidad> lu, MySqlConnection conn)
+        {
+            foreach (Unidad u in lu)
+            {
+                SetUnidad(u, conn);
+            }
+        }
+
+        public static void DeleteUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = String.Format("DELETE FROM estado  WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'", 
+                organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }

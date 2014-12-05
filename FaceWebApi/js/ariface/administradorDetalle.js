@@ -129,6 +129,9 @@ function aceptar() {
                    success: function (data, status) {
                        // hay que mostrarlo en la zona de datos
                        loadData(data.d);
+                       // Nos volvemos al general
+                       var url = "AdministradorGeneral.html?AdministradorId=" + vm.AdministradorId();
+                       window.open(url, '_self');
                    },
                    error: errorAjax
                });

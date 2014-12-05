@@ -85,6 +85,40 @@ namespace FaceWebApi
             return lu;
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<Unidad> GetUnidades(string certSn)
+        {
+            IList<Unidad> lu = new List<Unidad>();
+            try
+            {
+                SenderFace sf = new SenderFace(certSn);
+                SSPPResultadoConsultarUnidades resUnidades = sf.ConsultarUnidades();
+                if (resUnidades != null)
+                {
+                    XmlElement xel;
+                    ArrayOfSSPPOrganoGestorUnidadTramitadora unidades = resUnidades.unidades;
+                    for (int i = 0; i < unidades.Any.Length; i++)
+                    {
+                        xel = unidades.Any[i];
+                        Unidad u = new Unidad();
+                        u.OrganoGestorCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("organo_gestor", xel.InnerXml));
+                        u.OrganoGestorNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("organo_gestor", xel.InnerXml));
+                        u.UnidadTramitadoraCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("unidad_tramitadora", xel.InnerXml));
+                        u.UnidadTramitadoraNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("unidad_tramitadora", xel.InnerXml));
+                        u.OficinaContableCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
+                        u.OficinaContableNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
+                        lu.Add(u);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return lu;
+        }
+
         //[WebMethod]
         //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email)

@@ -425,6 +425,9 @@
                                                     </section>
                                                     <section class="col col-md-2">
                                                         <button id="btnConsultarEstados" class="btn btn-lg btn-primary">Enviar mensaje</button>
+                                                        <div id="ldgConsultarEstados" style="display:none;">
+                                                            <img src="img/loading-animation.gif" style="width:50px;" />
+                                                        </div>
                                                     </section>
                                                 </div>
                                                 <legend>Respuestas</legend>
@@ -437,7 +440,139 @@
                                                 </div>
                                             </fieldset>
                                         </form>
+                                        <div id="tbEstados" style="display:none;">
+                                            <table id="dt_estados" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand">
+                                                            Codigo
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Nombre
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Descripción
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- end widget content -->
 
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
+                    </div>
+                    <!-- end row -->
+
+
+                    <!-- row  (CONSULTAR UNIDADES)-->
+                    <div class="row">
+
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget" id="Div2" data-widget-editbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>Consultar unidades</h2>
+
+                                </header>
+
+                                <!-- widget div -->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmConsultarUnidades" class="smart-form">
+                                            <header>
+                                                Consultar las unidades posibles del sistema
+                                            </header>
+                                            <fieldset>
+                                                <legend>Parámetros</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-5">
+                                                        <label class="label">N.Serie del certificado</label>
+                                                        <label class="input">
+                                                            <input id="txtCertSn2" name="txtCertSn2" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-5">
+
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <button id="btnConsultarUnidades" class="btn btn-lg btn-primary">Enviar mensaje</button>
+                                                        <div id="ldgConsultarUnidades" style="display:none;">
+                                                            <img src="img/loading-animation.gif" style="width:50px;" />
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <legend>Respuestas</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="input">
+                                                            <span id="Span1"></span>
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                        <div id="tbUnidades" style="display:none;">
+                                            <table id="dt_unidades" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand">
+                                                            COG
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Organo Gestor
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            CUT
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Unidad Tramitadora
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            COC
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Oficina Contable
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
                                     </div>
                                     <!-- end widget content -->
 

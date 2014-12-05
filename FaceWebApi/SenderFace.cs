@@ -96,8 +96,8 @@ namespace FaceWebApi
             SSPPResultadoConsultarUnidades res = null;
             try
             {
+                FirmarEnvio();
                 res = objSender.consultarUnidades();
-
             }
             catch (Exception ex)
             {
