@@ -119,62 +119,69 @@ namespace FaceWebApi
             return lu;
         }
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email)
-        //{
-        //    RespuestaFactura rf = null;
-        //    SenderFace sf = new SenderFace(certSn);
-        //    SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
-        //    rf = new RespuestaFactura();
-        //    rf.CodigoRegistro = res.codigo_registro;
-        //    rf.StrFechaRecepcion = res.fecha_recepcion;
-        //    rf.IdentificadorEmisor = res.identificador_emisor;
-        //    rf.NumeroFactura = res.numero_factura;
-        //    rf.CodOficinaContable = res.oficina_contable;
-        //    rf.CodOrganoGestor = res.organo_gestor;
-        //    rf.PdfJustificante = res.pdf_justificante;
-        //    rf.Seriefactura = res.serie_factura;
-        //    rf.CodUnidadTramitadora = res.unidad_tramitadora;
-        //    return rf;
-        //}
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email)
+        {
+            RespuestaFactura rf = null;
+            try
+            {
+                SenderFace sf = new SenderFace(certSn);
+                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
+                rf = new RespuestaFactura();
+                rf.CodigoRegistro = res.codigo_registro;
+                rf.StrFechaRecepcion = res.fecha_recepcion;
+                rf.IdentificadorEmisor = res.identificador_emisor;
+                rf.NumeroFactura = res.numero_factura;
+                rf.CodOficinaContable = res.oficina_contable;
+                rf.CodOrganoGestor = res.organo_gestor;
+                rf.PdfJustificante = res.pdf_justificante;
+                rf.Seriefactura = res.serie_factura;
+                rf.CodUnidadTramitadora = res.unidad_tramitadora;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return rf;
+        }
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public static RespuestaConsultaFactura ConsultaFactura(string certSn, string codRegistro)
-        //{
-        //    RespuestaConsultaFactura rcf = null;
-        //    SenderFace sf = new SenderFace(certSn);
-        //    SSPPResultadoConsultarFactura res = sf.ConsultarFactura(codRegistro);
-        //    if (res != null)
-        //    {
-        //        rcf.NumeroRegistro = res.numero_registro;
-        //        rcf.AnulacionCodigo = res.anulacion.codigo_estado;
-        //        rcf.AnulacionDescripcion = res.anulacion.descripcion_estado;
-        //        rcf.AnulacionMotivo = res.anulacion.motivo_estado;
-        //        rcf.TramitacionCodigo = res.tramitacion.codigo_estado;
-        //        rcf.TramitacionDescripcion = res.tramitacion.descripcion_estado;
-        //        rcf.TramitacionMotivo = res.tramitacion.motivo_estado;
-        //    }
-        //    SSPPResultadoAnularFactura ra;
-        //    return rcf;
-        //}
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static RespuestaConsultaFactura ConsultaFactura(string certSn, string codRegistro)
+        {
+            RespuestaConsultaFactura rcf = new RespuestaConsultaFactura();
+            SenderFace sf = new SenderFace(certSn);
+            SSPPResultadoConsultarFactura res = sf.ConsultarFactura(codRegistro);
+            if (res != null)
+            {
+                rcf.NumeroRegistro = res.numero_registro;
+                rcf.AnulacionCodigo = res.anulacion.codigo_estado;
+                rcf.AnulacionDescripcion = res.anulacion.descripcion_estado;
+                rcf.AnulacionMotivo = res.anulacion.motivo_estado;
+                rcf.TramitacionCodigo = res.tramitacion.codigo_estado;
+                rcf.TramitacionDescripcion = res.tramitacion.descripcion_estado;
+                rcf.TramitacionMotivo = res.tramitacion.motivo_estado;
+            }
+            SSPPResultadoAnularFactura ra;
+            return rcf;
+        }
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public static RespuestaAnularFactura AnularFactura(string certSn, string codRegistro, string motivo)
-        //{
-        //    RespuestaAnularFactura raf = null;
-        //    SenderFace sf = new SenderFace(certSn);
-        //    SSPPResultadoAnularFactura res = sf.AnularFactura(codRegistro, motivo);
-        //    if (res != null)
-        //    {
-        //        raf = new RespuestaAnularFactura();
-        //        raf.NumRegistro = res.numero_registro;
-        //        raf.Mensaje = res.mensaje;
-        //    }
-        //    return raf;
-        //}
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static RespuestaAnularFactura AnularFactura(string certSn, string codRegistro, string motivo)
+        {
+            RespuestaAnularFactura raf = new RespuestaAnularFactura();
+            SenderFace sf = new SenderFace(certSn);
+            SSPPResultadoAnularFactura res = sf.AnularFactura(codRegistro, motivo);
+            if (res != null)
+            {
+                raf = new RespuestaAnularFactura();
+                raf.NumRegistro = res.numero_registro;
+                raf.Mensaje = res.mensaje;
+            }
+            return raf;
+        }
         
 
         #endregion 

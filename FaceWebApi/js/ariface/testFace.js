@@ -31,6 +31,18 @@ function initForm() {
     $("#frmConsultarUnidades").submit(function () {
         return false;
     });
+    $("#btnEnvioFactura").click(sendEnviarFacturas());
+    $("#frmEnvioFactura").submit(function () {
+        return false;
+    });
+    $("#btnConsultaFactura").click(sendConsultarFacturas());
+    $("#frmConsultaFactura").submit(function () {
+        return false;
+    });
+    $("#btnAnulaFactura").click(sendAnularFacturas());
+    $("#frmAnulaFactura").submit(function () {
+        return false;
+    });
     //
     initTablaCertificados();
     initTablaEstados();
@@ -61,7 +73,7 @@ function datosOKUnidades() {
     //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
     $('#frmConsultarUnidades').validate({
         rules: {
-            txtCertSn1: { required: true },
+            txtCertSn2: { required: true },
         },
         // Messages for form validation
         messages: {
@@ -75,6 +87,90 @@ function datosOKUnidades() {
         }
     });
     return $('#frmConsultarUnidades').valid();
+}
+
+function datosOKEnvioFactura() {
+    //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
+    $('#frmEnvioFactura').validate({
+        rules: {
+            txtCertSn3: { required: true },
+            txtPathFacturae: { required: true },
+            txtDirNotificacion: { required: true },
+            txtEmail: { required: true }
+        },
+        // Messages for form validation
+        messages: {
+            txtCertSn2: {
+                required: 'Introduzca el número de serie del certificado con el que desea firmar'
+            },
+            txtPathFacturae: {
+                required: 'Introduzca la ruta completa al fichero facturae'
+            },
+            txtDirNotificacion: {
+                required: 'Introduzca la carpeta donde se guardarán las notifcaciones'
+            },
+            txtEmail: {
+                required: 'Correo electrónico de notificación'
+            }
+        },
+        // Do not change code below
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent());
+        }
+    });
+    return $('#frmEnvioFactura').valid();
+}
+
+function datosOKConsultaFactura() {
+    //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
+    $('#frmConsultaFactura').validate({
+        rules: {
+            txtCertSn4: { required: true },
+            txtCodigoRegistro: { required: true }
+        },
+        // Messages for form validation
+        messages: {
+            txtCertSn4: {
+                required: 'Introduzca el número de serie del certificado con el que desea firmar'
+            },
+            txtCodigoRegistro: {
+                required: 'Introduzca el código de registro de su factura'
+            }
+        },
+        // Do not change code below
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent());
+        }
+    });
+    return $('#frmConsultaFactura').valid();
+}
+
+function datosOKAnulaFactura() {
+    //TODO: Incluir en la validación si el certificado figura en el almacén de certificados.
+    $('#frmAnulaFactura').validate({
+        rules: {
+            txtMotivo: { required: true },
+            txtCertSn5: { required: true },
+            txtCodigoRegistro2: { required: true }
+        },
+        // Messages for form validation
+        messages: {
+            txtMotivo: {
+                required: 'Introduzca el motivo de esta anulación'
+            },
+            txtCertSn5: {
+                required: 'Introduzca el número de serie del certificado con el que desea firmar'
+            },
+            txtCodigoRegistro2: {
+                required: 'Introduzca el código de registro de su factura'
+            }
+        },
+        // Do not change code below
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent());
+        }
+    });
+    return $('#frmAnulaFactura').valid();
 }
 
 function sendConsultarEstados() {
@@ -194,6 +290,144 @@ function sendConsultarCertificados() {
                    },
                    error: errorAjax
                });
+    };
+    return mf;
+}
+
+function sendEnviarFacturas() {
+    var mf = function () {
+        if (!datosOKEnvioFactura()) {
+            return;
+        }
+        // obtener el n.serie del certificado para la firma.
+        var certSn = $('#txtCertSn3').val();
+        var pathFacturae = $('#txtPathFacturae').val();
+        var dirNotificacion = $('#txtDirNotificacion').val();
+        var email = $('#txtEmail').val();
+        // enviar la consulta por la red (AJAX)
+        var data = {
+            "certSn": certSn,
+            "fE": pathFacturae,
+            "dA": dirNotificacion,
+            "email": email
+        };
+        $('#btnEnvioFactura').hide();
+        $('#ldgEnvioFactura').show();
+        $.ajax({
+            type: "POST",
+            url: "FaceApi.aspx/EnviarFactura",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                // queremos guaradarnos el número y fecha de registro
+                var codigoRegistro = data.d.CodigoRegistro;
+                var strFechaRecepcion = data.d.StrFechaRecepcion;
+                var mensaje = "Registrada Correctamente. N.Registro:" + codigoRegistro + " Fecha:" + strFechaRecepcion;
+                mostrarMensajeSmart(mensaje);
+                $('#btnEnvioFactura').show();
+                $('#ldgEnvioFactura').hide();
+            },
+            error: function (xhr, textStatus, errorThrwon) {
+                var m = xhr.responseText;
+                if (!m)
+                    m = "Error general posiblemente falla la conexión";
+                mostrarMensajeSmart(m);
+                $('#btnEnvioFactura').show();
+                $('#ldgEnvioFactura').hide();
+            }
+        });
+    };
+    return mf;
+}
+
+function sendConsultarFacturas() {
+    var mf = function () {
+        if (!datosOKConsultaFactura()) {
+            return;
+        }
+        // obtener el n.serie del certificado para la firma.
+        var certSn = $('#txtCertSn4').val();
+        var codigoRegistro = $('#txtCodigoRegistro').val();
+        // enviar la consulta por la red (AJAX)
+        var data = {
+            "certSn": certSn,
+            "codRegistro": codigoRegistro
+        };
+        $('#btnConsultaFactura').hide();
+        $('#ldgConsultaFactura').show();
+        $.ajax({
+            type: "POST",
+            url: "FaceApi.aspx/ConsultaFactura",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                $('#btnConsultaFactura').show();
+                $('#ldgConsultaFactura').hide();
+                // queremos guaradarnos el número y fecha de registro
+                var mensaje = "Numero de registro: " + data.d.NumeroRegistro + "</br>";
+                mensaje += "Anulación (codigo): " + data.d.AnulacionCodigo + "</br>";
+                mensaje += "Anulación (descripción): " + data.d.AnulacionDescripcion + "</br>";
+                mensaje += "Anulación (motivo): " + data.d.AnulacionMotivo + "</br>";
+                mensaje += "Tramitación (codigo): " + data.d.TramitacionCodigo + "</br>";
+                mensaje += "Tramitación (descripción): " + data.d.TramitacionDescripcion + "</br>";
+                mensaje += "Tramitación (motivo): " + data.d.TramitacionMotivo + "</br>";
+                mostrarMensajeSmart(mensaje);
+            },
+            error: function (xhr, textStatus, errorThrwon) {
+                var m = xhr.responseText;
+                if (!m)
+                    m = "Error general posiblemente falla la conexión";
+                mostrarMensajeSmart(m);
+                $('#btnConsultaFactura').show();
+                $('#ldgConsultaFactura').hide();
+            }
+        });
+    };
+    return mf;
+}
+
+function sendAnularFacturas() {
+    var mf = function () {
+        if (!datosOKAnulaFactura()) {
+            return;
+        }
+        // obtener el n.serie del certificado para la firma.
+        var motivo = $('#txtMotivo').val();
+        var certSn = $('#txtCertSn5').val();
+        var codigoRegistro = $('#txtCodigoRegistro2').val();
+        // enviar la consulta por la red (AJAX)
+        var data = {
+            "certSn": certSn,
+            "codRegistro": codigoRegistro,
+            "motivo": motivo
+        };
+        $('#btnAnulaFactura').hide();
+        $('#ldgAnulaFactura').show();
+        $.ajax({
+            type: "POST",
+            url: "FaceApi.aspx/AnularFactura",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                $('#btnAnulaFactura').show();
+                $('#ldgAnulaFactura').hide();
+                // queremos guaradarnos el número y fecha de registro
+                var mensaje = "Numero de registro: " + data.d.NumRegistro + "</br>";
+                mensaje += "Mensaje: " + data.d.Mensaje + "</br>";
+                mostrarMensajeSmart(mensaje);
+            },
+            error: function (xhr, textStatus, errorThrwon) {
+                var m = xhr.responseText;
+                if (!m)
+                    m = "Error general posiblemente falla la conexión";
+                mostrarMensajeSmart(m);
+                $('#btnAnulaFactura').show();
+                $('#ldgAnulaFactura').hide();
+            }
+        });
     };
     return mf;
 }

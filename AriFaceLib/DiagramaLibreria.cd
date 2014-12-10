@@ -1,59 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="AriFaceLib.Administrador">
+  <Class Name="AriFaceLib.Administrador" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAACgAAACiAAAggAAAAACAAAQAgAAEAA=</HashCode>
       <FileName>Administrador.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Unidad">
+  <Class Name="AriFaceLib.Unidad" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAACAAAIAAIAAEAAAAABACAIAQIAAEgAAAAA=</HashCode>
       <FileName>Unidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Estado">
+  <Class Name="AriFaceLib.Estado" Collapsed="true">
     <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAQAAAACAAAEAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.RespuestaFactura">
+  <Class Name="AriFaceLib.RespuestaFactura" Collapsed="true">
     <Position X="7.25" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AEoAABAAAAAEAAAAiAgAAAAEAgAAAAIggAAAAARGABA=</HashCode>
       <FileName>RespuestaFactura.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.RespuestaConsultaFactura">
+  <Class Name="AriFaceLib.RespuestaConsultaFactura" Collapsed="true">
     <Position X="10" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>ACAaAAAAEAAAAAQBAAAWAABBEAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>RespuestaConsultaFactura.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.RespuestaAnularFactura">
+  <Class Name="AriFaceLib.RespuestaAnularFactura" Collapsed="true">
     <Position X="13.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAIAAAACA=</HashCode>
       <FileName>RespuestaAnularFactura.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Certificado">
-    <Position X="1.25" Y="4.5" Width="3" />
+  <Class Name="AriFaceLib.Certificado" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAIAAAACAAEAABAAAAAQAAAAAAA=</HashCode>
       <FileName>Certificado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.CntAriFaceLib">
-    <Position X="13.75" Y="2.75" Width="1.5" />
+  <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
+    <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAABAAAEAAAAAAAAAAAQAAIQAAAJAAAAA=</HashCode>
+      <HashCode>AAAEQAABAAAQABAAAkAAAAQBIAAAAQAAIQAACJBEMgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Cliente" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAEEACgjBAAgAAAAAAAAAAggAAAAAAAABA=</HashCode>
+      <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

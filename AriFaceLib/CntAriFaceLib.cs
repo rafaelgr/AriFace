@@ -442,5 +442,148 @@ namespace AriFaceLib
             return lc;
         }
         #endregion
+
+        #region Cliente
+        public static Cliente GetCliente(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("i_d"))) return null;
+            Cliente c = new Cliente();
+            c.ClienteId = rdr.GetInt32("i_d");
+            c.Nombre = rdr.GetString("nombre");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("email")))
+                c.Email = rdr.GetString("email");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("organoGestorCodigo")))
+                c.CodOrganoGestor = rdr.GetString("organoGestorCodigo");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("unidadTramitadoraCodigo")))
+                c.CodUnidadTramitadora = rdr.GetString("unidadTramitadoraCodigo");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("oficinaContableCodigo")))
+                c.CodOficinaContable = rdr.GetString("oficinaContableCodigo");
+            return c;
+        }
+
+        public static Cliente GetCliente(int id, MySqlConnection conn)
+        {
+            Cliente c = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT * FROM cliente WHERE i_d = {0}";
+            sql = String.Format(sql, id);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                c = GetCliente(rdr);
+            }
+            return c;
+        }
+
+        public static IList<Cliente> GetClientes(MySqlConnection conn)
+        {
+            IList<Cliente> lc = new List<Cliente>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM cliente";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Cliente c = GetCliente(rdr);
+                    lc.Add(c);
+                }
+            }
+            return lc;
+        }
+
+        public static IList<Cliente> GetClientes(string parNom, MySqlConnection conn)
+        {
+            IList<Cliente> lc = new List<Cliente>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM cliente WHERE nombre LIKE '%{0}%' ORDER BY nombre;";
+            if (parNom == "*")
+                sql = "SELECT * FROM cliente ORDER BY nombre;";
+            sql = String.Format(sql, parNom);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Cliente c = GetCliente(rdr);
+                    lc.Add(c);
+                }
+            }
+            return lc;
+        }
+
+        public static Cliente SetCliente(Cliente c, MySqlConnection conn)
+        {
+            bool alta = false;
+            if (c == null) return null;
+            if (c.ClienteId == 0)
+            {
+                alta = true;
+            }
+            // si el id es 0 se crea el objeto, si no se actualiza.
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "";
+            if (alta)
+            {
+                sql = @"
+                    INSERT INTO cliente
+                    (nombre, cif, email, organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo)
+                    VALUES ('{1}','{2}','{3}','{4}','{5}','{6}');
+                ";
+            }
+            else
+            {
+                sql = @"
+                    UPDATE cliente
+                    SET
+                    nombre='{1}',
+                    cif='{2}',
+                    email='{3}',
+                    organoGestorCodigo='{4}',
+                    unidadTramitadora='{5}',
+                    oficinaContableCodigo='{6}'
+                    WHERE i_d={0};
+                ";
+            }
+            sql = String.Format(sql,c.ClienteId, c.Nombre, c.Cif, c.Email, c.CodOrganoGestor, c.CodUnidadTramitadora, c.CodOficinaContable);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            // y vamos rápidamente a por la recién creada
+            if (alta)
+            {
+                sql = @"SELECT LAST_INSERT_ID() as ultid FROM cliente;";
+                cmd.CommandText = sql;
+                MySqlDataReader rdr2 = cmd.ExecuteReader();
+                if (rdr2.HasRows)
+                {
+                    rdr2.Read();
+                    c.ClienteId = rdr2.GetInt32("ultid");
+                }
+                rdr2.Close();
+            }
+            sql = @"SELECT * FROM cliente WHERE i_d={0};";
+            sql = String.Format(sql, c.ClienteId);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                c = GetCliente(rdr);
+            }
+            return c;
+        }
+
+        public static void DeleteCliente(int id, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = String.Format("DELETE FROM cliente WHERE i_d={0}", id);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+        #endregion
     }
 }

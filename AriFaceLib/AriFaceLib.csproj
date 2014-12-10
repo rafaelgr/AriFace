@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Administrador.cs" />
     <Compile Include="Certificado.cs" />
+    <Compile Include="Cliente.cs" />
     <Compile Include="CntAriFaceLib.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

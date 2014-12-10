@@ -279,7 +279,7 @@
                         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                             <!-- Widget ID (each widget will need unique ID)-->
-                            <div class="jarviswidget" id="Div1" data-widget-editbutton="false">
+                            <div class="jarviswidget jarviswidget-color-blue" id="Div1" data-widget-editbutton="false">
                                 <!-- widget options:
                                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 									
@@ -374,7 +374,7 @@
                         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                             <!-- Widget ID (each widget will need unique ID)-->
-                            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                            <div class="jarviswidget jarviswidget-color-green" id="wid-id-0" data-widget-editbutton="false">
                                 <!-- widget options:
                                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 									
@@ -390,7 +390,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Consultar estados</h2>
+                                    <h2>CONSULTAR ESTADOS</h2>
 
                                 </header>
 
@@ -480,7 +480,7 @@
                         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                             <!-- Widget ID (each widget will need unique ID)-->
-                            <div class="jarviswidget" id="Div2" data-widget-editbutton="false">
+                            <div class="jarviswidget jarviswidget-color-green" id="Div2" data-widget-editbutton="false">
                                 <!-- widget options:
                                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 									
@@ -496,7 +496,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Consultar unidades</h2>
+                                    <h2>CONSULTAR UNIDADES</h2>
 
                                 </header>
 
@@ -573,6 +573,303 @@
                                                 </thead>
                                             </table>
                                         </div>
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
+                    </div>
+                    <!-- end row -->
+
+                    <!-- row  (ENVIO DE FACTURA)-->
+                    <div class="row">
+
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget jarviswidget-color-orange" id="Div3" data-widget-editbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>ENVIAR FACTURAS</h2>
+
+                                </header>
+
+                                <!-- widget div -->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmEnvioFactura" class="smart-form">
+                                            <header>
+                                                Enviar al sistema la factura que se indica
+                                            </header>
+                                            <fieldset>
+                                                <legend>Parámetros</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="label">Path del fichero FACTURAE</label>
+                                                        <label class="input">
+                                                            <input id="txtPathFacturae" name="txtPathFacturae" type="text" />
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="label">Directorio de notificaciones</label>
+                                                        <label class="input">
+                                                            <input id="txtDirNotificacion" name="txtDirNotificacion" type="text" />
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-5">
+                                                        <label class="label">N.Serie del certificado</label>
+                                                        <label class="input">
+                                                            <input id="txtCertSn3" name="txtCertSn3" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-5">
+                                                        <label class="label">Email respuesta</label>
+                                                        <label class="input">
+                                                            <input id="txtEmail" name="txtEmail" type="email" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <button id="btnEnvioFactura" class="btn btn-lg btn-primary">Enviar mensaje</button>
+                                                        <div id="ldgEnvioFactura" style="display:none;">
+                                                            <img src="img/loading-animation.gif" style="width:50px;" />
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <legend>Respuestas</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="input">
+                                                            <span id="resEnvioFactura"></span>
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
+                    </div>
+                    <!-- end row -->
+
+                     <!-- row  (CONSULTAR DE FACTURA)-->
+                    <div class="row">
+
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget jarviswidget-color-green" id="Div4" data-widget-editbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>CONSULTAR FACTURAS</h2>
+
+                                </header>
+
+                                <!-- widget div -->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmConsultaFactura" class="smart-form">
+                                            <header>
+                                                Consultar la factura que se indica
+                                            </header>
+                                            <fieldset>
+                                                <legend>Parámetros</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-5">
+                                                        <label class="label">N.Serie del certificado</label>
+                                                        <label class="input">
+                                                            <input id="txtCertSn4" name="txtCertSn4" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-5">
+                                                        <label class="label">Codigo de registro de la factura</label>
+                                                        <label class="input">
+                                                            <input id="txtCodigoRegistro" name="txtCodigoRegistro" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <button id="btnConsultaFactura" class="btn btn-lg btn-primary">Enviar mensaje</button>
+                                                        <div id="ldgConsultaFactura" style="display:none;">
+                                                            <img src="img/loading-animation.gif" style="width:50px;" />
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <legend>Respuestas</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="input">
+                                                            <span id="Span2"></span>
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
+                    </div>
+                    <!-- end row -->
+
+                     <!-- row  (ANULAR DE FACTURA)-->
+                    <div class="row">
+
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget jarviswidget-color-orange" id="Div5" data-widget-editbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>ANULAR FACTURAS</h2>
+
+                                </header>
+
+                                <!-- widget div -->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmAnulaFactura" class="smart-form">
+                                            <header>
+                                                Anular la factura que se indica.
+                                            </header>
+                                            <fieldset>
+                                                <legend>Parámetros</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="label">Motivo de la anulación</label>
+                                                        <label class="input">
+                                                            <input id="txtMotivo" name="txtMotivo" type="text" />
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-5">
+                                                        <label class="label">N.Serie del certificado</label>
+                                                        <label class="input">
+                                                            <input id="txtCertSn5" name="txtCertSn5" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-5">
+                                                        <label class="label">Codigo de registro de la factura</label>
+                                                        <label class="input">
+                                                            <input id="txtCodigoRegistro2" name="txtCodigoRegistro2" type="text" />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <button id="btnAnulaFactura" class="btn btn-lg btn-primary">Enviar mensaje</button>
+                                                        <div id="ldgAnulaFactura" style="display:none;">
+                                                            <img src="img/loading-animation.gif" style="width:50px;" />
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <legend>Respuestas</legend>
+                                                <div class="row">
+                                                    <section class="col col-md-12">
+                                                        <label class="input">
+                                                            <span id="Span3"></span>
+                                                        </label>
+                                                    </section>
+                                                </div>
+                                            </fieldset>
+                                        </form>
                                     </div>
                                     <!-- end widget content -->
 

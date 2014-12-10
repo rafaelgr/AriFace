@@ -30,7 +30,7 @@ namespace FaceWebApi
         private X509SecurityToken GetSecurityToken()
         {
             X509SecurityToken securityToken = null;
-            X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+            X509Store store = new X509Store("My", StoreLocation.LocalMachine);
             store.Open(OpenFlags.ReadOnly);
             this.objX509 = null;
 
@@ -127,6 +127,41 @@ namespace FaceWebApi
             req.fichero_factura.mime = "application/xml";
             req.fichero_factura.nombre = "signed.xml";
             req.correo = correo;
+            try
+            {
+                FirmarEnvio();
+                res = objSender.enviarFactura(req);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public SSPPResultadoEnviarFactura EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF)
+        {
+            SSPPFactura req;
+            SSPPResultadoEnviarFactura res;
+            ClsEncoder64 encoder64;
+            string expediente = string.Empty;
+            bool blnTry = true;
+            if (System.IO.File.Exists(pathFacturae) == false) blnTry = false;
+            if (System.IO.File.Exists(pathPDF) == false) blnTry = false;
+            if (System.IO.Directory.Exists(carpetaAcuseRecibo) == false) blnTry = false;
+            if (!blnTry)
+            {
+                // O no existe en fichero o la carpeta en la que se encuentra
+                throw new Exception(String.Format("El fichero {0} o la carpeta {1} no existen.", pathFacturae, carpetaAcuseRecibo));
+                return null;
+            }
+            encoder64 = new ClsEncoder64();
+            req = new SSPPFactura();
+            req.fichero_factura = new SSPPFicheroFactura();
+            req.fichero_factura.factura = encoder64.EncodeTo64File(pathFacturae);
+            req.fichero_factura.mime = "application/xml";
+            req.fichero_factura.nombre = "signed.xml";
+            req.correo = correo;
+            ArrayOfSSPPFicheroAnexo anexos;
             try
             {
                 FirmarEnvio();

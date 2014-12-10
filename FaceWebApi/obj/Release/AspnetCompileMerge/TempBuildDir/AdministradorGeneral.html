@@ -316,7 +316,7 @@
                                             <fieldset>
                                                 <div class="row">
                                                     <section class="col col-md-12">
-                                                        <label class="label">Introduzca el texto a buscar</label>
+                                                        <label class="label">Introduzca el texto a buscar (* = Ver todos)</label>
                                                         <label class="input">
                                                             <input id="txtBuscar" name="txtBuscar" type="text" />
                                                         </label>
@@ -325,10 +325,10 @@
                                             </fieldset>
                                             <fieldset>
                                                 <div class="pull-right">
-                                                    <button id="btnAlta" class="btn btn-success btn-circle btn-lg">
+                                                    <button id="btnAlta" title="Crear nuevo registro" class="btn btn-success btn-circle btn-lg">
                                                         <i class="fa fa-lg fa-plus"></i>
                                                     </button>
-                                                    <button id="btnBuscar" class="btn btn-primary btn-circle btn-lg">
+                                                    <button id="btnBuscar" title="Buscar" class="btn btn-primary btn-circle btn-lg">
                                                         <i class="fa fa-lg fa-search"></i>
                                                     </button>
                                                 </div>
@@ -346,6 +346,9 @@
                                                         </th>
                                                         <th data-hide="phone">
                                                             <i class="fa fa-fw fa-mail text-muted hidden-md hidden-sm hidden-xs"></i>Correo electrónico
+                                                        </th>
+                                                        <th>
+
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -472,8 +475,8 @@
 
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
-        <script src="js/ariface/administradorGeneral.js"></script>
         <script src="js/ariface/ariface.js"></script>
+        <script src="js/ariface/administradorGeneral.js"></script>
 
         <!-- PAGE RELATED PLUGIN(S) -->
         <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>

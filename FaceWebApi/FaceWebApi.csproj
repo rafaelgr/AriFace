@@ -78,6 +78,9 @@
     <Content Include="CertificadoApi.aspx" />
     <Content Include="AdministradorGeneral.html" />
     <Content Include="AdministradorDetalle.html" />
+    <Content Include="ClienteApi.aspx" />
+    <Content Include="ClienteGeneral.html" />
+    <Content Include="js\ariface\clienteGeneral.js" />
     <Content Include="UnidadApi.aspx" />
     <Content Include="EstadoApi.aspx" />
     <Content Include="img\loading-animation.gif" />
@@ -753,6 +756,13 @@
     </Compile>
     <Compile Include="CertificadoApi.aspx.designer.cs">
       <DependentUpon>CertificadoApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteApi.aspx.cs">
+      <DependentUpon>ClienteApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteApi.aspx.designer.cs">
+      <DependentUpon>ClienteApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
     <Compile Include="UnidadApi.aspx.cs">

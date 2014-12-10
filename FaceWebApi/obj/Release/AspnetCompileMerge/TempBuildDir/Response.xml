@@ -1,101 +1,89 @@
-﻿HTTP/1.1 200 OK
-Date: Mon, 01 Dec 2014 10:20:41 GMT
-Server: Microsoft-IIS/5.0
-Expires: Thu, 19 Nov 1981 08:52:00 GMT
-Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
-Pragma: no-cache
-Content-Length: 6406
-Content-Type: text/xml;charset=utf-8
-Set-Cookie: SESSION_ID=h169u4tbahsquqir0r1d175k46; path=/
-Keep-Alive: timeout=15, max=500
-Connection: Keep-Alive
-
-<?xml version="1.0" encoding="UTF-8"?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://webservice.face.gob.es" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://webservice.face.gob.es" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
   <SOAP-ENV:Header>
     <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" SOAP-ENV:mustUnderstand="1">
-      <wsse:BinarySecurityToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" wsu:Id="pfx529a2159-adee-39d1-a12d-ecd279d203d6" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3">MIIEHTCCA4agAwIBAgIEPRQCPjANBgkqhkiG9w0BAQUFADA2MQswCQYDVQQGEwJFUzENMAsGA1UEChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMB4XDTE0MDUyMTEwNTM1MloXDTE2MDUyMTEwNTM1MlowgdgxCzAJBgNVBAYTAkVTMQ0wCwYDVQQKEwRGTk1UMRgwFgYDVQQLEw9GTk1UIENsYXNlIDIgQ0ExETAPBgNVBAsTCFB1YmxpY29zMRIwEAYDVQQLEwk1MDAwNzAwMTUxeTB3BgNVBAMUcERFU0NSSVBDSU9OIFNHUEVJQUUgKFBSRVBST0RVQ0NJT04pIC0gRU5USURBRCBNSU5JU1RFUklPIERFIEhBQ0lFTkRBIFkgQURNSU5JU1RSQUNJT05FUyBQ2kJMSUNBUyAtIENJRiBTMjgzMzAwMkUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKfmWJTM4NBCf2RsEgSPMrg7xqXyObCzAHEV2scz1aUdQ8qX0By197NZdxNgJU5DQDRm5351dyB5WdGyO5f1wryfi1XniikbxD85RN/sTE4YGwZsFPhJMZVkMi70uq4dAZcfa3bRYOavn4ftT2Dr3Gc4tnuhp+FTQhMY+905F/odAgMBAAGjggGTMIIBjzCBlgYDVR0RBIGOMIGLpIGIMIGFMRgwFgYJKwYBBAGsZgEPEwlTMjgzMzAwMkUxQTA/BgkrBgEEAaxmAQ4UMk1JTklTVEVSSU8gREUgSEFDSUVOREEgWSBBRE1JTklTVFJBQ0lPTkVTIFDaQkxJQ0FTMSYwJAYJKwYBBAGsZgEIExdTR1BFSUFFIChQUkVQUk9EVUNDSU9OKTAJBgNVHRMEAjAAMCsGA1UdEAQkMCKADzIwMTQwNTIxMTA1MzUyWoEPMjAxODA1MjExMDUzNTJaMAsGA1UdDwQEAwIFoDARBglghkgBhvhCAQEEBAMCBaAwHQYDVR0OBBYEFHYCfUJBX/422PEF+1CnlNzBmQ6AMB8GA1UdIwQYMBaAFECadkSXdAfErBTLHo1POkV8MNdhMFwGA1UdHwRVMFMwUaBPoE2kSzBJMQswCQYDVQQGEwJFUzENMAsGA1UEChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMREwDwYDVQQDEwhDUkwxNDczNzANBgkqhkiG9w0BAQUFAAOBgQAbZEdG+q3wPfs29KYvgwcabHnmad3Quz5ZiDHv6XzHRYJolxI6aX+N1riDUqn1WsCqSywAfKJSIY8GR7gIyydV7IbM0/xHdjZ+MM+FBI/cyvkpEP5vO9v/IIIToosGsXZLTems4umYpB2HiHfC4tYbG/qxIIkTNmVkNBUIMrJ6Xw==</wsse:BinarySecurityToken>
+      <wsse:BinarySecurityToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" wsu:Id="pfx4555f1bf-ca2f-a83d-493c-a70ecbecd25a" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3">MIIEHTCCA4agAwIBAgIEPRQCPjANBgkqhkiG9w0BAQUFADA2MQswCQYDVQQGEwJFUzENMAsGA1UEChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMB4XDTE0MDUyMTEwNTM1MloXDTE2MDUyMTEwNTM1MlowgdgxCzAJBgNVBAYTAkVTMQ0wCwYDVQQKEwRGTk1UMRgwFgYDVQQLEw9GTk1UIENsYXNlIDIgQ0ExETAPBgNVBAsTCFB1YmxpY29zMRIwEAYDVQQLEwk1MDAwNzAwMTUxeTB3BgNVBAMUcERFU0NSSVBDSU9OIFNHUEVJQUUgKFBSRVBST0RVQ0NJT04pIC0gRU5USURBRCBNSU5JU1RFUklPIERFIEhBQ0lFTkRBIFkgQURNSU5JU1RSQUNJT05FUyBQ2kJMSUNBUyAtIENJRiBTMjgzMzAwMkUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKfmWJTM4NBCf2RsEgSPMrg7xqXyObCzAHEV2scz1aUdQ8qX0By197NZdxNgJU5DQDRm5351dyB5WdGyO5f1wryfi1XniikbxD85RN/sTE4YGwZsFPhJMZVkMi70uq4dAZcfa3bRYOavn4ftT2Dr3Gc4tnuhp+FTQhMY+905F/odAgMBAAGjggGTMIIBjzCBlgYDVR0RBIGOMIGLpIGIMIGFMRgwFgYJKwYBBAGsZgEPEwlTMjgzMzAwMkUxQTA/BgkrBgEEAaxmAQ4UMk1JTklTVEVSSU8gREUgSEFDSUVOREEgWSBBRE1JTklTVFJBQ0lPTkVTIFDaQkxJQ0FTMSYwJAYJKwYBBAGsZgEIExdTR1BFSUFFIChQUkVQUk9EVUNDSU9OKTAJBgNVHRMEAjAAMCsGA1UdEAQkMCKADzIwMTQwNTIxMTA1MzUyWoEPMjAxODA1MjExMDUzNTJaMAsGA1UdDwQEAwIFoDARBglghkgBhvhCAQEEBAMCBaAwHQYDVR0OBBYEFHYCfUJBX/422PEF+1CnlNzBmQ6AMB8GA1UdIwQYMBaAFECadkSXdAfErBTLHo1POkV8MNdhMFwGA1UdHwRVMFMwUaBPoE2kSzBJMQswCQYDVQQGEwJFUzENMAsGA1UEChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMREwDwYDVQQDEwhDUkwxNDczNzANBgkqhkiG9w0BAQUFAAOBgQAbZEdG+q3wPfs29KYvgwcabHnmad3Quz5ZiDHv6XzHRYJolxI6aX+N1riDUqn1WsCqSywAfKJSIY8GR7gIyydV7IbM0/xHdjZ+MM+FBI/cyvkpEP5vO9v/IIIToosGsXZLTems4umYpB2HiHfC4tYbG/qxIIkTNmVkNBUIMrJ6Xw==</wsse:BinarySecurityToken>
       <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
         <ds:SignedInfo>
           <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
           <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-          <ds:Reference URI="#pfx33246a04-d2d7-3d7f-6e7c-df7280693f5c">
+          <ds:Reference URI="#pfx3f8339f2-16cd-5f9e-cd45-981b2a24598d">
             <ds:Transforms>
               <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
             </ds:Transforms>
             <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-            <ds:DigestValue>u/p7mAHI1zV+3w8g2POQZqrJqAQ=</ds:DigestValue>
+            <ds:DigestValue>lA7GqIinCqNUZ5/t5+QRFMKH4bA=</ds:DigestValue>
           </ds:Reference>
-          <ds:Reference URI="#pfx83991263-9f9c-a2da-2748-48f0ee511371">
+          <ds:Reference URI="#pfx712c7e65-599e-0829-388d-56e2f34ea0ed">
             <ds:Transforms>
               <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
             </ds:Transforms>
             <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-            <ds:DigestValue>nZz6vV5rguPDhg7eXAuP7xy46g0=</ds:DigestValue>
+            <ds:DigestValue>auzrpgCIcCKFrzwcikT0k3LnHC0=</ds:DigestValue>
           </ds:Reference>
         </ds:SignedInfo>
-        <ds:SignatureValue>L6V2iqXhlSj+WEJF9WDty9PihVNC1SSo+jNbALpv7dkRuv52nCjyeXl73LwZYnS5LdCa0XWmeTt2ceHtZGmNCKfn7Ydda0+JLCKh/53QHrygtGcBKs+/Yjf+vJGX4EfMGYcQp8SvIV+xDSPGKa+vG3D3k2WgJW1H7CyT68JSwZQ=</ds:SignatureValue>
+        <ds:SignatureValue>XYT4M3c8RZpyGNMBaydfvmb0B/QEZeVtRkM/5Thg0bhNJ/QG4EClCrwd78CUTSCYHKMScljtDKhPLFplExbBMK/4fwaf/wDbKNkPF5gOeiu/5/HdVM/XpKtx9VW0nz1yOBNP0ffGPWJyycQxFaBRzq0auBQFrNq+07HI3dzkyQ0=</ds:SignatureValue>
         <ds:KeyInfo>
           <wsse:SecurityTokenReference>
-            <wsse:Reference URI="#pfx529a2159-adee-39d1-a12d-ecd279d203d6" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"/>
+            <wsse:Reference URI="#pfx4555f1bf-ca2f-a83d-493c-a70ecbecd25a" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"/>
           </wsse:SecurityTokenReference>
         </ds:KeyInfo>
       </ds:Signature>
-      <wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="pfx33246a04-d2d7-3d7f-6e7c-df7280693f5c">
-        <wsu:Created>2014-12-01T10:20:42Z</wsu:Created>
-        <wsu:Expires>2014-12-01T11:20:42Z</wsu:Expires>
+      <wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="pfx3f8339f2-16cd-5f9e-cd45-981b2a24598d">
+        <wsu:Created>2014-12-03T17:15:45Z</wsu:Created>
+        <wsu:Expires>2014-12-03T18:15:45Z</wsu:Expires>
       </wsu:Timestamp>
     </wsse:Security>
   </SOAP-ENV:Header>
-  <SOAP-ENV:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="pfx83991263-9f9c-a2da-2748-48f0ee511371">
+  <SOAP-ENV:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="pfx712c7e65-599e-0829-388d-56e2f34ea0ed">
     <ns1:consultarEstadosResponse>
-      <return xsi:type="ns1:SSPPEstados">
-        <estados SOAP-ENC:arrayType="ns1:SSPPEstado[9]" xsi:type="ns1:ArrayOfSSPPEstado">
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Registrada</nombre>
-            <codigo xsi:type="xsd:string">1200</codigo>
-            <descripcion xsi:type="xsd:string">La factura ha sido registrada en el registro electrónico REC</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Contabilizada la obligación reconocida</nombre>
-            <codigo xsi:type="xsd:string">2400</codigo>
-            <descripcion xsi:type="xsd:string">Se ha dado orden de pago de la factura</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Pagada</nombre>
-            <codigo xsi:type="xsd:string">2500</codigo>
-            <descripcion xsi:type="xsd:string">Factura pagada</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Rechazada</nombre>
-            <codigo xsi:type="xsd:string">2600</codigo>
-            <descripcion xsi:type="xsd:string">La Unidad rechaza la factura</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Anulada</nombre>
-            <codigo xsi:type="xsd:string">3100</codigo>
-            <descripcion xsi:type="xsd:string">La Unidad aprueba la propuesta de anulación</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">No solicitada anulación</nombre>
-            <codigo xsi:type="xsd:string">4100</codigo>
-            <descripcion xsi:type="xsd:string">No solicitada anulación</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Solicitada anulación</nombre>
-            <codigo xsi:type="xsd:string">4200</codigo>
-            <descripcion xsi:type="xsd:string">Solicitada anulación</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Aceptada anulación</nombre>
-            <codigo xsi:type="xsd:string">4300</codigo>
-            <descripcion xsi:type="xsd:string">Aceptada anulación</descripcion>
-          </item>
-          <item xsi:type="ns1:SSPPEstado">
-            <nombre xsi:type="xsd:string">Rechazada anulación</nombre>
-            <codigo xsi:type="xsd:string">4400</codigo>
-            <descripcion xsi:type="xsd:string">Rechazada anulación</descripcion>
-          </item>
+      <return>
+        <estados>
+          <ns1:SSPPEstado>
+            <nombre>Registrada</nombre>
+            <codigo>1200</codigo>
+            <descripcion>La factura ha sido registrada en el registro electrónico REC</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Contabilizada la obligación reconocida</nombre>
+            <codigo>2400</codigo>
+            <descripcion>Se ha dado orden de pago de la factura</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Pagada</nombre>
+            <codigo>2500</codigo>
+            <descripcion>Factura pagada</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Rechazada</nombre>
+            <codigo>2600</codigo>
+            <descripcion>La Unidad rechaza la factura</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Anulada</nombre>
+            <codigo>3100</codigo>
+            <descripcion>La Unidad aprueba la propuesta de anulación</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>No solicitada anulación</nombre>
+            <codigo>4100</codigo>
+            <descripcion>No solicitada anulación</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Solicitada anulación</nombre>
+            <codigo>4200</codigo>
+            <descripcion>Solicitada anulación</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Aceptada anulación</nombre>
+            <codigo>4300</codigo>
+            <descripcion>Aceptada anulación</descripcion>
+          </ns1:SSPPEstado>
+          <ns1:SSPPEstado>
+            <nombre>Rechazada anulación</nombre>
+            <codigo>4400</codigo>
+            <descripcion>Rechazada anulación</descripcion>
+          </ns1:SSPPEstado>
         </estados>
       </return>
     </ns1:consultarEstadosResponse>

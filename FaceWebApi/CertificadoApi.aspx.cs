@@ -23,7 +23,7 @@ namespace FaceWebApi
         public static IList<Certificado> GetCertificados()
         {
             IList<Certificado> lu = new List<Certificado>();
-            X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+            X509Store store = new X509Store("My", StoreLocation.LocalMachine);
             store.Open(OpenFlags.ReadOnly);
             for (int i = 0; i < store.Certificates.Count; i++)
             {

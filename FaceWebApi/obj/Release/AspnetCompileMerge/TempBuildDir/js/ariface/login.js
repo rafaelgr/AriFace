@@ -92,12 +92,3 @@ function getVersion() {
     });
 }
 
-var errorAjax = function(xhr, textStatus, errorThrwon) {
-    var m = xhr.responseText;
-    if (!m) m = "Error general posiblemente falla la conexión";
-    mostrarMensaje(m);
-}
-
-function mostrarMensaje(mens) {
-    $("#mensaje").text(mens);
-}
