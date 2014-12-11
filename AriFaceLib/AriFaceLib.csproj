@@ -45,6 +45,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="CntAriFaceLib.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="MiniUnidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespuestaAnularFactura.cs" />
     <Compile Include="RespuestaConsultaFactura.cs" />

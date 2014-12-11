@@ -94,7 +94,38 @@ namespace FaceWebApi
                 conn.Close();
             }
             return u;
-        }    
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<MiniUnidad> GetUtOfOg(string organoGestorCodigo)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                lmu = CntAriFaceLib.GetUtOfOg(organoGestorCodigo, conn);
+                conn.Close();
+            }
+            return lmu;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<MiniUnidad> GetOcOfUt(string organoGestorCodigo, string unidadTramitadoraCodigo)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                lmu = CntAriFaceLib.GetOcOfUt(organoGestorCodigo, unidadTramitadoraCodigo, conn);
+                conn.Close();
+            }
+            return lmu;
+        }
 
         #endregion
     }

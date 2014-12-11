@@ -57,10 +57,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Cliente" Collapsed="true">
-    <Position X="5.75" Y="1.75" Width="1.5" />
+    <Position X="5.75" Y="1.75" Width="3.75" />
     <TypeIdentifier>
       <HashCode>AAAAABAAACAEEACgjBAAgAAAAAAAAAAggAAAAAAAABA=</HashCode>
       <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.MiniUnidad">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MiniUnidad.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

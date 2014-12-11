@@ -80,7 +80,9 @@
     <Content Include="AdministradorDetalle.html" />
     <Content Include="ClienteApi.aspx" />
     <Content Include="ClienteGeneral.html" />
+    <Content Include="ClienteDetalle.html" />
     <Content Include="js\ariface\clienteGeneral.js" />
+    <Content Include="js\ariface\clienteDetalle.js" />
     <Content Include="UnidadApi.aspx" />
     <Content Include="EstadoApi.aspx" />
     <Content Include="img\loading-animation.gif" />

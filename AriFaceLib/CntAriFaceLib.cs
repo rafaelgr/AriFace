@@ -302,6 +302,15 @@ namespace AriFaceLib
             return u;
         }
 
+        public static MiniUnidad GetMiniUnidad(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            MiniUnidad mu = new MiniUnidad();
+            mu.Codigo = rdr.GetString("codigo");
+            mu.Nombre = rdr.GetString("nombre");
+            return mu;
+        }
+
         public static Unidad GetUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
         {
             Unidad u = null;
@@ -335,6 +344,7 @@ namespace AriFaceLib
             }
             return lu;
         }
+
 
         public static IList<Unidad> GetUnidades(string organoGestorCodigo, MySqlConnection conn)
         {
@@ -422,6 +432,58 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+        /// <summary>
+        /// Sirve para los desplegables de los formularios
+        /// Devuelve las Unidades Administradoras posibles dado un órgano gestor
+        /// </summary>
+        /// <param name="organoGestorCodigo"></param>
+        /// <param name="conn"></param>
+        /// <returns>MiniUnidad: un objeto con código y nombre sólo</returns>
+        public static IList<MiniUnidad> GetUtOfOg(string organoGestorCodigo, MySqlConnection conn)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT unidadTramitadoraCodigo AS codigo, unidadTramitadoraNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}'";
+            sql = String.Format(sql, organoGestorCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = GetMiniUnidad(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            return lmu;
+        }
+
+        /// <summary>
+        /// Sirve para los desplegables de los formularios
+        /// Devuelve las Oficinas contables posibles dado una unidad tramitadora
+        /// </summary>
+        /// <param name="organoGestorCodigo"></param>
+        /// <param name="unidadAdministradoraCodigo"></param>
+        /// <param name="conn"></param>
+        /// <returns>MiniUnidad: un objeto con código y nombre sólo</returns>
+        public static IList<MiniUnidad> GetOcOfUt(string organoGestorCodigo, string unidadTramitadoraCodigo, MySqlConnection conn)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT oficinaContableCodigo AS codigo, oficinaContableNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}' AND unidadTramitadoraCodigo ='{1}'";
+            sql = String.Format(sql, organoGestorCodigo, unidadTramitadoraCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = GetMiniUnidad(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            return lmu;
+        }
 
         #endregion
 
@@ -452,6 +514,8 @@ namespace AriFaceLib
             c.Nombre = rdr.GetString("nombre");
             if (!rdr.IsDBNull(rdr.GetOrdinal("email")))
                 c.Email = rdr.GetString("email");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("cif")))
+                c.Cif = rdr.GetString("cif");
             if (!rdr.IsDBNull(rdr.GetOrdinal("organoGestorCodigo")))
                 c.CodOrganoGestor = rdr.GetString("organoGestorCodigo");
             if (!rdr.IsDBNull(rdr.GetOrdinal("unidadTramitadoraCodigo")))
@@ -544,7 +608,7 @@ namespace AriFaceLib
                     cif='{2}',
                     email='{3}',
                     organoGestorCodigo='{4}',
-                    unidadTramitadora='{5}',
+                    unidadTramitadoraCodigo='{5}',
                     oficinaContableCodigo='{6}'
                     WHERE i_d={0};
                 ";
