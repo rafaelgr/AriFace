@@ -432,6 +432,26 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+
+        public static IList<MiniUnidad> GetOg(MySqlConnection conn)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT organoGestorCodigo AS codigo, organoGestorNombre AS nombre FROM unidad ORDER BY organoGestorNombre";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = GetMiniUnidad(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            return lmu;
+        }
+
+
         /// <summary>
         /// Sirve para los desplegables de los formularios
         /// Devuelve las Unidades Administradoras posibles dado un órgano gestor
@@ -443,7 +463,7 @@ namespace AriFaceLib
         {
             IList<MiniUnidad> lmu = new List<MiniUnidad>();
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = "SELECT DISTINCT unidadTramitadoraCodigo AS codigo, unidadTramitadoraNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}'";
+            string sql = "SELECT DISTINCT unidadTramitadoraCodigo AS codigo, unidadTramitadoraNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}' ORDER BY unidadTramitadoraNombre";
             sql = String.Format(sql, organoGestorCodigo);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -470,7 +490,7 @@ namespace AriFaceLib
         {
             IList<MiniUnidad> lmu = new List<MiniUnidad>();
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = "SELECT DISTINCT oficinaContableCodigo AS codigo, oficinaContableNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}' AND unidadTramitadoraCodigo ='{1}'";
+            string sql = "SELECT DISTINCT oficinaContableCodigo AS codigo, oficinaContableNombre AS nombre FROM unidad WHERE organoGestorCodigo ='{0}' AND unidadTramitadoraCodigo ='{1}' ORDER BY oficinaContableNombre";
             sql = String.Format(sql, organoGestorCodigo, unidadTramitadoraCodigo);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -648,6 +668,181 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+        #endregion
+
+        #region Factura
+        public static Factura GetFactura(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("FACTURA_ID"))) return null;
+            Factura f = new Factura();
+            f.Aportacion = rdr.GetDecimal("APORTACION");
+            f.BaseIva = rdr.GetDecimal("BASE_IVA");
+            f.ClienteId = rdr.GetInt32("CLIENTE_ID");
+            f.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
+            f.CodTipom = rdr.GetString("CODTIPOM");
+            f.CuotaIva = rdr.GetDecimal("CUOTA_IVA");
+            if (rdr.GetInt16("ES_DE_CLIENTE") == 1) f.EsDeCliente = true;
+            f.FacturaId = rdr.GetInt32("FACTURA_ID");
+            f.StrFecha = String.Format("{0:yyyyMMdd}",rdr.GetDateTime("FECHA"));
+            f.LetraProveedor = rdr.GetString("LETRA_PROVEEDOR");
+            f.NumFactura = rdr.GetInt32("NUMFACTURA");
+            f.Retencion = rdr.GetDecimal("RETENCION");
+            f.Serie = rdr.GetString("SERIE");
+            f.Sistema = rdr.GetString("SISTEMA");
+            f.Total = rdr.GetDecimal("TOTAL");
+            if (rdr.GetInt16("NUEVA") == 1) f.Nueva = true;
+            return f;
+        }
+
+        public static Factura GetFactura(int id, MySqlConnection conn)
+        {
+            Factura f = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.strFecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                WHERE f.id_factura = {0}";
+            sql = String.Format(sql, id);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                f = GetFactura(rdr);
+            }
+            return f;
+        }
+
+        public static IList<Factura> GetFacturas(MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.strFecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            return lf;
+        }
+
+        public static IList<Factura> GetFacturasCliente(int idCliente, MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.strFecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                WHERE f.id_cliente = {0}";
+            sql = String.Format(sql,idCliente);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            return lf;
+        }
+
+        public static IList<Factura> GetFacturasNoEnviadas(MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.Fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                WHERE f.nueva = 1";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            return lf;
+        }
+
+        
         #endregion
     }
 }

@@ -81,8 +81,11 @@
     <Content Include="ClienteApi.aspx" />
     <Content Include="ClienteGeneral.html" />
     <Content Include="ClienteDetalle.html" />
+    <Content Include="FacturaGeneral.html" />
+    <Content Include="FacturaApi.aspx" />
     <Content Include="js\ariface\clienteGeneral.js" />
     <Content Include="js\ariface\clienteDetalle.js" />
+    <Content Include="js\ariface\facturaGeneral.js" />
     <Content Include="UnidadApi.aspx" />
     <Content Include="EstadoApi.aspx" />
     <Content Include="img\loading-animation.gif" />
@@ -767,6 +770,13 @@
       <DependentUpon>ClienteApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
+    <Compile Include="FacturaApi.aspx.cs">
+      <DependentUpon>FacturaApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FacturaApi.aspx.designer.cs">
+      <DependentUpon>FacturaApi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UnidadApi.aspx.cs">
       <DependentUpon>UnidadApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

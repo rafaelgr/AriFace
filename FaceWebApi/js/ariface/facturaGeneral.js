@@ -8,8 +8,8 @@ var responsiveHelper_datatable_fixed_column = undefined;
 var responsiveHelper_datatable_col_reorder = undefined;
 var responsiveHelper_datatable_tabletools = undefined;
 
-var dataClientes;
-var clienteId;
+var dataFacturas;
+var facturaId;
 
 var breakpointDefinition = {
     tablet: 1024,
@@ -21,44 +21,49 @@ function initForm() {
     // de smart admin
     pageSetUp();
     //
-    $('#btnBuscar').click(buscarClientes());
-    $('#btnAlta').click(crearCliente());
+    $('#btnBuscar').click(buscarFactura());
+    $('#btnAlta').click(crearFactura());
     $('#frmBuscar').submit(function () {
         return false
     });
+    $('#chkEnviadas').click(chkEnviadas());
     //
-    initTablaClientes();
+    initTablaFacturas();
     // comprobamos parámetros
-    clienteId = gup('ClienteId');
-    if (clienteId !== '') {
+    facturaId = gup('facturaId');
+    if (facturaId !== '') {
         // cargar la tabla con un único valor que es el que corresponde.
         var data = {
-            id: clienteId
+            id: facturaId
         }
         // hay que buscar ese elemento en concreto
         $.ajax({
             type: "POST",
-            url: "ClienteApi.aspx/GetClienteById",
+            url: "FacturaApi.aspx/GetFacturaById",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (data, status) {
                 // hay que mostrarlo en la zona de datos
                 var data2 = [data.d];
-                loadTablaClientes(data2);
+                loadTablaFacturas(data2);
             },
             error: errorAjax
         });
+    } else {
+        // mostramos sólo las facturas no enviadas.
+        var fn = getFacturasNoEnviadas();
+        fn();
     }
 }
 
-function initTablaClientes() {
-    tablaCarro = $('#dt_cliente').dataTable({
+function initTablaFacturas() {
+    tablaCarro = $('#dt_factura').dataTable({
         autoWidth: true,
         preDrawCallback: function () {
             // Initialize the responsive datatables helper once.
             if (!responsiveHelper_dt_basic) {
-                responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_cliente'), breakpointDefinition);
+                responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_factura'), breakpointDefinition);
             }
         },
         rowCallback: function (nRow) {
@@ -87,24 +92,24 @@ function initTablaClientes() {
                 sortDescending: ": Activar para ordenar la columna de manera descendente"
             }
         },
-        data: dataClientes,
+        data: dataFacturas,
         columns: [{
-            data: "Nombre"
+            data: "ClienteNombre"
         }, {
-            data: "Cif"
+            data: "Sistema"
         }, {
-            data: "Email"
+            data: "Serie"
         }, {
-            data: "CodOrganoGestor"
+            data: "NumFactura"
         }, {
-            data: "CodUnidadTramitadora"
+            data: "StrFecha"
         }, {
-            data: "CodOficinaContable"
+            data: "Total"
         }, {
-            data: "ClienteId",
+            data: "FacturaId",
             render: function (data, type, row) {
-                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteCliente(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editCliente(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
+                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteFactura(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editFactura(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var html = "<div class='pull-right'>" + bt2 + "</div>";
                 return html;
             }
@@ -132,20 +137,19 @@ function datosOK() {
     return $('#frmBuscar').valid();
 }
 
-function loadTablaClientes(data) {
-    var dt = $('#dt_cliente').dataTable();
+function loadTablaFacturas(data) {
+    var dt = $('#dt_factura').dataTable();
     if (data !== null && data.length === 0) {
         mostrarMensajeSmart('No se han encontrado registros');
-        $("#tbAdministrador").hide();
     } else {
         dt.fnClearTable();
         dt.fnAddData(data);
         dt.fnDraw();
-        $("#tbCliente").show();
+        $("#tbFactura").show();
     }
 }
 
-function buscarClientes() {
+function buscarFactura() {
     var mf = function () {
         if (!datosOK()) {
             return;
@@ -172,15 +176,59 @@ function buscarClientes() {
     return mf;
 }
 
-function crearCliente() {
+function getFacturas() {
     var mf = function () {
-        var url = "ClienteDetalle.html?ClienteId=0";
+        // obtener el n.serie del certificado para la firma.
+        $.ajax({
+            type: "POST",
+            url: "FacturaApi.aspx/GetFacturas",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadTablaFacturas(data.d);
+            },
+            error: errorAjax
+        });
+    };
+    return mf;
+}
+
+function getFacturasNoEnviadas() {
+    var mf = function () {
+        $.ajax({
+            type: "POST",
+            url: "FacturaApi.aspx/GetFacturasNoEnviadas",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadTablaFacturas(data.d);
+            },
+            error: errorAjax
+        });
+    };
+    return mf;
+}
+
+function chkEnviadas() {
+    var mf = function () {
+        if ($('#chkEnviadas').attr('checked')) {
+            getFacturas();
+        }
+    }
+    return mf;
+}
+
+function crearFactura() {
+    var mf = function () {
+        var url = "FacturaDetalle.html?FacturaId=0";
         window.open(url, '_self');
     };
     return mf;
 }
 
-function deleteCliente(id) {
+function deleteFactura(id) {
     // mensaje de confirmación
     var mens = "¿Realmente desea borrar este registro?";
     $.SmartMessageBox({
@@ -194,12 +242,12 @@ function deleteCliente(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "ClienteApi.aspx/DeleteCliente",
+                url: "FacturaApi.aspx/DeleteFactura",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function (data, status) {
-                    var fn = buscarClientes();
+                    var fn = getFacturasNoEnviadas();
                     fn();
                 },
                 error: errorAjax
@@ -211,10 +259,10 @@ function deleteCliente(id) {
     });
 }
 
-function editCliente(id) {
+function editFactura(id) {
     // hay que abrir la página de detalle de administrador
     // pasando en la url ese ID
-    var url = "ClienteDetalle.html?ClienteId=" + id;
+    var url = "FacturaDetalle.html?FacturaId=" + id;
     window.open(url, '_self');
 }
 

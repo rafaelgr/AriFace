@@ -2,7 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title> AriFace (Detalle cliente) </title>
+        <title> AriFace (Gestión de facturas) </title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -202,7 +202,7 @@
                 <ol class="breadcrumb">
                     <li>Inicio</li>
                     <li>Administracion</li>
-                    <li>Administradores</li>
+                    <li>Facturas</li>
                 </ol>
                 <!-- end breadcrumb -->
 
@@ -232,7 +232,7 @@
 
                             <!-- PAGE HEADER -->
                             <i class="fa-fw fa fa-home"></i>
-                            Administrador <span> Detalle de cliente </span>
+                            Administrador <span> Consulta general de fcaturas </span>
                         </h1>
                     </div>
                     <!-- end col -->
@@ -292,7 +292,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Detalle de cliente </h2>
+                                    <h2>Mantenimiento de facturas </h2>
 
                                 </header>
 
@@ -309,68 +309,50 @@
                                     <!-- widget content -->
                                     <div class="widget-body">
                                         <!-- this is what the user will see -->
-                                        <form id="frmDatos" class="smart-form">
+                                        <form id="frmBuscar" class="smart-form">
+                                            <header>
+                                                Facturas en el sistema
+                                            </header>
                                             <fieldset>
-                                                <legend>Datos generales</legend>
                                                 <div class="row">
                                                     <section class="col col-md-12">
-                                                        <label class="label">Nombre</label>
-                                                        <label class="input">
-                                                            <input id="txtNombre" name="txtNombre" type="text" data-bind="value: Nombre" />
+                                                        <label class="checkbox">
+                                                            <input id="chkEnviadas" type="checkbox" name="checkbox">
+                                                            <i></i>Ver todas las facturas, incluso ya enviadas.
                                                         </label>
                                                     </section>
-                                                </div>
-                                                <div class="row">
-                                                    <section class="col col-md-6">
-                                                        <label class="label">Cif</label>
-                                                        <label class="input">
-                                                            <input id="txtCif" name="txtCif" type="text" data-bind="value: Cif" />
-                                                        </label>
-                                                    </section>
-                                                    <section class="col col-md-6">
-                                                        <label class="label">Correo electrónico</label>
-                                                        <label class="input">
-                                                            <input id="txtEmail" name="txtEmail" type="email" data-bind="value: Email" />
-                                                        </label>
-                                                    </section>
-                                                </div>
-                                            </fieldset>
-                                            <legend>Datos FACE (Administración publica)</legend>
-                                            <fieldset>
-                                                <section class="col-md-4">
-                                                    <label class="label">Organo Gestor</label>
-                                                    <label class="select">
-                                                        <select id="cmbOrganos" data-bind="options: PosiblesOrganos, optionsText: 'Nombre', value: OrganoGestor, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                                <section class="col col-md-4">
-                                                    <label class="label">Unidad Tramitadora</label>
-                                                    <label class="select">
-                                                        <select id="cmbUnidades" data-bind="options: PosiblesUnidades, optionsText: 'Nombre', value: UnidadTramitadora, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                                <section class="col col-md-4">
-                                                    <label class="label">Oficina contable</label>
-                                                    <label class="select">
-                                                        <select id="cmbOficinas" data-bind="options: PosiblesOficinas, optionsText: 'Nombre', value: OficinaContable, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                            </fieldset>
-
-                                            <fieldset>
-                                                <div class="pull-right">
-                                                    <button id="btnSalir" title="Salir sin guardar" class="btn btn-warning btn-circle btn-lg">
-                                                        <i class="fa fa-lg fa-sign-out"></i>
-                                                    </button>
-                                                    <button id="btnAceptar" title="Guardar y salir" class="btn btn-success btn-circle btn-lg">
-                                                        <i class="fa fa-lg fa-check"></i>
-                                                    </button>
                                                 </div>
                                             </fieldset>
                                         </form>
+                                        <div id="tbFactura" style="display:none;">
+                                            <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand">
+                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Cliente
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Sistema
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Serie
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Numero
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Fecha
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Total
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
                                     </div>
                                     <!-- end widget content -->
 
@@ -490,13 +472,10 @@
         <script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
         <script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
-        <!--- KNOCKOUT JS -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
-
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
-        <script src="js/ariface/clienteDetalle.js"></script>
         <script src="js/ariface/ariface.js"></script>
+        <script src="js/ariface/facturaGeneral.js"></script>
 
         <!-- PAGE RELATED PLUGIN(S) -->
         <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>

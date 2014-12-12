@@ -52,7 +52,7 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEQAABAAAQABAAAkAAAAQBIAAAAQAAIQAACJBEMgA=</HashCode>
+      <HashCode>ABAEQAABAAAQABECAkAAAAQBICAEAQABIQAACJBEMgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -68,6 +68,13 @@
     <TypeIdentifier>
       <HashCode>AAABAAAAAQAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MiniUnidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Factura">
+    <Position X="10.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAEAQAABAAAEAAIABABCBAAAQAYUBAACkAQIAMAACE=</HashCode>
+      <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

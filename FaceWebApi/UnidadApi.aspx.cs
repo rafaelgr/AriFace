@@ -98,6 +98,23 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<MiniUnidad> GetOg()
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                lmu = CntAriFaceLib.GetOg(conn);
+                conn.Close();
+            }
+            return lmu;
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<MiniUnidad> GetUtOfOg(string organoGestorCodigo)
         {
             IList<MiniUnidad> lmu = new List<MiniUnidad>();

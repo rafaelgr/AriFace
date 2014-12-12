@@ -5,8 +5,8 @@ Funciones js par la página AdministradorDetalle.html
 
 // variables y objetos usados
 var miniUnidad = function (codigo, nombre) {
-    this.codigo = codigo;
-    this.nombre = nombre;
+    this.Codigo = codigo;
+    this.Nombre = nombre;
 }
 
 function initForm() {
@@ -21,6 +21,8 @@ function initForm() {
     $("#frmDatos").submit(function () {
         return false;
     });
+    $('#cmbOrganos').change(cambioOrgano);
+    $('#cmbUnidades').change(cambioUnidad);
 
     var clienteId = gup('ClienteId');
     if (clienteId != 0) {
@@ -35,7 +37,6 @@ function initForm() {
                    contentType: "application/json",
                    data: JSON.stringify(data),
                    success: function (data, status) {
-                       // hay que mostrarlo en la zona de datos
                        loadData(data.d);
                    },
                    error: errorAjax
@@ -44,6 +45,7 @@ function initForm() {
     else {
         // se trata de un alta ponemos el id a cero para indicarlo.
         vm.ClienteId(0);
+        loadComboOrganoGestor();
     }
 }
 
@@ -53,9 +55,9 @@ function cliData() {
     self.Nombre = ko.observable();
     self.Cif = ko.observable();
     self.Email = ko.observable();
-    self.CodUnidadTramitadora = ko.observable();
-    self.CodOrganoGestor = ko.observable();
-    self.CodOficinaContable = ko.observable();
+    self.UnidadTramitadora = ko.observable();
+    self.OrganoGestor = ko.observable();
+    self.OficinaContable = ko.observable();
     // apoyo para desplegables
     self.PosiblesOrganos = ko.observableArray([]);
     self.PosiblesUnidades = ko.observableArray([]);
@@ -67,13 +69,126 @@ function loadData(data) {
     vm.Nombre(data.Nombre);
     vm.Cif(data.Cif);
     vm.Email(data.Email);
-    vm.CodOrganoGestor(data.CodOrganoGestor);
-    vm.CodUnidadTramitadora(data.CodUnidadTramitadora);
-    vm.CodOficinaContable(data.CodOficinaContable);
+    loadComboOrganoGestor(data.CodOrganoGestor);
+    loadComboUnidadTramitadora(data.CodOrganoGestor, data.CodUnidadTramitadora);
+    loadComboOficinaContable(data.CodOrganoGestor, data.CodUnidadTramitadora, data.CodOficinaContable)
+}
+
+function loadComboOrganoGestor(organoGestorCodigo) {
+    $.ajax({
+        type: "POST",
+        url: "UnidadApi.aspx/GetOg",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (data, status) {
+            var v = [];
+            // hay que mostrarlo en la zona de datos
+            vm.PosiblesOrganos(v);
+            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                if (organoGestorCodigo != null) {
+                    if (data.d[i].Codigo === organoGestorCodigo) {
+                        vm.OrganoGestor(mu);
+                    }
+                }
+            }
+            // en las altas hay que dejar una selección en vacío.
+            if (organoGestorCodigo == null) {
+                vm.OrganoGestor(new miniUnidad('', ''));
+            }
+            vm.PosiblesOrganos(v);
+        },
+        error: errorAjax
+    });
+
+}
+
+function loadComboUnidadTramitadora(organoGestorCodigo, unidadTramitadoraCodigo) {
+    data = { "organoGestorCodigo": organoGestorCodigo, "unidadTramitadoraCodigo": unidadTramitadoraCodigo };
+    $.ajax({
+        type: "POST",
+        url: "UnidadApi.aspx/GetUtOfOg",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            var v = [];
+            // hay que mostrarlo en la zona de datos
+            vm.PosiblesUnidades(v);
+            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                if (unidadTramitadoraCodigo != null) {
+                    if (data.d[i].Codigo === unidadTramitadoraCodigo) {
+                        vm.UnidadTramitadora(mu);
+                    }
+                }
+            }
+            // en las altas hay que dejar una selección en vacío.
+            if (unidadTramitadoraCodigo == null) {
+                vm.UnidadTramitadora(new miniUnidad('', ''));
+            }
+            vm.PosiblesUnidades(v);
+        },
+        error: errorAjax
+    });
+}
+
+function loadComboOficinaContable(organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo) {
+    data = { "organoGestorCodigo": organoGestorCodigo, "unidadTramitadoraCodigo": unidadTramitadoraCodigo };
+    $.ajax({
+        type: "POST",
+        url: "UnidadApi.aspx/GetOcOfUt",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            var v = [];
+            // hay que mostrarlo en la zona de datos
+            vm.PosiblesOficinas(v);
+            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                if (oficinaContableCodigo != null) {
+                    if (data.d[i].Codigo === oficinaContableCodigo) {
+                        vm.OficinaContable(mu);
+                    }
+                }
+            }
+            // en las altas hay que dejar una selección en vacío.
+            if (oficinaContableCodigo == null) {
+                vm.OficinaContable(new miniUnidad('', ''));
+            }
+            vm.PosiblesOficinas(v);
+        },
+        error: errorAjax
+    });
+
+}
+
+// se dispara cuando cambia el órgano
+function cambioOrgano() {
+    loadComboUnidadTramitadora(vm.OrganoGestor().Codigo);
+    vm.OficinaContable(new miniUnidad('',''));
+}
+
+function cambioUnidad() {
+    loadComboOficinaContable(vm.OrganoGestor().Codigo, vm.UnidadTramitadora().Codigo);
 }
 
 function datosOK() {
-    // antes de la validación de form hay que verificar las password
+    // antes de la validación decerificamos que si ha rellenado FACE
+    // lo ha hecho completo
+    if (vm.OrganoGestor().Codigo !== "") {
+        if (vm.UnidadTramitadora().Codigo === "" || vm.OficinaContable().Codigo === "") {
+            var mens = "Si rellena los campos FACE, debe darle valor a todos";
+            mostrarMensajeSmart(mens);
+        }
+    } 
     $('#frmDatos').validate({
                                   rules: {
             txtNombre: { required: true },
@@ -106,13 +221,19 @@ function aceptar() {
     var mf = function () {
         if (!datosOK())
             return;
+        var cog = "";
+        var cut = "";
+        var coc = "";
+        if (vm.OrganoGestor() != null && vm.OrganoGestor().Codigo !== "") cog = vm.OrganoGestor().Codigo;
+        if (vm.UnidadTramitadora() != null && vm.UnidadTramitadora().Codigo !== "") cut = vm.UnidadTramitadora().Codigo;
+        if (vm.OficinaContable() != null && vm.OficinaContable().Codigo !== "") coc = vm.OficinaContable().Codigo;
         var data = {
             cliente: {
                 "Cif": vm.Cif(),
                 "ClienteId": vm.ClienteId(),
-                "CodOficinaContable": vm.CodOficinaContable(),
-                "CodOrganoGestor": vm.CodOrganoGestor(),
-                "CodUnidadTramitadora": vm.CodUnidadTramitadora(),
+                "CodOficinaContable": coc,
+                "CodOrganoGestor": cog,
+                "CodUnidadTramitadora": cut,
                 "Email": vm.Email(),
                 "Nombre": vm.Nombre()
             }
