@@ -738,11 +738,11 @@ namespace AriFaceLib
                 f.`base_total` AS BASE_IVA,
                 f.`id_cliente` AS CLIENTE_ID,
                 c.nombre AS CLIENTE_NOMBRE,
-                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
                 f.cuota_total AS CUOTA_IVA,
                 f.es_fra_cliente AS ES_DE_CLIENTE,
                 f.id_factura AS FACTURA_ID,
-                f.strFecha AS FECHA,
+                f.Fecha AS FECHA,
                 f.letra_id_fra_prove AS LETRA_PROVEEDOR,
                 f.num_factura AS NUMFACTURA,
                 f.imp_retencion AS RETENCION,
@@ -843,6 +843,124 @@ namespace AriFaceLib
         }
 
         
+        #endregion
+
+        #region Empresa raiz
+        public static EmpresaRaiz GetEmpresaRaiz(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("nif"))) return null;
+            EmpresaRaiz er = new EmpresaRaiz();
+            er.Nif = rdr.GetString("nif");
+            er.Nombre = rdr.GetString("nombre");
+            return er;
+        }
+
+        public static EmpresaRaiz GetEmpresaRaiz(string nif, MySqlConnection conn)
+        {
+            EmpresaRaiz er = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT * FROM nifbase WHERE nif = '{0}'";
+            sql = String.Format(sql, nif);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                er = GetEmpresaRaiz(rdr);
+            }
+            return er;
+        }
+
+        public static IList<EmpresaRaiz> GetEmpresasRaiz(MySqlConnection conn)
+        {
+            IList<EmpresaRaiz> ler = new List<EmpresaRaiz>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM nifbase";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    EmpresaRaiz er = GetEmpresaRaiz(rdr);
+                    ler.Add(er);
+                }
+            }
+            return ler;
+        }
+
+        public static IList<EmpresaRaiz> GetEmpresasRaiz(string parNom, MySqlConnection conn)
+        {
+            IList<EmpresaRaiz> ler = new List<EmpresaRaiz>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM nifbase WHERE nombre LIKE '%{0}%' ORDER BY nombre;";
+            if (parNom == "*")
+                sql = "SELECT * FROM nifbase ORDER BY nombre;";
+            sql = String.Format(sql, parNom);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    EmpresaRaiz er = GetEmpresaRaiz(rdr);
+                    ler.Add(er);
+                }
+            }
+            return ler;
+        }
+
+        public static EmpresaRaiz SetEmpresaRaiz(EmpresaRaiz er, MySqlConnection conn)
+        {
+            bool alta = false;
+            if (er == null) return null;
+            if (er.Nif == "")
+            {
+                alta = true;
+            }
+            // si el id es 0 se crea el objeto, si no se actualiza.
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "";
+            if (alta)
+            {
+                sql = @"
+                    INSERT INTO nifbase
+                    (nif, nombre)
+                    VALUES ('{0}','{1}');
+                ";
+            }
+            else
+            {
+                sql = @"
+                    UPDATE nifbase
+                    SET
+                    nombre='{1}'
+                    WHERE nif='{0}';
+                ";
+            }
+            sql = String.Format(sql, er.Nif, er.Nombre);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            // y vamos rápidamente a por la recién creada
+            sql = @"SELECT * FROM nifbase WHERE nif='{0}';";
+            sql = String.Format(sql, er.Nif);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                er = GetEmpresaRaiz(rdr);
+            }
+            return er;
+        }
+
+        public static void DeleteEmpresaRaiz(string nif, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = String.Format("DELETE FROM nifbase WHERE nif='{0}'", nif);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
         #endregion
     }
 }

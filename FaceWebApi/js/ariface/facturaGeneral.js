@@ -26,7 +26,15 @@ function initForm() {
     $('#frmBuscar').submit(function () {
         return false
     });
-    $('#chkEnviadas').click(chkEnviadas());
+    $('#chkEnviadas').change(function () {
+        var fn;
+        if (this.checked) {
+            fn = getFacturas();
+        } else {
+            fn = getFacturasNoEnviadas();
+        }
+        fn();
+    });
     //
     initTablaFacturas();
     // comprobamos parámetros

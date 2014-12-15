@@ -44,6 +44,7 @@
     <Compile Include="Certificado.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CntAriFaceLib.cs" />
+    <Compile Include="EmpresaRaiz.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="MiniUnidad.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="RespuestaConsultaFactura.cs" />
     <Compile Include="RespuestaFactura.cs" />
     <Compile Include="Unidad.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DiagramaLibreria.cd" />
