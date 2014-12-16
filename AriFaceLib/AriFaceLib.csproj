@@ -45,6 +45,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="CntAriFaceLib.cs" />
     <Compile Include="EmpresaRaiz.cs" />
+    <Compile Include="Envio.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="MiniUnidad.cs" />

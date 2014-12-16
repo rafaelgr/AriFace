@@ -2,7 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title> AriFace (Gestión de facturas) </title>
+        <title> AriFace (Detalle del envío) </title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -103,7 +103,7 @@
         <header id="header">
             <!-- #PROJECTS: projects dropdown -->
             <div>
-                <span id="logo"> <img src="img/ariface/AriFace48Black.png" alt="AriFace" style="height:30px; width:30px;"> </span>
+                <span id="logo"> <img src="img/ariface/logo_ARIADNA_ajustado.png" alt="AriFace" style="height:30px;"> </span>
             </div>
             <div>
 
@@ -168,11 +168,14 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-lg fa-fw fa-university"></i> <span class="menu-item-parent">Administración</span>
+                            <i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Administración</span>
                         </a>
                         <ul>
                             <li>
                                 <a href="#">Administradores</a>
+                            </li>
+                            <li>
+                                <a href="#">Empresas Raiz</a>
                             </li>
                             <li>
                                 <a href="#">Clientes</a>
@@ -183,9 +186,30 @@
                             <li>
                                 <a href="#">Facturas</a>
                             </li>
+                            <li>
+                                <a href="#">Envios</a>
+                            </li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-fw fa-bank"></i> <span class="menu-item-parent">FACE</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">Eatados del sistema</a>
+                            </li>
+                            <li>
+                                <a href="#">Unidades Face</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilidades</a>
+                            </li>
+                            <li>
+                                <a href="#">Facturas</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
@@ -202,7 +226,8 @@
                 <ol class="breadcrumb">
                     <li>Inicio</li>
                     <li>Administracion</li>
-                    <li>Facturas</li>
+                    <li>Envios</li>
+                    <li>Detalle del envío</li>
                 </ol>
                 <!-- end breadcrumb -->
 
@@ -232,7 +257,7 @@
 
                             <!-- PAGE HEADER -->
                             <i class="fa-fw fa fa-home"></i>
-                            Administrador <span> Consulta general de fcaturas </span>
+                            Administrador <span> Detalle del envío </span>
                         </h1>
                     </div>
                     <!-- end col -->
@@ -269,7 +294,7 @@
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
 
-                    <!-- row -->
+                    <!-- row  Detalle del envío-->
                     <div class="row">
 
                         <!-- NEW WIDGET START -->
@@ -292,7 +317,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Mantenimiento de facturas </h2>
+                                    <h2>Detalle de envío</h2>
 
                                 </header>
 
@@ -309,62 +334,135 @@
                                     <!-- widget content -->
                                     <div class="widget-body">
                                         <!-- this is what the user will see -->
-                                        <form id="frmBuscar" class="smart-form">
+                                        <form id="frmEnvio" class="smart-form">
                                             <header>
-                                                Facturas en el sistema
+                                                Cabecera envío
+                                                <div class="pull-right">
+                                                    <button id="btnSalir1" title="Salir" class="btn btn-warning btn-circle btn-lg">
+                                                        <i class="fa fa-lg fa-sign-out"></i>
+                                                    </button>
+                                                </div>
                                             </header>
                                             <fieldset>
                                                 <div class="row">
-                                                    <section class="col col-md-12">
-                                                        <label class="checkbox">
-                                                            <input id="chkEnviadas" type="checkbox" name="checkbox">
-                                                            <i></i>Ver todas las facturas, incluso ya enviadas.
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Nif</label>
+                                                        <label class="input">
+                                                            <input id="txtNif" name="txtNombre" type="text" data-bind="value: Nif" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-4">
+                                                        <label class="label">Cliente</label>
+                                                        <label class="input">
+                                                            <input id="txtCliente" name="txtCliente" type="text" data-bind="value: Cliente" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-4">
+                                                        <label class="label">Departamento</label>
+                                                        <label class="input">
+                                                            <input id="txtDepartamento" name="txtDepartamento" type="text" data-bind="value: Departamento" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">FACE</label>
+                                                        <label class="input">
+                                                            <input id="txtFace" name="txtFace" type="text" data-bind="value: Face" />
                                                         </label>
                                                     </section>
                                                 </div>
+                                                <div class="row">
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Fecha minima</label>
+                                                        <label class="input">
+                                                            <input id="txtFechaInicial" name="txtFechaInicial" type="text" data-bind="value: FechaInicial" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Fecha maxima</label>
+                                                        <label class="input">
+                                                            <input id="txtFechaFinal" name="txtFechaFinal" type="text" data-bind="value: FechaFinal" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Bases</label>
+                                                        <label class="input">
+                                                            <input id="txtBases" name="txtBases" type="text" data-bind="value: Bases" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Cuotas</label>
+                                                        <label class="input">
+                                                            <input id="txtCuotas" name="txtCuotas" type="text" data-bind="value: Cuotas" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Retención</label>
+                                                        <label class="input">
+                                                            <input id="txtRetencion" name="txtRetencion" type="text" data-bind="value: Retencion" disabled />
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="label">Total</label>
+                                                        <label class="input">
+                                                            <input id="txtTotal" name="txtTotal" type="text" data-bind="value: Total" disabled />
+                                                        </label>
+                                                    </section>
+                                                </div>
+
+                                            </fieldset>
+                                            <header>
+                                                Facturas asociadas
+                                            </header>
+                                            <fieldset>
+                                                <div id="tbFactura" style="display:none;">
+                                                    <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-class="expand">
+                                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Sistema
+                                                                </th>
+                                                                <th data-hide="phone">
+                                                                    Fecha
+                                                                </th>
+                                                                <th data-hide="phone">
+                                                                    Serie
+                                                                </th>
+                                                                <th data-hide="phone">
+                                                                    Numero
+                                                                </th>
+                                                                <th data-hide="phone" style="text-align:right">
+                                                                    Bases
+                                                                </th>
+                                                                <th data-hide="phone" style="text-align:right">
+                                                                    Cuotas
+                                                                </th>
+                                                                <th data-hide="phone" style="text-align:right">
+                                                                    Retenciones
+                                                                </th>
+                                                                <th data-hide="phone" style="text-align:right">
+                                                                    Total
+                                                                </th>
+                                                                <th data-hide="phone" style="text-align:center">
+                                                                    TIPO
+                                                                </th>
+                                                                <th>
+
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="pull-right">
+                                                    <button id="btnSalir" title="Salir" class="btn btn-warning btn-circle btn-lg">
+                                                        <i class="fa fa-lg fa-sign-out"></i>
+                                                    </button>
+                                                </div>
                                             </fieldset>
                                         </form>
-                                        <div id="tbFactura" style="display:none;">
-                                            <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th data-class="expand">
-                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Cliente
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Sistema
-                                                        </th>
-                                                         <th data-hide="phone">
-                                                            Departamento
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Serie
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Numero
-                                                        </th>
-                                                        <th data-hide="phone" style="text-align:center">
-                                                            Fecha
-                                                        </th>
-                                                        <th data-hide="phone" style="text-align:right">
-                                                            Total
-                                                        </th>
-                                                        <th data-hide="phone" style="text-align:center">
-                                                            Estado
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Registro (FACE)
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Motivo (FACE)
-                                                        </th>
-                                                        <th>
 
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
                                     </div>
                                     <!-- end widget content -->
 
@@ -489,12 +587,15 @@
 
         <!-- Numeral para manipular números -->
         <script src="js/numeral.min.js"></script>
+        <!--<script src="js/languages.min.js"></script>-->
 
+        <!--- KNOCKOUT JS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
 
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
         <script src="js/ariface/ariface.js"></script>
-        <script src="js/ariface/facturaGeneral.js"></script>
+        <script src="js/ariface/envioDetalle.js"></script>
 
         <!-- PAGE RELATED PLUGIN(S) -->
         <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>

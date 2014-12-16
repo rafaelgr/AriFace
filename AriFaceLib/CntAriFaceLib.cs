@@ -691,6 +691,11 @@ namespace AriFaceLib
             f.Sistema = rdr.GetString("SISTEMA");
             f.Total = rdr.GetDecimal("TOTAL");
             if (rdr.GetInt16("NUEVA") == 1) f.Nueva = true;
+            f.Estado = rdr.GetInt16("NUEVA");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CODDIREC"))) f.CodDirec = rdr.GetInt32("CODDIREC");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("DEPARTAMENTO"))) f.Departamento= rdr.GetString("DEPARTAMENTO");
+            f.RegistroFace = rdr.GetString("REGISTRO_FACE");
+            f.MotivoFace = rdr.GetString("MOTIVO_FACE");
             return f;
         }
 
@@ -713,10 +718,16 @@ namespace AriFaceLib
                 f.imp_retencion AS RETENCION,
                 f.num_serie AS SERIE,
                 s.descripcion AS SISTEMA,
-                f.ttal AS TOTAL
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                 WHERE f.id_factura = {0}";
             sql = String.Format(sql, id);
             cmd.CommandText = sql;
@@ -749,10 +760,15 @@ namespace AriFaceLib
                 f.num_serie AS SERIE,
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
-                f.nueva AS NUEVA
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
-                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente";
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges";
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -785,10 +801,15 @@ namespace AriFaceLib
                 f.imp_retencion AS RETENCION,
                 f.num_serie AS SERIE,
                 s.descripcion AS SISTEMA,
-                f.ttal AS TOTAL
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                 WHERE f.id_cliente = {0}";
             sql = String.Format(sql,idCliente);
             cmd.CommandText = sql;
@@ -824,11 +845,16 @@ namespace AriFaceLib
                 f.num_serie AS SERIE,
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
-                f.nueva AS NUEVA
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
-                WHERE f.nueva = 1";
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE f.nueva < 2";
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -844,6 +870,206 @@ namespace AriFaceLib
 
         
         #endregion
+
+
+        #region Envios
+        public static Envio GetEnvio(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("NIF"))) return null;
+            Envio e = new Envio();
+            e.Nif = rdr.GetString("NIF");
+            e.ClienteId = rdr.GetInt32("CLIENTE_ID");
+            e.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
+            e.DepartamentoId = rdr.GetInt32("DEPARTAMENTO_ID");
+            e.DepartamentoNombre = rdr.GetString("DEPARTAMENTO_NOMBRE");
+            e.StrFechaInicial = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("FECHA_INICIAL"));
+            e.StrFechaFinal = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("FECHA_FINAL"));
+            e.Bases = rdr.GetDecimal("BASES");
+            e.Cuotas = rdr.GetDecimal("CUOTAS");
+            e.Retencion = rdr.GetDecimal("RETENCIONES");
+            e.Total = rdr.GetDecimal("TOTAL");
+            if (rdr.GetString("FACE") != "") e.EsFace = true;
+            return e;
+        }
+
+        public static Envio GetEnvio(int clienteId, int departamentoId, MySqlConnection conn)
+        {
+            Envio e = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                        c.cif AS NIF,
+                        c.i_d AS CLIENTE_ID,
+                        c.nombre AS CLIENTE_NOMBRE,
+                        COALESCE(d.departamento_id,0) AS DEPARTAMENTO_ID,
+                        COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                        MIN(f.fecha) AS FECHA_INICIAL,
+                        MAX(f.fecha) AS FECHA_FINAL,
+                        SUM(f.base_total) AS BASES,
+                        SUM(f.cuota_total) AS CUOTAS,
+                        SUM(f.imp_retencion) AS RETENCIONES,
+                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(c.organoGestorCodigo, '') AS FACE
+                        FROM factura AS f
+                        LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                        LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                        WHERE f.nueva = 1
+                        AND f.id_cliente = {0} AND d.departamento_id = {1}
+                        GROUP BY c.cif, c.i_d, d.departamento_id;";
+            sql = String.Format(sql, clienteId, departamentoId);
+            if (departamentoId == 0)
+            {
+                // hay que modificar el sql porque en realidad equivale a un nulo
+                sql = @"SELECT
+                        c.cif AS NIF,
+                        c.i_d AS CLIENTE_ID,
+                        c.nombre AS CLIENTE_NOMBRE,
+                        COALESCE(d.departamento_id,0) AS DEPARTAMENTO_ID,
+                        COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                        MIN(f.fecha) AS FECHA_INICIAL,
+                        MAX(f.fecha) AS FECHA_FINAL,
+                        SUM(f.base_total) AS BASES,
+                        SUM(f.cuota_total) AS CUOTAS,
+                        SUM(f.imp_retencion) AS RETENCIONES,
+                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(c.organoGestorCodigo, '') AS FACE
+                        FROM factura AS f
+                        LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                        LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                        WHERE f.nueva = 1
+                        AND f.id_cliente = {0} AND d.departamento_id IS NULL
+                        GROUP BY c.cif, c.i_d, d.departamento_id;";
+                sql = String.Format(sql, clienteId);
+            }
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                e = GetEnvio(rdr);
+            }
+            return e;
+        }
+
+        public static IList<Envio> GetEnvios(MySqlConnection conn)
+        {
+            IList<Envio> le = new List<Envio>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                        c.cif AS NIF,
+                        c.i_d AS CLIENTE_ID,
+                        c.nombre AS CLIENTE_NOMBRE,
+                        COALESCE(d.departamento_id,0) AS DEPARTAMENTO_ID,
+                        COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                        MIN(f.fecha) AS FECHA_INICIAL,
+                        MAX(f.fecha) AS FECHA_FINAL,
+                        SUM(f.base_total) AS BASES,
+                        SUM(f.cuota_total) AS CUOTAS,
+                        SUM(f.imp_retencion) AS RETENCIONES,
+                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(c.organoGestorCodigo, '') AS FACE
+                        FROM factura AS f
+                        LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                        LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                        WHERE f.nueva = 1
+                        GROUP BY c.cif, c.i_d, d.departamento_id;";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Envio e = GetEnvio(rdr);
+                    le.Add(e);
+                }
+            }
+            return le;
+        }
+
+        public static IList<Factura> GetFacturasEnvio(int idCliente, int idDepartamento, MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE f.id_cliente = {0} AND d.departamento_id = {1} AND f.nueva=1";
+            sql = String.Format(sql, idCliente, idDepartamento);
+            if (idDepartamento == 0)
+            {
+                sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE f.id_cliente = {0} AND d.departamento_id IS NULL AND f.nueva=1";
+                sql = String.Format(sql, idCliente);
+            }
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            return lf;
+        }
+
+        public static void EliminarFacturaDeEnvio(int facturaId, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"UPDATE factura SET nueva = 0 WHERE id_factura = {0}";
+            sql = String.Format(sql, facturaId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        #endregion
+
 
         #region Empresa raiz
         public static EmpresaRaiz GetEmpresaRaiz(MySqlDataReader rdr)

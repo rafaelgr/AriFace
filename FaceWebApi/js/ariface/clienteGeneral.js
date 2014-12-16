@@ -136,7 +136,7 @@ function loadTablaClientes(data) {
     var dt = $('#dt_cliente').dataTable();
     if (data !== null && data.length === 0) {
         mostrarMensajeSmart('No se han encontrado registros');
-        $("#tbAdministrador").hide();
+        $("#tbCliente").hide();
     } else {
         dt.fnClearTable();
         dt.fnAddData(data);

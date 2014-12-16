@@ -120,5 +120,44 @@ namespace AriFaceLib
             get { return nueva; }
             set { nueva = value; }
         }
+
+        private string departamento;
+
+        public string Departamento
+        {
+            get { return departamento; }
+            set { departamento = value; }
+        }
+        private int codDirec;
+
+        public int CodDirec
+        {
+            get { return codDirec; }
+            set { codDirec = value; }
+        }
+
+        private string motivoFace;
+
+        public string MotivoFace
+        {
+            get { return motivoFace; }
+            set { motivoFace = value; }
+        }
+
+        private string registroFace;
+
+        public string RegistroFace
+        {
+            get { return registroFace; }
+            set { registroFace = value; }
+        }
+
+        private int estado;
+
+        public int Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
     }
 }

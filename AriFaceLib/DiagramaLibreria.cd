@@ -52,7 +52,7 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAEQAABAAAQABECAkAAAAQBICAEAQABIQAACJBEMgA=</HashCode>
+      <HashCode>ABAEwAABAAAQABECAkAAAAQBKCAEAQABIQACCJhEsgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,9 +71,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Factura" Collapsed="true">
-    <Position X="10.5" Y="1.25" Width="1.5" />
+    <Position X="10.75" Y="1.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AwAEAQAABAAAEAAIABABCBAAAQAYUBAACkAQIAMAACE=</HashCode>
+      <HashCode>AwAECQAABAUAEAANABABChAACQIYUBAACkAQIAMACCk=</HashCode>
       <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -85,10 +85,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.EmpresaRaiz" Collapsed="true">
-    <Position X="8.75" Y="1.25" Width="1.5" />
+    <Position X="6.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAACAgAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmpresaRaiz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Envio">
+    <Position X="8.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwABAAAAAQCAEAIIgBAACAAIAACAyEAAgEBAEAMAAhA=</HashCode>
+      <FileName>Envio.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

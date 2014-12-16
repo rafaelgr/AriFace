@@ -20,6 +20,16 @@ var breakpointDefinition = {
 function initForm() {
     // de smart admin
     pageSetUp();
+
+    // numeral en español
+    numeral.language('es', {
+        delimiters: {
+            thousands: '.',
+            decimal: ','
+        }
+    });
+    numeral.language('es');
+
     //
     $('#btnBuscar').click(buscarFactura());
     $('#btnAlta').click(crearFactura());
@@ -74,8 +84,11 @@ function initTablaFacturas() {
                 responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_factura'), breakpointDefinition);
             }
         },
-        rowCallback: function (nRow) {
+        rowCallback: function (nRow, data) {
             responsiveHelper_dt_basic.createExpandIcon(nRow);
+            if (data.Nueva) {
+                $(nRow).css({ "background-color": "beige" });
+            }
         },
         drawCallback: function (oSettings) {
             responsiveHelper_dt_basic.respond();
@@ -98,27 +111,42 @@ function initTablaFacturas() {
             aria: {
                 sortAscending: ": Activar para ordenar la columna de manera ascendente",
                 sortDescending: ": Activar para ordenar la columna de manera descendente"
-            }
+            },
+            decimal: ',',
+            thousands: '.'
         },
         data: dataFacturas,
-        columns: [{
-            data: "ClienteNombre"
-        }, {
-            data: "Sistema"
-        }, {
-            data: "Serie"
-        }, {
-            data: "NumFactura"
-        }, {
-            data: "StrFecha"
-        }, {
-            data: "Total"
-        }, {
+        columns: [{ data: "ClienteNombre" },
+            { data: "Sistema" },
+            { data: "Departamento" },
+            { data: "Serie" },
+            { data: "NumFactura" },
+            {
+                data: "StrFecha",
+                render: function (data, type, row) {
+                    var html = "<div style='text-align:center'>" + moment(data, 'YYYYMMDD').format('DD/MM/YYYY') + "</div>";
+                    return html;
+                }
+            },
+            {
+                data: "Total",
+                render: function (data, type, row) {
+                    var html = "<div style='text-align:right'>" + numeral(data).format('#,###,##0.00') + " €</div>";
+                    return html;
+                }
+            },
+            { data: "Estado" },
+            { data: "RegistroFace" },
+            { data: "MotivoFace" },
+            {
             data: "FacturaId",
             render: function (data, type, row) {
-                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteFactura(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editFactura(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt2 + "</div>";
+                var bt1 = "<button class='btn btn-circle btn-success' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-warning' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
+                if (row.Estado == 0) {
+                    bt2 = "<button class='btn btn-circle btn-warning' onclick='agregarAlEnvio(" + data + ");' title='Agregar al envío'> <i class='fa fa-undo fa-fw'></i> </button>";
+                } 
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }]
@@ -274,4 +302,45 @@ function editFactura(id) {
     window.open(url, '_self');
 }
 
+function eliminarDeEnvio(id) {
+    // mensaje de confirmación
+    var mens = "¿Realmente desea eliminar la factura del envio?";
+    $.SmartMessageBox({
+        title: "<i class='fa fa-info'></i> Mensaje",
+        content: mens,
+        buttons: '[Aceptar][Cancelar]'
+    }, function (ButtonPressed) {
+        if (ButtonPressed === "Aceptar") {
+            var data = {
+                facturaId: id
+            };
+            $.ajax({
+                type: "POST",
+                url: "EnvioApi.aspx/EliminarFacturaDeEnvio",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (data, status) {
+                    $.ajax({
+                        type: "POST",
+                        url: "FacturaApi.aspx/GetFacturas",
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data, status) {
+                            // hay que mostrarlo en la zona de datos
+                            loadTablaFacturas(data.d);
+                        },
+                        error: errorAjax
+                    });
+                },
+                error: errorAjax
+            });
+        }
+        if (ButtonPressed === "Cancelar") {
+            // no hacemos nada (no quiere borrar)
+        }
+    });
+}
 
+function agregarAlEnvio(id) {
+}

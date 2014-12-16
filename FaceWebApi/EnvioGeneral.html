@@ -2,7 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title> AriFace (Gestión de facturas) </title>
+        <title> AriFace (Gestión de envios) </title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -103,7 +103,7 @@
         <header id="header">
             <!-- #PROJECTS: projects dropdown -->
             <div>
-                <span id="logo"> <img src="img/ariface/AriFace48Black.png" alt="AriFace" style="height:30px; width:30px;"> </span>
+                <span id="logo"> <img src="img/ariface/logo_ARIADNA_ajustado.png" alt="AriFace" style="height:30px;"> </span>
             </div>
             <div>
 
@@ -168,11 +168,14 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-lg fa-fw fa-university"></i> <span class="menu-item-parent">Administración</span>
+                            <i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Administración</span>
                         </a>
                         <ul>
                             <li>
                                 <a href="#">Administradores</a>
+                            </li>
+                            <li>
+                                <a href="#">Empresas Raiz</a>
                             </li>
                             <li>
                                 <a href="#">Clientes</a>
@@ -183,9 +186,30 @@
                             <li>
                                 <a href="#">Facturas</a>
                             </li>
+                            <li>
+                                <a href="#">Envios</a>
+                            </li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-fw fa-bank"></i> <span class="menu-item-parent">FACE</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">Eatados del sistema</a>
+                            </li>
+                            <li>
+                                <a href="#">Unidades Face</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilidades</a>
+                            </li>
+                            <li>
+                                <a href="#">Facturas</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
@@ -202,7 +226,7 @@
                 <ol class="breadcrumb">
                     <li>Inicio</li>
                     <li>Administracion</li>
-                    <li>Facturas</li>
+                    <li>Envios</li>
                 </ol>
                 <!-- end breadcrumb -->
 
@@ -232,7 +256,7 @@
 
                             <!-- PAGE HEADER -->
                             <i class="fa-fw fa fa-home"></i>
-                            Administrador <span> Consulta general de fcaturas </span>
+                            Administrador <span> Gestión de envíos </span>
                         </h1>
                     </div>
                     <!-- end col -->
@@ -292,7 +316,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Mantenimiento de facturas </h2>
+                                    <h2>Mantenimiento de envíos </h2>
 
                                 </header>
 
@@ -309,54 +333,54 @@
                                     <!-- widget content -->
                                     <div class="widget-body">
                                         <!-- this is what the user will see -->
-                                        <form id="frmBuscar" class="smart-form">
+                                        <form id="frmEnvio" class="smart-form">
                                             <header>
-                                                Facturas en el sistema
+                                                Envios pendientes en el sistema
                                             </header>
                                             <fieldset>
-                                                <div class="row">
-                                                    <section class="col col-md-12">
-                                                        <label class="checkbox">
-                                                            <input id="chkEnviadas" type="checkbox" name="checkbox">
-                                                            <i></i>Ver todas las facturas, incluso ya enviadas.
-                                                        </label>
-                                                    </section>
+                                                <div class="pull-right">
+                                                    <button id="btnEnvio" title="Enviar las facturas" class="btn btn-primary btn-circle btn-lg">
+                                                        <i class="fa fa-lg fa-send"></i>
+                                                    </button>
+                                                    <div id="ldgEnvio" style="display:none;">
+                                                        <img src="img/loading-animation.gif" style="width:50px;" />
+                                                    </div>
                                                 </div>
                                             </fieldset>
                                         </form>
-                                        <div id="tbFactura" style="display:none;">
-                                            <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
+                                        <div id="tbEnvio" style="display:none;">
+                                            <table id="dt_envio" class="table table-striped table-bordered table-hover" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th data-class="expand">
-                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Cliente
+                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> NIF
                                                         </th>
                                                         <th data-hide="phone">
-                                                            Sistema
+                                                            Cliente
                                                         </th>
-                                                         <th data-hide="phone">
+                                                        <th data-hide="phone">
                                                             Departamento
                                                         </th>
-                                                        <th data-hide="phone">
-                                                            Serie
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Numero
+                                                        <th data-hide="phone" style="text-align:center">
+                                                            Fecha inicial
                                                         </th>
                                                         <th data-hide="phone" style="text-align:center">
-                                                            Fecha
+                                                            Fecha final
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:right">
+                                                            Bases
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:right">
+                                                            Cuotas
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:right">
+                                                            Retenciones
                                                         </th>
                                                         <th data-hide="phone" style="text-align:right">
                                                             Total
                                                         </th>
                                                         <th data-hide="phone" style="text-align:center">
-                                                            Estado
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Registro (FACE)
-                                                        </th>
-                                                        <th data-hide="phone">
-                                                            Motivo (FACE)
+                                                            FACE
                                                         </th>
                                                         <th>
 
@@ -489,12 +513,12 @@
 
         <!-- Numeral para manipular números -->
         <script src="js/numeral.min.js"></script>
-
+        <!--<script src="js/languages.min.js"></script>-->
 
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
         <script src="js/ariface/ariface.js"></script>
-        <script src="js/ariface/facturaGeneral.js"></script>
+        <script src="js/ariface/envioGeneral.js"></script>
 
         <!-- PAGE RELATED PLUGIN(S) -->
         <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>

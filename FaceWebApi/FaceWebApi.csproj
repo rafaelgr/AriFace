@@ -81,6 +81,9 @@
     <Content Include="ClienteApi.aspx" />
     <Content Include="ClienteGeneral.html" />
     <Content Include="ClienteDetalle.html" />
+    <Content Include="EnvioDetalle.html" />
+    <Content Include="EnvioGeneral.html" />
+    <Content Include="EnvioApi.aspx" />
     <Content Include="EmpresaRaizDetalle.html" />
     <Content Include="EmpresaRaizGeneral.html" />
     <Content Include="EmpresaRaizApi.aspx" />
@@ -275,10 +278,14 @@
     <Content Include="img\violate.jpg" />
     <Content Include="img\voicecommand\active-btn.gif" />
     <Content Include="img\vt-menu.png" />
+    <Content Include="js\ariface\envioDetalle.js" />
+    <Content Include="js\ariface\envioGeneral.js" />
     <Content Include="js\ariface\empresaRaizDetalle.js" />
     <Content Include="js\ariface\empresaRaizGeneral.js" />
     <Content Include="js\ariface\estadoGeneral.js" />
     <Content Include="js\ariface\unidadGeneral.js" />
+    <Content Include="js\moment.js" />
+    <Content Include="js\moment_locale.js" />
     <Content Include="UnidadGeneral.html" />
     <Content Include="FacturaGeneral.html" />
     <Content Include="FacturaApi.aspx" />
@@ -970,6 +977,13 @@
       <DependentUpon>ClienteApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
+    <Compile Include="EnvioApi.aspx.cs">
+      <DependentUpon>EnvioApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnvioApi.aspx.designer.cs">
+      <DependentUpon>EnvioApi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EmpresaRaizApi.aspx.cs">
       <DependentUpon>EmpresaRaizApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
