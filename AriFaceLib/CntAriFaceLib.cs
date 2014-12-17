@@ -1097,71 +1097,16 @@ namespace AriFaceLib
             cmd.ExecuteNonQuery();
         }
 
-        public static string SendEnvio(int clienteId, int departamentoId, string certSN, MySqlConnection conn)
+        public static void MarcarFacturaEnviadaFace(int facturaId, string numRegistro, string motivoRegistro, MySqlConnection conn)
         {
-            // obtenemos los datos del envío
-            Envio e = GetEnvio(clienteId, departamentoId, conn);
-            // la lista de facturas
-            IList<Factura> lf = GetFacturasEnvio(clienteId, departamentoId, conn);
-            // leemos la plantilla para envio por correo
-            Plantilla p = GetPlantilla(1, conn);
-            // leemos el cliente
-            Cliente c = GetCliente(clienteId, conn);
-            // este será el mensaje de vuelta
-            string mens = String.Format("ENVIO--> Cliente: {0} Departamento: {1} Desde: {2} Hasta: {3} TOTAL: {4:0.00} <br/>",e.ClienteNombre, e.DepartamentoNombre, e.StrFechaInicial, e.StrFechaFinal, e.Total);
-            if (!e.EsFace)
-            {
-                // NO FACE: Es una simple notificación por correo electrónico.
-                // obtenemos el correo electrónico al que hay que mandar 
-                if (c.Email != null && c.Email != "")
-                {
-                    int i=0;
-                    ArrayList adjuntos = new ArrayList();
-                    string fichero = "";
-                    string repositorio = "";
-                    string detalleFacturas = "";
-                    // Ahora preparamos las facturas
-                    foreach (Factura f in lf)
-                    {
-                        i++;
-                        // Montar los adjuntos
-                        repositorio = GetRepositorio(conn);
-                        fichero = repositorio + NombreFicheroFactura(f, c) + ".pdf";
-                        DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
-                            int.Parse(f.StrFecha.Substring(4, 2)), 
-                            int.Parse(f.StrFecha.Substring(6, 2)));
-                        detalleFacturas += String.Format("<strong>Serie:</strong>{0} <strong>Número:</strong>{1} <strong>Fecha:</strong>{2:dd/MM/yyyy} <strong>Importe (con IVA):</strong>{3:0.00} <br/>",
-                            f.Serie, f.NumFactura, fechaFactura, f.Total);
-                        adjuntos.Add(fichero);
-                    }
-                    // Montamos el correo electrónico.
-                    string asunto = "[ARIFACE] Notificación de facturas electrónicas";
-                    string cuerpo = String.Format(p.Contenido, c.Nombre, detalleFacturas);
-                    try
-                    {
-                        CntAriFaceLib.SendEmailCliente(c.Email, asunto, cuerpo, adjuntos);
-                    }
-                    catch (Exception ex)
-                    {
-                        mens += String.Format("Error correo electrónico: {0}", ex.Message);
-                        return mens;
-                    }
-                    // ahora marcamos las facturas como enviadas
-                    foreach (Factura f in lf)
-                    {
-                        MarcarFacturaEnviada(f.FacturaId, conn);
-                    }
-                    mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
-                }
-                else
-                {
-                    mens += String.Format("El cliente {0} no tiene un correo electrónico, no se le ha podido notificar <br/>", c.Nombre);
-                }
-
-            }
-            mens += "---------------------------- <br/>";
-            return mens;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"UPDATE factura SET nueva = 2, registroFace = '{1}', motivoFace = '{2}' WHERE id_factura = {0}";
+            sql = String.Format(sql, facturaId, numRegistro, motivoRegistro);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
         }
+
+        
 
         public static string NombreFicheroFactura(Factura f, Cliente c)
         {

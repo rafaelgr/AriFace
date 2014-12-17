@@ -239,6 +239,9 @@ function sendEnvio(clienteId, departamentoId) {
         success: function (data, status) {
             // hay que mostrarlo en la zona de datos
             mostrarMensajeSmart(data.d);
+            // recargar
+            var fn = getEnvios();
+            fn();
         },
         error: errorAjax
     });

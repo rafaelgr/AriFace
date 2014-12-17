@@ -105,7 +105,7 @@ namespace FaceWebApi
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                r = CntAriFaceLib.SendEnvio(clienteId, departamentoId, certSn, conn);
+                r = CntFaceApi.SendEnvio(clienteId, departamentoId, certSn, conn);
                 conn.Close();
             }
             return r;
