@@ -170,8 +170,9 @@ function initTablaEnvios() {
             data: "ClienteId",
             render: function (data, type, row) {
                 var param = row.ClienteId + ", " + row.DepartamentoId;
-                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editEnvio(" + param + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt2 + "</div>";
+                var bt1 = "<button class='btn btn-circle btn-primary' onclick='sendEnvio(" + param + ");' title='Enviar directamente'> <i class='fa fa-send fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-success' onclick='editEnvio(" + param + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }]
@@ -219,7 +220,35 @@ function editEnvio(clienteId, departamentoId) {
     window.open(url, '_self');
 }
 
+function sendEnvio(clienteId, departamentoId) {
+    // 
+    var adm = JSON.parse(getCookie("admin"));
+    // obtener el n.serie del certificado para la firma.
+    var certSn = adm.Certsn;
+    var data = {
+        clienteId: clienteId,
+        departamentoId: departamentoId,
+        certSn: certSn
+    };
+    $.ajax({
+        type: "POST",
+        url: "EnvioApi.aspx/SendEnvio",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            // hay que mostrarlo en la zona de datos
+            mostrarMensajeSmart(data.d);
+        },
+        error: errorAjax
+    });
+}
+
 function sendEnvios() {
+    var mf = function () {
+        alert('SEND0');
+    };
+    return mf;
 }
 
 

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography.X509Certificates;
+using System.Net.Mail;
+using System.Configuration;
+using System.Net;
+
 
 namespace AriFaceLib
 {
@@ -542,6 +547,10 @@ namespace AriFaceLib
                 c.CodUnidadTramitadora = rdr.GetString("unidadTramitadoraCodigo");
             if (!rdr.IsDBNull(rdr.GetOrdinal("oficinaContableCodigo")))
                 c.CodOficinaContable = rdr.GetString("oficinaContableCodigo");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("cod_socio_ariagro")))
+                c.CodSocioAriagro = rdr.GetInt32("cod_socio_ariagro");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("cod_socio_aritaxi")))
+                c.CodSocioAritaxi = rdr.GetInt32("cod_socio_aritaxi");
             return c;
         }
 
@@ -558,6 +567,7 @@ namespace AriFaceLib
                 rdr.Read();
                 c = GetCliente(rdr);
             }
+            rdr.Close();
             return c;
         }
 
@@ -871,7 +881,6 @@ namespace AriFaceLib
         
         #endregion
 
-
         #region Envios
         public static Envio GetEnvio(MySqlDataReader rdr)
         {
@@ -947,6 +956,7 @@ namespace AriFaceLib
                 rdr.Read();
                 e = GetEnvio(rdr);
             }
+            rdr.Close();
             return e;
         }
 
@@ -1056,6 +1066,7 @@ namespace AriFaceLib
                     lf.Add(f);
                 }
             }
+            rdr.Close();
             return lf;
         }
 
@@ -1068,8 +1079,114 @@ namespace AriFaceLib
             cmd.ExecuteNonQuery();
         }
 
-        #endregion
+        public static void RecuperarFacturaDeEnvio(int facturaId, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"UPDATE factura SET nueva = 1 WHERE id_factura = {0}";
+            sql = String.Format(sql, facturaId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
 
+        public static void MarcarFacturaEnviada(int facturaId, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"UPDATE factura SET nueva = 2 WHERE id_factura = {0}";
+            sql = String.Format(sql, facturaId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        public static string SendEnvio(int clienteId, int departamentoId, string certSN, MySqlConnection conn)
+        {
+            // obtenemos los datos del envío
+            Envio e = GetEnvio(clienteId, departamentoId, conn);
+            // la lista de facturas
+            IList<Factura> lf = GetFacturasEnvio(clienteId, departamentoId, conn);
+            // leemos la plantilla para envio por correo
+            Plantilla p = GetPlantilla(1, conn);
+            // leemos el cliente
+            Cliente c = GetCliente(clienteId, conn);
+            // este será el mensaje de vuelta
+            string mens = String.Format("ENVIO--> Cliente: {0} Departamento: {1} Desde: {2} Hasta: {3} TOTAL: {4:0.00} <br/>",e.ClienteNombre, e.DepartamentoNombre, e.StrFechaInicial, e.StrFechaFinal, e.Total);
+            if (!e.EsFace)
+            {
+                // NO FACE: Es una simple notificación por correo electrónico.
+                // obtenemos el correo electrónico al que hay que mandar 
+                if (c.Email != null && c.Email != "")
+                {
+                    int i=0;
+                    ArrayList adjuntos = new ArrayList();
+                    string fichero = "";
+                    string repositorio = "";
+                    string detalleFacturas = "";
+                    // Ahora preparamos las facturas
+                    foreach (Factura f in lf)
+                    {
+                        i++;
+                        // Montar los adjuntos
+                        repositorio = GetRepositorio(conn);
+                        fichero = repositorio + NombreFicheroFactura(f, c) + ".pdf";
+                        DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
+                            int.Parse(f.StrFecha.Substring(4, 2)), 
+                            int.Parse(f.StrFecha.Substring(6, 2)));
+                        detalleFacturas += String.Format("<strong>Serie:</strong>{0} <strong>Número:</strong>{1} <strong>Fecha:</strong>{2:dd/MM/yyyy} <strong>Importe (con IVA):</strong>{3:0.00} <br/>",
+                            f.Serie, f.NumFactura, fechaFactura, f.Total);
+                        adjuntos.Add(fichero);
+                    }
+                    // Montamos el correo electrónico.
+                    string asunto = "[ARIFACE] Notificación de facturas electrónicas";
+                    string cuerpo = String.Format(p.Contenido, c.Nombre, detalleFacturas);
+                    try
+                    {
+                        CntAriFaceLib.SendEmailCliente(c.Email, asunto, cuerpo, adjuntos);
+                    }
+                    catch (Exception ex)
+                    {
+                        mens += String.Format("Error correo electrónico: {0}", ex.Message);
+                        return mens;
+                    }
+                    // ahora marcamos las facturas como enviadas
+                    foreach (Factura f in lf)
+                    {
+                        MarcarFacturaEnviada(f.FacturaId, conn);
+                    }
+                    mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
+                }
+                else
+                {
+                    mens += String.Format("El cliente {0} no tiene un correo electrónico, no se le ha podido notificar <br/>", c.Nombre);
+                }
+
+            }
+            mens += "---------------------------- <br/>";
+            return mens;
+        }
+
+        public static string NombreFicheroFactura(Factura f, Cliente c)
+        {
+            string n = "";
+            string mes = f.StrFecha.Substring(4, 2);
+            string ano = f.StrFecha.Substring(0, 4);
+            if (f.EsDeCliente)
+            {
+                n = String.Format("{0}{1}_{2:00}{3:0000}{4}", f.Serie, f.NumFactura, mes, ano, f.LetraProveedor);
+            }
+            else
+            {
+                // es de proveedor (sumiendo que es socio ariagro)
+                string serie = String.Format(@"{0:000000}{1}", c.CodSocioAriagro, f.Serie);
+                if (c.CodSocioAritaxi != 0)
+                {
+                    serie = String.Format(@"{0:000000}{1}", c.CodSocioAritaxi, f.Serie);
+                }
+                n = String.Format("{0}{1}_{2:00}{3:0000}{4}", serie, f.NumFactura, mes, ano, f.LetraProveedor);
+            }
+            return n;
+        }
+               
+
+        #endregion
 
         #region Empresa raiz
         public static EmpresaRaiz GetEmpresaRaiz(MySqlDataReader rdr)
@@ -1186,6 +1303,150 @@ namespace AriFaceLib
             string sql = String.Format("DELETE FROM nifbase WHERE nif='{0}'", nif);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
+        }
+        #endregion
+
+        #region Plantillas
+        public static Plantilla GetPlantilla(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("plantilla_id"))) return null;
+            Plantilla p = new Plantilla();
+            p.PlantillaId = rdr.GetInt32("plantilla_id");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("nombre")))
+                p.Nombre = rdr.GetString("nombre");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("contenido")))
+                p.Contenido = rdr.GetString("contenido");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("observaciones")))
+                p.Observaciones = rdr.GetString("observaciones");
+            return p;
+        }
+
+        public static Plantilla GetPlantilla(int plantillaId, MySqlConnection conn)
+        {
+            Plantilla p = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT * FROM plantilla WHERE plantilla_id = '{0}'";
+            sql = String.Format(sql, plantillaId);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                p = GetPlantilla(rdr);
+            }
+            rdr.Close();
+            return p;
+        }
+
+        public static IList<Plantilla> GetPlantillas(MySqlConnection conn)
+        {
+            IList<Plantilla> lp = new List<Plantilla>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM plantilla";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Plantilla p = GetPlantilla(rdr);
+                    lp.Add(p);
+                }
+            }
+            return lp;
+        }
+
+        public static Plantilla SetPlantilla(Plantilla p, MySqlConnection conn)
+        {
+            // si el id es 0 se crea el objeto, si no se actualiza.
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"
+                    INSERT INTO plantilla
+                    (plantilla_id, nombre, contenido)
+                    VALUES ({0},'{1}','{2}')
+                    ON DUPLICATE KEY UPDATE
+                    nombre='{1}',
+                    contenido='{2}'
+            ";
+            sql = String.Format(sql, p.PlantillaId, p.Nombre, p.Contenido);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            sql = @"SELECT * FROM plantilla WHERE plantilla_id={0};";
+            sql = String.Format(sql, p.PlantillaId);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                p = GetPlantilla(rdr);
+            }
+            rdr.Close();
+            return p;
+        }
+
+        public static void DeletePlantilla(int plantillaId, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = String.Format("DELETE FROM plantilla WHERE plantilla_id={0}", plantillaId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        #endregion
+
+        #region Repositorio
+        public static string GetRepositorio(MySqlConnection conn)
+        {
+            string r = "";
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT * FROM repositorio";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                r = rdr.GetString("path");
+            }
+            rdr.Close();
+            return r;
+        }
+        #endregion
+
+        #region Manejo de correos electrónicos
+        public static SmtpClient GetClienteSmtp()
+        {
+            SmtpClient smtp;
+            smtp = new SmtpClient(ConfigurationSettings.AppSettings["mail_server"]);
+            smtp.Credentials = new NetworkCredential(ConfigurationSettings.AppSettings["mail_usr"], ConfigurationSettings.AppSettings["mail_pass"]);
+            smtp.Port = int.Parse(ConfigurationSettings.AppSettings["mail_port"]);
+
+            smtp.EnableSsl = bool.Parse(ConfigurationSettings.AppSettings["mail_ssl"]);
+            return smtp;
+        }
+
+        public static void SendEmailCliente(string emailCliente, string asunto, string cuerpo, ArrayList adjuntos)
+        {
+            SmtpClient smtp = GetClienteSmtp();
+            MailMessage correo = new MailMessage();
+            correo.From = new MailAddress(ConfigurationSettings.AppSettings["mail_address"]);
+            correo.To.Add(emailCliente);
+            // siempre copia oculta a la dirección base.
+            correo.Bcc.Add(ConfigurationSettings.AppSettings["mail_address"]);
+            if (adjuntos.Count > 0)
+            {
+                foreach (string fileName in adjuntos)
+                {
+                    Attachment data = new Attachment(fileName);
+                    // Add time stamp information for the file.
+                    // Add the file attachment to this e-mail message.
+                    correo.Attachments.Add(data);
+                }
+            }
+            correo.Subject = asunto;
+            correo.Body = cuerpo;
+            correo.IsBodyHtml = true;
+            correo.Priority = System.Net.Mail.MailPriority.Normal;
+            smtp.Send(correo);
         }
         #endregion
     }

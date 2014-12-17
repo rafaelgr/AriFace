@@ -343,4 +343,42 @@ function eliminarDeEnvio(id) {
 }
 
 function agregarAlEnvio(id) {
+    // mensaje de confirmación
+    var mens = "¿Quiere volver a incorporar esta factura para futuros envíos?";
+    $.SmartMessageBox({
+        title: "<i class='fa fa-info'></i> Mensaje",
+        content: mens,
+        buttons: '[Aceptar][Cancelar]'
+    }, function (ButtonPressed) {
+        if (ButtonPressed === "Aceptar") {
+            var data = {
+                facturaId: id
+            };
+            $.ajax({
+                type: "POST",
+                url: "EnvioApi.aspx/RecuperarFacturaDeEnvio",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (data, status) {
+                    $.ajax({
+                        type: "POST",
+                        url: "FacturaApi.aspx/GetFacturas",
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data, status) {
+                            // hay que mostrarlo en la zona de datos
+                            loadTablaFacturas(data.d);
+                        },
+                        error: errorAjax
+                    });
+                },
+                error: errorAjax
+            });
+        }
+        if (ButtonPressed === "Cancelar") {
+            // no hacemos nada (no quiere borrar)
+        }
+    });
+
 }

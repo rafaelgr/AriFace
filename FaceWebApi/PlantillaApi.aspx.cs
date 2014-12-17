@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,107 +8,79 @@ using System.Web.Services;
 using System.Web.Script.Services;
 using AriFaceLib;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace FaceWebApi
 {
-    public partial class EnvioApi : System.Web.UI.Page
+    public partial class PlantillaApi : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
         #region WebMethods
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Envio> GetEnvios()
+        public static Plantilla GetPlantilla(int plantillaId)
         {
-            IList<Envio> le = new List<Envio>();
+            Plantilla p = null;
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                le = CntAriFaceLib.GetEnvios(conn);
+                p = CntAriFaceLib.GetPlantilla(plantillaId, conn);
                 conn.Close();
             }
-            return le;
+            return p;
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Factura> GetFacturasEnvio(int clienteId, int departamentoId)
+        public static IList<Plantilla> GetPlantillas()
         {
-            IList<Factura> lf = new List<Factura>();
+            IList<Plantilla> lp = new List<Plantilla>();
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                lf = CntAriFaceLib.GetFacturasEnvio(clienteId, departamentoId, conn);
+                lp = CntAriFaceLib.GetPlantillas(conn);
                 conn.Close();
             }
-            return lf;
+            return lp;
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static Envio GetEnvio(int clienteId, int departamentoId)
+        public static Plantilla SetPlantilla(Plantilla plantilla)
         {
-            Envio e = null;
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                e = CntAriFaceLib.GetEnvio(clienteId, departamentoId, conn);
+                plantilla = CntAriFaceLib.SetPlantilla(plantilla, conn);
                 conn.Close();
             }
-            return e;
+            return plantilla;
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static void EliminarFacturaDeEnvio(int facturaId)
+        public static Plantilla DeletePlantilla(int plantillaId)
         {
+            Plantilla p = null;
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                CntAriFaceLib.EliminarFacturaDeEnvio(facturaId, conn);
+                CntAriFaceLib.DeletePlantilla(plantillaId, conn);
                 conn.Close();
             }
-        }
-
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static void RecuperarFacturaDeEnvio(int facturaId)
-        {
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
-            {
-                conn.Open();
-                CntAriFaceLib.RecuperarFacturaDeEnvio(facturaId, conn);
-                conn.Close();
-            }
-        }
-
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string SendEnvio(int clienteId, int departamentoId, string certSn)
-        {
-            string r = "";
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
-            {
-                conn.Open();
-                r = CntAriFaceLib.SendEnvio(clienteId, departamentoId, certSn, conn);
-                conn.Close();
-            }
-            return r;
-        }
+            return p;
+        }    
 
         #endregion
     }

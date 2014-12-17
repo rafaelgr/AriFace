@@ -81,6 +81,11 @@
     <Content Include="ClienteApi.aspx" />
     <Content Include="ClienteGeneral.html" />
     <Content Include="ClienteDetalle.html" />
+    <Content Include="js\ariface\plantillaDetalle.js" />
+    <Content Include="PlantillaDetalle.html" />
+    <Content Include="js\ariface\plantillaGeneral.js" />
+    <Content Include="PlantillaGeneral.html" />
+    <Content Include="PlantillaApi.aspx" />
     <Content Include="EnvioDetalle.html" />
     <Content Include="EnvioGeneral.html" />
     <Content Include="EnvioApi.aspx" />
@@ -977,6 +982,14 @@
       <DependentUpon>ClienteApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsEncoder64.cs" />
+    <Compile Include="CntFaceApi.cs" />
+    <Compile Include="PlantillaApi.aspx.cs">
+      <DependentUpon>PlantillaApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlantillaApi.aspx.designer.cs">
+      <DependentUpon>PlantillaApi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EnvioApi.aspx.cs">
       <DependentUpon>EnvioApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

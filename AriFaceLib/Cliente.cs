@@ -56,5 +56,20 @@ namespace AriFaceLib
             get { return codOficinaContable; }
             set { codOficinaContable = value; }
         }
+
+        private int codSocioAriagro;
+
+        public int CodSocioAriagro
+        {
+            get { return codSocioAriagro; }
+            set { codSocioAriagro = value; }
+        }
+        private int codSocioAritaxi;
+
+        public int CodSocioAritaxi
+        {
+            get { return codSocioAritaxi; }
+            set { codSocioAritaxi = value; }
+        }
     }
 }

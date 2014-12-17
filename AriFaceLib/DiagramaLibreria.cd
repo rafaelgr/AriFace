@@ -52,14 +52,14 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAEwAABAAAQABECAkAAAAQBKCAEAQABIQACCJhEsgA=</HashCode>
+      <HashCode>ABAEwAABAgAQEBECAkAAABQBKCAFAUABoQAKCZhEsgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Cliente" Collapsed="true">
-    <Position X="4" Y="1.25" Width="2" />
+  <Class Name="AriFaceLib.Cliente">
+    <Position X="8.5" Y="1.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAACAEEACgjBAAgAAAAAAAAAAggAAAAAAAABA=</HashCode>
+      <HashCode>AAAAABAAACgEEACojBAAgAAAAAAAAAAggAAAAAAAABA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -91,11 +91,18 @@
       <FileName>EmpresaRaiz.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Envio">
-    <Position X="8.25" Y="1.25" Width="1.5" />
+  <Class Name="AriFaceLib.Envio" Collapsed="true">
+    <Position X="4.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AwABAAAAAQCAEAIIgBAACAAIAACAyEAAgEBAEAMAAhA=</HashCode>
       <FileName>Envio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.Plantilla" Collapsed="true">
+    <Position X="6" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACCAAQAgABEAAAAQAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Plantilla.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
