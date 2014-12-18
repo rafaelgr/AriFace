@@ -7,11 +7,29 @@ using AriFaceLib;
 using FaceWebApi.SPP2;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace FaceWebApi
 {
     public static class CntFaceApi
     {
+        public static string SendEnvios(string certSN, MySqlConnection conn)
+        {
+            string mens = "RESULTADO DE ENVIO MULTIPLE:";
+            string mensEmail = "Los siguientes envíos han sido procesados: <br/>";
+            // obtener todos los envíos disponibles
+            IList<Envio> envios = CntAriFaceLib.GetEnvios(conn);
+            foreach (Envio e in envios)
+            {
+                mensEmail += SendEnvio(e.ClienteId, e.DepartamentoId, certSN, conn);
+            }
+            string asunto = "[ARIFACE] Envios procesados";
+            string cuerpo = mensEmail;
+            CntAriFaceLib.SendEmailAdministrador(asunto, cuerpo, new ArrayList());
+            mens += "Todos los envíos han sido procesados. Recibirá en su correo un mensaje con los resultado";
+            return mens;
+        }
+
         public static string SendEnvio(int clienteId, int departamentoId, string certSN, MySqlConnection conn)
         {
             // obtenemos los datos del envío
@@ -45,7 +63,7 @@ namespace FaceWebApi
                         DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                             int.Parse(f.StrFecha.Substring(4, 2)),
                             int.Parse(f.StrFecha.Substring(6, 2)));
-                        detalleFacturas += String.Format("<strong>Serie:</strong>{0} <strong>Número:</strong>{1} <strong>Fecha:</strong>{2:dd/MM/yyyy} <strong>Importe (con IVA):</strong>{3:0.00} <br/>",
+                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong><br/>",
                             f.Serie, f.NumFactura, fechaFactura, f.Total);
                         adjuntos.Add(fichero);
                     }
@@ -82,15 +100,23 @@ namespace FaceWebApi
                 {
                     string repositorio = CntAriFaceLib.GetRepositorio(conn);
                     string fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".xml";
-                    string dirNotificacion = "";
+                    string dirNotificacion = ConfigurationSettings.AppSettings["dirNotificacion"];
                     string email = ConfigurationSettings.AppSettings["mail_address"];
-                    RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
-                    CntAriFaceLib.MarcarFacturaEnviadaFace(f.FacturaId, rs.CodigoRegistro, rs.StrFechaRecepcion, conn);
-                    DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
-                        int.Parse(f.StrFecha.Substring(4, 2)),
-                        int.Parse(f.StrFecha.Substring(6, 2)));
-                    detalleFacturas += String.Format("<strong>Serie:</strong>{0} <strong>Número:</strong>{1} <strong>Fecha:</strong>{2:dd/MM/yyyy} <strong>Importe (con IVA):</strong>{3:0.00} REGISTRO:{4} <br/>",
-                        f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
+                    try
+                    {
+                        RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
+                        CntAriFaceLib.MarcarFacturaEnviadaFace(f.FacturaId, rs.CodigoRegistro, rs.StrFechaRecepcion, conn);
+                        DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
+                            int.Parse(f.StrFecha.Substring(4, 2)),
+                            int.Parse(f.StrFecha.Substring(6, 2)));
+                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                            f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
+                    }
+                    catch (Exception ex)
+                    {
+                        mens += String.Format("Error procesando factura {0}{1}: {2}", f.Serie, f.NumFactura, ex.Message);
+                        return mens;
+                    }
                 }
             }
             mens += "---------------------------- <br/>";

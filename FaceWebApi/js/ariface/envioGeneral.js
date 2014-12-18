@@ -249,7 +249,39 @@ function sendEnvio(clienteId, departamentoId) {
 
 function sendEnvios() {
     var mf = function () {
-        alert('SEND0');
+        $('#btnEnvio').hide();
+        $('#ldgEnvio').show()
+        // 
+        var adm = JSON.parse(getCookie("admin"));
+        // obtener el n.serie del certificado para la firma.
+        var certSn = adm.Certsn;
+        var data = {
+            certSn: certSn
+        };
+        $.ajax({
+            type: "POST",
+            url: "EnvioApi.aspx/SendEnvios",
+            dataType: "json",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                $('#btnEnvio').show();
+                $('#ldgEnvio').hide();
+                mostrarMensajeSmart(data.d);
+                // recargar
+                var fn = getEnvios();
+                fn();
+            },
+            error: function (xhr, textStatus, errorThrwon) {
+                $('#btnEnvio').show();
+                $('#ldgEnvio').hide();
+                var m = xhr.responseText;
+                if (!m) m = "Error general posiblemente falla la conexión";
+                mostrarMensaje(m);
+            }
+
+        });
     };
     return mf;
 }

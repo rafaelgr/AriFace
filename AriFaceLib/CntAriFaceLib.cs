@@ -992,6 +992,7 @@ namespace AriFaceLib
                     le.Add(e);
                 }
             }
+            rdr.Close();
             return le;
         }
 
@@ -1377,6 +1378,29 @@ namespace AriFaceLib
             correo.To.Add(emailCliente);
             // siempre copia oculta a la dirección base.
             correo.Bcc.Add(ConfigurationSettings.AppSettings["mail_address"]);
+            if (adjuntos.Count > 0)
+            {
+                foreach (string fileName in adjuntos)
+                {
+                    Attachment data = new Attachment(fileName);
+                    // Add time stamp information for the file.
+                    // Add the file attachment to this e-mail message.
+                    correo.Attachments.Add(data);
+                }
+            }
+            correo.Subject = asunto;
+            correo.Body = cuerpo;
+            correo.IsBodyHtml = true;
+            correo.Priority = System.Net.Mail.MailPriority.Normal;
+            smtp.Send(correo);
+        }
+
+        public static void SendEmailAdministrador(string asunto, string cuerpo, ArrayList adjuntos)
+        {
+            SmtpClient smtp = GetClienteSmtp();
+            MailMessage correo = new MailMessage();
+            correo.From = new MailAddress(ConfigurationSettings.AppSettings["mail_address"]);
+            correo.To.Add(ConfigurationSettings.AppSettings["mail_address"]);
             if (adjuntos.Count > 0)
             {
                 foreach (string fileName in adjuntos)

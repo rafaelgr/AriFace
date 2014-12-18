@@ -18,6 +18,7 @@ namespace FaceWebApi
         {
 
         }
+
         #region WebMethods
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -105,7 +106,25 @@ namespace FaceWebApi
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
+                // el directorio de notificaciones hay que pasarlo
                 r = CntFaceApi.SendEnvio(clienteId, departamentoId, certSn, conn);
+                conn.Close();
+            }
+            return r;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string SendEnvios(string certSn)
+        {
+            string r = "";
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                // el directorio de notificaciones hay que pasarlo
+                r = CntFaceApi.SendEnvios(certSn, conn);
                 conn.Close();
             }
             return r;
