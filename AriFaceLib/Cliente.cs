@@ -71,5 +71,13 @@ namespace AriFaceLib
             get { return codSocioAritaxi; }
             set { codSocioAritaxi = value; }
         }
+
+        private int codClienAriges;
+
+        public int CodClienAriges
+        {
+            get { return codClienAriges; }
+            set { codClienAriges = value; }
+        }
     }
 }

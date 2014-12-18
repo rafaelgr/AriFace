@@ -85,5 +85,13 @@ namespace AriFaceLib
             get { return clienteNombre; }
             set { clienteNombre = value; }
         }
+
+        private int codClienAriges;
+
+        public int CodClienAriges
+        {
+            get { return codClienAriges; }
+            set { codClienAriges = value; }
+        }
     }
 }

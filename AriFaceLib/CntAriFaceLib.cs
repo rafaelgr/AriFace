@@ -15,6 +15,25 @@ namespace AriFaceLib
 {
     public static class CntAriFaceLib
     {
+
+        public static MiniUnidad GetMiniUnidad(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            MiniUnidad mu = new MiniUnidad();
+            mu.Codigo = rdr.GetString("codigo");
+            mu.Nombre = rdr.GetString("nombre");
+            return mu;
+        }
+
+        public static MiniUnidad2 GetMiniUnidad2(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            MiniUnidad2 mu = new MiniUnidad2();
+            mu.Codigo = rdr.GetInt32("codigo");
+            mu.Nombre = rdr.GetString("nombre");
+            return mu;
+        }
+
         #region Conexión a MySql
         public static MySqlConnection GetConnection(string connectionString)
         {
@@ -199,6 +218,342 @@ namespace AriFaceLib
 
         #endregion
 
+        #region Usuarios
+
+        public static Usuario GetUsuario(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("USUARIO_ID"))) return null;
+            Usuario u = new Usuario();
+            u.UsuarioId = rdr.GetInt32("USUARIO_ID");
+            u.Nombre = rdr.GetString("NOMBRE");
+            u.Password = rdr.GetString("PASSWORD");
+            u.NifNombre = rdr.GetString("NIF_NOMBRE");
+            u.Nif = rdr.GetString("NIF");
+            u.Login = rdr.GetString("LOGIN");
+            u.Email = rdr.GetString("EMAIL");
+            u.DepartamentoNombre = rdr.GetString("DEPARTAMENTO_NOMBRE");
+            u.DepartamentoId = rdr.GetInt32("DEPARTAMENTO_ID");
+            u.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
+            u.ClienteId = rdr.GetInt32("CLIENTE_ID");
+            u.CodClienAriges = rdr.GetInt32("CODCLIEN_ARIGES");
+            return u;
+        }
+
+        public static Usuario GetUsuarioLogin(string login, string password, MySqlConnection conn)
+        {
+            // Se entiene que la conexión se recibe abierta y es responsabilidad del llamante
+            // cerrarla y destruirla
+            Usuario u = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                    u.usuario_id AS USUARIO_ID,
+                    u.nombre AS NOMBRE,
+                    u.login AS LOGIN,
+                    u.password AS PASSWORD,
+                    COALESCE(u.email, '') AS EMAIL,
+                    u.nif AS NIF,
+                    n.nombre AS NIF_NOMBRE,
+                    COALESCE(u.cliente_id,0) AS CLIENTE_ID,
+                    COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
+                    COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE
+                    FROM usuario AS u
+                    LEFT JOIN nifbase AS n ON n.nif = u.nif
+                    LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
+                    LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id
+                    WHERE u.login = '{0}'
+                    AND u.password = '{1}'";
+            sql = String.Format(sql, login, password);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                u = GetUsuario(rdr);
+            }
+            rdr.Close();
+            return u;
+        }
+
+        public static Usuario GetUsuario(int id, MySqlConnection conn)
+        {
+            Usuario u = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                    u.usuario_id AS USUARIO_ID,
+                    u.nombre AS NOMBRE,
+                    u.login AS LOGIN,
+                    u.password AS PASSWORD,
+                    COALESCE(u.email, '') AS EMAIL,
+                    u.nif AS NIF,
+                    n.nombre AS NIF_NOMBRE,
+                    COALESCE(u.cliente_id,0) AS CLIENTE_ID,
+                    COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
+                    COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                    COALESCE(c.codclien_ariges, 0) AS CODCLIEN_ARIGES
+                    FROM usuario AS u
+                    LEFT JOIN nifbase AS n ON n.nif = u.nif
+                    LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
+                    LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id
+                    WHERE u.usuario_id = '{0}'";
+            sql = String.Format(sql, id);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                u = GetUsuario(rdr);
+            }
+            rdr.Close();
+            return u;
+        }
+
+        public static IList<Usuario> GetUsuarios(MySqlConnection conn)
+        {
+            IList<Usuario> lu = new List<Usuario>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                    u.usuario_id AS USUARIO_ID,
+                    u.nombre AS NOMBRE,
+                    u.login AS LOGIN,
+                    u.password AS PASSWORD,
+                    COALESCE(u.email, '') AS EMAIL,
+                    u.nif AS NIF,
+                    n.nombre AS NIF_NOMBRE,
+                    COALESCE(u.cliente_id,0) AS CLIENTE_ID,
+                    COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
+                    COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                    COALESCE(c.codclien_ariges, 0) AS CODCLIEN_ARIGES
+                    FROM usuario AS u
+                    LEFT JOIN nifbase AS n ON n.nif = u.nif
+                    LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
+                    LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Usuario u = GetUsuario(rdr);
+                    lu.Add(u);
+                }
+            }
+            rdr.Close();
+            return lu;
+        }
+
+        public static IList<Usuario> GetUsuarios(string parNom, MySqlConnection conn)
+        {
+            IList<Usuario> lu = new List<Usuario>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT
+                    u.usuario_id AS USUARIO_ID,
+                    u.nombre AS NOMBRE,
+                    u.login AS LOGIN,
+                    u.password AS PASSWORD,
+                    COALESCE(u.email, '') AS EMAIL,
+                    u.nif AS NIF,
+                    n.nombre AS NIF_NOMBRE,
+                    COALESCE(u.cliente_id,0) AS CLIENTE_ID,
+                    COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
+                    COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                    COALESCE(c.codclien_ariges, 0) AS CODCLIEN_ARIGES
+                    FROM usuario AS u
+                    LEFT JOIN nifbase AS n ON n.nif = u.nif
+                    LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
+                    LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id
+                    WHERE u.nombre LIKE '%{0}%'";
+            if (parNom == "*")
+            {
+                sql = @"SELECT
+                    u.usuario_id AS USUARIO_ID,
+                    u.nombre AS NOMBRE,
+                    u.login AS LOGIN,
+                    u.password AS PASSWORD,
+                    COALESCE(u.email, '') AS EMAIL,
+                    u.nif AS NIF,
+                    n.nombre AS NIF_NOMBRE,
+                    COALESCE(u.cliente_id,0) AS CLIENTE_ID,
+                    COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
+                    COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                    COALESCE(c.codclien_ariges, 0) AS CODCLIEN_ARIGES
+                    FROM usuario AS u
+                    LEFT JOIN nifbase AS n ON n.nif = u.nif
+                    LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
+                    LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id";
+
+            }
+            sql = String.Format(sql, parNom);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Usuario u = GetUsuario(rdr);
+                    lu.Add(u);
+                }
+            }
+            rdr.Close();
+            return lu;
+        }
+
+        public static Usuario SetUsuario(Usuario u, MySqlConnection conn)
+        {
+            bool alta = false;
+            if (u == null) return null;
+            if (u.UsuarioId == 0)
+            {
+                alta = true;
+            }
+            // si el id es 0 se crea el objeto, si no se actualiza.
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "";
+            if (alta)
+            {
+                sql = @"
+                    INSERT INTO usuario
+                    (nombre, login, password, email, nif, cliente_id, departamento_id)
+                    VALUES ('{1}','{2}','{3}','{4}','{5}',{6},{7});
+                ";
+            }
+            else
+            {
+                sql = @"
+                    UPDATE usuario
+                    SET
+                    nombre = '{1}',
+                    login = '{2}',
+                    password = '{3}',
+                    email = '{4}',
+                    nif = '{5}',
+                    cliente_id = {6},
+                    departamento_id = {7}
+                    WHERE usuario_id={0};
+                ";
+            }
+            if (u.Password == "" && !alta)
+            {
+                sql = @"
+                    UPDATE usuario
+                    SET
+                    nombre = '{1}',
+                    login = '{2}',
+                    email = '{4}',
+                    nif = '{5}',
+                    cliente_id = {6},
+                    departamento_id = {7}
+                    WHERE usuario_id={0};
+                ";
+            }
+            sql = String.Format(sql, u.UsuarioId, u.Nombre, u.Login, u.Password, u.Email, u.Nif, u.ClienteId, u.DepartamentoId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            // y vamos rápidamente a por la recién creada
+            if (alta)
+            {
+                sql = @"SELECT LAST_INSERT_ID() as ultid FROM usuario;";
+                cmd.CommandText = sql;
+                MySqlDataReader rdr2 = cmd.ExecuteReader();
+                if (rdr2.HasRows)
+                {
+                    rdr2.Read();
+                    u.UsuarioId = rdr2.GetInt32("ultid");
+                }
+                rdr2.Close();
+            }
+            u = GetUsuario(u.UsuarioId, conn);
+            return u;
+        }
+
+        public static void DeleteUsuario(int id, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = String.Format("DELETE FROM usuario WHERE usuario_id={0}", id);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        public static IList<MiniUnidad> GetEr(MySqlConnection conn)
+        {
+            IList<MiniUnidad> lmu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT nif AS codigo, nombre AS nombre FROM nifbase ORDER BY nombre";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = GetMiniUnidad(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            rdr.Close();
+            return lmu;
+        }
+
+
+        /// <summary>
+        /// Sirve para los desplegables de los formularios
+        /// Devuelve los clientes que pertenecen a una empresa raiz
+        /// </summary>
+        /// <param name="nifCodigo"></param>
+        /// <param name="conn"></param>
+        /// <returns>MiniUnidad: un objeto con código y nombre sólo</returns>
+        public static IList<MiniUnidad2> GetCliOfEr(string nifCodigo, MySqlConnection conn)
+        {
+            IList<MiniUnidad2> lmu = new List<MiniUnidad2>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT i_d AS codigo, nombre AS nombre FROM cliente WHERE cif ='{0}' ORDER BY nombre";
+            sql = String.Format(sql, nifCodigo);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad2 mu = GetMiniUnidad2(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            rdr.Close();
+            return lmu;
+        }
+
+        /// <summary>
+        /// Sirve para los desplegables de los formularios
+        /// Devuelve las Oficinas contables posibles dado una unidad tramitadora
+        /// </summary>
+        /// <param name="clienteId"></param>
+        /// <param name="conn"></param>
+        /// <returns>MiniUnidad: un objeto con código y nombre sólo</returns>
+        public static IList<MiniUnidad2> GetDepOfCli(int codClienAriges, MySqlConnection conn)
+        {
+            IList<MiniUnidad2> lmu = new List<MiniUnidad2>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = "SELECT DISTINCT departamento_id AS codigo, nombre AS nombre FROM departamento WHERE codclien ='{0}' ORDER BY nombre";
+            sql = String.Format(sql, codClienAriges);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad2 mu = GetMiniUnidad2(rdr);
+                    lmu.Add(mu);
+                }
+            }
+            rdr.Close();
+            return lmu;
+        }
+
+        #endregion
+
         #region Estados
         public static Estado GetEstado(MySqlDataReader rdr)
         {
@@ -225,6 +580,7 @@ namespace AriFaceLib
                 rdr.Read();
                 e = GetEstado(rdr);
             }
+            rdr.Close();
             return e;
         }
 
@@ -243,6 +599,7 @@ namespace AriFaceLib
                     le.Add(e);
                 }
             }
+            rdr.Close();
             return le;
         }
 
@@ -307,15 +664,6 @@ namespace AriFaceLib
             return u;
         }
 
-        public static MiniUnidad GetMiniUnidad(MySqlDataReader rdr)
-        {
-            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
-            MiniUnidad mu = new MiniUnidad();
-            mu.Codigo = rdr.GetString("codigo");
-            mu.Nombre = rdr.GetString("nombre");
-            return mu;
-        }
-
         public static Unidad GetUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
         {
             Unidad u = null;
@@ -329,6 +677,7 @@ namespace AriFaceLib
                 rdr.Read();
                 u = GetUnidad(rdr);
             }
+            rdr.Close();
             return u;
         }
 
@@ -347,9 +696,9 @@ namespace AriFaceLib
                     lu.Add(u);
                 }
             }
+            rdr.Close();
             return lu;
         }
-
 
         public static IList<Unidad> GetUnidades(string organoGestorCodigo, MySqlConnection conn)
         {
@@ -367,6 +716,7 @@ namespace AriFaceLib
                     lu.Add(u);
                 }
             }
+            rdr.Close();
             return lu;
         }
 
@@ -386,6 +736,7 @@ namespace AriFaceLib
                     lu.Add(u);
                 }
             }
+            rdr.Close();
             return lu;
         }
 
@@ -453,6 +804,7 @@ namespace AriFaceLib
                     lmu.Add(mu);
                 }
             }
+            rdr.Close();
             return lmu;
         }
 
@@ -480,6 +832,7 @@ namespace AriFaceLib
                     lmu.Add(mu);
                 }
             }
+            rdr.Close();
             return lmu;
         }
 
@@ -507,6 +860,7 @@ namespace AriFaceLib
                     lmu.Add(mu);
                 }
             }
+            rdr.Close();
             return lmu;
         }
 
@@ -551,6 +905,8 @@ namespace AriFaceLib
                 c.CodSocioAriagro = rdr.GetInt32("cod_socio_ariagro");
             if (!rdr.IsDBNull(rdr.GetOrdinal("cod_socio_aritaxi")))
                 c.CodSocioAritaxi = rdr.GetInt32("cod_socio_aritaxi");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("codclien_ariges")))
+                c.CodClienAriges = rdr.GetInt32("codclien_ariges");
             return c;
         }
 
@@ -586,6 +942,7 @@ namespace AriFaceLib
                     lc.Add(c);
                 }
             }
+            rdr.Close();
             return lc;
         }
 
@@ -607,6 +964,7 @@ namespace AriFaceLib
                     lc.Add(c);
                 }
             }
+            rdr.Close();
             return lc;
         }
 
@@ -668,6 +1026,7 @@ namespace AriFaceLib
                 rdr.Read();
                 c = GetCliente(rdr);
             }
+            rdr.Close();
             return c;
         }
 
@@ -747,6 +1106,7 @@ namespace AriFaceLib
                 rdr.Read();
                 f = GetFactura(rdr);
             }
+            rdr.Close();
             return f;
         }
 
@@ -789,6 +1149,7 @@ namespace AriFaceLib
                     lf.Add(f);
                 }
             }
+            rdr.Close();
             return lf;
         }
 
@@ -832,6 +1193,7 @@ namespace AriFaceLib
                     lf.Add(f);
                 }
             }
+            rdr.Close();
             return lf;
         }
 
@@ -875,6 +1237,7 @@ namespace AriFaceLib
                     lf.Add(f);
                 }
             }
+            rdr.Close();
             return lf;
         }
 
@@ -1107,8 +1470,6 @@ namespace AriFaceLib
             cmd.ExecuteNonQuery();
         }
 
-        
-
         public static string NombreFicheroFactura(Factura f, Cliente c)
         {
             string n = "";
@@ -1157,6 +1518,7 @@ namespace AriFaceLib
                 rdr.Read();
                 er = GetEmpresaRaiz(rdr);
             }
+            rdr.Close();
             return er;
         }
 
@@ -1175,6 +1537,7 @@ namespace AriFaceLib
                     ler.Add(er);
                 }
             }
+            rdr.Close();
             return ler;
         }
 
@@ -1196,6 +1559,7 @@ namespace AriFaceLib
                     ler.Add(er);
                 }
             }
+            rdr.Close();
             return ler;
         }
 
@@ -1240,6 +1604,7 @@ namespace AriFaceLib
                 rdr.Read();
                 er = GetEmpresaRaiz(rdr);
             }
+            rdr.Close();
             return er;
         }
 
@@ -1299,6 +1664,7 @@ namespace AriFaceLib
                     lp.Add(p);
                 }
             }
+            rdr.Close();
             return lp;
         }
 
