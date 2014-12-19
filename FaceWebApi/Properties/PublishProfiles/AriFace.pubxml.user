@@ -13,10 +13,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 16:35:55</publishTime>
     </File>
     <File Include="AdministradorDetalle.html">
-      <publishTime>12/02/2014 18:44:38</publishTime>
+      <publishTime>12/19/2014 17:04:10</publishTime>
     </File>
     <File Include="AdministradorGeneral.html">
-      <publishTime>12/10/2014 13:23:21</publishTime>
+      <publishTime>12/19/2014 18:05:28</publishTime>
     </File>
     <File Include="ajax/demowidget.php">
       <publishTime>05/17/2014 05:56:24</publishTime>
@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>12/10/2014 17:45:33</publishTime>
+      <publishTime>12/19/2014 16:38:16</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>12/10/2014 17:45:34</publishTime>
+      <publishTime>12/19/2014 18:25:30</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>12/10/2014 17:45:35</publishTime>
+      <publishTime>12/19/2014 18:25:31</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -70,10 +70,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/10/2014 13:15:22</publishTime>
     </File>
     <File Include="ClienteDetalle.html">
-      <publishTime>12/10/2014 17:23:02</publishTime>
+      <publishTime>12/19/2014 17:17:37</publishTime>
     </File>
     <File Include="ClienteGeneral.html">
-      <publishTime>12/10/2014 13:26:56</publishTime>
+      <publishTime>12/19/2014 17:19:01</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>10/30/2014 10:13:20</publishTime>
@@ -105,11 +105,38 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="css/your_style.css">
       <publishTime>04/21/2014 12:22:42</publishTime>
     </File>
+    <File Include="EmpresaRaizApi.aspx">
+      <publishTime>12/15/2014 11:59:01</publishTime>
+    </File>
+    <File Include="EmpresaRaizDetalle.html">
+      <publishTime>12/19/2014 17:07:47</publishTime>
+    </File>
+    <File Include="EmpresaRaizGeneral.html">
+      <publishTime>12/19/2014 17:03:28</publishTime>
+    </File>
+    <File Include="EnvioApi.aspx">
+      <publishTime>12/16/2014 11:15:01</publishTime>
+    </File>
+    <File Include="EnvioDetalle.html">
+      <publishTime>12/19/2014 17:55:10</publishTime>
+    </File>
+    <File Include="EnvioGeneral.html">
+      <publishTime>12/19/2014 17:51:00</publishTime>
+    </File>
     <File Include="EstadoApi.aspx">
       <publishTime>12/04/2014 17:59:33</publishTime>
     </File>
+    <File Include="EstadoGeneral.html">
+      <publishTime>12/19/2014 18:08:28</publishTime>
+    </File>
     <File Include="FaceApi.aspx">
       <publishTime>11/26/2014 11:04:11</publishTime>
+    </File>
+    <File Include="FacturaApi.aspx">
+      <publishTime>12/11/2014 17:49:09</publishTime>
+    </File>
+    <File Include="FacturaGeneral.html">
+      <publishTime>12/19/2014 17:36:45</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>05/23/2014 18:22:34</publishTime>
@@ -156,6 +183,579 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="fonts/glyphicons-halflings-regular.woff">
       <publishTime>10/30/2014 09:49:14</publishTime>
     </File>
+    <File Include="fonts/img/ajax-loader.gif">
+      <publishTime>12/11/2013 21:17:00</publishTime>
+    </File>
+    <File Include="fonts/img/alpha.png">
+      <publishTime>02/27/2014 06:46:00</publishTime>
+    </File>
+    <File Include="fonts/img/ariadna_logo.png">
+      <publishTime>11/20/2014 12:18:59</publishTime>
+    </File>
+    <File Include="fonts/img/ariface/AriFace128.png">
+      <publishTime>11/25/2014 09:06:42</publishTime>
+    </File>
+    <File Include="fonts/img/ariface/AriFace48.png">
+      <publishTime>11/25/2014 10:06:43</publishTime>
+    </File>
+    <File Include="fonts/img/ariface/AriFace48Black.png">
+      <publishTime>11/25/2014 18:31:58</publishTime>
+    </File>
+    <File Include="fonts/img/ariface/logo_ARIADNA.png">
+      <publishTime>12/15/2014 08:33:14</publishTime>
+    </File>
+    <File Include="fonts/img/ariface/logo_ARIADNA_peq.png">
+      <publishTime>12/15/2014 08:33:09</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/1.png">
+      <publishTime>12/23/2013 01:22:50</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/2.png">
+      <publishTime>12/23/2013 01:22:52</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/3.png">
+      <publishTime>12/23/2013 01:22:52</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/4.png">
+      <publishTime>12/23/2013 01:22:54</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/5.png">
+      <publishTime>12/23/2013 01:22:54</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/copyright.txt">
+      <publishTime>12/24/2013 16:37:50</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/female.png">
+      <publishTime>12/23/2013 01:22:56</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/male.png">
+      <publishTime>12/23/2013 01:22:56</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/sunny-big.png">
+      <publishTime>12/23/2013 01:22:58</publishTime>
+    </File>
+    <File Include="fonts/img/avatars/sunny.png">
+      <publishTime>12/23/2013 01:22:56</publishTime>
+    </File>
+    <File Include="fonts/img/blank.gif">
+      <publishTime>05/10/2014 02:02:20</publishTime>
+    </File>
+    <File Include="fonts/img/clear.png">
+      <publishTime>02/17/2014 12:29:12</publishTime>
+    </File>
+    <File Include="fonts/img/demo/64x64.png">
+      <publishTime>02/27/2014 06:48:24</publishTime>
+    </File>
+    <File Include="fonts/img/demo/basic.png">
+      <publishTime>02/27/2014 06:48:24</publishTime>
+    </File>
+    <File Include="fonts/img/demo/chat.png">
+      <publishTime>08/23/2014 16:17:04</publishTime>
+    </File>
+    <File Include="fonts/img/demo/copyright.txt">
+      <publishTime>12/24/2013 16:37:50</publishTime>
+    </File>
+    <File Include="fonts/img/demo/demo-smartbig-alert.png">
+      <publishTime>02/27/2014 06:48:22</publishTime>
+    </File>
+    <File Include="fonts/img/demo/demo-smartmedium-alert.png">
+      <publishTime>02/27/2014 06:48:22</publishTime>
+    </File>
+    <File Include="fonts/img/demo/demo-smartsmall-alert.png">
+      <publishTime>02/27/2014 06:48:20</publishTime>
+    </File>
+    <File Include="fonts/img/demo/hero.png">
+      <publishTime>02/27/2014 06:48:32</publishTime>
+    </File>
+    <File Include="fonts/img/demo/image-placeholder-64x64.png">
+      <publishTime>02/27/2014 06:48:32</publishTime>
+    </File>
+    <File Include="fonts/img/demo/iphoneview.png">
+      <publishTime>02/27/2014 06:48:32</publishTime>
+    </File>
+    <File Include="fonts/img/demo/m1.jpg">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/demo/m2.jpg">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/demo/m3.jpg">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/demo/newsletter.png">
+      <publishTime>02/27/2014 06:48:30</publishTime>
+    </File>
+    <File Include="fonts/img/demo/responseimg.png">
+      <publishTime>02/27/2014 06:48:30</publishTime>
+    </File>
+    <File Include="fonts/img/demo/s1.jpg">
+      <publishTime>11/29/2013 22:53:14</publishTime>
+    </File>
+    <File Include="fonts/img/demo/s2.jpg">
+      <publishTime>11/29/2013 21:50:18</publishTime>
+    </File>
+    <File Include="fonts/img/demo/s3.jpg">
+      <publishTime>11/29/2013 22:41:24</publishTime>
+    </File>
+    <File Include="fonts/img/demo/sa-demo.png">
+      <publishTime>02/27/2014 06:48:28</publishTime>
+    </File>
+    <File Include="fonts/img/demo/sample.jpg">
+      <publishTime>10/22/2013 22:47:08</publishTime>
+    </File>
+    <File Include="fonts/img/demo/sidebar.png">
+      <publishTime>02/27/2014 06:48:28</publishTime>
+    </File>
+    <File Include="fonts/img/demo/sidebarhero.png">
+      <publishTime>02/27/2014 06:48:26</publishTime>
+    </File>
+    <File Include="fonts/img/demo/site-1.jpg">
+      <publishTime>12/20/2013 23:06:06</publishTime>
+    </File>
+    <File Include="fonts/img/demo/site-2.jpg">
+      <publishTime>12/20/2013 23:11:14</publishTime>
+    </File>
+    <File Include="fonts/img/demo/widget-colorpicker.png">
+      <publishTime>02/27/2014 06:48:26</publishTime>
+    </File>
+    <File Include="fonts/img/dropzone/spritemap%402x.png">
+      <publishTime>12/23/2013 01:27:04</publishTime>
+    </File>
+    <File Include="fonts/img/dropzone/spritemap.png">
+      <publishTime>12/23/2013 01:27:02</publishTime>
+    </File>
+    <File Include="fonts/img/favicon/1favicon.ico">
+      <publishTime>10/02/2013 20:51:08</publishTime>
+    </File>
+    <File Include="fonts/img/favicon/favicon.ico">
+      <publishTime>11/25/2014 10:44:49</publishTime>
+    </File>
+    <File Include="fonts/img/favicon/favicon.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/flags/de.png">
+      <publishTime>01/01/2014 11:44:50</publishTime>
+    </File>
+    <File Include="fonts/img/flags/es.png">
+      <publishTime>01/01/2014 11:44:50</publishTime>
+    </File>
+    <File Include="fonts/img/flags/flags.png">
+      <publishTime>05/10/2014 01:22:12</publishTime>
+    </File>
+    <File Include="fonts/img/flags/us.png">
+      <publishTime>01/01/2014 11:44:50</publishTime>
+    </File>
+    <File Include="fonts/img/fondo1.jpg">
+      <publishTime>12/15/2014 11:51:24</publishTime>
+    </File>
+    <File Include="fonts/img/glass.jpg">
+      <publishTime>10/01/2014 19:29:36</publishTime>
+    </File>
+    <File Include="fonts/img/gradient/login.png">
+      <publishTime>12/23/2013 01:27:30</publishTime>
+    </File>
+    <File Include="fonts/img/hue.png">
+      <publishTime>02/27/2014 06:45:58</publishTime>
+    </File>
+    <File Include="fonts/img/invoice/americanexpress.png">
+      <publishTime>03/26/2013 18:33:50</publishTime>
+    </File>
+    <File Include="fonts/img/invoice/license.txt">
+      <publishTime>03/26/2013 18:33:50</publishTime>
+    </File>
+    <File Include="fonts/img/invoice/mastercard.png">
+      <publishTime>03/26/2013 18:33:50</publishTime>
+    </File>
+    <File Include="fonts/img/invoice/paypal.png">
+      <publishTime>03/26/2013 18:33:50</publishTime>
+    </File>
+    <File Include="fonts/img/invoice/visa.png">
+      <publishTime>03/26/2013 18:33:50</publishTime>
+    </File>
+    <File Include="fonts/img/jcrop/Jcrop.gif">
+      <publishTime>05/25/2014 01:09:32</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_flat_0_999999_40x100.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_glass_75_ffffff_1x400.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-bg_inset-soft_95_fef1ec_1x100.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_222222_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_2e83ff_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_428bca_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_454545_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_555555_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_888888_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_999999_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_cd0a0a_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_f0ad4e_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_f6cf3b_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/jqueryui/ui-icons_ffffff_256x240.png">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/loading-animation.gif">
+      <publishTime>11/28/2014 16:38:22</publishTime>
+    </File>
+    <File Include="fonts/img/loading.gif">
+      <publishTime>11/28/2014 16:36:33</publishTime>
+    </File>
+    <File Include="fonts/img/logo-blacknwhite.png">
+      <publishTime>02/27/2014 06:45:52</publishTime>
+    </File>
+    <File Include="fonts/img/logo-blue.png">
+      <publishTime>02/27/2014 06:45:56</publishTime>
+    </File>
+    <File Include="fonts/img/logo-o.png">
+      <publishTime>02/27/2014 06:45:52</publishTime>
+    </File>
+    <File Include="fonts/img/logo-pale.png">
+      <publishTime>02/27/2014 06:45:56</publishTime>
+    </File>
+    <File Include="fonts/img/logo-white.png">
+      <publishTime>02/27/2014 06:45:54</publishTime>
+    </File>
+    <File Include="fonts/img/logo.gif">
+      <publishTime>03/21/2014 08:37:38</publishTime>
+    </File>
+    <File Include="fonts/img/logo.png">
+      <publishTime>05/27/2014 20:38:16</publishTime>
+    </File>
+    <File Include="fonts/img/logo2_alzicoop.png">
+      <publishTime>03/21/2014 08:37:38</publishTime>
+    </File>
+    <File Include="fonts/img/logo_alzicoop.png">
+      <publishTime>03/21/2014 08:37:38</publishTime>
+    </File>
+    <File Include="fonts/img/logo_teletaxi.png">
+      <publishTime>09/18/2014 16:14:02</publishTime>
+    </File>
+    <File Include="fonts/img/mappin-default.png">
+      <publishTime>02/27/2014 06:45:50</publishTime>
+    </File>
+    <File Include="fonts/img/minus.png">
+      <publishTime>06/26/2014 03:20:08</publishTime>
+    </File>
+    <File Include="fonts/img/mybg.png">
+      <publishTime>02/27/2014 06:45:48</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/divider.jpg">
+      <publishTime>11/27/2013 17:16:58</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/graphy-xs.png">
+      <publishTime>02/27/2014 06:51:48</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/graphy.png">
+      <publishTime>02/27/2014 06:51:48</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/license-info.txt">
+      <publishTime>12/24/2013 16:42:16</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/lightpaperfibers.png">
+      <publishTime>02/27/2014 06:51:46</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/movable.png">
+      <publishTime>02/27/2014 06:51:46</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/nistri-xs.png">
+      <publishTime>12/25/2013 03:14:40</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/nistri.png">
+      <publishTime>12/23/2013 01:28:36</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/overlay-pattern.png">
+      <publishTime>02/27/2014 06:51:58</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/paper-xs.png">
+      <publishTime>02/27/2014 06:51:54</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/paper.png">
+      <publishTime>02/27/2014 06:51:56</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/pattern.png">
+      <publishTime>02/27/2014 06:51:54</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/sneaker_mesh_fabric-xs.png">
+      <publishTime>02/27/2014 06:51:52</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/sneaker_mesh_fabric.png">
+      <publishTime>02/27/2014 06:51:52</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/tileable_wood_texture-xs.png">
+      <publishTime>02/27/2014 06:51:50</publishTime>
+    </File>
+    <File Include="fonts/img/pattern/tileable_wood_texture.png">
+      <publishTime>02/27/2014 06:51:50</publishTime>
+    </File>
+    <File Include="fonts/img/plus.png">
+      <publishTime>06/26/2014 03:24:38</publishTime>
+    </File>
+    <File Include="fonts/img/ribbon.png">
+      <publishTime>02/27/2014 06:45:54</publishTime>
+    </File>
+    <File Include="fonts/img/sa-dark.png">
+      <publishTime>05/22/2014 01:03:20</publishTime>
+    </File>
+    <File Include="fonts/img/sa-default.png">
+      <publishTime>02/09/2014 18:48:42</publishTime>
+    </File>
+    <File Include="fonts/img/saturation.png">
+      <publishTime>02/27/2014 06:45:58</publishTime>
+    </File>
+    <File Include="fonts/img/select2-spinner.gif">
+      <publishTime>10/02/2013 20:51:06</publishTime>
+    </File>
+    <File Include="fonts/img/sort_asc.png">
+      <publishTime>02/27/2014 06:45:46</publishTime>
+    </File>
+    <File Include="fonts/img/sort_asc_disabled.png">
+      <publishTime>02/27/2014 06:46:04</publishTime>
+    </File>
+    <File Include="fonts/img/sort_both.png">
+      <publishTime>02/27/2014 06:46:04</publishTime>
+    </File>
+    <File Include="fonts/img/sort_desc.png">
+      <publishTime>02/27/2014 06:46:02</publishTime>
+    </File>
+    <File Include="fonts/img/sort_desc_disabled.png">
+      <publishTime>02/27/2014 06:46:02</publishTime>
+    </File>
+    <File Include="fonts/img/splash/ipad-landscape.png">
+      <publishTime>02/27/2014 06:49:50</publishTime>
+    </File>
+    <File Include="fonts/img/splash/ipad-portrait.png">
+      <publishTime>02/27/2014 06:49:52</publishTime>
+    </File>
+    <File Include="fonts/img/splash/iphone.png">
+      <publishTime>02/27/2014 06:49:54</publishTime>
+    </File>
+    <File Include="fonts/img/splash/sptouch-icon-iphone.png">
+      <publishTime>02/27/2014 06:49:46</publishTime>
+    </File>
+    <File Include="fonts/img/splash/touch-icon-ipad-retina.png">
+      <publishTime>02/27/2014 06:49:48</publishTime>
+    </File>
+    <File Include="fonts/img/splash/touch-icon-ipad.png">
+      <publishTime>02/27/2014 06:49:48</publishTime>
+    </File>
+    <File Include="fonts/img/splash/touch-icon-iphone-retina.png">
+      <publishTime>02/27/2014 06:49:50</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-1.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-10.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-11.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-12.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-13.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-14.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-15.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-16.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-17.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-18.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-19.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-2.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-20-bw.jpg">
+      <publishTime>05/25/2014 21:46:48</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-20.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-21.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-22.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-23.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-24.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-3.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-4.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-5.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-6.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-7.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-8.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-full-9.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-1.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-10.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-11.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-12.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-13.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-14.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-15.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-16.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-17.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-18.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-19.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-2.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-20.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-21.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-22.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-23.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-24.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-3.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-4.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-5.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-6.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-7.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-8.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/superbox/superbox-thumb-9.jpg">
+      <publishTime>11/20/2013 10:40:46</publishTime>
+    </File>
+    <File Include="fonts/img/versions/ajaxversion.png">
+      <publishTime>05/28/2014 18:35:00</publishTime>
+    </File>
+    <File Include="fonts/img/versions/angularversion.png">
+      <publishTime>05/28/2014 18:35:00</publishTime>
+    </File>
+    <File Include="fonts/img/versions/dotnetversion.png">
+      <publishTime>10/14/2014 18:17:32</publishTime>
+    </File>
+    <File Include="fonts/img/versions/htmlversion.png">
+      <publishTime>05/28/2014 18:35:02</publishTime>
+    </File>
+    <File Include="fonts/img/versions/phpversion.png">
+      <publishTime>05/28/2014 18:35:02</publishTime>
+    </File>
+    <File Include="fonts/img/versions/reactversion.png">
+      <publishTime>10/14/2014 18:17:32</publishTime>
+    </File>
+    <File Include="fonts/img/violate.jpg">
+      <publishTime>09/28/2014 20:35:06</publishTime>
+    </File>
+    <File Include="fonts/img/voicecommand/active-btn.gif">
+      <publishTime>06/08/2014 17:48:12</publishTime>
+    </File>
+    <File Include="fonts/img/vt-menu.png">
+      <publishTime>04/29/2014 11:04:12</publishTime>
+    </File>
     <File Include="img/ajax-loader.gif">
       <publishTime>12/11/2013 21:17:00</publishTime>
     </File>
@@ -173,6 +773,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="img/ariface/AriFace48Black.png">
       <publishTime>11/25/2014 18:31:58</publishTime>
+    </File>
+    <File Include="img/ariface/logo_ariadna.png">
+      <publishTime>12/19/2014 16:41:09</publishTime>
     </File>
     <File Include="img/avatars/1.png">
       <publishTime>12/23/2013 01:22:50</publishTime>
@@ -311,6 +914,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="img/flags/us.png">
       <publishTime>01/01/2014 11:44:50</publishTime>
+    </File>
+    <File Include="img/fondo1.jpg">
+      <publishTime>12/15/2014 13:15:43</publishTime>
     </File>
     <File Include="img/glass.jpg">
       <publishTime>10/01/2014 19:29:36</publishTime>
@@ -720,6 +1326,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="img/vt-menu.png">
       <publishTime>04/29/2014 11:04:12</publishTime>
     </File>
+    <File Include="Index.html">
+      <publishTime>12/19/2014 16:57:14</publishTime>
+    </File>
     <File Include="js/app.config.js">
       <publishTime>10/13/2014 11:10:48</publishTime>
     </File>
@@ -727,28 +1336,61 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/16/2014 21:32:36</publishTime>
     </File>
     <File Include="js/ariface/administradorDetalle.js">
-      <publishTime>12/05/2014 13:19:22</publishTime>
+      <publishTime>12/19/2014 13:29:31</publishTime>
     </File>
     <File Include="js/ariface/administradorGeneral.js">
-      <publishTime>12/05/2014 12:58:00</publishTime>
+      <publishTime>12/19/2014 13:29:12</publishTime>
     </File>
     <File Include="js/ariface/ariface.js">
-      <publishTime>12/03/2014 11:23:41</publishTime>
+      <publishTime>12/19/2014 13:21:33</publishTime>
     </File>
     <File Include="js/ariface/blank.js">
       <publishTime>11/26/2014 18:53:09</publishTime>
     </File>
     <File Include="js/ariface/clienteDetalle.js">
-      <publishTime>12/10/2014 17:38:33</publishTime>
+      <publishTime>12/19/2014 17:17:55</publishTime>
     </File>
     <File Include="js/ariface/clienteGeneral.js">
-      <publishTime>12/10/2014 17:25:44</publishTime>
+      <publishTime>12/19/2014 17:18:10</publishTime>
+    </File>
+    <File Include="js/ariface/empresaRaizDetalle.js">
+      <publishTime>12/19/2014 17:09:26</publishTime>
+    </File>
+    <File Include="js/ariface/empresaRaizGeneral.js">
+      <publishTime>12/19/2014 17:09:06</publishTime>
+    </File>
+    <File Include="js/ariface/envioDetalle.js">
+      <publishTime>12/19/2014 17:52:50</publishTime>
+    </File>
+    <File Include="js/ariface/envioGeneral.js">
+      <publishTime>12/19/2014 17:51:22</publishTime>
+    </File>
+    <File Include="js/ariface/estadoGeneral.js">
+      <publishTime>12/19/2014 18:08:51</publishTime>
+    </File>
+    <File Include="js/ariface/facturaGeneral.js">
+      <publishTime>12/19/2014 17:37:01</publishTime>
     </File>
     <File Include="js/ariface/login.js">
-      <publishTime>12/01/2014 17:43:37</publishTime>
+      <publishTime>12/19/2014 12:39:42</publishTime>
+    </File>
+    <File Include="js/ariface/plantillaDetalle.js">
+      <publishTime>12/19/2014 18:03:38</publishTime>
+    </File>
+    <File Include="js/ariface/plantillaGeneral.js">
+      <publishTime>12/19/2014 18:01:36</publishTime>
     </File>
     <File Include="js/ariface/testFace.js">
-      <publishTime>12/10/2014 11:42:44</publishTime>
+      <publishTime>12/19/2014 18:16:30</publishTime>
+    </File>
+    <File Include="js/ariface/unidadGeneral.js">
+      <publishTime>12/19/2014 18:11:55</publishTime>
+    </File>
+    <File Include="js/ariface/usuarioDetalle.js">
+      <publishTime>12/19/2014 17:30:19</publishTime>
+    </File>
+    <File Include="js/ariface/usuarioGeneral.js">
+      <publishTime>12/19/2014 17:26:01</publishTime>
     </File>
     <File Include="js/bootstrap/bootstrap.min.js">
       <publishTime>10/16/2014 21:32:36</publishTime>
@@ -765,8 +1407,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/libs/jquery-ui-1.10.3.min.js">
       <publishTime>10/02/2013 20:51:08</publishTime>
     </File>
+    <File Include="js/moment.js">
+      <publishTime>12/16/2014 11:36:53</publishTime>
+    </File>
+    <File Include="js/moment_locale.js">
+      <publishTime>12/16/2014 11:35:54</publishTime>
+    </File>
     <File Include="js/notification/SmartNotification.min.js">
       <publishTime>09/27/2014 06:25:04</publishTime>
+    </File>
+    <File Include="js/numeral.min.js">
+      <publishTime>10/29/2013 22:10:36</publishTime>
     </File>
     <File Include="js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js">
       <publishTime>09/27/2014 06:25:04</publishTime>
@@ -2095,10 +2746,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/27/2014 06:25:16</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>12/01/2014 18:40:13</publishTime>
+      <publishTime>12/19/2014 16:44:48</publishTime>
+    </File>
+    <File Include="PlantillaApi.aspx">
+      <publishTime>12/17/2014 09:02:54</publishTime>
+    </File>
+    <File Include="PlantillaDetalle.html">
+      <publishTime>12/19/2014 18:03:06</publishTime>
+    </File>
+    <File Include="PlantillaGeneral.html">
+      <publishTime>12/19/2014 18:00:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/10/2014 17:45:41</publishTime>
+      <publishTime>12/19/2014 18:25:34</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
@@ -2110,10 +2770,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/03/2014 18:20:07</publishTime>
     </File>
     <File Include="TestFace.html">
-      <publishTime>12/10/2014 11:53:19</publishTime>
+      <publishTime>12/19/2014 18:17:06</publishTime>
     </File>
     <File Include="UnidadApi.aspx">
       <publishTime>12/05/2014 11:17:03</publishTime>
+    </File>
+    <File Include="UnidadGeneral.html">
+      <publishTime>12/19/2014 18:11:23</publishTime>
+    </File>
+    <File Include="UsuarioApi.aspx">
+      <publishTime>12/18/2014 12:29:13</publishTime>
+    </File>
+    <File Include="UsuarioDetalle.html">
+      <publishTime>12/19/2014 17:32:07</publishTime>
+    </File>
+    <File Include="UsuarioGeneral.html">
+      <publishTime>12/19/2014 17:25:32</publishTime>
     </File>
     <File Include="VersionApi.aspx">
       <publishTime>11/25/2014 18:06:47</publishTime>
@@ -2170,7 +2842,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/10/2014 11:43:19</publishTime>
+      <publishTime>12/19/2014 16:38:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

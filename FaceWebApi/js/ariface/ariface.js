@@ -2,6 +2,23 @@
 // ariface.js:
 // contiene las funciones comunes a todas páginas de la aplicación
 // ------------------------------------------------------------------------------------------------
+
+//-- Se ejecuta al inciio de todas las páginas
+
+function comprobarLogin() {
+    // buscar el cookie
+    try{
+        var user = JSON.parse(getCookie("admin"));
+    }
+    catch(e) {
+        // volver al login
+        window.open('login.html', '_self');
+    }
+    // cargar el nombre en la zona correspondiente
+    $('#userName').text(user.Nombre);
+}
+
+
 function mostrarMensaje(mens) {
     $("#mensaje").text(mens);
 }

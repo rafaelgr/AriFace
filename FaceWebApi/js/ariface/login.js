@@ -67,7 +67,7 @@ function loginForm() {
                     var a = data.d;
                     // guadar el usuario en los cookies
                     setCookie("admin", JSON.stringify(data.d), 1)
-                    window.open('UnidadGeneral.html', '_self');
+                    window.open('Index.html', '_self');
                 }
             },
             error: errorAjax

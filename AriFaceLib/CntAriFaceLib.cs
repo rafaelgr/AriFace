@@ -31,6 +31,7 @@ namespace AriFaceLib
             MiniUnidad2 mu = new MiniUnidad2();
             mu.Codigo = rdr.GetInt32("codigo");
             mu.Nombre = rdr.GetString("nombre");
+            mu.Codigo2 = rdr.GetInt32("codigo2");
             return mu;
         }
 
@@ -509,7 +510,7 @@ namespace AriFaceLib
         {
             IList<MiniUnidad2> lmu = new List<MiniUnidad2>();
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = "SELECT DISTINCT i_d AS codigo, nombre AS nombre FROM cliente WHERE cif ='{0}' ORDER BY nombre";
+            string sql = "SELECT DISTINCT i_d AS codigo, nombre AS nombre, codclien_ariges as codigo2 FROM cliente WHERE cif ='{0}' ORDER BY nombre";
             sql = String.Format(sql, nifCodigo);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -532,12 +533,18 @@ namespace AriFaceLib
         /// <param name="clienteId"></param>
         /// <param name="conn"></param>
         /// <returns>MiniUnidad: un objeto con código y nombre sólo</returns>
-        public static IList<MiniUnidad2> GetDepOfCli(int codClienAriges, MySqlConnection conn)
+        public static IList<MiniUnidad2> GetDepOfCli(int clienteId, MySqlConnection conn)
         {
             IList<MiniUnidad2> lmu = new List<MiniUnidad2>();
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = "SELECT DISTINCT departamento_id AS codigo, nombre AS nombre FROM departamento WHERE codclien ='{0}' ORDER BY nombre";
-            sql = String.Format(sql, codClienAriges);
+            string sql = @"SELECT 
+                    d.departamento_id AS codigo,
+                    d.nombre AS nombre,
+                    0 AS codigo2 
+                    FROM departamento AS d
+                    LEFT JOIN cliente AS c ON c.codclien_ariges = d.codclien
+                    WHERE c.i_d={0}";
+            sql = String.Format(sql, clienteId);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)

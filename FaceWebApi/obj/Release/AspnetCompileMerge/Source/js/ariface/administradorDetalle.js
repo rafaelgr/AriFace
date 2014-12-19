@@ -3,6 +3,7 @@ administradorDetalle.js
 Funciones js par la página AdministradorDetalle.html
 ---------------------------------------------------------------------------*/
 function initForm() {
+    comprobarLogin();
     // de smart admin
     pageSetUp();
     // 

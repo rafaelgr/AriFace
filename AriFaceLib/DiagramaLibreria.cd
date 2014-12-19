@@ -105,10 +105,10 @@
       <FileName>Plantilla.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.MiniUnidad2">
-    <Position X="4" Y="3" Width="1.5" />
+  <Class Name="AriFaceLib.MiniUnidad2" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAQAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAABAAAAAQAAAACABAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MiniUnidad2.cs</FileName>
     </TypeIdentifier>
   </Class>

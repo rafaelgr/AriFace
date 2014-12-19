@@ -2,7 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title> AriFace (Gestión de clientes) </title>
+        <title> AriFace (Clientes) </title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -26,7 +26,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
         <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-        <link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+        <!--<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">-->
 
         <!-- #FAVICONS -->
         <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
@@ -103,13 +103,13 @@
         <header id="header">
             <!-- #PROJECTS: projects dropdown -->
             <div>
-                <span id="logo"> <img src="img/ariface/AriFace48Black.png" alt="AriFace" style="height:30px; width:30px;"> </span>
+                <span id="logo"> <img src="img/ariface/logo_ariadna.png" alt="AriFace" style="height:30px;"> </span>
             </div>
             <div>
 
             </div>
             <div>
-                <h1>AriFace</h1>
+                <h1>AriFace (Gestión de facturas electrónicas)</h1> 
             </div>
             <!-- end projects dropdown -->
 
@@ -120,7 +120,7 @@
                 <!-- collapse menu button -->
                 <div id="hide-menu" class="btn-header pull-right">
                     <span>
-                        <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu">
+                        <a href="javascript:void(0);" data-action="toggleMenu" title="Menu">
                             <i class="fa fa-reorder"></i>
                         </a>
                     </span>
@@ -130,7 +130,7 @@
                 <!-- logout button -->
                 <div id="logout" class="btn-header transparent pull-right">
                     <span>
-                        <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+                        <a href="login.html" title="Salir">
                             <i class="fa fa-sign-out"></i>
                         </a>
                     </span>
@@ -140,7 +140,7 @@
                 <!-- fullscreen button -->
                 <div id="fullscreen" class="btn-header transparent pull-right">
                     <span>
-                        <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen">
+                        <a href="javascript:void(0);" data-action="launchFullscreen" title="Pantalla completa">
                             <i class="fa fa-arrows-alt"></i>
                         </a>
                     </span>
@@ -157,7 +157,14 @@
         <!-- Left panel : Navigation area -->
         <!-- Note: This width of the aside area can be adjusted through LESS variables -->
         <aside id="left-panel">
+            <div class="login-info">
+                <span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
+                    <a href="javascript:void(0);" id="show-shortcut">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span id="userName"></span>
+                    </a> </span>
+            </div>
             <!-- NAVIGATION : This navigation is also responsive-->
             <nav>
                 <ul>
@@ -168,24 +175,48 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-lg fa-fw fa-university"></i> <span class="menu-item-parent">Administración</span>
+                            <i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">Administración</span>
                         </a>
                         <ul>
                             <li>
-                                <a href="#">Administradores</a>
+                                <a href="AdministradorGeneral.html"><i class="fa fa-users"></i>Administradores</a>
                             </li>
                             <li>
-                                <a href="#">Clientes</a>
+                                <a href="EmpresaRaizGeneral.html"><i class="fa fa-cubes"></i>Empresas raiz</a>
                             </li>
                             <li>
-                                <a href="#">Usuarios</a>
+                                <a href="ClienteGeneral.html"><i class="fa fa-cube"></i>Clientes</a>
                             </li>
                             <li>
-                                <a href="#">Facturas</a>
+                                <a href="UsuarioGeneral.html"><i class="fa fa-user"></i>Usuarios</a>
+                            </li>
+                            <li>
+                                <a href="FacturaGeneral.html"><i class="fa fa-copy"></i>Facturas</a>
+                            </li>
+                            <li>
+                                <a href="EnvioGeneral.html"><i class="fa fa-envelope"></i>Envios</a>
+                            </li>
+                            <li>
+                                <a href="PlantillaGeneral.html"><i class="fa fa-paste"></i>Plantillas</a>
                             </li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-fw fa-bank"></i> <span class="menu-item-parent">FACE</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="EstadoGeneral.html"><i class="fa fa-folder-o"></i>Estados</a>
+                            </li>
+                            <li>
+                                <a href="UnidadGeneral.html"><i class="fa fa-folder-o"></i>Unidades</a>
+                            </li>
+                            <li>
+                                <a href="TestFace.html"><i class="fa fa-bug"></i>Utilidades</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
@@ -202,7 +233,7 @@
                 <ol class="breadcrumb">
                     <li>Inicio</li>
                     <li>Administracion</li>
-                    <li>Administradores</li>
+                    <li>Clientes</li>
                 </ol>
                 <!-- end breadcrumb -->
 
@@ -231,8 +262,8 @@
                         <h1 class="page-title txt-color-blueDark">
 
                             <!-- PAGE HEADER -->
-                            <i class="fa-fw fa fa-home"></i>
-                            Administrador <span> Mantenimiento de clientes </span>
+                            <i class="fa-fw fa fa-cube"></i>
+                            Clientes
                         </h1>
                     </div>
                     <!-- end col -->
@@ -325,9 +356,6 @@
                                             </fieldset>
                                             <fieldset>
                                                 <div class="pull-right">
-                                                    <button id="btnAlta" title="Crear nuevo registro" class="btn btn-success btn-circle btn-lg">
-                                                        <i class="fa fa-lg fa-plus"></i>
-                                                    </button>
                                                     <button id="btnBuscar" title="Buscar" class="btn btn-primary btn-circle btn-lg">
                                                         <i class="fa fa-lg fa-search"></i>
                                                     </button>
@@ -469,7 +497,7 @@
         <![endif]-->
 
         <!-- Demo purpose only -->
-        <script src="js/demo.min.js"></script>
+        <!--<script src="js/demo.min.js"></script>-->
 
         <!-- MAIN APP JS FILE -->
         <script src="js/app.min.js"></script>

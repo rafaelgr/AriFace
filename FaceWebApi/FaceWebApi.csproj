@@ -81,7 +81,11 @@
     <Content Include="ClienteApi.aspx" />
     <Content Include="ClienteGeneral.html" />
     <Content Include="ClienteDetalle.html" />
+    <Content Include="img\ariface\logo_ariadna.png" />
+    <Content Include="img\fondo1.jpg" />
+    <Content Include="Index.html" />
     <Content Include="js\ariface\usuarioDetalle.js" />
+    <Content Include="js\numeral.min.js" />
     <Content Include="UsuarioDetalle.html" />
     <Content Include="js\ariface\usuarioGeneral.js" />
     <Content Include="UsuarioGeneral.html" />

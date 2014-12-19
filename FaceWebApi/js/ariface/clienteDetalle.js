@@ -10,6 +10,7 @@ var miniUnidad = function (codigo, nombre) {
 }
 
 function initForm() {
+    comprobarLogin();
     // de smart admin
     pageSetUp();
     // 

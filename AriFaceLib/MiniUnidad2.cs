@@ -21,5 +21,13 @@ namespace AriFaceLib
             get { return nombre; }
             set { nombre = value; }
         }
+
+        private int codigo2;
+
+        public int Codigo2
+        {
+            get { return codigo2; }
+            set { codigo2 = value; }
+        }
     }
 }

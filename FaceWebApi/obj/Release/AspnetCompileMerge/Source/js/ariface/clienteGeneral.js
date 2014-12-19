@@ -18,6 +18,7 @@ var breakpointDefinition = {
 
 
 function initForm() {
+    comprobarLogin();
     // de smart admin
     pageSetUp();
     //
@@ -105,7 +106,7 @@ function initTablaClientes() {
             render: function (data, type, row) {
                 var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='deleteCliente(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='editCliente(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
+                var html = "<div class='pull-right'>" + bt2 + "</div>";
                 return html;
             }
         }]
@@ -136,7 +137,7 @@ function loadTablaClientes(data) {
     var dt = $('#dt_cliente').dataTable();
     if (data !== null && data.length === 0) {
         mostrarMensajeSmart('No se han encontrado registros');
-        $("#tbAdministrador").hide();
+        $("#tbCliente").hide();
     } else {
         dt.fnClearTable();
         dt.fnAddData(data);

@@ -63,9 +63,12 @@ function loginForm() {
                 // Regresa el mensaje
                 if (!data.d) {
                     mostrarMensaje('Login y/o password incorrectos');
+                } else {
+                    var a = data.d;
+                    // guadar el usuario en los cookies
+                    setCookie("admin", JSON.stringify(data.d), 1)
+                    window.open('Index.html', '_self');
                 }
-                var a = data.d;
-                window.open('blank_.html','_self');
             },
             error: errorAjax
         });

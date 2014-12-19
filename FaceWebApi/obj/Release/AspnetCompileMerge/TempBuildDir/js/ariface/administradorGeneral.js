@@ -18,6 +18,7 @@ var breakpointDefinition = {
 
 
 function initForm() {
+    comprobarLogin();
     // de smart admin
     pageSetUp();
     //
