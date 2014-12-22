@@ -217,6 +217,23 @@ function loadTablaFacturas(data) {
 }
 
 function verPdf(id) {
+    var user = JSON.parse(getCookie("admin"));
+    var data = {
+        facturaId: id,
+        administradorId: user.AdministradorId
+    };
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/VerPdf",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (data, status) {
+            var url = data.d;
+            window.open(url, '_blank');
+        },
+        error: errorAjax
+    });
 }
 
 function eliminarDeEnvio(id) {

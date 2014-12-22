@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Mail;
 using System.Configuration;
 using System.Net;
+using System.IO;
 
 
 namespace AriFaceLib
@@ -1084,11 +1085,11 @@ namespace AriFaceLib
                 f.`base_total` AS BASE_IVA,
                 f.`id_cliente` AS CLIENTE_ID,
                 c.nombre AS CLIENTE_NOMBRE,
-                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
                 f.cuota_total AS CUOTA_IVA,
                 f.es_fra_cliente AS ES_DE_CLIENTE,
                 f.id_factura AS FACTURA_ID,
-                f.strFecha AS FECHA,
+                f.fecha AS FECHA,
                 f.letra_id_fra_prove AS LETRA_PROVEEDOR,
                 f.num_factura AS NUMFACTURA,
                 f.imp_retencion AS RETENCION,
@@ -1169,11 +1170,11 @@ namespace AriFaceLib
                 f.`base_total` AS BASE_IVA,
                 f.`id_cliente` AS CLIENTE_ID,
                 c.nombre AS CLIENTE_NOMBRE,
-                COALESCE(f.v_codtipom1,"") AS CODTIPOM,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
                 f.cuota_total AS CUOTA_IVA,
                 f.es_fra_cliente AS ES_DE_CLIENTE,
                 f.id_factura AS FACTURA_ID,
-                f.strFecha AS FECHA,
+                f.fecha AS FECHA,
                 f.letra_id_fra_prove AS LETRA_PROVEEDOR,
                 f.num_factura AS NUMFACTURA,
                 f.imp_retencion AS RETENCION,
@@ -1217,7 +1218,7 @@ namespace AriFaceLib
                 f.cuota_total AS CUOTA_IVA,
                 f.es_fra_cliente AS ES_DE_CLIENTE,
                 f.id_factura AS FACTURA_ID,
-                f.Fecha AS FECHA,
+                f.fecha AS FECHA,
                 f.letra_id_fra_prove AS LETRA_PROVEEDOR,
                 f.num_factura AS NUMFACTURA,
                 f.imp_retencion AS RETENCION,
@@ -1789,6 +1790,94 @@ namespace AriFaceLib
             correo.IsBodyHtml = true;
             correo.Priority = System.Net.Mail.MailPriority.Normal;
             smtp.Send(correo);
+        }
+        #endregion
+
+        #region Manejo de directorios, copias y descargas
+        public static void PrepararDirectorio(int administradorId, string localPath)
+        {
+            string dirPersonal = localPath + String.Format("\\ADM{0:000000}", administradorId);
+            if (!Directory.Exists(dirPersonal))
+            {
+                Directory.CreateDirectory(dirPersonal);
+            }
+            else
+            {
+                Directory.Delete(dirPersonal, true);
+            }
+        }
+
+        public static string ficheroPdfDownloadAdm(int administradorId, int facturaId, string localPath, MySqlConnection conn)
+        {
+            string dwn = "";
+            // Obtener la factura
+            Factura f = GetFactura(facturaId, conn);
+            if (f == null) return dwn;
+            Cliente c = GetCliente(f.ClienteId, conn);
+            if (c == null) return dwn;
+            // directorio local
+            string dirPersonal = localPath + String.Format("\\ADM{0:000000}", administradorId);
+            string repositorio = GetRepositorio(conn);
+            string nomFichero = NombreFicheroFactura(f, c);
+            nomFichero += ".pdf"; // se trata de un pdf
+            // copiamos al directorio personal de ese administrador
+            string origen = repositorio + "\\" + nomFichero;
+            string destino = String.Format(localPath + "\\ADM{0:000000}\\{1}", administradorId, nomFichero);
+            File.Copy(origen, destino, true);
+            dwn = String.Format("/ADM{0:000000}/{1}", administradorId, nomFichero);
+            return dwn;
+        }
+        #endregion 
+
+        #region Estadisticas
+        public static Estadistica GetEstadistica(MySqlConnection conn)
+        {
+            Estadistica e = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT n1.valor AS PENDIENTES, n2.valor AS APARCADAS, n3.valor AS ENVIADAS
+                FROM (SELECT COUNT(*) AS valor FROM factura WHERE nueva = 1) AS n1, 
+                (SELECT COUNT(*) AS valor FROM factura WHERE nueva = 0) AS n2,
+                (SELECT COUNT(*) AS valor FROM factura WHERE nueva = 2) AS n3;";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                e = new Estadistica()
+                {
+                    NumEnviadas = rdr.GetInt32("ENVIADAS"),
+                    NumAparcadas = rdr.GetInt32("APARCADAS"),
+                    NumPendientes = rdr.GetInt32("PENDIENTES")
+                };
+            }
+            rdr.Close();
+            return e;
+        }
+
+        public static IList<EstFacMes> GetNumFacMes(MySqlConnection conn)
+        {
+            IList<EstFacMes> le = new List<EstFacMes>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT COUNT(*) AS NUMERO, MONTH(fecha) AS MES, YEAR(fecha) AS ANYO
+                FROM factura
+                GROUP BY 2,3;";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    EstFacMes e = new EstFacMes()
+                    {
+                        Numero = rdr.GetInt32("NUMERO"),
+                        Mes = rdr.GetInt32("MES"),
+                        Anyo = rdr.GetInt32("ANYO")
+                    };
+                    le.Add(e);
+                }
+            }
+            rdr.Close();
+            return le;
         }
         #endregion
     }

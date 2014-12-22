@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>12/22/2014 12:43:33</publishTime>
+      <publishTime>12/22/2014 17:43:05</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>12/22/2014 12:43:33</publishTime>
+      <publishTime>12/22/2014 17:43:06</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>12/22/2014 12:43:34</publishTime>
+      <publishTime>12/22/2014 17:43:08</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -1360,7 +1360,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 17:09:06</publishTime>
     </File>
     <File Include="js/ariface/envioDetalle.js">
-      <publishTime>12/19/2014 17:52:50</publishTime>
+      <publishTime>12/22/2014 17:37:51</publishTime>
     </File>
     <File Include="js/ariface/envioGeneral.js">
       <publishTime>12/19/2014 17:51:22</publishTime>
@@ -1369,10 +1369,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:08:51</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>12/19/2014 17:37:01</publishTime>
+      <publishTime>12/22/2014 17:33:42</publishTime>
     </File>
     <File Include="js/ariface/login.js">
-      <publishTime>12/22/2014 12:43:00</publishTime>
+      <publishTime>12/22/2014 12:44:33</publishTime>
     </File>
     <File Include="js/ariface/plantillaDetalle.js">
       <publishTime>12/19/2014 18:03:38</publishTime>
@@ -2758,7 +2758,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:00:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/22/2014 12:43:38</publishTime>
+      <publishTime>12/22/2014 17:43:21</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
@@ -2842,7 +2842,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/22/2014 10:41:13</publishTime>
+      <publishTime>12/22/2014 17:43:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -48,7 +48,9 @@
     <Compile Include="CntAriFaceLib.cs" />
     <Compile Include="EmpresaRaiz.cs" />
     <Compile Include="Envio.cs" />
+    <Compile Include="Estadistica.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="EstFacMes.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="MiniUnidad.cs" />
     <Compile Include="MiniUnidad2.cs" />

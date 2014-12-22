@@ -9,6 +9,7 @@ using System.Web.Services;
 using System.Web.Script.Services;
 using AriFaceLib;
 using MySql.Data.MySqlClient;
+using System.Web.Hosting;
 
 namespace FaceWebApi
 {
@@ -79,6 +80,23 @@ namespace FaceWebApi
                 conn.Close();
             }
             return f;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string VerPdf(int facturaId, int administradorId)
+        {
+            string fichero = "";
+            string localPath = HostingEnvironment.ApplicationPhysicalPath;
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                fichero = CntAriFaceLib.ficheroPdfDownloadAdm(administradorId,facturaId,localPath,conn);
+                conn.Close();
+            }
+            return fichero;
         }
 
         #endregion

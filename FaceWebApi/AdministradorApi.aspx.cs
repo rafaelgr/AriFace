@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
@@ -30,6 +31,11 @@ namespace FaceWebApi
             {
                 conn.Open();
                 a = CntAriFaceLib.GetAdministradorLogin(login, password, conn);
+                if (a != null)
+                {
+                    string localPath = HostingEnvironment.ApplicationPhysicalPath;
+                    CntAriFaceLib.PrepararDirectorio(a.AdministradorId, localPath);
+                }
                 conn.Close();
             }
             return a;
