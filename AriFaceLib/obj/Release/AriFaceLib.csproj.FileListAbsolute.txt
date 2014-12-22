@@ -3,3 +3,4 @@ C:\Proyectos\FaceTest\AriFaceLib\bin\Release\AriFaceLib.pdb
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.csprojResolveAssemblyReference.cache
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.dll
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.pdb
+C:\Proyectos\FaceTest\AriFaceLib\bin\Release\MySql.Data.dll

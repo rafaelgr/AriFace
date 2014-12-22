@@ -70,7 +70,11 @@ function loginForm() {
                     window.open('Index.html', '_self');
                 }
             },
-            error: errorAjax
+            error: function (xhr, textStatus, errorThrwon) {
+                var m = xhr.responseText;
+                if (!m) m = "Error general posiblemente falla la conexión";
+                mostrarMensaje(m);
+            }
         });
     };
     return mf;
