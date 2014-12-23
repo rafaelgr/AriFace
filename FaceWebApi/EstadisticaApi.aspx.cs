@@ -34,9 +34,10 @@ namespace FaceWebApi
             return e;
         }
 
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<EstFacMes> GetNumFacMes()
+        public static IList<EstFacMes> GetNumFacMes(int anyo)
         {
             IList<EstFacMes> le = new List<EstFacMes>();
             // leer la cadena de conexión de los parámetros
@@ -44,7 +45,7 @@ namespace FaceWebApi
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                le = CntAriFaceLib.GetNumFacMes(conn);
+                le = CntAriFaceLib.GetNumFacMes(anyo, conn);
                 conn.Close();
             }
             return le;

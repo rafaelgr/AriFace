@@ -20,6 +20,7 @@
 
         <!-- SmartAdmin RTL Support -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
         <!-- We recommend you use "your_style.css" to override SmartAdmin
         specific styles this will also ensure you retrain your customization with each SmartAdmin update.
@@ -179,25 +180,39 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="AdministradorGeneral.html"><i class="fa fa-users"></i>Administradores</a>
+                                <a href="AdministradorGeneral.html">
+                                    <i class="fa fa-users"></i>Administradores
+                                </a>
                             </li>
                             <li>
-                                <a href="EmpresaRaizGeneral.html"><i class="fa fa-cubes"></i>Empresas raiz</a>
+                                <a href="EmpresaRaizGeneral.html">
+                                    <i class="fa fa-cubes"></i>Empresas raiz
+                                </a>
                             </li>
                             <li>
-                                <a href="ClienteGeneral.html"><i class="fa fa-cube"></i>Clientes</a>
+                                <a href="ClienteGeneral.html">
+                                    <i class="fa fa-cube"></i>Clientes
+                                </a>
                             </li>
                             <li>
-                                <a href="UsuarioGeneral.html"><i class="fa fa-user"></i>Usuarios</a>
+                                <a href="UsuarioGeneral.html">
+                                    <i class="fa fa-user"></i>Usuarios
+                                </a>
                             </li>
                             <li>
-                                <a href="FacturaGeneral.html"><i class="fa fa-copy"></i>Facturas</a>
+                                <a href="FacturaGeneral.html">
+                                    <i class="fa fa-copy"></i>Facturas
+                                </a>
                             </li>
                             <li>
-                                <a href="EnvioGeneral.html"><i class="fa fa-envelope"></i>Envios</a>
+                                <a href="EnvioGeneral.html">
+                                    <i class="fa fa-envelope"></i>Envios
+                                </a>
                             </li>
                             <li>
-                                <a href="PlantillaGeneral.html"><i class="fa fa-paste"></i>Plantillas</a>
+                                <a href="PlantillaGeneral.html">
+                                    <i class="fa fa-paste"></i>Plantillas
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -207,13 +222,19 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="EstadoGeneral.html"><i class="fa fa-folder-o"></i>Estados</a>
+                                <a href="EstadoGeneral.html">
+                                    <i class="fa fa-folder-o"></i>Estados
+                                </a>
                             </li>
                             <li>
-                                <a href="UnidadGeneral.html"><i class="fa fa-folder-o"></i>Unidades</a>
+                                <a href="UnidadGeneral.html">
+                                    <i class="fa fa-folder-o"></i>Unidades
+                                </a>
                             </li>
                             <li>
-                                <a href="TestFace.html"><i class="fa fa-bug"></i>Utilidades</a>
+                                <a href="TestFace.html">
+                                    <i class="fa fa-bug"></i>Utilidades
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -271,12 +292,21 @@
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
                         <!-- sparks -->
                         <ul id="sparks">
-                            <!--							<li class="sparks-info">
-                            <h5> Facturas pendientes <span class="txt-color-blue">3520</span></h5>
+                            <li class="sparks-info">
+                                <h5>
+                                    Facturas pendientes <span id="facP" class="txt-color-blue">--</span>
+                                </h5>
                             </li>
                             <li class="sparks-info">
-                            <h5> Clientes <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-                            </li>-->
+                                <h5>
+                                    Facturas aparcadas <span id="facA" class="txt-color-orange">--</span>
+                                </h5>
+                            </li>
+                            <li class="sparks-info">
+                                <h5>
+                                    Facturas enviadas <span id="facE" class="txt-color-green">--</span>
+                                </h5>
+                            </li>
                         </ul>
                         <!-- end sparks -->
                     </div>
@@ -317,7 +347,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-                                    <h2>Panel control</h2>
+                                    <h2>Facturas emitidas por mes</h2>
 
                                 </header>
 
@@ -333,7 +363,7 @@
 
                                     <!-- widget content -->
                                     <div class="widget-body">
-
+                                        <div id="graficoFac"></div>
                                     </div>
                                     <!-- end widget content -->
 
@@ -442,6 +472,8 @@
 
         <!-- Demo purpose only -->
         <!--<script src="js/demo.min.js"></script>-->
+        <!-- Numeral para manipular números -->
+        <script src="js/numeral.min.js"></script>
 
         <!-- MAIN APP JS FILE -->
         <script src="js/app.min.js"></script>
@@ -454,14 +486,18 @@
         <script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
         <script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
         <script src="js/ariface/ariface.js"></script>
+        <script src="js/ariface/index.js"></script>
 
         <script type="text/javascript">
             (function ($) {
                 $(document).ready(function () {
-                    comprobarLogin();
+                   initForm();
                 });
             })(jQuery);
         </script>

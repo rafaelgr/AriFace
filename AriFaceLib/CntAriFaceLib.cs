@@ -1854,13 +1854,15 @@ namespace AriFaceLib
             return e;
         }
 
-        public static IList<EstFacMes> GetNumFacMes(MySqlConnection conn)
+        public static IList<EstFacMes> GetNumFacMes(int anyo, MySqlConnection conn)
         {
             IList<EstFacMes> le = new List<EstFacMes>();
             MySqlCommand cmd = conn.CreateCommand();
             string sql = @"SELECT COUNT(*) AS NUMERO, MONTH(fecha) AS MES, YEAR(fecha) AS ANYO
                 FROM factura
+                WHERE YEAR(fecha) = {0}
                 GROUP BY 2,3;";
+            sql = String.Format(sql, anyo);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
