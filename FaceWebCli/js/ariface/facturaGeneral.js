@@ -10,6 +10,7 @@ var responsiveHelper_datatable_tabletools = undefined;
 
 var dataFacturas;
 var facturaId;
+var usuario;
 
 var breakpointDefinition = {
     tablet: 1024,
@@ -17,8 +18,8 @@ var breakpointDefinition = {
 };
 
 
-function initForm() {
-    comprobarLogin();
+function initForm(proveedor) {
+    usuario = comprobarLogin();
     // de smart admin
     pageSetUp();
 
@@ -32,48 +33,37 @@ function initForm() {
     numeral.language('es');
 
     //
-    $('#btnBuscar').click(buscarFactura());
-    $('#btnAlta').click(crearFactura());
-    $('#frmBuscar').submit(function () {
-        return false
-    });
-    $('#chkEnviadas').change(function () {
-        var fn;
-        if (this.checked) {
-            fn = getFacturas();
-        } else {
-            fn = getFacturasNoEnviadas();
-        }
-        fn();
-    });
     //
     initTablaFacturas();
-    // comprobamos parámetros
-    facturaId = gup('facturaId');
-    if (facturaId !== '') {
-        // cargar la tabla con un único valor que es el que corresponde.
-        var data = {
-            id: facturaId
-        }
-        // hay que buscar ese elemento en concreto
-        $.ajax({
-            type: "POST",
-            url: "FacturaApi.aspx/GetFacturaById",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            success: function (data, status) {
-                // hay que mostrarlo en la zona de datos
-                var data2 = [data.d];
-                loadTablaFacturas(data2);
-            },
-            error: errorAjax
-        });
-    } else {
-        // mostramos sólo las facturas no enviadas.
-        var fn = getFacturasNoEnviadas();
-        fn();
+    // cargamos las facturas que puede ver ese usuario
+    var data = {
+        usuarioId: usuario.UsuarioId
     }
+    // hay que buscar ese elemento en concreto
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/GetFacturasUsuario",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (data, status) {
+            var v = [];
+            // aqui comprobamos si quiere de clientes o de proveedores
+            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var f = data.d[i];
+                if (!proveedor) {
+                    // solo cliente
+                    if (f.EsDeCliente) v.push(f);
+                } else {
+                    // solo proveedor
+                    if (!f.EsDeCliente) v.push(f);
+                }
+            }
+            loadTablaFacturas(v);
+        },
+        error: errorAjax
+    });
 }
 
 function initTablaFacturas() {
@@ -147,7 +137,7 @@ function initTablaFacturas() {
                 if (row.Estado == 0) {
                     bt2 = "<button class='btn btn-circle btn-warning' onclick='agregarAlEnvio(" + data + ");' title='Agregar al envío'> <i class='fa fa-undo fa-fw'></i> </button>";
                 } 
-                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
+                var html = "<div class='pull-right'>" + bt1 + "</div>";
                 return html;
             }
         }]
@@ -385,10 +375,10 @@ function agregarAlEnvio(id) {
 }
 
 function verPdf(id) {
-    var user = JSON.parse(getCookie("admin"));
+    var user = JSON.parse(getCookie("usu"));
     var data = {
         facturaId: id,
-        administradorId: user.AdministradorId
+        usuarioId: user.UsuarioId
     };
     $.ajax({
         type: "POST",

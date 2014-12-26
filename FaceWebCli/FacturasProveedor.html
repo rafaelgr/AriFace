@@ -242,8 +242,8 @@
                         <h1 class="page-title txt-color-blueDark">
 
                             <!-- PAGE HEADER -->
-                            <i class="fa-fw fa fa-home"></i>
-                            Inicio
+                            <i class="fa-fw fa fa-folder-o"></i>
+                            Facturas como proveedor.
                         </h1>
                     </div>
                     <!-- end col -->
@@ -269,41 +269,102 @@
 
                     <!-- row -->
                     <div class="row">
-                        <div class="col col-md-2">
 
-                        </div>
-                        <div class="col col-md-8">
-                            <div class="well">
-                                <h1 class="semi-bold">
-                                    Bienvenido a <span class="titulo_app"></span>
-                                </h1>
-                                <p>
-                                    En este sitio web podrá consultar las facturas emitidas por nuestra empresa tanto como cliente como proveedor, así como modificar algunos de sus datos como usuarios.
-                                    Puede acceder a cada uno de los apartados haciendo clic en el los elementos del menú superior
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-user"></i> Datos de usuario:
-                                    </h2> Acceda
-                                    <a href="DatosUsuario.html">aquí</a> para modificar su correo electrónico o contraseña , en el momento que desee.
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-folder"></i> Cliente:
-                                    </h2> Acceda
-                                    <a href="FacturasCliente.html">aquí</a> para consultar o descargar las facturas emitidas en el sistema como cliente.
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-folder-o"></i> Proveedor:
-                                    </h2> Acceda
-                                    <a href="FacturasProveedor.html">aquí</a> para consultar o descargar las facturas emitidas en el sistema como proveedor.
-                                </p>
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>Mantenimiento de facturas </h2>
+
+                                </header>
+
+                                <!-- widget div-->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <form id="frmBuscar" class="smart-form">
+                                            <header>
+                                                Facturas en el sistema
+                                            </header>
+                                        </form>
+                                        <div id="tbFactura" style="display:none;">
+                                            <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand">
+                                                            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Cliente
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Sistema
+                                                        </th>
+                                                         <th data-hide="phone">
+                                                            Departamento
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Serie
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Numero
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:center">
+                                                            Fecha
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:right">
+                                                            Total
+                                                        </th>
+                                                        <th data-hide="phone" style="text-align:center">
+                                                            Estado
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Registro (FACE)
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Motivo (FACE)
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- end widget content -->
+
+                                </div>
+                                <!-- end widget div -->
+
                             </div>
-                        </div>
-                        <div class="col col-md-2">
+                            <!-- end widget -->
 
-                        </div>
+                        </article>
+                        <!-- WIDGET END -->
+
                     </div>
 
                     <!-- end row -->
@@ -400,8 +461,7 @@
 
         <!-- Demo purpose only -->
         <!--<script src="js/demo.min.js"></script>-->
-        <!-- Numeral para manipular números -->
-        <script src="js/numeral.min.js"></script>
+
 
         <!-- MAIN APP JS FILE -->
         <script src="js/app.min.js"></script>
@@ -419,13 +479,25 @@
 
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
+        <!-- Moment (para manipulación de fechas -->
+        <script src="js/moment.js"></script>
+        <!-- Numeral para manipular números -->
+        <script src="js/numeral.min.js"></script>
+
         <script src="js/ariface/ariface.js"></script>
-        <script src="js/ariface/index.js"></script>
+        <script src="js/ariface/facturaGeneral.js"></script>
+        
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.colVis.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
         <script type="text/javascript">
             (function ($) {
                 $(document).ready(function () {
-                    initForm();
+                    initForm(true);
                 });
             })(jQuery);
         </script>

@@ -69,6 +69,7 @@
     <Content Include="ajax\notify\notifications.html" />
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
+    <Content Include="FacturasProveedor.html" />
     <Content Include="FacturaApi.aspx" />
     <Content Include="FacturasCliente.html" />
     <Content Include="DatosUsuario.html" />

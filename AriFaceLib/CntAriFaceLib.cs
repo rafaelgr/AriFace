@@ -1162,6 +1162,51 @@ namespace AriFaceLib
             return lf;
         }
 
+        public static IList<Factura> GetFacturasEmpresaRaiz(string nif, MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE c.cif = '{0}'";
+            sql = String.Format(sql, nif);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            rdr.Close();
+            return lf;
+        }
+
         public static IList<Factura> GetFacturasCliente(int idCliente, MySqlConnection conn)
         {
             IList<Factura> lf = new List<Factura>();
@@ -1185,6 +1230,7 @@ namespace AriFaceLib
                 f.nueva AS NUEVA,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
@@ -1192,6 +1238,51 @@ namespace AriFaceLib
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                 WHERE f.id_cliente = {0}";
             sql = String.Format(sql,idCliente);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            rdr.Close();
+            return lf;
+        }
+
+        public static IList<Factura> GetFacturasDepartamento(int idDepartamento, MySqlConnection conn)
+        {
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE d.departamento_id = {0}";
+            sql = String.Format(sql, idDepartamento);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -1808,6 +1899,19 @@ namespace AriFaceLib
             }
         }
 
+        public static void PrepararDirectorioCli(int usuarioId, string localPath)
+        {
+            string dirPersonal = localPath + String.Format("\\USU{0:000000}", usuarioId);
+            if (!Directory.Exists(dirPersonal))
+            {
+                Directory.CreateDirectory(dirPersonal);
+            }
+            else
+            {
+                Directory.Delete(dirPersonal, true);
+            }
+        }
+
         public static string ficheroPdfDownloadAdm(int administradorId, int facturaId, string localPath, MySqlConnection conn)
         {
             string dwn = "";
@@ -1826,6 +1930,27 @@ namespace AriFaceLib
             string destino = String.Format(localPath + "\\ADM{0:000000}\\{1}", administradorId, nomFichero);
             File.Copy(origen, destino, true);
             dwn = String.Format("/ADM{0:000000}/{1}", administradorId, nomFichero);
+            return dwn;
+        }
+
+        public static string ficheroPdfDownloadCli(int usuarioId, int facturaId, string localPath, MySqlConnection conn)
+        {
+            string dwn = "";
+            // Obtener la factura
+            Factura f = GetFactura(facturaId, conn);
+            if (f == null) return dwn;
+            Cliente c = GetCliente(f.ClienteId, conn);
+            if (c == null) return dwn;
+            // directorio local
+            string dirPersonal = localPath + String.Format("\\USU{0:000000}", usuarioId);
+            string repositorio = GetRepositorio(conn);
+            string nomFichero = NombreFicheroFactura(f, c);
+            nomFichero += ".pdf"; // se trata de un pdf
+            // copiamos al directorio personal de ese administrador
+            string origen = repositorio + "\\" + nomFichero;
+            string destino = String.Format(localPath + "\\USU{0:000000}\\{1}", usuarioId, nomFichero);
+            File.Copy(origen, destino, true);
+            dwn = String.Format("/USU{0:000000}/{1}", usuarioId, nomFichero);
             return dwn;
         }
         #endregion 

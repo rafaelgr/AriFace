@@ -19,6 +19,8 @@ function comprobarLogin() {
     $('.empresa_raiz').text(user.NifNombre);
     $('.empresa_cliente').text(user.ClienteNombre);
     $('.empresa_departamento').text(user.DepartamentoNombre);
+    // probando
+    getParametros();
     return user;
 }
 

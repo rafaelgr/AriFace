@@ -35,6 +35,7 @@ namespace FaceWebCli
             }
             return lf;
         }
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<Factura> GetFacturasNoEnviadas()
@@ -50,6 +51,7 @@ namespace FaceWebCli
             }
             return lf;
         }
+        
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<Factura> GetFacturasCliente(int clienteId)
@@ -65,6 +67,44 @@ namespace FaceWebCli
             }
             return lf;
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<Factura> GetFacturasUsuario(int usuarioId)
+        {
+            IList<Factura> lf = new List<Factura>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                // primero comprobamos qué permisos tiene el usuario
+                // fijándonos en a qué empresa raiz, cliente y departamento pertenece
+                Usuario u = CntAriFaceLib.GetUsuario(usuarioId, conn);
+                if (u.ClienteId != 0)
+                {
+                    if (u.DepartamentoId != 0)
+                    {
+                        // departamento
+                        lf = CntAriFaceLib.GetFacturasDepartamento(u.DepartamentoId, conn);
+                    }
+                    else
+                    {
+                        // cliente
+                        lf = CntAriFaceLib.GetFacturasCliente(u.ClienteId, conn);
+                    }
+                }
+                else
+                {
+                    // empresa raiz
+                    lf = CntAriFaceLib.GetFacturasEmpresaRaiz(u.Nif, conn);
+                }
+
+                conn.Close();
+            }
+            return lf;
+        }
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static Factura GetFacturaById(string id)
@@ -84,7 +124,7 @@ namespace FaceWebCli
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string VerPdf(int facturaId, int administradorId)
+        public static string VerPdf(int facturaId, int usuarioId)
         {
             string fichero = "";
             string localPath = HostingEnvironment.ApplicationPhysicalPath;
@@ -93,7 +133,7 @@ namespace FaceWebCli
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();
-                fichero = CntAriFaceLib.ficheroPdfDownloadAdm(administradorId,facturaId,localPath,conn);
+                fichero = CntAriFaceLib.ficheroPdfDownloadCli(usuarioId,facturaId,localPath,conn);
                 conn.Close();
             }
             return fichero;
