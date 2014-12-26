@@ -1,0 +1,7 @@
+C:\Proyectos\FaceTest\FaceWebCli\bin\FaceWebCli.dll
+C:\Proyectos\FaceTest\FaceWebCli\bin\FaceWebCli.pdb
+C:\Proyectos\FaceTest\FaceWebCli\bin\AriFaceLib.dll
+C:\Proyectos\FaceTest\FaceWebCli\bin\AriFaceLib.pdb
+C:\Proyectos\FaceTest\FaceWebCli\obj\Debug\FaceWebCli.csprojResolveAssemblyReference.cache
+C:\Proyectos\FaceTest\FaceWebCli\obj\Debug\FaceWebCli.dll
+C:\Proyectos\FaceTest\FaceWebCli\obj\Debug\FaceWebCli.pdb

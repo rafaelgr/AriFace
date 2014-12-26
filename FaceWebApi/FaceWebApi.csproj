@@ -88,6 +88,7 @@
     <Content Include="js\ariface\index.js" />
     <Content Include="js\ariface\usuarioDetalle.js" />
     <Content Include="js\numeral.min.js" />
+    <Content Include="login.html" />
     <Content Include="UsuarioDetalle.html" />
     <Content Include="js\ariface\usuarioGeneral.js" />
     <Content Include="UsuarioGeneral.html" />
@@ -326,7 +327,7 @@
     <Content Include="fonts\img\ariface\AriFace128.png" />
     <Content Include="fonts\img\ariface\AriFace48.png" />
     <Content Include="js\ariface\login.js" />
-    <Content Include="login.html" />
+    <Content Include="login2.html" />
     <Content Include="prueba_cargas.html" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\demo.min.css" />

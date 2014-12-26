@@ -258,7 +258,8 @@ namespace AriFaceLib
                     COALESCE(u.cliente_id,0) AS CLIENTE_ID,
                     COALESCE(c.nombre, '') AS CLIENTE_NOMBRE,
                     COALESCE(u.departamento_id,0) AS DEPARTAMENTO_ID,
-                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE
+                    COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
+                    COALESCE(c.codclien_ariges, 0) AS CODCLIEN_ARIGES
                     FROM usuario AS u
                     LEFT JOIN nifbase AS n ON n.nif = u.nif
                     LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
