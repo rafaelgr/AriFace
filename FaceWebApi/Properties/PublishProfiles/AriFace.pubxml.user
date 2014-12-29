@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Publicaciones\AriFace</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Publicaciones\AriFaceApi</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AdministradorApi.aspx">
@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>12/23/2014 09:28:16</publishTime>
+      <publishTime>12/29/2014 10:26:29</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>12/23/2014 09:28:18</publishTime>
+      <publishTime>12/29/2014 10:26:29</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>12/23/2014 09:28:22</publishTime>
+      <publishTime>12/29/2014 10:26:31</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -919,7 +919,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/2014 11:44:50</publishTime>
     </File>
     <File Include="img/fondo1.jpg">
-      <publishTime>12/15/2014 13:15:43</publishTime>
+      <publishTime>12/23/2014 19:00:47</publishTime>
     </File>
     <File Include="img/glass.jpg">
       <publishTime>10/01/2014 19:29:36</publishTime>
@@ -1330,7 +1330,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/29/2014 11:04:12</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>12/23/2014 08:49:35</publishTime>
+      <publishTime>12/23/2014 17:45:47</publishTime>
     </File>
     <File Include="js/app.config.js">
       <publishTime>10/13/2014 11:10:48</publishTime>
@@ -2752,6 +2752,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/27/2014 06:25:16</publishTime>
     </File>
     <File Include="login.html">
+      <publishTime>12/24/2014 09:13:55</publishTime>
+    </File>
+    <File Include="login2.html">
       <publishTime>12/19/2014 16:44:48</publishTime>
     </File>
     <File Include="PlantillaApi.aspx">
@@ -2764,7 +2767,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:00:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/23/2014 09:28:54</publishTime>
+      <publishTime>12/29/2014 10:26:48</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
@@ -2788,7 +2791,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/18/2014 12:29:13</publishTime>
     </File>
     <File Include="UsuarioDetalle.html">
-      <publishTime>12/19/2014 17:32:07</publishTime>
+      <publishTime>12/26/2014 10:16:04</publishTime>
     </File>
     <File Include="UsuarioGeneral.html">
       <publishTime>12/19/2014 17:25:32</publishTime>

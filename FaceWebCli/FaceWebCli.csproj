@@ -73,6 +73,8 @@
     <Content Include="FacturaApi.aspx" />
     <Content Include="FacturasCliente.html" />
     <Content Include="DatosUsuario.html" />
+    <Content Include="img\logo_cliente_login.jpg" />
+    <Content Include="js\ariface\facturaProveedor.js" />
     <Content Include="ParametrosApi.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\demo.min.css" />
@@ -994,6 +996,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\AriFaceCli.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

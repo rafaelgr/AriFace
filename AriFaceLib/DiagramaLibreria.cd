@@ -52,32 +52,32 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAFwABhgiAQEhUCAkEEABUHKCQGAUAB4QQKSZhksgA=</HashCode>
+      <HashCode>QBAFwABhgiAUHhUCAkEEABUHKCQGgUAB4QQKSZh0sgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Cliente" Collapsed="true">
-    <Position X="8.5" Y="1.25" Width="2" />
+    <Position X="7.25" Y="1.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAACAEEACgjBACgAAAQgAAAEAggAAAAAAAABA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.MiniUnidad" Collapsed="true">
-    <Position X="3.75" Y="1.25" Width="1.5" />
+  <Class Name="AriFaceLib.MiniUnidad">
+    <Position X="0.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAQAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MiniUnidad.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Factura" Collapsed="true">
-    <Position X="10.75" Y="1.25" Width="2" />
+    <Position X="10" Y="1.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AwAECQAABAUAEAANABABChAACQIYUBAACkAQIAMACCk=</HashCode>
       <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Usuario">
+  <Class Name="AriFaceLib.Usuario" Collapsed="true">
     <Position X="0.5" Y="2" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACCAEAKogBACmAAAAoAAgAACAAAQEgAAEgA=</HashCode>
@@ -92,7 +92,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Envio" Collapsed="true">
-    <Position X="4.25" Y="2" Width="1.5" />
+    <Position X="3.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AwABAAAAAQCAEAIIgBAACAAIAACAyEAAgEBAEAMAAhA=</HashCode>
       <FileName>Envio.cs</FileName>
@@ -120,17 +120,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.EstFacMes" Collapsed="true">
-    <Position X="9.5" Y="2.75" Width="1.5" />
+    <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAQAAAAAAAABAAAEAQAABAAA=</HashCode>
       <FileName>EstFacMes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Parametros" Collapsed="true">
-    <Position X="5.25" Y="3.75" Width="1.5" />
+    <Position X="3.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Parametros.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.PeriodoFactura">
+    <Position X="10" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAgQAAACGAAAAgBAAAAAQAAAAAAACAQgAAEMIAAA=</HashCode>
+      <FileName>PeriodoFactura.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

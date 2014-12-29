@@ -55,6 +55,7 @@
     <Compile Include="MiniUnidad.cs" />
     <Compile Include="MiniUnidad2.cs" />
     <Compile Include="Parametros.cs" />
+    <Compile Include="PeriodoFactura.cs" />
     <Compile Include="Plantilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespuestaAnularFactura.cs" />

@@ -11,15 +11,14 @@ using System.Configuration;
 using System.Net;
 using System.IO;
 
-
 namespace AriFaceLib
 {
     public static class CntAriFaceLib
     {
-
         public static MiniUnidad GetMiniUnidad(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
+                return null;
             MiniUnidad mu = new MiniUnidad();
             mu.Codigo = rdr.GetString("codigo");
             mu.Nombre = rdr.GetString("nombre");
@@ -28,7 +27,8 @@ namespace AriFaceLib
 
         public static MiniUnidad2 GetMiniUnidad2(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
+                return null;
             MiniUnidad2 mu = new MiniUnidad2();
             mu.Codigo = rdr.GetInt32("codigo");
             mu.Nombre = rdr.GetString("nombre");
@@ -37,19 +37,22 @@ namespace AriFaceLib
         }
 
         #region Conexión a MySql
+        
         public static MySqlConnection GetConnection(string connectionString)
         {
             // crear la conexion y devolverla.
             MySqlConnection conn = new MySqlConnection(connectionString);
             return conn;
         }
+        
         #endregion
-
+        
         #region Administrador
         
         public static Administrador GetAdministrador(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("administrador_id"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("administrador_id")))
+                return null;
             Administrador a = new Administrador();
             a.AdministradorId = rdr.GetInt32("administrador_id");
             a.Login = rdr.GetString("login");
@@ -61,7 +64,7 @@ namespace AriFaceLib
                 a.Certsn = rdr.GetString("certsn");
             return a;
         }
-
+        
         public static Administrador GetAdministradorLogin(string login, string password, MySqlConnection conn)
         {
             // Se entiene que la conexión se recibe abierta y es responsabilidad del llamante
@@ -82,7 +85,7 @@ namespace AriFaceLib
             }
             return a;
         }
-
+        
         public static Administrador GetAdministrador(int id, MySqlConnection conn)
         {
             Administrador a = null;
@@ -98,7 +101,7 @@ namespace AriFaceLib
             }
             return a;
         }
-
+        
         public static IList<Administrador> GetAdministradores(MySqlConnection conn)
         {
             IList<Administrador> la = new List<Administrador>();
@@ -116,7 +119,7 @@ namespace AriFaceLib
             }
             return la;
         }
-
+        
         public static IList<Administrador> GetAdministradores(string parNom, MySqlConnection conn)
         {
             IList<Administrador> la = new List<Administrador>();
@@ -137,11 +140,12 @@ namespace AriFaceLib
             }
             return la;
         }
-
+        
         public static Administrador SetAdministrador(Administrador a, MySqlConnection conn)
         {
             bool alta = false;
-            if (a == null) return null;
+            if (a == null)
+                return null;
             if (a.AdministradorId == 0)
             {
                 alta = true;
@@ -209,7 +213,7 @@ namespace AriFaceLib
             }
             return a;
         }
-
+        
         public static void DeleteAdministrador(int id, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -217,14 +221,15 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        
         #endregion
-
+        
         #region Usuarios
-
+        
         public static Usuario GetUsuario(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("USUARIO_ID"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("USUARIO_ID")))
+                return null;
             Usuario u = new Usuario();
             u.UsuarioId = rdr.GetInt32("USUARIO_ID");
             u.Nombre = rdr.GetString("NOMBRE");
@@ -240,7 +245,7 @@ namespace AriFaceLib
             u.CodClienAriges = rdr.GetInt32("CODCLIEN_ARIGES");
             return u;
         }
-
+        
         public static Usuario GetUsuarioLogin(string login, string password, MySqlConnection conn)
         {
             // Se entiene que la conexión se recibe abierta y es responsabilidad del llamante
@@ -277,7 +282,7 @@ namespace AriFaceLib
             rdr.Close();
             return u;
         }
-
+        
         public static Usuario GetUsuario(int id, MySqlConnection conn)
         {
             Usuario u = null;
@@ -311,7 +316,7 @@ namespace AriFaceLib
             rdr.Close();
             return u;
         }
-
+        
         public static IList<Usuario> GetUsuarios(MySqlConnection conn)
         {
             IList<Usuario> lu = new List<Usuario>();
@@ -346,7 +351,7 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
-
+        
         public static IList<Usuario> GetUsuarios(string parNom, MySqlConnection conn)
         {
             IList<Usuario> lu = new List<Usuario>();
@@ -388,7 +393,6 @@ namespace AriFaceLib
                     LEFT JOIN nifbase AS n ON n.nif = u.nif
                     LEFT JOIN cliente AS c ON c.i_d = u.cliente_id
                     LEFT JOIN departamento AS d ON d.departamento_id = u.departamento_id";
-
             }
             sql = String.Format(sql, parNom);
             cmd.CommandText = sql;
@@ -404,11 +408,12 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
-
+        
         public static Usuario SetUsuario(Usuario u, MySqlConnection conn)
         {
             bool alta = false;
-            if (u == null) return null;
+            if (u == null)
+                return null;
             if (u.UsuarioId == 0)
             {
                 alta = true;
@@ -472,7 +477,7 @@ namespace AriFaceLib
             u = GetUsuario(u.UsuarioId, conn);
             return u;
         }
-
+        
         public static void DeleteUsuario(int id, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -480,7 +485,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        
         public static IList<MiniUnidad> GetEr(MySqlConnection conn)
         {
             IList<MiniUnidad> lmu = new List<MiniUnidad>();
@@ -499,8 +504,7 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
-
+        
         /// <summary>
         /// Sirve para los desplegables de los formularios
         /// Devuelve los clientes que pertenecen a una empresa raiz
@@ -527,7 +531,7 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
+        
         /// <summary>
         /// Sirve para los desplegables de los formularios
         /// Devuelve las Oficinas contables posibles dado una unidad tramitadora
@@ -560,13 +564,15 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
+        
         #endregion
-
+        
         #region Estados
+        
         public static Estado GetEstado(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("codigo"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
+                return null;
             Estado e = new Estado();
             e.Codigo = rdr.GetString("codigo");
             if (!rdr.IsDBNull(rdr.GetOrdinal("nombre")))
@@ -575,7 +581,7 @@ namespace AriFaceLib
                 e.Descripcion = rdr.GetString("descripcion");
             return e;
         }
-
+        
         public static Estado GetEstado(string codigo, MySqlConnection conn)
         {
             Estado e = null;
@@ -592,7 +598,7 @@ namespace AriFaceLib
             rdr.Close();
             return e;
         }
-
+        
         public static IList<Estado> GetEstados(MySqlConnection conn)
         {
             IList<Estado> le = new List<Estado>();
@@ -611,7 +617,7 @@ namespace AriFaceLib
             rdr.Close();
             return le;
         }
-
+        
         public static Estado SetEstado(Estado e, MySqlConnection conn)
         {
             // si el id es 0 se crea el objeto, si no se actualiza.
@@ -640,7 +646,7 @@ namespace AriFaceLib
             rdr.Close();
             return e;
         }
-
+        
         public static void SetEstados(IList<Estado> le, MySqlConnection conn)
         {
             foreach (Estado e in le)
@@ -648,7 +654,7 @@ namespace AriFaceLib
                 SetEstado(e, conn);
             }
         }
-
+        
         public static void DeleteEstado(string codigo, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -658,11 +664,13 @@ namespace AriFaceLib
         }
 
         #endregion
-
+        
         #region Unidades
+            
         public static Unidad GetUnidad(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("organoGestorCodigo"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("organoGestorCodigo")))
+                return null;
             Unidad u = new Unidad();
             u.OrganoGestorCodigo = rdr.GetString("organoGestorCodigo");
             u.OrganoGestorNombre = rdr.GetString("organoGestorNombre");
@@ -672,7 +680,7 @@ namespace AriFaceLib
             u.OficinaContableNombre = rdr.GetString("oficinaContableNombre");
             return u;
         }
-
+            
         public static Unidad GetUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
         {
             Unidad u = null;
@@ -689,7 +697,7 @@ namespace AriFaceLib
             rdr.Close();
             return u;
         }
-
+            
         public static IList<Unidad> GetUnidades(MySqlConnection conn)
         {
             IList<Unidad> lu = new List<Unidad>();
@@ -708,7 +716,7 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
-
+            
         public static IList<Unidad> GetUnidades(string organoGestorCodigo, MySqlConnection conn)
         {
             IList<Unidad> lu = new List<Unidad>();
@@ -728,7 +736,7 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
-
+            
         public static IList<Unidad> GetUnidades(string organoGestorCodigo, string unidadTramitadoraCodigo, MySqlConnection conn)
         {
             IList<Unidad> lu = new List<Unidad>();
@@ -748,7 +756,7 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
-
+            
         public static Unidad SetUnidad(Unidad u, MySqlConnection conn)
         {
             // si el id es 0 se crea el objeto, si no se actualiza.
@@ -769,7 +777,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             sql = @"SELECT * FROM unidad WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'";
-            sql = String.Format(sql,u.OrganoGestorCodigo, u.UnidadTramitadoraCodigo, u.OficinaContableCodigo);
+            sql = String.Format(sql, u.OrganoGestorCodigo, u.UnidadTramitadoraCodigo, u.OficinaContableCodigo);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -780,7 +788,7 @@ namespace AriFaceLib
             rdr.Close();
             return u;
         }
-
+            
         public static void SetUnidades(IList<Unidad> lu, MySqlConnection conn)
         {
             foreach (Unidad u in lu)
@@ -788,16 +796,16 @@ namespace AriFaceLib
                 SetUnidad(u, conn);
             }
         }
-
+            
         public static void DeleteUnidad(string organoGestorCodigo, string unidadTramitadoraCodigo, string oficinaContableCodigo, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
-            string sql = String.Format("DELETE FROM estado  WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'", 
+            string sql = String.Format("DELETE FROM estado  WHERE organoGestorCodigo = '{0}' AND unidadTramitadoraCodigo = '{1}' AND oficinaContableCodigo = '{2}'",
                 organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         public static IList<MiniUnidad> GetOg(MySqlConnection conn)
         {
             IList<MiniUnidad> lmu = new List<MiniUnidad>();
@@ -816,8 +824,7 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
-
+        
         /// <summary>
         /// Sirve para los desplegables de los formularios
         /// Devuelve las Unidades Administradoras posibles dado un órgano gestor
@@ -844,7 +851,7 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
+        
         /// <summary>
         /// Sirve para los desplegables de los formularios
         /// Devuelve las Oficinas contables posibles dado una unidad tramitadora
@@ -872,10 +879,11 @@ namespace AriFaceLib
             rdr.Close();
             return lmu;
         }
-
+        
         #endregion
-
+        
         #region Certificados
+            
         public static IList<Certificado> GetCertificados()
         {
             IList<Certificado> lc = new List<Certificado>();
@@ -891,12 +899,15 @@ namespace AriFaceLib
             }
             return lc;
         }
+        
         #endregion
-
+            
         #region Cliente
+            
         public static Cliente GetCliente(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("i_d"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("i_d")))
+                return null;
             Cliente c = new Cliente();
             c.ClienteId = rdr.GetInt32("i_d");
             c.Nombre = rdr.GetString("nombre");
@@ -918,7 +929,7 @@ namespace AriFaceLib
                 c.CodClienAriges = rdr.GetInt32("codclien_ariges");
             return c;
         }
-
+            
         public static Cliente GetCliente(int id, MySqlConnection conn)
         {
             Cliente c = null;
@@ -935,7 +946,7 @@ namespace AriFaceLib
             rdr.Close();
             return c;
         }
-
+            
         public static IList<Cliente> GetClientes(MySqlConnection conn)
         {
             IList<Cliente> lc = new List<Cliente>();
@@ -954,7 +965,7 @@ namespace AriFaceLib
             rdr.Close();
             return lc;
         }
-
+            
         public static IList<Cliente> GetClientes(string parNom, MySqlConnection conn)
         {
             IList<Cliente> lc = new List<Cliente>();
@@ -976,11 +987,12 @@ namespace AriFaceLib
             rdr.Close();
             return lc;
         }
-
+                
         public static Cliente SetCliente(Cliente c, MySqlConnection conn)
         {
             bool alta = false;
-            if (c == null) return null;
+            if (c == null)
+                return null;
             if (c.ClienteId == 0)
             {
                 alta = true;
@@ -1010,7 +1022,7 @@ namespace AriFaceLib
                     WHERE i_d={0};
                 ";
             }
-            sql = String.Format(sql,c.ClienteId, c.Nombre, c.Cif, c.Email, c.CodOrganoGestor, c.CodUnidadTramitadora, c.CodOficinaContable);
+            sql = String.Format(sql, c.ClienteId, c.Nombre, c.Cif, c.Email, c.CodOrganoGestor, c.CodUnidadTramitadora, c.CodOficinaContable);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             // y vamos rápidamente a por la recién creada
@@ -1038,7 +1050,7 @@ namespace AriFaceLib
             rdr.Close();
             return c;
         }
-
+            
         public static void DeleteCliente(int id, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1046,12 +1058,15 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+        
         #endregion
-
+                
         #region Factura
+            
         public static Factura GetFactura(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("FACTURA_ID"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("FACTURA_ID")))
+                return null;
             Factura f = new Factura();
             f.Aportacion = rdr.GetDecimal("APORTACION");
             f.BaseIva = rdr.GetDecimal("BASE_IVA");
@@ -1059,19 +1074,23 @@ namespace AriFaceLib
             f.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
             f.CodTipom = rdr.GetString("CODTIPOM");
             f.CuotaIva = rdr.GetDecimal("CUOTA_IVA");
-            if (rdr.GetInt16("ES_DE_CLIENTE") == 1) f.EsDeCliente = true;
+            if (rdr.GetInt16("ES_DE_CLIENTE") == 1)
+                f.EsDeCliente = true;
             f.FacturaId = rdr.GetInt32("FACTURA_ID");
-            f.StrFecha = String.Format("{0:yyyyMMdd}",rdr.GetDateTime("FECHA"));
+            f.StrFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("FECHA"));
             f.LetraProveedor = rdr.GetString("LETRA_PROVEEDOR");
             f.NumFactura = rdr.GetInt32("NUMFACTURA");
             f.Retencion = rdr.GetDecimal("RETENCION");
             f.Serie = rdr.GetString("SERIE");
             f.Sistema = rdr.GetString("SISTEMA");
             f.Total = rdr.GetDecimal("TOTAL");
-            if (rdr.GetInt16("NUEVA") == 1) f.Nueva = true;
+            if (rdr.GetInt16("NUEVA") == 1)
+                f.Nueva = true;
             f.Estado = rdr.GetInt16("NUEVA");
-            if (!rdr.IsDBNull(rdr.GetOrdinal("CODDIREC"))) f.CodDirec = rdr.GetInt32("CODDIREC");
-            if (!rdr.IsDBNull(rdr.GetOrdinal("DEPARTAMENTO"))) f.Departamento= rdr.GetString("DEPARTAMENTO");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CODDIREC")))
+                f.CodDirec = rdr.GetInt32("CODDIREC");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("DEPARTAMENTO")))
+                f.Departamento = rdr.GetString("DEPARTAMENTO");
             f.RegistroFace = rdr.GetString("REGISTRO_FACE");
             f.MotivoFace = rdr.GetString("MOTIVO_FACE");
             return f;
@@ -1206,6 +1225,129 @@ namespace AriFaceLib
             rdr.Close();
             return lf;
         }
+            
+        public static PeriodoFactura GetFacturasEmpresaRaizPeriodo(int a, int q, int m, string nif, bool esCliente, MySqlConnection conn)
+        {
+            PeriodoFactura pf = new PeriodoFactura();
+            // montaje de los periodos
+            string esClienteSql = " AND 1=1 ";
+            string anoSql = " AND 1=1 ";
+            string mesSql = " AND 1=1 ";
+            if (esCliente)
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 1 ";
+            }
+            else
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 0 ";
+            }
+            if (a != 0)
+            {
+                anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
+            }
+            else if (q != 0)
+            {
+                switch (q)
+                {
+                    case 1:
+                        mesSql = " AND MONTH(f.fecha) IN (1,2,3) ";
+                        break;
+                    case 2:
+                        mesSql = " AND MONTH(f.fecha) IN (4,5,6) ";
+                        break;
+                    case 3:
+                        mesSql = " AND MONTH(f.fecha) IN (7,8,9) ";
+                        break;
+                    case 4:
+                        mesSql = " AND MONTH(f.fecha) IN (10,11,12) ";
+                        break;
+                }
+            }
+            else if (m != 0)
+            {
+                mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
+            }
+            // primero los totales
+            string sql = @"SELECT 
+                SUM(f.`imp_gastos_a_fo`) AS SUM_APORTACION,
+                SUM(f.`base_total`) AS SUM_BASE_IVA,
+                SUM(f.cuota_total) AS SUM_CUOTA_IVA,
+                SUM(f.imp_retencion) AS SUM_RETENCION,
+                SUM(f.ttal) AS SUM_TOTAL,
+                MIN(f.fecha) AS MIN_FECHA,
+                MAX(f.fecha) AS MAX_FECHA
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE c.cif = '{0}';";
+            MySqlCommand cmd = conn.CreateCommand();
+            sql = String.Format(sql, nif);
+            sql += anoSql + mesSql + esClienteSql;
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                // cargamos los valora acumulados
+                if (!rdr.IsDBNull(rdr.GetOrdinal("SUM_APORTACION")))
+                {
+                    pf.SumAportacion = rdr.GetDecimal("SUM_APORTACION");
+                    pf.SumBase = rdr.GetDecimal("SUM_BASE_IVA");
+                    pf.SumCuota = rdr.GetDecimal("SUM_CUOTA_IVA");
+                    pf.SumRetencion = rdr.GetDecimal("SUM_RETENCION");
+                    pf.SumTotal = rdr.GetDecimal("SUM_TOTAL");
+                    pf.StrMaxFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MAX_FECHA"));
+                    pf.StrMinFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MIN_FECHA"));
+                }
+            }
+            rdr.Close();
+            // detalle de facturas asociadas
+
+            IList<Factura> lf = new List<Factura>();
+            cmd = conn.CreateCommand();
+            sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+               WHERE c.cif = '{0}';";
+            sql = String.Format(sql, nif);
+            sql += anoSql + mesSql + esClienteSql;
+            cmd.CommandText = sql;
+            rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+                pf.Facturas = lf;
+            }
+            rdr.Close();
+            return pf;
+        }
 
         public static IList<Factura> GetFacturasCliente(int idCliente, MySqlConnection conn)
         {
@@ -1237,7 +1379,7 @@ namespace AriFaceLib
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                 WHERE f.id_cliente = {0}";
-            sql = String.Format(sql,idCliente);
+            sql = String.Format(sql, idCliente);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -1250,6 +1392,129 @@ namespace AriFaceLib
             }
             rdr.Close();
             return lf;
+        }
+            
+        public static PeriodoFactura GetFacturasClientePeriodo(int a, int q, int m, int idCliente, bool esCliente, MySqlConnection conn)
+        {
+            PeriodoFactura pf = new PeriodoFactura();
+            // montaje de los periodos
+            string esClienteSql = " AND 1=1 ";
+            string anoSql = " AND 1=1 ";
+            string mesSql = " AND 1=1 ";
+            if (esCliente)
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 1 ";
+            }
+            else
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 0 ";
+            }
+            if (a != 0)
+            {
+                anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
+            }
+            else if (q != 0)
+            {
+                switch (q)
+                {
+                    case 1:
+                        mesSql = " AND MONTH(f.fecha) IN (1,2,3) ";
+                        break;
+                    case 2:
+                        mesSql = " AND MONTH(f.fecha) IN (4,5,6) ";
+                        break;
+                    case 3:
+                        mesSql = " AND MONTH(f.fecha) IN (7,8,9) ";
+                        break;
+                    case 4:
+                        mesSql = " AND MONTH(f.fecha) IN (10,11,12) ";
+                        break;
+                }
+            }
+            else if (m != 0)
+            {
+                mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
+            }
+            // primero los totales
+            string sql = @"SELECT 
+                SUM(f.`imp_gastos_a_fo`) AS SUM_APORTACION,
+                SUM(f.`base_total`) AS SUM_BASE_IVA,
+                SUM(f.cuota_total) AS SUM_CUOTA_IVA,
+                SUM(f.imp_retencion) AS SUM_RETENCION,
+                SUM(f.ttal) AS SUM_TOTAL,
+                MIN(f.fecha) AS MIN_FECHA,
+                MAX(f.fecha) AS MAX_FECHA
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE f.id_cliente = {0}";
+            MySqlCommand cmd = conn.CreateCommand();
+            sql = String.Format(sql, idCliente);
+            sql += anoSql + mesSql + esClienteSql;
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                // cargamos los valora acumulados
+                if (!rdr.IsDBNull(rdr.GetOrdinal("SUM_APORTACION")))
+                {
+                    pf.SumAportacion = rdr.GetDecimal("SUM_APORTACION");
+                    pf.SumBase = rdr.GetDecimal("SUM_BASE_IVA");
+                    pf.SumCuota = rdr.GetDecimal("SUM_CUOTA_IVA");
+                    pf.SumRetencion = rdr.GetDecimal("SUM_RETENCION");
+                    pf.SumTotal = rdr.GetDecimal("SUM_TOTAL");
+                    pf.StrMaxFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MAX_FECHA"));
+                    pf.StrMinFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MIN_FECHA"));
+                }
+            }
+            rdr.Close();
+            // detalle de facturas asociadas
+
+            IList<Factura> lf = new List<Factura>();
+            cmd = conn.CreateCommand();
+            sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE f.id_cliente = {0}";
+            sql = String.Format(sql, idCliente);
+            sql += anoSql + mesSql + esClienteSql;
+            cmd.CommandText = sql;
+            rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+                pf.Facturas = lf;
+            }
+            rdr.Close();
+            return pf;
         }
 
         public static IList<Factura> GetFacturasDepartamento(int idDepartamento, MySqlConnection conn)
@@ -1296,6 +1561,129 @@ namespace AriFaceLib
             rdr.Close();
             return lf;
         }
+            
+        public static PeriodoFactura GetFacturasDepartamentoPeriodo(int a, int q, int m, int idDepartamento, bool esCliente, MySqlConnection conn)
+        {
+            PeriodoFactura pf = new PeriodoFactura();
+            // montaje de los periodos
+            string esClienteSql = " AND 1=1 ";
+            string anoSql = " AND 1=1 ";
+            string mesSql = " AND 1=1 ";
+            if (esCliente)
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 1 ";
+            }
+            else
+            {
+                esClienteSql = "  AND f.es_fra_cliente = 0 ";
+            }
+            if (a != 0)
+            {
+                anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
+            }
+            else if (q != 0)
+            {
+                switch (q)
+                {
+                    case 1:
+                        mesSql = " AND MONTH(f.fecha) IN (1,2,3) ";
+                        break;
+                    case 2:
+                        mesSql = " AND MONTH(f.fecha) IN (4,5,6) ";
+                        break;
+                    case 3:
+                        mesSql = " AND MONTH(f.fecha) IN (7,8,9) ";
+                        break;
+                    case 4:
+                        mesSql = " AND MONTH(f.fecha) IN (10,11,12) ";
+                        break;
+                }
+            }
+            else if (m != 0)
+            {
+                mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
+            }
+            // primero los totales
+            string sql = @"SELECT 
+                SUM(f.`imp_gastos_a_fo`) AS SUM_APORTACION,
+                SUM(f.`base_total`) AS SUM_BASE_IVA,
+                SUM(f.cuota_total) AS SUM_CUOTA_IVA,
+                SUM(f.imp_retencion) AS SUM_RETENCION,
+                SUM(f.ttal) AS SUM_TOTAL,
+                MIN(f.fecha) AS MIN_FECHA,
+                MAX(f.fecha) AS MAX_FECHA
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+                WHERE d.departamento_id = {0};";
+            MySqlCommand cmd = conn.CreateCommand();
+            sql = String.Format(sql, idDepartamento);
+            sql += anoSql + mesSql + esClienteSql;
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                // cargamos los valora acumulados
+                if (!rdr.IsDBNull(rdr.GetOrdinal("SUM_APORTACION")))
+                {
+                    pf.SumAportacion = rdr.GetDecimal("SUM_APORTACION");
+                    pf.SumBase = rdr.GetDecimal("SUM_BASE_IVA");
+                    pf.SumCuota = rdr.GetDecimal("SUM_CUOTA_IVA");
+                    pf.SumRetencion = rdr.GetDecimal("SUM_RETENCION");
+                    pf.SumTotal = rdr.GetDecimal("SUM_TOTAL");
+                    pf.StrMaxFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MAX_FECHA"));
+                    pf.StrMinFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("MIN_FECHA"));
+                }
+            }
+            rdr.Close();
+            // detalle de facturas asociadas
+
+            IList<Factura> lf = new List<Factura>();
+            cmd = conn.CreateCommand();
+            sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
+               WHERE d.departamento_id = {0}";
+            sql = String.Format(sql, idDepartamento);
+            sql += anoSql + mesSql + esClienteSql + " ORDER BY f.fecha DESC";
+            cmd.CommandText = sql;
+            rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+                pf.Facturas = lf;
+            }
+            rdr.Close();
+            return pf;
+        }
 
         public static IList<Factura> GetFacturasNoEnviadas(MySqlConnection conn)
         {
@@ -1340,14 +1728,199 @@ namespace AriFaceLib
             rdr.Close();
             return lf;
         }
+            
+        public static PeriodoFactura GetPeriodFactura(int a, int q, int m, MySqlConnection conn)
+        {
+            PeriodoFactura pf = new PeriodoFactura();
+            IList<Factura> lf = new List<Factura>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                f.`imp_gastos_a_fo` AS APORTACION,
+                f.`base_total` AS BASE_IVA,
+                f.`id_cliente` AS CLIENTE_ID,
+                c.nombre AS CLIENTE_NOMBRE,
+                COALESCE(f.v_codtipom1,'') AS CODTIPOM,
+                f.cuota_total AS CUOTA_IVA,
+                f.es_fra_cliente AS ES_DE_CLIENTE,
+                f.id_factura AS FACTURA_ID,
+                f.Fecha AS FECHA,
+                f.letra_id_fra_prove AS LETRA_PROVEEDOR,
+                f.num_factura AS NUMFACTURA,
+                f.imp_retencion AS RETENCION,
+                f.num_serie AS SERIE,
+                s.descripcion AS SISTEMA,
+                f.ttal AS TOTAL,
+                f.nueva AS NUEVA,
+                d.coddirec AS CODDIREC,
+                d.nombre AS DEPARTAMENTO,
+                COALESCE(f.registroFace,'') AS REGISTRO_FACE,
+                COALESCE(f.motivoFace,'') AS MOTIVO_FACE
+                FROM factura AS f
+                LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges";
+            //
+            string anoSql = " AND 1=1 ";
+            string mesSql = " AND 1=1 ";
+            if (a != 0)
+            {
+                anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
+            }
+            else if (q != 0)
+            {
+                switch (q)
+                {
+                    case 1:
+                        mesSql = " AND MONTH(f.fecha) IN (1,2,3) ";
+                        break;
+                    case 2:
+                        mesSql = " AND MONTH(f.fecha) IN (4,5,6) ";
+                        break;
+                    case 3:
+                        mesSql = " AND MONTH(f.fecha) IN (7,8,9) ";
+                        break;
+                    case 4:
+                        mesSql = " AND MONTH(f.fecha) IN (10,11,12) ";
+                        break;
+                }
+            }
+            else if (m != 0)
+            {
+                mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
+            }
+            sql += anoSql + mesSql;
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Factura f = GetFactura(rdr);
+                    lf.Add(f);
+                }
+            }
+            rdr.Close();
+            
+            return pf;
+        }
 
-        
+        public static IList<MiniUnidad> GetAnosFacturados(string nif, int clienteId, int departamentoId, MySqlConnection conn)
+        {
+            IList<MiniUnidad> lu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                    DISTINCT YEAR(f.fecha) as ANO
+                    FROM factura AS f
+                    LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                    LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                    LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges";
+            if (clienteId != 0)
+            {
+                if (departamentoId != 0)
+                {
+                    // departamento
+                    sql += String.Format(" WHERE d.departamento_id = {0} ", departamentoId);
+                }
+                else
+                {
+                    // cliente
+                    sql += String.Format("  WHERE f.id_cliente = {0} ", clienteId);
+                }
+            }
+            else
+            {
+                // empresa raiz
+                sql += String.Format("  WHERE c.cif = '{0}' ", nif);
+            }
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = new MiniUnidad();
+                    mu.Codigo = rdr.GetString("ANO");
+                    mu.Nombre = rdr.GetString("ANO");
+                    lu.Add(mu);
+                }
+            }
+            rdr.Close();
+            return lu;
+        }
+            
+        public static IList<MiniUnidad> GetListaTrimestres()
+        {
+            IList<MiniUnidad> lu = new List<MiniUnidad>();
+            // montamos los trimestres
+            lu.Add(GetMNU("1", "T1"));
+            lu.Add(GetMNU("2", "T2"));
+            lu.Add(GetMNU("3", "T3"));
+            lu.Add(GetMNU("4", "T4"));
+            return lu;
+        }
+            
+        public static IList<MiniUnidad> GetListaMeses(int t)
+        {
+            IList<MiniUnidad> lu = new List<MiniUnidad>();
+            // montamos los trimestres
+                    
+            switch (t)
+            {
+                case 1:
+                    lu.Add(GetMNU("1", "Enero"));
+                    lu.Add(GetMNU("2", "Febrero"));
+                    lu.Add(GetMNU("3", "Marzo"));
+                    break;
+                case 2:
+                    lu.Add(GetMNU("4", "Abril"));
+                    lu.Add(GetMNU("5", "Mayo"));
+                    lu.Add(GetMNU("6", "Junio"));
+                    break;
+                case 3:
+                    lu.Add(GetMNU("7", "Julio"));
+                    lu.Add(GetMNU("8", "Agosto"));
+                    lu.Add(GetMNU("9", "Septiembre"));
+                    break;
+                case 4:
+                    lu.Add(GetMNU("10", "Octubre"));
+                    lu.Add(GetMNU("11", "Noviembre"));
+                    lu.Add(GetMNU("12", "Diciembre"));
+                    break;
+                default:
+                    lu.Add(GetMNU("1", "Enero"));
+                    lu.Add(GetMNU("2", "Febrero"));
+                    lu.Add(GetMNU("3", "Marzo"));
+                    lu.Add(GetMNU("4", "Abril"));
+                    lu.Add(GetMNU("5", "Mayo"));
+                    lu.Add(GetMNU("6", "Junio"));
+                    lu.Add(GetMNU("7", "Julio"));
+                    lu.Add(GetMNU("8", "Agosto"));
+                    lu.Add(GetMNU("9", "Septiembre"));
+                    lu.Add(GetMNU("10", "Octubre"));
+                    lu.Add(GetMNU("11", "Noviembre"));
+                    lu.Add(GetMNU("12", "Diciembre"));
+                    break;
+            }
+            return lu;
+        }
+                
+        public static MiniUnidad GetMNU(string codigo, string nombre)
+        {
+            return new MiniUnidad()
+            {
+                Codigo = codigo,
+                Nombre = nombre
+            };
+        }
+            
         #endregion
-
+            
         #region Envios
+            
         public static Envio GetEnvio(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("NIF"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("NIF")))
+                return null;
             Envio e = new Envio();
             e.Nif = rdr.GetString("NIF");
             e.ClienteId = rdr.GetInt32("CLIENTE_ID");
@@ -1360,7 +1933,8 @@ namespace AriFaceLib
             e.Cuotas = rdr.GetDecimal("CUOTAS");
             e.Retencion = rdr.GetDecimal("RETENCIONES");
             e.Total = rdr.GetDecimal("TOTAL");
-            if (rdr.GetString("FACE") != "") e.EsFace = true;
+            if (rdr.GetString("FACE") != "")
+                e.EsFace = true;
             return e;
         }
 
@@ -1533,7 +2107,7 @@ namespace AriFaceLib
             rdr.Close();
             return lf;
         }
-
+            
         public static void EliminarFacturaDeEnvio(int facturaId, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1542,7 +2116,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         public static void RecuperarFacturaDeEnvio(int facturaId, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1551,7 +2125,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         public static void MarcarFacturaEnviada(int facturaId, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1560,7 +2134,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         public static void MarcarFacturaEnviadaFace(int facturaId, string numRegistro, string motivoRegistro, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1569,7 +2143,7 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         public static string NombreFicheroFactura(Factura f, Cliente c)
         {
             string n = "";
@@ -1591,20 +2165,21 @@ namespace AriFaceLib
             }
             return n;
         }
-               
-
+                
         #endregion
-
+            
         #region Empresa raiz
+            
         public static EmpresaRaiz GetEmpresaRaiz(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("nif"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("nif")))
+                return null;
             EmpresaRaiz er = new EmpresaRaiz();
             er.Nif = rdr.GetString("nif");
             er.Nombre = rdr.GetString("nombre");
             return er;
         }
-
+            
         public static EmpresaRaiz GetEmpresaRaiz(string nif, MySqlConnection conn)
         {
             EmpresaRaiz er = null;
@@ -1621,7 +2196,7 @@ namespace AriFaceLib
             rdr.Close();
             return er;
         }
-
+            
         public static IList<EmpresaRaiz> GetEmpresasRaiz(MySqlConnection conn)
         {
             IList<EmpresaRaiz> ler = new List<EmpresaRaiz>();
@@ -1640,7 +2215,7 @@ namespace AriFaceLib
             rdr.Close();
             return ler;
         }
-
+            
         public static IList<EmpresaRaiz> GetEmpresasRaiz(string parNom, MySqlConnection conn)
         {
             IList<EmpresaRaiz> ler = new List<EmpresaRaiz>();
@@ -1662,11 +2237,12 @@ namespace AriFaceLib
             rdr.Close();
             return ler;
         }
-
+                
         public static EmpresaRaiz SetEmpresaRaiz(EmpresaRaiz er, MySqlConnection conn)
         {
             bool alta = false;
-            if (er == null) return null;
+            if (er == null)
+                return null;
             if (er.Nif == "")
             {
                 alta = true;
@@ -1715,12 +2291,15 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+            
         #endregion
-
+            
         #region Plantillas
+            
         public static Plantilla GetPlantilla(MySqlDataReader rdr)
         {
-            if (rdr.IsDBNull(rdr.GetOrdinal("plantilla_id"))) return null;
+            if (rdr.IsDBNull(rdr.GetOrdinal("plantilla_id")))
+                return null;
             Plantilla p = new Plantilla();
             p.PlantillaId = rdr.GetInt32("plantilla_id");
             if (!rdr.IsDBNull(rdr.GetOrdinal("nombre")))
@@ -1731,7 +2310,7 @@ namespace AriFaceLib
                 p.Observaciones = rdr.GetString("observaciones");
             return p;
         }
-
+            
         public static Plantilla GetPlantilla(int plantillaId, MySqlConnection conn)
         {
             Plantilla p = null;
@@ -1748,7 +2327,7 @@ namespace AriFaceLib
             rdr.Close();
             return p;
         }
-
+            
         public static IList<Plantilla> GetPlantillas(MySqlConnection conn)
         {
             IList<Plantilla> lp = new List<Plantilla>();
@@ -1795,7 +2374,7 @@ namespace AriFaceLib
             rdr.Close();
             return p;
         }
-
+        
         public static void DeletePlantilla(int plantillaId, MySqlConnection conn)
         {
             MySqlCommand cmd = conn.CreateCommand();
@@ -1803,10 +2382,11 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+            
         #endregion
-
+            
         #region Repositorio
+                
         public static string GetRepositorio(MySqlConnection conn)
         {
             string r = "";
@@ -1822,20 +2402,22 @@ namespace AriFaceLib
             rdr.Close();
             return r;
         }
-        #endregion
 
+        #endregion
+            
         #region Manejo de correos electrónicos
+
         public static SmtpClient GetClienteSmtp()
         {
             SmtpClient smtp;
             smtp = new SmtpClient(ConfigurationSettings.AppSettings["mail_server"]);
             smtp.Credentials = new NetworkCredential(ConfigurationSettings.AppSettings["mail_usr"], ConfigurationSettings.AppSettings["mail_pass"]);
             smtp.Port = int.Parse(ConfigurationSettings.AppSettings["mail_port"]);
-
+            
             smtp.EnableSsl = bool.Parse(ConfigurationSettings.AppSettings["mail_ssl"]);
             return smtp;
         }
-
+                
         public static void SendEmailCliente(string emailCliente, string asunto, string cuerpo, ArrayList adjuntos)
         {
             SmtpClient smtp = GetClienteSmtp();
@@ -1860,7 +2442,7 @@ namespace AriFaceLib
             correo.Priority = System.Net.Mail.MailPriority.Normal;
             smtp.Send(correo);
         }
-
+                    
         public static void SendEmailAdministrador(string asunto, string cuerpo, ArrayList adjuntos)
         {
             SmtpClient smtp = GetClienteSmtp();
@@ -1883,9 +2465,11 @@ namespace AriFaceLib
             correo.Priority = System.Net.Mail.MailPriority.Normal;
             smtp.Send(correo);
         }
+            
         #endregion
-
+                
         #region Manejo de directorios, copias y descargas
+        
         public static void PrepararDirectorio(int administradorId, string localPath)
         {
             string dirPersonal = localPath + String.Format("\\ADM{0:000000}", administradorId);
@@ -1898,7 +2482,7 @@ namespace AriFaceLib
                 Directory.Delete(dirPersonal, true);
             }
         }
-
+        
         public static void PrepararDirectorioCli(int usuarioId, string localPath)
         {
             string dirPersonal = localPath + String.Format("\\USU{0:000000}", usuarioId);
@@ -1911,15 +2495,17 @@ namespace AriFaceLib
                 Directory.Delete(dirPersonal, true);
             }
         }
-
+            
         public static string ficheroPdfDownloadAdm(int administradorId, int facturaId, string localPath, MySqlConnection conn)
         {
             string dwn = "";
             // Obtener la factura
             Factura f = GetFactura(facturaId, conn);
-            if (f == null) return dwn;
+            if (f == null)
+                return dwn;
             Cliente c = GetCliente(f.ClienteId, conn);
-            if (c == null) return dwn;
+            if (c == null)
+                return dwn;
             // directorio local
             string dirPersonal = localPath + String.Format("\\ADM{0:000000}", administradorId);
             string repositorio = GetRepositorio(conn);
@@ -1932,15 +2518,17 @@ namespace AriFaceLib
             dwn = String.Format("/ADM{0:000000}/{1}", administradorId, nomFichero);
             return dwn;
         }
-
+            
         public static string ficheroPdfDownloadCli(int usuarioId, int facturaId, string localPath, MySqlConnection conn)
         {
             string dwn = "";
             // Obtener la factura
             Factura f = GetFactura(facturaId, conn);
-            if (f == null) return dwn;
+            if (f == null)
+                return dwn;
             Cliente c = GetCliente(f.ClienteId, conn);
-            if (c == null) return dwn;
+            if (c == null)
+                return dwn;
             // directorio local
             string dirPersonal = localPath + String.Format("\\USU{0:000000}", usuarioId);
             string repositorio = GetRepositorio(conn);
@@ -1953,9 +2541,11 @@ namespace AriFaceLib
             dwn = String.Format("/USU{0:000000}/{1}", usuarioId, nomFichero);
             return dwn;
         }
+            
         #endregion 
-
+            
         #region Estadisticas
+                
         public static Estadistica GetEstadistica(MySqlConnection conn)
         {
             Estadistica e = null;
@@ -1979,7 +2569,7 @@ namespace AriFaceLib
             rdr.Close();
             return e;
         }
-
+            
         public static IList<EstFacMes> GetNumFacMes(int anyo, MySqlConnection conn)
         {
             IList<EstFacMes> le = new List<EstFacMes>();
@@ -2007,6 +2597,7 @@ namespace AriFaceLib
             rdr.Close();
             return le;
         }
+
         #endregion
     }
 }
