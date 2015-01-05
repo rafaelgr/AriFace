@@ -7,6 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Security;
 using Microsoft.Web.Services3.Security.Tokens;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace FaceWebApi
 {
@@ -161,7 +163,20 @@ namespace FaceWebApi
             req.fichero_factura.mime = "application/xml";
             req.fichero_factura.nombre = "signed.xml";
             req.correo = correo;
-            ArrayOfSSPPFicheroAnexo anexos;
+            // manejo de anexos
+
+            SSPP.SSPPFicheroAnexo item = new SSPP.SSPPFicheroAnexo();
+            item.anexo = encoder64.EncodeTo64File(pathPDF);
+            item.nombre = pathPDF.Substring(pathPDF.LastIndexOf("\\"));
+            item.mime = "application/pdf";
+            //
+            XmlDocument doc = new XmlDocument();
+            using (XmlWriter writer = doc.CreateNavigator().AppendChild())
+            {
+                new XmlSerializer(item.GetType()).Serialize(writer, item);
+            }
+            XmlElement ele = doc.DocumentElement;
+            //
             try
             {
                 FirmarEnvio();
