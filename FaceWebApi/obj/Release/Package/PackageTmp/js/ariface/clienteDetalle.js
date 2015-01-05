@@ -70,6 +70,9 @@ function loadData(data) {
     vm.Nombre(data.Nombre);
     vm.Cif(data.Cif);
     vm.Email(data.Email);
+    vm.OrganoGestor(data.CodOrganoGestor);
+    vm.UnidadTramitadora(data.CodUnidadTramitadora);
+    vm.OficinaContable(data.CodOficinaContable);
     loadComboOrganoGestor(data.CodOrganoGestor);
     loadComboUnidadTramitadora(data.CodOrganoGestor, data.CodUnidadTramitadora);
     loadComboOficinaContable(data.CodOrganoGestor, data.CodUnidadTramitadora, data.CodOficinaContable)

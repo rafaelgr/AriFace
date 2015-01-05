@@ -1280,7 +1280,7 @@ namespace AriFaceLib
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
-                WHERE c.cif = '{0}';";
+                WHERE c.cif = '{0}' ";
             MySqlCommand cmd = conn.CreateCommand();
             sql = String.Format(sql, nif);
             sql += anoSql + mesSql + esClienteSql;
@@ -1331,7 +1331,7 @@ namespace AriFaceLib
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
-               WHERE c.cif = '{0}';";
+               WHERE c.cif = '{0}'";
             sql = String.Format(sql, nif);
             sql += anoSql + mesSql + esClienteSql;
             cmd.CommandText = sql;
@@ -1413,7 +1413,7 @@ namespace AriFaceLib
             {
                 anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
             }
-            else if (q != 0)
+            if (q != 0)
             {
                 switch (q)
                 {
@@ -1431,7 +1431,7 @@ namespace AriFaceLib
                         break;
                 }
             }
-            else if (m != 0)
+            if (m != 0)
             {
                 mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
             }
@@ -1581,7 +1581,7 @@ namespace AriFaceLib
             {
                 anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
             }
-            else if (q != 0)
+            if (q != 0)
             {
                 switch (q)
                 {
@@ -1599,7 +1599,7 @@ namespace AriFaceLib
                         break;
                 }
             }
-            else if (m != 0)
+            if (m != 0)
             {
                 mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
             }
@@ -1616,7 +1616,7 @@ namespace AriFaceLib
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
-                WHERE d.departamento_id = {0};";
+                WHERE d.departamento_id = {0} ";
             MySqlCommand cmd = conn.CreateCommand();
             sql = String.Format(sql, idDepartamento);
             sql += anoSql + mesSql + esClienteSql;

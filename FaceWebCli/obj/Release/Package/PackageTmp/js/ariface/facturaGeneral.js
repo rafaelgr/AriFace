@@ -17,12 +17,27 @@ var breakpointDefinition = {
     phone: 480
 };
 
+// variables y objetos usados
+var miniUnidad = function (codigo, nombre) {
+    this.Codigo = codigo;
+    this.Nombre = nombre;
+}
 
 function initForm(proveedor) {
     usuario = comprobarLogin();
     // de smart admin
     pageSetUp();
-
+    //
+    $('#btnBuscar').click(buscarFacturas());
+    $('#frmBuscar').submit(function () {
+        return false
+    });
+    $('#cmbTrimestre').change(function () {
+        loadComboMeses(Number(vm.Trimestre().Codigo));
+    });
+    // 
+    vm = new facData();
+    ko.applyBindings(vm);
     // numeral en español
     numeral.language('es', {
         delimiters: {
@@ -37,34 +52,153 @@ function initForm(proveedor) {
     initTablaFacturas();
     // cargamos las facturas que puede ver ese usuario
     var data = {
-        usuarioId: usuario.UsuarioId
+        usuarioId: usuario.UsuarioId,
+        a: 0,
+        q: 0,
+        m: 0,
+        esCliente: !proveedor
     }
     // hay que buscar ese elemento en concreto
     $.ajax({
         type: "POST",
-        url: "FacturaApi.aspx/GetFacturasUsuario",
+        url: "FacturaApi.aspx/GetFacturasUsuarioPeriodo",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (data, status) {
+            var pf = data.d;
+            vm.SumBases(numeral(pf.SumBase).format('#,###,##0.00'));
+            vm.SumCuotas(numeral(pf.SumCuota).format('#,###,##0.00'));
+            vm.SumTotal(numeral(pf.SumTotal).format('#,###,##0.00'));
+            vm.SumRetencion(numeral(pf.SumRetencion).format('#,###,##0.00'));
+            vm.SumAportacion(numeral(pf.SumAportacion).format('#,###,##0.00'));
+            // esta es la zona de carga de valores
+            loadTablaFacturas(pf.Facturas);
+        },
+        error: errorAjax
+    });
+    vm.Ano(new miniUnidad('0', 'Todos los años'));
+    vm.Trimestre(new miniUnidad('0', 'Todos los trimestres'));
+    vm.Mes(new miniUnidad('0', 'Todos los meses'));
+    loadComboAnos();
+    loadComboTrimestres();
+    loadComboMeses();
+}
+
+function facData() {
+    var self = this;
+    self.SumBases = ko.observable();
+    self.SumCuotas = ko.observable();
+    self.SumTotal = ko.observable();
+    self.SumRetencion = ko.observable();
+    self.SumAportacion = ko.observable();
+    self.Ano = ko.observable();
+    self.Trimestre = ko.observable();
+    self.Mes = ko.observable();
+    // apoyo para desplegables
+    self.PosiblesAnos = ko.observableArray([]);
+    self.PosiblesTrimestres = ko.observableArray([]);
+    self.PosiblesMeses = ko.observableArray([]);
+}
+
+function loadComboAnos(ano) {
+    if (ano == null) ano = 0;
+    data = { "usuarioId": usuario.UsuarioId};
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/GetAnosFacturados",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
             var v = [];
-            // aqui comprobamos si quiere de clientes o de proveedores
+            var mu2 = new miniUnidad('0', 'Todos los años');
+            v.push(mu2);
             // hay que mostrarlo en la zona de datos
             for (var i = 0; i < data.d.length; i++) {
-                var f = data.d[i];
-                if (!proveedor) {
-                    // solo cliente
-                    if (f.EsDeCliente) v.push(f);
-                } else {
-                    // solo proveedor
-                    if (!f.EsDeCliente) v.push(f);
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                if (ano != null) {
+                    if (data.d[i].Codigo === ano) {
+                        vm.Ano(mu);
+                    }
                 }
             }
-            loadTablaFacturas(v);
+            // en las altas hay que dejar una selección en vacío.
+            if (ano == 0) {
+                vm.Ano(mu2);
+            }
+            vm.PosiblesAnos(v);
         },
         error: errorAjax
     });
 }
+
+function loadComboTrimestres(t) {
+    if (t == null) t = 0;
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/GetTrimestres",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (data, status) {
+            var v = [];
+            // hay que mostrarlo en la zona de datos
+            vm.PosiblesTrimestres(v);
+            var mu2 = new miniUnidad('0', 'Todos los trimestres');
+            v.push(mu2);
+            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                if (t != null) {
+                    if (data.d[i].Codigo === t) {
+                        vm.Trimestre(mu);
+                    }
+                }
+            }
+            // en las altas hay que dejar una selección en vacío.
+            if (t == 0) {
+                vm.Trimestre(mu2);
+            }
+            vm.PosiblesTrimestres(v);
+        },
+        error: errorAjax
+    });
+}
+
+function loadComboMeses(t) {
+    if (t == null) t = 0;
+    data = { "t": t };
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/GetMeses",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            var v = [];
+            // hay que mostrarlo en la zona de datos
+            vm.PosiblesMeses(v);
+            var mu2 = new miniUnidad('0', 'Todos los meses');
+            v.push(mu2);            // hay que mostrarlo en la zona de datos
+            for (var i = 0; i < data.d.length; i++) {
+                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
+                v.push(mu);
+                //if (t != null) {
+                //    if (data.d[i].Codigo === t) {
+                //        vm.Mes(mu);
+                //    }
+                //}
+            }
+            // en las altas hay que dejar una selección en vacío.
+            vm.Mes(mu2);
+            vm.PosiblesMeses(v);
+        },
+        error: errorAjax
+    });
+}
+
 
 function initTablaFacturas() {
     tablaCarro = $('#dt_factura').dataTable({
@@ -176,26 +310,32 @@ function loadTablaFacturas(data) {
     }
 }
 
-function buscarFactura() {
+function buscarFacturas() {
     var mf = function () {
-        if (!datosOK()) {
-            return;
-        }
-        // obtener el n.serie del certificado para la firma.
-        var aBuscar = $('#txtBuscar').val();
-        // enviar la consulta por la red (AJAX)
+        // cargamos las facturas que puede ver ese usuario
         var data = {
-            "aBuscar": aBuscar
-        };
+            usuarioId: usuario.UsuarioId,
+            a: Number(vm.Ano().Codigo),
+            q: Number(vm.Trimestre().Codigo),
+            m: Number(vm.Mes().Codigo),
+            esCliente: true
+        }
+        // hay que buscar ese elemento en concreto
         $.ajax({
             type: "POST",
-            url: "ClienteApi.aspx/BuscarCliente",
+            url: "FacturaApi.aspx/GetFacturasUsuarioPeriodo",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (data, status) {
-                // hay que mostrarlo en la zona de datos
-                loadTablaClientes(data.d);
+                var pf = data.d;
+                vm.SumBases(numeral(pf.SumBase).format('#,###,##0.00'));
+                vm.SumCuotas(numeral(pf.SumCuota).format('#,###,##0.00'));
+                vm.SumTotal(numeral(pf.SumTotal).format('#,###,##0.00'));
+                vm.SumRetencion(numeral(pf.SumRetencion).format('#,###,##0.00'));
+                vm.SumAportacion(numeral(pf.SumAportacion).format('#,###,##0.00'));
+                // esta es la zona de carga de valores
+                loadTablaFacturas(pf.Facturas);
             },
             error: errorAjax
         });

@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>12/29/2014 11:44:41</publishTime>
+      <publishTime>01/05/2015 10:24:06</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>12/29/2014 11:44:42</publishTime>
+      <publishTime>01/05/2015 10:26:59</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>12/23/2014 16:36:21</publishTime>
@@ -85,10 +85,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/26/2014 10:37:40</publishTime>
     </File>
     <File Include="FacturasCliente.html">
-      <publishTime>12/26/2014 12:02:01</publishTime>
+      <publishTime>12/29/2014 16:16:39</publishTime>
     </File>
     <File Include="FacturasProveedor.html">
-      <publishTime>12/26/2014 12:01:13</publishTime>
+      <publishTime>12/29/2014 17:57:47</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>12/23/2014 16:36:18</publishTime>
@@ -1312,7 +1312,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="js/ariface/clienteDetalle.js">
-      <publishTime>12/23/2014 16:36:13</publishTime>
+      <publishTime>12/29/2014 12:53:34</publishTime>
     </File>
     <File Include="js/ariface/clienteGeneral.js">
       <publishTime>12/23/2014 16:36:13</publishTime>
@@ -1333,7 +1333,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>12/26/2014 11:56:56</publishTime>
+      <publishTime>12/29/2014 17:52:49</publishTime>
+    </File>
+    <File Include="js/ariface/facturaProveedor.js">
+      <publishTime>12/29/2014 17:56:54</publishTime>
     </File>
     <File Include="js/ariface/index.js">
       <publishTime>12/24/2014 11:01:05</publishTime>
@@ -2719,7 +2722,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/24/2014 10:33:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/29/2014 11:44:50</publishTime>
+      <publishTime>01/05/2015 10:27:03</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>12/23/2014 18:14:29</publishTime>

@@ -56,7 +56,7 @@ function initForm(proveedor) {
         a: 0,
         q: 0,
         m: 0,
-        esCliente: !proveedor
+        esCliente: false
     }
     // hay que buscar ese elemento en concreto
     $.ajax({
@@ -318,7 +318,7 @@ function buscarFacturas() {
             a: Number(vm.Ano().Codigo),
             q: Number(vm.Trimestre().Codigo),
             m: Number(vm.Mes().Codigo),
-            esCliente: true
+            esCliente: false
         }
         // hay que buscar ese elemento en concreto
         $.ajax({

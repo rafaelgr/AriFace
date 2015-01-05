@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>12/29/2014 10:26:29</publishTime>
+      <publishTime>01/05/2015 10:24:06</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>12/29/2014 10:26:29</publishTime>
+      <publishTime>01/05/2015 10:25:58</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>12/29/2014 10:26:31</publishTime>
+      <publishTime>01/05/2015 10:25:59</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -1351,7 +1351,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/26/2014 18:53:09</publishTime>
     </File>
     <File Include="js/ariface/clienteDetalle.js">
-      <publishTime>12/19/2014 17:17:55</publishTime>
+      <publishTime>12/31/2014 13:47:46</publishTime>
     </File>
     <File Include="js/ariface/clienteGeneral.js">
       <publishTime>12/19/2014 17:18:10</publishTime>
@@ -2767,7 +2767,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:00:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/29/2014 10:26:48</publishTime>
+      <publishTime>01/05/2015 10:26:08</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
