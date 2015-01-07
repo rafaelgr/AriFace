@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Facturae xmlns="http://www.facturae.es/Facturae/2009/v3.2/Facturae" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FileHeader xmlns="">
+    <SchemaVersion>3.2</SchemaVersion>
+    <Modality>I</Modality>
+    <InvoiceIssuerType>EM</InvoiceIssuerType>
+    <Batch>
+      <BatchIdentifier>A46228730A224063020141031</BatchIdentifier>
+      <InvoicesCount>1</InvoicesCount>
+      <TotalInvoicesAmount>
+        <TotalAmount>181.56</TotalAmount>
+      </TotalInvoicesAmount>
+      <TotalOutstandingAmount>
+        <TotalAmount>181.56</TotalAmount>
+      </TotalOutstandingAmount>
+      <TotalExecutableAmount>
+        <TotalAmount>181.56</TotalAmount>
+      </TotalExecutableAmount>
+      <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+    </Batch>
+  </FileHeader>
+  <Parties xmlns="">
+    <SellerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>F46221503</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>C.V.L. TELE TAXI</CorporateName>
+        <AddressInSpain>
+          <Address>Ciudad del Aprendiz, 13 ACC.</Address>
+          <PostCode>46017</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </SellerParty>
+    <BuyerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>A46228730</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>POLIGONO LA MINA</CorporateName>
+        <AddressInSpain>
+          <Address>ARTES GRAFICAS 42-BAJO</Address>
+          <PostCode>46200</PostCode>
+          <Town>PAIPORTA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </BuyerParty>
+  </Parties>
+  <Invoices xmlns="">
+    <Invoice>
+      <InvoiceHeader>
+        <InvoiceNumber>2240630</InvoiceNumber>
+        <InvoiceSeriesCode>A</InvoiceSeriesCode>
+        <InvoiceDocumentType>FC</InvoiceDocumentType>
+        <InvoiceClass>OO</InvoiceClass>
+      </InvoiceHeader>
+      <InvoiceIssueData>
+        <IssueDate>2014-10-31</IssueDate>
+        <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        <TaxCurrencyCode>EUR</TaxCurrencyCode>
+        <LanguageName>es</LanguageName>
+      </InvoiceIssueData>
+      <TaxesOutputs>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>10.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>158.45</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>15.85</TotalAmount>
+          </TaxAmount>
+        </Tax>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>21.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>6.00</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>1.26</TotalAmount>
+          </TaxAmount>
+        </Tax>
+      </TaxesOutputs>
+      <InvoiceTotals>
+        <TotalGrossAmount>164.45</TotalGrossAmount>
+        <TotalGeneralDiscounts>0.00</TotalGeneralDiscounts>
+        <TotalGrossAmountBeforeTaxes>164.45</TotalGrossAmountBeforeTaxes>
+        <TotalTaxOutputs>17.11</TotalTaxOutputs>
+        <TotalTaxesWithheld>0.00</TotalTaxesWithheld>
+        <InvoiceTotal>181.56</InvoiceTotal>
+        <TotalOutstandingAmount>181.56</TotalOutstandingAmount>
+        <TotalExecutableAmount>181.56</TotalExecutableAmount>
+      </InvoiceTotals>
+      <Items>
+        <InvoiceLine>
+          <ItemDescription>SERVICIOS DE TAXI</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>158.450000</UnitPriceWithoutTax>
+          <TotalCost>158.450000</TotalCost>
+          <GrossAmount>158.450000</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>158.45</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>-33.27</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+        <InvoiceLine>
+          <ItemDescription>GASTOS DE ADMINISTRACION</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>6.000000</UnitPriceWithoutTax>
+          <TotalCost>6.000000</TotalCost>
+          <GrossAmount>6.000000</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>10.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>6.00</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>-0.60</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+      </Items>
+    </Invoice>
+  </Invoices>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature877571">
+<ds:SignedInfo Id="Signature-SignedInfo694080">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
+<ds:Reference Id="SignedPropertiesID236114" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature877571-SignedProperties541505">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>IWw22AHsztbirbKfd5NU+zLfa50=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate1552587">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>eOOSPjf9GTQvK2p3s3jWM5CT4jg=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-1219" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>fkVdi/KsT1NQLPkWPlSW88L9SnQ=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue51622">
+z8mkdq7mO7rdUotrFUALRaaiezVPxGOAU/8U8iGqSmTApRs7nya8wJOvxn08wggdw3eI+MiIrIx/
+iVp7ZVB8Z9Q3qAl9JdQFXKPqyuAyn67R/zUBs1qd2oFh2iVyW8GNkKEy4c/ybawv24BqYJv2tn/p
+iXtyxNUcPjKFoo6ll/M=
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate1552587">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIEwzCCBCygAwIBAgIEPO39szANBgkqhkiG9w0BAQUFADA2MQswCQYDVQQGEwJFUzENMAsGA1UE
+ChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMB4XDTEzMDExODA4MjMwN1oXDTE1MDEx
+ODA4MjMwN1owgeMxCzAJBgNVBAYTAkVTMQ0wCwYDVQQKEwRGTk1UMRgwFgYDVQQLEw9GTk1UIENs
+YXNlIDIgQ0ExEjAQBgNVBAsTCTcwMzAxOTEyNTGBljCBkwYDVQQDE4GLRU5USURBRCBURUxFQ09N
+VU5JQ0FDSU9OIElOU1RBTEFDSU9ORVMgWSBTRVJWSUNJTyBBU0lTVEVOQ0lBIFNMIC0gQ0lGIEI0
+NjE1NTcxOSAtIE5PTUJSRSBTQU5DSEVaIE1PTEVSTyBQQUxPTUFSRVMgRkxPUkVOQ0lPIC0gTklG
+IDA1NjE2ODM0RzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA4JnV0dFOrKY8KNizdBvTC/FR
+4NoVXWuFTrhGSYQUtCt6/T21FSkvmqhpdS8OGs63cyttcCfAudLaWrJOF/ui4WfXSdsmMVgB6U27
+zXlKOtWXU0a98geFVGuuyH4TAIwPD22elS4jZNbt6Gt5QM3bxGZ6vd5xxG27QN+dnmUetE0CAwEA
+AaOCAi4wggIqMIHxBgNVHREEgekwgeaBD0FETU9OQFRFSU5TQS5FU6SB0jCBzzEYMBYGCSsGAQQB
+rGYBBxMJQjQ2MTU1NzE5MUYwRAYJKwYBBAGsZgEGEzdURUxFQ09NVU5JQ0FDSU9OIElOU1RBTEFD
+SU9ORVMgWSBTRVJWSUNJTyBBU0lTVEVOQ0lBIFNMMRgwFgYJKwYBBAGsZgEEEwkwNTYxNjgzNEcx
+GDAWBgkrBgEEAaxmAQMTCVBBTE9NQVJFUzEdMBsGCSsGAQQBrGYBAhMOU0FOQ0hFWiBNT0xFUk8x
+GDAWBgkrBgEEAaxmAQETCUZMT1JFTkNJTzAJBgNVHRMEAjAAMCsGA1UdEAQkMCKADzIwMTMwMTE4
+MDgyMzA3WoEPMjAxNTAxMTgwODIzMDdaMAsGA1UdDwQEAwIFoDARBglghkgBhvhCAQEEBAMCBaAw
+HQYDVR0OBBYEFPg1CuKvFNkYepT/ojmsDn5fe2mJMB8GA1UdIwQYMBaAFECadkSXdAfErBTLHo1P
+OkV8MNdhMD4GCSsGAQQBrGYBIQQxFi9DRVJUSUZJQ0FETyBFWENMVVNJVk8gUEFSQSBFTCBBTUJJ
+VE8gVFJJQlVUQVJJTzBcBgNVHR8EVTBTMFGgT6BNpEswSTELMAkGA1UEBhMCRVMxDTALBgNVBAoT
+BEZOTVQxGDAWBgNVBAsTD0ZOTVQgQ2xhc2UgMiBDQTERMA8GA1UEAxMIQ1JMMTE0MTUwDQYJKoZI
+hvcNAQEFBQADgYEAYGq9zDZla761vC8s9cWFi46Vm6lpgxdt/BcJH0ebrbqbX1up9Ey5u8aGodC3
+BfEYWRkejvyEbDbnBrSUcU//Qa3DyEM22iTXgHQpnXEb8rq8HbReHfWOquYmZVup/t/cBn4odk6h
+y5AKUhwyKgHW0zmYtWzfF6opUTMbK3FAUAM=
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+4JnV0dFOrKY8KNizdBvTC/FR4NoVXWuFTrhGSYQUtCt6/T21FSkvmqhpdS8OGs63cyttcCfAudLa
+WrJOF/ui4WfXSdsmMVgB6U27zXlKOtWXU0a98geFVGuuyH4TAIwPD22elS4jZNbt6Gt5QM3bxGZ6
+vd5xxG27QN+dnmUetE0=
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature877571-Object659221"><etsi:QualifyingProperties Target="#Signature877571"><etsi:SignedProperties Id="Signature877571-SignedProperties541505"><etsi:SignedSignatureProperties><etsi:SigningTime>2015-01-07T16:29:02+01:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>fBaSSH8hZOZ94vgwHogUkqSAZfU=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>OU=FNMT Clase 2 CA,O=FNMT,C=ES</ds:X509IssuerName><ds:X509SerialNumber>1022229939</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate><etsi:SignaturePolicyIdentifier><etsi:SignaturePolicyId><etsi:SigPolicyId><etsi:Identifier>http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf</etsi:Identifier><etsi:Description>Política de Firma FacturaE v3.1</etsi:Description></etsi:SigPolicyId><etsi:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ohixl6upD6av8N7pEvDABhEL6hM=</ds:DigestValue></etsi:SigPolicyHash></etsi:SignaturePolicyId></etsi:SignaturePolicyIdentifier></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-1219"><etsi:Description>Descripcion del documento</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></Facturae>
