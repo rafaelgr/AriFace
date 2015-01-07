@@ -50,5 +50,23 @@ namespace FaceWebApi
             }
             return le;
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<MiniUnidad> GetAnosFacturados()
+        {
+            IList<MiniUnidad> lu = new List<MiniUnidad>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                // primero comprobamos qué permisos tiene el usuario
+                // fijándonos en a qué empresa raiz, cliente y departamento pertenece
+                lu = CntAriFaceLib.GetAnosFacturados(conn);
+                conn.Close();
+            }
+            return lu;
+        }
     }
 }

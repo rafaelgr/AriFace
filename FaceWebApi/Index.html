@@ -363,6 +363,11 @@
 
                                     <!-- widget content -->
                                     <div class="widget-body">
+                                        <div>
+                                            Año seleccionado
+                                            <select id="cmbAno" data-bind="options: PosiblesAnos, optionsText: 'Nombre', value: Ano, valueAllowUnset: true">
+                                            </select>
+                                        </div>
                                         <div id="graficoFac"></div>
                                     </div>
                                     <!-- end widget content -->
@@ -482,6 +487,9 @@
         <!-- Voice command : plugin -->
         <script src="js/speech/voicecommand.min.js"></script>
 
+        <!--- KNOCKOUT JS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+
         <!-- SmartChat UI : plugin -->
         <script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
         <script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
@@ -497,7 +505,7 @@
         <script type="text/javascript">
             (function ($) {
                 $(document).ready(function () {
-                   initForm();
+                    initForm();
                 });
             })(jQuery);
         </script>

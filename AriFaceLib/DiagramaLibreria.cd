@@ -52,7 +52,7 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QBAFwABhgiAUHhUCAkEEABUHKCQGgUAB4QQKSZh0sgA=</HashCode>
+      <HashCode>QBANwABhgiAUHhUCAkEEABUPKCQGgUAB4RQKSZh0sgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -138,6 +138,13 @@
     <TypeIdentifier>
       <HashCode>QAAAAgQAAACGAAAAgBAAAAAQAAAAAAACAQgAAEMIAAA=</HashCode>
       <FileName>PeriodoFactura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriFaceLib.item" Collapsed="true">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAACAAAAAACAAAEAAAAAAAAAAAAAAAAAAAIAAQA=</HashCode>
+      <FileName>item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

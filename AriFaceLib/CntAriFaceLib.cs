@@ -1847,6 +1847,32 @@ namespace AriFaceLib
             rdr.Close();
             return lu;
         }
+
+        public static IList<MiniUnidad> GetAnosFacturados(MySqlConnection conn)
+        {
+            IList<MiniUnidad> lu = new List<MiniUnidad>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                    DISTINCT YEAR(f.fecha) as ANO
+                    FROM factura AS f
+                    LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
+                    LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
+                    LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges";
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    MiniUnidad mu = new MiniUnidad();
+                    mu.Codigo = rdr.GetString("ANO");
+                    mu.Nombre = rdr.GetString("ANO");
+                    lu.Add(mu);
+                }
+            }
+            rdr.Close();
+            return lu;
+        }
             
         public static IList<MiniUnidad> GetListaTrimestres()
         {
@@ -2507,15 +2533,15 @@ namespace AriFaceLib
             if (c == null)
                 return dwn;
             // directorio local
-            string dirPersonal = localPath + String.Format("\\ADM{0:000000}", administradorId);
+            string dirPersonal = localPath + String.Format(@"\ADM{0:000000}", administradorId);
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
             nomFichero += ".pdf"; // se trata de un pdf
             // copiamos al directorio personal de ese administrador
-            string origen = repositorio + "\\" + nomFichero;
-            string destino = String.Format(localPath + "\\ADM{0:000000}\\{1}", administradorId, nomFichero);
+            string origen = repositorio + @"\" + nomFichero;
+            string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero);
             File.Copy(origen, destino, true);
-            dwn = String.Format("/ADM{0:000000}/{1}", administradorId, nomFichero);
+            dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero);
             return dwn;
         }
             
@@ -2530,15 +2556,15 @@ namespace AriFaceLib
             if (c == null)
                 return dwn;
             // directorio local
-            string dirPersonal = localPath + String.Format("\\USU{0:000000}", usuarioId);
+            string dirPersonal = localPath + String.Format(@"\USU{0:000000}", usuarioId);
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
             nomFichero += ".pdf"; // se trata de un pdf
             // copiamos al directorio personal de ese administrador
-            string origen = repositorio + "\\" + nomFichero;
-            string destino = String.Format(localPath + "\\USU{0:000000}\\{1}", usuarioId, nomFichero);
+            string origen = repositorio + @"\" + nomFichero;
+            string destino = String.Format(localPath + @"\USU{0:000000}\{1}", usuarioId, nomFichero);
             File.Copy(origen, destino, true);
-            dwn = String.Format("/USU{0:000000}/{1}", usuarioId, nomFichero);
+            dwn = String.Format("USU{0:000000}/{1}", usuarioId, nomFichero);
             return dwn;
         }
             

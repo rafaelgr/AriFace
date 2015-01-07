@@ -100,16 +100,20 @@ namespace FaceWebApi
                 {
                     string repositorio = CntAriFaceLib.GetRepositorio(conn);
                     string fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".xml";
+                    string ficheroPdf = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".pdf";
                     string dirNotificacion = ConfigurationSettings.AppSettings["dirNotificacion"];
                     string email = ConfigurationSettings.AppSettings["mail_address"];
                     try
                     {
-                        RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
+                        //RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
+                        RespuestaFactura rs = EnviarFacturaAdjunto(certSN, fichero, dirNotificacion, email, ficheroPdf);
                         CntAriFaceLib.MarcarFacturaEnviadaFace(f.FacturaId, rs.CodigoRegistro, rs.StrFechaRecepcion, conn);
                         DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                             int.Parse(f.StrFecha.Substring(4, 2)),
                             int.Parse(f.StrFecha.Substring(6, 2)));
                         detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                            f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
+                        mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
                             f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
                     }
                     catch (Exception ex)
@@ -130,6 +134,32 @@ namespace FaceWebApi
             {
                 SenderFace sf = new SenderFace(certSn);
                 SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
+                rf = new RespuestaFactura();
+                rf.CodigoRegistro = res.codigo_registro;
+                rf.StrFechaRecepcion = res.fecha_recepcion;
+                rf.IdentificadorEmisor = res.identificador_emisor;
+                rf.NumeroFactura = res.numero_factura;
+                rf.CodOficinaContable = res.oficina_contable;
+                rf.CodOrganoGestor = res.organo_gestor;
+                rf.PdfJustificante = res.pdf_justificante;
+                rf.Seriefactura = res.serie_factura;
+                rf.CodUnidadTramitadora = res.unidad_tramitadora;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return rf;
+        }
+
+        public static RespuestaFactura EnviarFacturaAdjunto(string certSn, string fE, string dA, string email, string ficheroPdf)
+        {
+            RespuestaFactura rf = null;
+            try
+            {
+                SenderFace sf = new SenderFace(certSn);
+                //SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
+                SSPPResultadoEnviarFactura res = sf.EnviarFacturaAdjunto(fE, dA, email,ficheroPdf);
                 rf = new RespuestaFactura();
                 rf.CodigoRegistro = res.codigo_registro;
                 rf.StrFechaRecepcion = res.fecha_recepcion;

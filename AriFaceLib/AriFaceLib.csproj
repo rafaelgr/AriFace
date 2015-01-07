@@ -52,6 +52,7 @@
     <Compile Include="Estado.cs" />
     <Compile Include="EstFacMes.cs" />
     <Compile Include="Factura.cs" />
+    <Compile Include="item.cs" />
     <Compile Include="MiniUnidad.cs" />
     <Compile Include="MiniUnidad2.cs" />
     <Compile Include="Parametros.cs" />
