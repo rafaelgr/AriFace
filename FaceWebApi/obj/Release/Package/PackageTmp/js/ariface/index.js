@@ -46,7 +46,7 @@ function grafico(anyo) {
             for (var i = 0; i < data.d.length; i++) {
                 var m = data.d[i].Mes;
                 var n = data.d[i].Numero;
-                var ms = ('0' + m).substring(m.length - 2, 2);
+                var ms = m;
                 var d = {
                     Mes: anyo + "-" + ms,
                     Valor: n

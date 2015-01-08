@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>01/07/2015 13:21:24</publishTime>
+      <publishTime>01/07/2015 17:58:49</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>01/07/2015 13:28:12</publishTime>
+      <publishTime>01/07/2015 17:58:49</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>12/23/2014 16:36:21</publishTime>
@@ -1333,7 +1333,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>12/29/2014 17:52:49</publishTime>
+      <publishTime>01/07/2015 17:51:52</publishTime>
     </File>
     <File Include="js/ariface/facturaProveedor.js">
       <publishTime>12/29/2014 17:56:54</publishTime>
@@ -2722,7 +2722,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/24/2014 10:33:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/07/2015 13:28:15</publishTime>
+      <publishTime>01/07/2015 17:58:59</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>12/23/2014 18:14:29</publishTime>

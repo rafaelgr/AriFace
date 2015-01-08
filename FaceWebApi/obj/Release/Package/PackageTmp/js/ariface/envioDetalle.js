@@ -193,9 +193,10 @@ function initTablaFacturas() {
             {
                 data: "FacturaId",
                 render: function (data, type, row) {
+                    var bt0 = "<button class='btn btn-circle btn-primary btn-lg' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
                     var bt1 = "<button class='btn btn-circle btn-success btn-lg' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
                     var bt2 = "<button class='btn btn-circle btn-warning btn-lg' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
-                    var html = "<div class='pull-right'>" + bt1 + " " +  bt2 + "</div>";
+                    var html = "<div class='pull-right'>" + bt0 + " " + bt1 + " " + bt2 + "</div>";
                     return html;
                 }
             }]
@@ -234,6 +235,27 @@ function verPdf(id) {
         },
         error: errorAjax
     });
+}
+
+function verXml(id) {
+    var user = JSON.parse(getCookie("admin"));
+    var data = {
+        facturaId: id,
+        administradorId: user.AdministradorId
+    };
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/VerXml",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (data, status) {
+            var url = data.d;
+            window.open(url, '_blank');
+        },
+        error: errorAjax
+    });
+
 }
 
 function eliminarDeEnvio(id) {

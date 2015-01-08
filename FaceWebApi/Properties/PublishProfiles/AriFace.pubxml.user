@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>01/07/2015 17:12:59</publishTime>
+      <publishTime>01/07/2015 17:58:49</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>01/07/2015 17:12:59</publishTime>
+      <publishTime>01/07/2015 17:59:45</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>01/07/2015 17:13:01</publishTime>
+      <publishTime>01/07/2015 17:59:47</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -1363,7 +1363,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 17:09:06</publishTime>
     </File>
     <File Include="js/ariface/envioDetalle.js">
-      <publishTime>12/22/2014 17:37:51</publishTime>
+      <publishTime>01/07/2015 17:43:48</publishTime>
     </File>
     <File Include="js/ariface/envioGeneral.js">
       <publishTime>12/19/2014 17:51:22</publishTime>
@@ -1372,10 +1372,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:08:51</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>12/22/2014 17:33:42</publishTime>
+      <publishTime>01/07/2015 17:40:55</publishTime>
     </File>
     <File Include="js/ariface/index.js">
-      <publishTime>01/07/2015 17:04:59</publishTime>
+      <publishTime>01/07/2015 17:27:33</publishTime>
     </File>
     <File Include="js/ariface/login.js">
       <publishTime>12/22/2014 12:44:33</publishTime>
@@ -2767,7 +2767,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 18:00:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/07/2015 17:13:18</publishTime>
+      <publishTime>01/07/2015 17:59:53</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
