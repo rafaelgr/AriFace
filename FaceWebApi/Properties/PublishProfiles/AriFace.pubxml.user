@@ -13,10 +13,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 16:35:55</publishTime>
     </File>
     <File Include="AdministradorDetalle.html">
-      <publishTime>12/19/2014 17:04:10</publishTime>
+      <publishTime>01/12/2015 11:33:24</publishTime>
     </File>
     <File Include="AdministradorGeneral.html">
-      <publishTime>12/19/2014 18:05:28</publishTime>
+      <publishTime>01/12/2015 11:31:39</publishTime>
     </File>
     <File Include="ajax/demowidget.php">
       <publishTime>05/17/2014 05:56:24</publishTime>
@@ -70,10 +70,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/10/2014 13:15:22</publishTime>
     </File>
     <File Include="ClienteDetalle.html">
-      <publishTime>12/19/2014 17:17:37</publishTime>
+      <publishTime>01/12/2015 11:45:24</publishTime>
     </File>
     <File Include="ClienteGeneral.html">
-      <publishTime>12/19/2014 17:19:01</publishTime>
+      <publishTime>01/12/2015 11:44:25</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>10/30/2014 10:13:20</publishTime>
@@ -109,19 +109,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/15/2014 11:59:01</publishTime>
     </File>
     <File Include="EmpresaRaizDetalle.html">
-      <publishTime>12/19/2014 17:07:47</publishTime>
+      <publishTime>01/12/2015 11:34:37</publishTime>
     </File>
     <File Include="EmpresaRaizGeneral.html">
-      <publishTime>12/19/2014 17:03:28</publishTime>
+      <publishTime>01/12/2015 11:34:02</publishTime>
     </File>
     <File Include="EnvioApi.aspx">
       <publishTime>12/16/2014 11:15:01</publishTime>
     </File>
     <File Include="EnvioDetalle.html">
-      <publishTime>12/19/2014 17:55:10</publishTime>
+      <publishTime>01/12/2015 11:38:36</publishTime>
     </File>
     <File Include="EnvioGeneral.html">
-      <publishTime>12/19/2014 17:51:00</publishTime>
+      <publishTime>01/12/2015 11:38:17</publishTime>
     </File>
     <File Include="EstadisticaApi.aspx">
       <publishTime>12/22/2014 18:06:53</publishTime>
@@ -130,7 +130,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/04/2014 17:59:33</publishTime>
     </File>
     <File Include="EstadoGeneral.html">
-      <publishTime>12/19/2014 18:08:28</publishTime>
+      <publishTime>01/12/2015 11:41:26</publishTime>
     </File>
     <File Include="FaceApi.aspx">
       <publishTime>11/26/2014 11:04:11</publishTime>
@@ -139,7 +139,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/11/2014 17:49:09</publishTime>
     </File>
     <File Include="FacturaGeneral.html">
-      <publishTime>12/19/2014 17:36:45</publishTime>
+      <publishTime>01/12/2015 11:37:14</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>05/23/2014 18:22:34</publishTime>
@@ -919,7 +919,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/2014 11:44:50</publishTime>
     </File>
     <File Include="img/fondo1.jpg">
-      <publishTime>12/23/2014 19:00:47</publishTime>
+      <publishTime>01/07/2015 18:40:37</publishTime>
     </File>
     <File Include="img/glass.jpg">
       <publishTime>10/01/2014 19:29:36</publishTime>
@@ -1330,7 +1330,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/29/2014 11:04:12</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>01/07/2015 16:52:50</publishTime>
+      <publishTime>01/12/2015 11:28:43</publishTime>
     </File>
     <File Include="js/app.config.js">
       <publishTime>10/13/2014 11:10:48</publishTime>
@@ -2761,13 +2761,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/17/2014 09:02:54</publishTime>
     </File>
     <File Include="PlantillaDetalle.html">
-      <publishTime>12/19/2014 18:03:06</publishTime>
+      <publishTime>01/12/2015 11:39:59</publishTime>
     </File>
     <File Include="PlantillaGeneral.html">
-      <publishTime>12/19/2014 18:00:55</publishTime>
+      <publishTime>01/12/2015 11:39:43</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/07/2015 17:59:53</publishTime>
+      <publishTime>01/12/2015 11:49:08</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
@@ -2779,22 +2779,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/03/2014 18:20:07</publishTime>
     </File>
     <File Include="TestFace.html">
-      <publishTime>12/19/2014 18:17:06</publishTime>
+      <publishTime>01/12/2015 11:43:16</publishTime>
     </File>
     <File Include="UnidadApi.aspx">
       <publishTime>12/05/2014 11:17:03</publishTime>
     </File>
     <File Include="UnidadGeneral.html">
-      <publishTime>12/19/2014 18:11:23</publishTime>
+      <publishTime>01/12/2015 11:41:57</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>12/18/2014 12:29:13</publishTime>
     </File>
     <File Include="UsuarioDetalle.html">
-      <publishTime>12/26/2014 10:16:04</publishTime>
+      <publishTime>01/12/2015 11:36:13</publishTime>
     </File>
     <File Include="UsuarioGeneral.html">
-      <publishTime>12/19/2014 17:25:32</publishTime>
+      <publishTime>01/12/2015 11:35:46</publishTime>
     </File>
     <File Include="VersionApi.aspx">
       <publishTime>11/25/2014 18:06:47</publishTime>
