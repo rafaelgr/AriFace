@@ -9,11 +9,13 @@ using System.Web.UI.WebControls;
 using FaceWebApi.SPP2;
 using AriFaceLib;
 using System.Xml;
+using System.Diagnostics;
 
 namespace FaceWebApi
 {
     public partial class FaceApi : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -773,6 +773,9 @@ namespace AriFaceLib
                     oficinaContableCodigo='{4}',
                     oficinaContableNombre='{5}'
             ";
+            u.OrganoGestorNombre = u.OrganoGestorNombre.Replace("'", "\\'");
+            u.UnidadTramitadoraNombre = u.UnidadTramitadoraNombre.Replace("'", "\\'");
+            u.OficinaContableNombre = u.OficinaContableNombre.Replace("'", "\\'");
             sql = String.Format(sql, u.OrganoGestorCodigo, u.OrganoGestorNombre, u.UnidadTramitadoraCodigo, u.UnidadTramitadoraNombre, u.OficinaContableCodigo, u.OficinaContableNombre);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
@@ -2534,6 +2537,11 @@ namespace AriFaceLib
                 return dwn;
             // directorio local
             string dirPersonal = localPath + String.Format(@"\ADM{0:000000}", administradorId);
+            // comprobamos si existe, si no lo creamos
+            if (!Directory.Exists(dirPersonal))
+            {
+                Directory.CreateDirectory(dirPersonal);
+            }
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
             nomFichero += ".pdf"; // se trata de un pdf
@@ -2614,6 +2622,11 @@ namespace AriFaceLib
                 return dwn;
             // directorio local
             string dirPersonal = localPath + String.Format(@"\USU{0:000000}", usuarioId);
+            // comprobamos si existe, si no lo creamos
+            if (!Directory.Exists(dirPersonal))
+            {
+                Directory.CreateDirectory(dirPersonal);
+            }
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
             nomFichero += ".xml"; // se trata de un pdf
