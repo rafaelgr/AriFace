@@ -2601,7 +2601,7 @@ namespace AriFaceLib
 
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
-            nomFichero += ".xml"; // se trata de un pdf
+            nomFichero += ".xml"; // se trata de un xml (firmado)
             // copiamos al directorio personal de ese administrador
             string origen = repositorio + @"\" + nomFichero;
             string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero);

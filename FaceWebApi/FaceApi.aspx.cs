@@ -10,6 +10,7 @@ using FaceWebApi.SPP2;
 using AriFaceLib;
 using System.Xml;
 using System.Diagnostics;
+using System.IO;
 
 namespace FaceWebApi
 {
@@ -61,9 +62,11 @@ namespace FaceWebApi
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<Estado> GetEstados(string certSn)
         {
+            StreamWriter w = File.AppendText("C:\\Intercambio\\log.txt");
             IList<Estado> lu = new List<Estado>();
             try
             {
+                w.WriteLine("GetEstados-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                 SenderFace sf = new SenderFace(certSn);
                 SSPPEstados resEstados = sf.ConsultarEstados();
                 if (resEstados != null)
@@ -82,8 +85,11 @@ namespace FaceWebApi
             }
             catch (Exception ex)
             {
+                w.WriteLine("[{0:dd/MM/yyyy hh:mm:ss}] (EXCEPCION) {1}", DateTime.Now, ex.ToString());
+                w.Close();
                 throw ex;
             }
+            w.Close();
             return lu;
         }
 

@@ -167,8 +167,15 @@ namespace FaceWebApi
             // manejo de anexos
             AriFaceLib.item item = new AriFaceLib.item();
             //byte[] pdfBytes = File.ReadAllBytes(pathPDF);
-            item.anexo = encoder64.EncodeTo64File(pathPDF);
+            //item.anexo = encoder64.EncodeTo64File(pathPDF);
+            //using (System.IO.FileStream fs = new System.IO.FileStream(pathPDF, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            //{
+            //    byte[] filebytes = new byte[fs.Length];
+            //    fs.Read(filebytes, 0, Convert.ToInt32(fs.Length));
+            //    item.anexo = System.Text.Encoding.Default.GetString(filebytes);
+            //}
             //item.anexo = pdfBytes.ToString();
+            item.anexo = encoder64.EncodeTo64File(pathPDF);
             item.nombre = pathPDF.Substring(pathPDF.LastIndexOf("\\") + 1);
             item.mime = "application/pdf";
             //

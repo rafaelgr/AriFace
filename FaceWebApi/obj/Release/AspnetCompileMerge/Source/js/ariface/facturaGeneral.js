@@ -420,7 +420,8 @@ function verXml(id) {
         data: JSON.stringify(data),
         success: function (data, status) {
             var url = data.d;
-            window.open(url, '_blank');
+            //window.open(url, '_blank');
+            window.location.assign(url);
         },
         error: errorAjax
     });
