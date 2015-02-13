@@ -142,7 +142,8 @@ function initTablaFacturas() {
             {
             data: "FacturaId",
             render: function (data, type, row) {
-                var bt0 = "<button class='btn btn-circle btn-primary' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
+                //var bt0 = "<button class='btn btn-circle btn-primary' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
+                var bt0 = "<button class='btn btn-circle btn-primary' onclick='descargaFichero(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-download fa-fw'></i> </button>";
                 var bt1 = "<button class='btn btn-circle btn-success' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-warning' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
                 if (row.Estado == 0) {
@@ -426,4 +427,10 @@ function verXml(id) {
         error: errorAjax
     });
 
+}
+
+function descargaFichero(id) {
+    var user = JSON.parse(getCookie("admin"));
+    var url = "Descarga.html?facturaId=" + id + "&administradorId=" + user.AdministradorId;
+    window.open(url, '_self');
 }

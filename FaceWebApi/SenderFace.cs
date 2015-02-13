@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using FaceWebApi.SPP2;
@@ -30,7 +31,7 @@ namespace FaceWebApi
         }
 
         #region Funciones auxiliares
-        private X509SecurityToken GetSecurityToken()
+        private X509SecurityToken GetSecurityToken2()
         {
             X509SecurityToken securityToken = null;
             X509Store store = new X509Store("My", StoreLocation.LocalMachine);
@@ -59,6 +60,18 @@ namespace FaceWebApi
             {
                 if (store != null) store.Close();
             }
+            return securityToken;
+        }
+
+        private X509SecurityToken GetSecurityToken()
+        {
+            X509Certificate2 cer2 = new X509Certificate2();
+            string cert_file = ConfigurationSettings.AppSettings["cert_file"];
+            string cert_pass = ConfigurationSettings.AppSettings["cert_pass"];
+            cer2.Import(cert_file,cert_pass,X509KeyStorageFlags.MachineKeySet);
+            this.objX509 = cer2;
+            X509SecurityToken securityToken = null;
+            securityToken = new X509SecurityToken(this.objX509);
             return securityToken;
         }
 

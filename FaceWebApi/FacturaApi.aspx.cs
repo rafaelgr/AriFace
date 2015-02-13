@@ -116,6 +116,23 @@ namespace FaceWebApi
             return fichero;
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string VerXsig(int facturaId, int administradorId)
+        {
+            string fichero = "";
+            string localPath = HostingEnvironment.ApplicationPhysicalPath;
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                fichero = CntAriFaceLib.ficheroXsigDownloadAdm(administradorId, facturaId, localPath, conn);
+                conn.Close();
+            }
+            return fichero;
+        }
+
         #endregion
     }
 }

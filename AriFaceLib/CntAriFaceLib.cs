@@ -2610,6 +2610,35 @@ namespace AriFaceLib
             return dwn;
         }
 
+        public static string ficheroXsigDownloadAdm(int administradorId, int facturaId, string localPath, MySqlConnection conn)
+        {
+            string dwn = "";
+            // Obtener la factura
+            Factura f = GetFactura(facturaId, conn);
+            if (f == null)
+                return dwn;
+            Cliente c = GetCliente(f.ClienteId, conn);
+            if (c == null)
+                return dwn;
+            // directorio local
+            string dirPersonal = localPath + String.Format(@"\ADM{0:000000}", administradorId);
+            // comprobamos si existe, si no lo creamos
+            if (!Directory.Exists(dirPersonal))
+            {
+                Directory.CreateDirectory(dirPersonal);
+            }
+
+            string repositorio = GetRepositorio(conn);
+            string nomFichero = NombreFicheroFactura(f, c);
+            nomFichero += ".xml"; // se trata de un xml (firmado)
+            // copiamos al directorio personal de ese administrador
+            string origen = repositorio + @"\" + nomFichero;
+            string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero.Replace(".xml",".xsig"));
+            File.Copy(origen, destino, true);
+            dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero.Replace(".xml",".xsig"));
+            return dwn;
+        }
+
         public static string ficheroXmlDownloadCli(int usuarioId, int facturaId, string localPath, MySqlConnection conn)
         {
             string dwn = "";
