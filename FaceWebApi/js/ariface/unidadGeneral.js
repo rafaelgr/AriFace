@@ -146,26 +146,30 @@ function sendConsultarUnidades() {
                 data = { unidades: unidades };
                 loadTablaUnidades(unidades);
                 // actualización de la base de datos
-                $.ajax({
-                    type: "POST",
-                    url: "UnidadApi.aspx/SetUnidades",
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: JSON.stringify(data),
-                    success: function (data, status) {
-                        // actualización de la base de datos
-                        $('#btnConsultarUnidades').show();
-                        $('#ldgConsultarUnidades').hide();
-                        mostrarMensajeSmart('Las unidades se han grabado correctamente en la base de datos');
-                    },
-                    error: function (xhr, textStatus, errorThrwon) {
-                        $('#btnConsultarUnidades').show();
-                        $('#ldgConsultarUnidades').hide();
-                        var m = xhr.responseText;
-                        if (!m) m = "Error general posiblemente falla la conexión";
-                        mostrarMensaje(m);
-                    }
-                });
+                $('#btnConsultarUnidades').show();
+                $('#ldgConsultarUnidades').hide();
+                mostrarMensajeSmart('Las unidades se han grabado correctamente en la base de datos');
+                //// actualización de la base de datos
+                //$.ajax({
+                //    type: "POST",
+                //    url: "UnidadApi.aspx/SetUnidades",
+                //    dataType: "json",
+                //    contentType: "application/json",
+                //    data: JSON.stringify(data),
+                //    success: function (data, status) {
+                //        // actualización de la base de datos
+                //        $('#btnConsultarUnidades').show();
+                //        $('#ldgConsultarUnidades').hide();
+                //        mostrarMensajeSmart('Las unidades se han grabado correctamente en la base de datos');
+                //    },
+                //    error: function (xhr, textStatus, errorThrwon) {
+                //        $('#btnConsultarUnidades').show();
+                //        $('#ldgConsultarUnidades').hide();
+                //        var m = xhr.responseText;
+                //        if (!m) m = "Error general posiblemente falla la conexión";
+                //        mostrarMensaje(m);
+                //    }
+                //});
             },
             error: function (xhr, textStatus, errorThrwon) {
                 $('#btnConsultarUnidades').show();

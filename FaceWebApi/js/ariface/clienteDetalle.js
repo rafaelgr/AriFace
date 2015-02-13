@@ -24,6 +24,7 @@ function initForm() {
     });
     $('#cmbOrganos').change(cambioOrgano);
     $('#cmbUnidades').change(cambioUnidad);
+    $('#cmbOficinas').change(cambioOficina);
 
     var clienteId = gup('ClienteId');
     if (clienteId != 0) {
@@ -63,6 +64,10 @@ function cliData() {
     self.PosiblesOrganos = ko.observableArray([]);
     self.PosiblesUnidades = ko.observableArray([]);
     self.PosiblesOficinas = ko.observableArray([]);
+    // nuevos para códigos
+    self.CodOrganoGestor = ko.observable();
+    self.CodUnidadTramitadora = ko.observable();
+    self.CodOficinaContable = ko.observable();
 }
 
 function loadData(data) {
@@ -70,6 +75,9 @@ function loadData(data) {
     vm.Nombre(data.Nombre);
     vm.Cif(data.Cif);
     vm.Email(data.Email);
+    vm.CodOrganoGestor(data.CodOrganoGestor);
+    vm.CodUnidadTramitadora(data.CodUnidadTramitadora);
+    vm.CodOficinaContable(data.CodOficinaContable);
     vm.OrganoGestor(data.CodOrganoGestor);
     vm.UnidadTramitadora(data.CodUnidadTramitadora);
     vm.OficinaContable(data.CodOficinaContable);
@@ -95,12 +103,14 @@ function loadComboOrganoGestor(organoGestorCodigo) {
                 if (organoGestorCodigo != null) {
                     if (data.d[i].Codigo === organoGestorCodigo) {
                         vm.OrganoGestor(mu);
+                        vm.CodOrganoGestor(data.d[i].Codigo);
                     }
                 }
             }
             // en las altas hay que dejar una selección en vacío.
             if (organoGestorCodigo == null) {
                 vm.OrganoGestor(new miniUnidad('', ''));
+                vm.CodOrganoGestor('');
             }
             vm.PosiblesOrganos(v);
         },
@@ -128,12 +138,14 @@ function loadComboUnidadTramitadora(organoGestorCodigo, unidadTramitadoraCodigo)
                 if (unidadTramitadoraCodigo != null) {
                     if (data.d[i].Codigo === unidadTramitadoraCodigo) {
                         vm.UnidadTramitadora(mu);
+                        vm.CodUnidadTramitadora(data.d[i].Codigo);
                     }
                 }
             }
             // en las altas hay que dejar una selección en vacío.
             if (unidadTramitadoraCodigo == null) {
                 vm.UnidadTramitadora(new miniUnidad('', ''));
+                vm.CodUnidadTramitadora('');
             }
             vm.PosiblesUnidades(v);
         },
@@ -160,12 +172,14 @@ function loadComboOficinaContable(organoGestorCodigo, unidadTramitadoraCodigo, o
                 if (oficinaContableCodigo != null) {
                     if (data.d[i].Codigo === oficinaContableCodigo) {
                         vm.OficinaContable(mu);
+                        vm.CodOficinaContable(data.d[i].Codigo);
                     }
                 }
             }
             // en las altas hay que dejar una selección en vacío.
             if (oficinaContableCodigo == null) {
                 vm.OficinaContable(new miniUnidad('', ''));
+                vm.CodOficinaContable('');
             }
             vm.PosiblesOficinas(v);
         },
@@ -177,11 +191,20 @@ function loadComboOficinaContable(organoGestorCodigo, unidadTramitadoraCodigo, o
 // se dispara cuando cambia el órgano
 function cambioOrgano() {
     loadComboUnidadTramitadora(vm.OrganoGestor().Codigo);
-    vm.OficinaContable(new miniUnidad('',''));
+    vm.OficinaContable(new miniUnidad('', ''));
+    vm.CodOrganoGestor(vm.OrganoGestor().Codigo);
+    vm.CodUnidadTramitadora('');
+    vm.CodOficinaContable('');
 }
 
 function cambioUnidad() {
     loadComboOficinaContable(vm.OrganoGestor().Codigo, vm.UnidadTramitadora().Codigo);
+    vm.CodUnidadTramitadora(vm.UnidadTramitadora().Codigo);
+    vm.CodOficinaContable('');
+}
+
+function cambioOficina() {
+    vm.CodOficinaContable(vm.OficinaContable().Codigo);
 }
 
 function datosOK() {
@@ -225,12 +248,12 @@ function aceptar() {
     var mf = function () {
         if (!datosOK())
             return;
-        var cog = "";
-        var cut = "";
-        var coc = "";
-        if (vm.OrganoGestor() != null && vm.OrganoGestor().Codigo !== "") cog = vm.OrganoGestor().Codigo;
-        if (vm.UnidadTramitadora() != null && vm.UnidadTramitadora().Codigo !== "") cut = vm.UnidadTramitadora().Codigo;
-        if (vm.OficinaContable() != null && vm.OficinaContable().Codigo !== "") coc = vm.OficinaContable().Codigo;
+        var cog = vm.CodOrganoGestor();
+        var cut = vm.CodUnidadTramitadora();
+        var coc = vm.CodOficinaContable();
+        //if (vm.OrganoGestor() != null && vm.OrganoGestor().Codigo !== "") cog = vm.OrganoGestor().Codigo;
+        //if (vm.UnidadTramitadora() != null && vm.UnidadTramitadora().Codigo !== "") cut = vm.UnidadTramitadora().Codigo;
+        //if (vm.OficinaContable() != null && vm.OficinaContable().Codigo !== "") coc = vm.OficinaContable().Codigo;
         var data = {
             cliente: {
                 "Cif": vm.Cif(),

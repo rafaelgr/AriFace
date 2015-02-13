@@ -69,6 +69,7 @@ namespace FaceWebApi
             string cert_file = ConfigurationSettings.AppSettings["cert_file"];
             string cert_pass = ConfigurationSettings.AppSettings["cert_pass"];
             cer2.Import(cert_file,cert_pass,X509KeyStorageFlags.MachineKeySet);
+            //cer2.Import(cert_file, cert_pass, X509KeyStorageFlags.DefaultKeySet);
             this.objX509 = cer2;
             X509SecurityToken securityToken = null;
             securityToken = new X509SecurityToken(this.objX509);

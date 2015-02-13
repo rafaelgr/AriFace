@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
@@ -11,6 +12,7 @@ using AriFaceLib;
 using System.Xml;
 using System.Diagnostics;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace FaceWebApi
 {
@@ -117,6 +119,14 @@ namespace FaceWebApi
                         u.OficinaContableCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
                         u.OficinaContableNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
                         lu.Add(u);
+                    }
+                    // leer la cadena de conexión de los parámetros
+                    string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+                    using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+                    {
+                        conn.Open();
+                        CntAriFaceLib.SetUnidades(lu, conn);
+                        conn.Close();
                     }
                 }
             }
