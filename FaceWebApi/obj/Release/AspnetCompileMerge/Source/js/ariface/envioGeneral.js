@@ -198,7 +198,8 @@ function loadTablaEnvios(data) {
 
 function getEnvios() {
     var mf = function () {
-        // obtener el n.serie del certificado para la firma.
+        // mostrar la imagen del cargador
+        $("#ldgLoader").show();
         $.ajax({
             type: "POST",
             url: "EnvioApi.aspx/GetEnvios",
@@ -207,6 +208,7 @@ function getEnvios() {
             success: function (data, status) {
                 // hay que mostrarlo en la zona de datos
                 loadTablaEnvios(data.d);
+                $("#ldgLoader").hide();
             },
             error: errorAjax
         });
@@ -231,6 +233,7 @@ function sendEnvio(clienteId, departamentoId) {
         departamentoId: departamentoId,
         certSn: certSn
     };
+    $("#ldgLoader").show();
     $.ajax({
         type: "POST",
         url: "EnvioApi.aspx/SendEnvio",
@@ -238,13 +241,19 @@ function sendEnvio(clienteId, departamentoId) {
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function (data, status) {
+            $("#ldgLoader").hide();
             // hay que mostrarlo en la zona de datos
             mostrarMensajeSmart(data.d);
             // recargar
             var fn = getEnvios();
             fn();
         },
-        error: errorAjax
+        error: function (xhr, textStatus, errorThrwon) {
+            $("#ldgLoader").hide();
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensaje(m);
+        }
     });
 }
 

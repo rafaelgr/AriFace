@@ -13,6 +13,8 @@ using System.Xml;
 using System.Diagnostics;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Threading;
+using System.Security.Permissions;
 
 namespace FaceWebApi
 {
@@ -99,15 +101,18 @@ namespace FaceWebApi
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<Unidad> GetUnidades(string certSn)
         {
+            StreamWriter w = File.AppendText("C:\\Intercambio\\log.txt");
             IList<Unidad> lu = new List<Unidad>();
             try
             {
+                w.WriteLine("GetUnidades-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                 SenderFace sf = new SenderFace(certSn);
                 SSPPResultadoConsultarUnidades resUnidades = sf.ConsultarUnidades();
                 if (resUnidades != null)
                 {
                     XmlElement xel;
                     ArrayOfSSPPOrganoGestorUnidadTramitadora unidades = resUnidades.unidades;
+                    w.WriteLine("GetUnidades (unidades obtenidas) -----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                     for (int i = 0; i < unidades.Any.Length; i++)
                     {
                         xel = unidades.Any[i];
@@ -125,15 +130,26 @@ namespace FaceWebApi
                     using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
                     {
                         conn.Open();
-                        CntAriFaceLib.SetUnidades(lu, conn);
+                        try
+                        {
+                            CntAriFaceLib.SetUnidades(lu, conn);
+                        }
+                        catch (ThreadAbortException ex)
+                        {
+                            Thread.ResetAbort();
+                        }
                         conn.Close();
                     }
+                    w.WriteLine("GetUnidades (unidades guardadas) -----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                 }
             }
             catch (Exception ex)
             {
+                w.WriteLine("[{0:dd/MM/yyyy hh:mm:ss}] (EXCEPCION) {1}", DateTime.Now, ex.ToString());
+                w.Close();
                 throw ex;
             }
+            w.Close();
             return lu;
         }
 

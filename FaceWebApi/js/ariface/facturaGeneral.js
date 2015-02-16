@@ -50,6 +50,8 @@ function initForm() {
     initTablaFacturas();
     // comprobamos parámetros
     facturaId = gup('facturaId');
+    // mostramos la imagen de carga
+    $('#ldgLoader').show();
     if (facturaId !== '') {
         // cargar la tabla con un único valor que es el que corresponde.
         var data = {
@@ -74,6 +76,8 @@ function initForm() {
         var fn = getFacturasNoEnviadas();
         fn();
     }
+    // ocultamos la imagen de carga
+    $('#ldgLoader').hide();
 }
 
 function initTablaFacturas() {
@@ -217,7 +221,8 @@ function buscarFactura() {
 
 function getFacturas() {
     var mf = function () {
-        // obtener el n.serie del certificado para la firma.
+        // mostrar imagen de carga
+        $('#ldgLoader').show();
         $.ajax({
             type: "POST",
             url: "FacturaApi.aspx/GetFacturas",
@@ -226,6 +231,7 @@ function getFacturas() {
             success: function (data, status) {
                 // hay que mostrarlo en la zona de datos
                 loadTablaFacturas(data.d);
+                $('#ldgLoader').hide();
             },
             error: errorAjax
         });

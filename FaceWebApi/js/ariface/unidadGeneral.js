@@ -102,11 +102,15 @@ function datosOKUnidades() {
 }
 
 function loadTablaUnidades(data) {
+    $('#btnBuscar').hide();
+    $('#ldgBuscar').show();
     var dt = $('#dt_unidades').dataTable();
     dt.fnClearTable();
     dt.fnAddData(data);
     dt.fnDraw();
     $("#tbUnidades").show();
+    $('#btnBuscar').show();
+    $('#ldgBuscar').hide();
 }
 
 function sendConsultarUnidades() {
