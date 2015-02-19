@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Facturae xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.facturae.es/Facturae/2009/v3.2/Facturae">
+  <FileHeader xmlns="">
+    <SchemaVersion>3.2</SchemaVersion>
+    <Modality>I</Modality>
+    <InvoiceIssuerType>EM</InvoiceIssuerType>
+    <Batch>
+      <BatchIdentifier>A08517435A224084520141130</BatchIdentifier>
+      <InvoicesCount>1</InvoicesCount>
+      <TotalInvoicesAmount>
+        <TotalAmount>748.30</TotalAmount>
+      </TotalInvoicesAmount>
+      <TotalOutstandingAmount>
+        <TotalAmount>748.30</TotalAmount>
+      </TotalOutstandingAmount>
+      <TotalExecutableAmount>
+        <TotalAmount>748.30</TotalAmount>
+      </TotalExecutableAmount>
+      <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+    </Batch>
+  </FileHeader>
+  <Parties xmlns="">
+    <SellerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>ESF46221503</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>C.V.L. TELE TAXI</CorporateName>
+        <AddressInSpain>
+          <Address>Ciudad del Aprendiz, 13 ACC.</Address>
+          <PostCode>46017</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </SellerParty>
+    <BuyerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>A08517435</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>MEDITERRANEO, S.A.</CorporateName>
+        <AddressInSpain>
+          <Address>DR LLUCH 26-2º-5ª</Address>
+          <PostCode>46011</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </BuyerParty>
+  </Parties>
+  <Invoices xmlns="">
+    <Invoice>
+      <InvoiceHeader>
+        <InvoiceNumber>2240845</InvoiceNumber>
+        <InvoiceSeriesCode>A</InvoiceSeriesCode>
+        <InvoiceDocumentType>FC</InvoiceDocumentType>
+        <InvoiceClass>OO</InvoiceClass>
+      </InvoiceHeader>
+      <InvoiceIssueData>
+        <IssueDate>2014-11-30</IssueDate>
+        <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        <TaxCurrencyCode>EUR</TaxCurrencyCode>
+        <LanguageName>es</LanguageName>
+      </InvoiceIssueData>
+      <TaxesOutputs>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>10.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>680.27</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>68.03</TotalAmount>
+          </TaxAmount>
+        </Tax>
+      </TaxesOutputs>
+      <InvoiceTotals>
+        <TotalGrossAmount>680.27</TotalGrossAmount>
+        <TotalGeneralDiscounts>0.00</TotalGeneralDiscounts>
+        <TotalGrossAmountBeforeTaxes>680.27</TotalGrossAmountBeforeTaxes>
+        <TotalTaxOutputs>68.03</TotalTaxOutputs>
+        <TotalTaxesWithheld>0.00</TotalTaxesWithheld>
+        <InvoiceTotal>748.30</InvoiceTotal>
+        <TotalOutstandingAmount>748.30</TotalOutstandingAmount>
+        <TotalExecutableAmount>748.30</TotalExecutableAmount>
+      </InvoiceTotals>
+      <Items>
+        <InvoiceLine>
+          <ItemDescription>SERVICIOS DE TAXI</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>680.270000</UnitPriceWithoutTax>
+          <TotalCost>680.270000</TotalCost>
+          <GrossAmount>680.270000</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>680.27</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>142.86</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+      </Items>
+    </Invoice>
+  </Invoices>
+</Facturae>

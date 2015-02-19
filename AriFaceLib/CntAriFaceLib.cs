@@ -2605,9 +2605,16 @@ namespace AriFaceLib
             // copiamos al directorio personal de ese administrador
             string origen = repositorio + @"\" + nomFichero;
             string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero);
-            File.Copy(origen, destino, true);
-            dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero);
-            return dwn;
+            if (File.Exists(origen))
+            {
+                File.Copy(origen, destino, true);
+                dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero);
+                return dwn;
+            }
+            else
+            {
+                return "NO ENCONTRADO";
+            }
         }
 
         public static string ficheroXsigDownloadAdm(int administradorId, int facturaId, string localPath, MySqlConnection conn)
@@ -2630,13 +2637,20 @@ namespace AriFaceLib
 
             string repositorio = GetRepositorio(conn);
             string nomFichero = NombreFicheroFactura(f, c);
-            nomFichero += ".xml"; // se trata de un xml (firmado)
+            nomFichero += ".xsig"; // se trata de un xml (firmado) [.xsig]
             // copiamos al directorio personal de ese administrador
             string origen = repositorio + @"\" + nomFichero;
-            string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero.Replace(".xml",".xsig"));
-            File.Copy(origen, destino, true);
-            dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero.Replace(".xml",".xsig"));
-            return dwn;
+            string destino = String.Format(localPath + @"\ADM{0:000000}\{1}", administradorId, nomFichero);
+            if (File.Exists(origen))
+            {
+                File.Copy(origen, destino, true);
+                dwn = String.Format("ADM{0:000000}/{1}", administradorId, nomFichero);
+                return dwn;
+            }
+            else
+            {
+                return "NO ENCONTRADO";
+            }
         }
 
         public static string ficheroXmlDownloadCli(int usuarioId, int facturaId, string localPath, MySqlConnection conn)

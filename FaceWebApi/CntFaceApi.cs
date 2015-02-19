@@ -99,7 +99,7 @@ namespace FaceWebApi
                 foreach (Factura f in lf)
                 {
                     string repositorio = CntAriFaceLib.GetRepositorio(conn);
-                    string fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".xml";
+                    string fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".xsig";
                     string ficheroPdf = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".pdf";
                     string dirNotificacion = ConfigurationSettings.AppSettings["dirNotificacion"];
                     string email = ConfigurationSettings.AppSettings["mail_address"];
