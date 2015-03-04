@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<Facturae xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.facturae.es/Facturae/2009/v3.2/Facturae">
+  <FileHeader xmlns="">
+    <SchemaVersion>3.2</SchemaVersion>
+    <Modality>I</Modality>
+    <InvoiceIssuerType>EM</InvoiceIssuerType>
+    <Batch>
+      <BatchIdentifier>ESA46103594FPLAI01838320150131</BatchIdentifier>
+      <InvoicesCount>1</InvoicesCount>
+      <TotalInvoicesAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalInvoicesAmount>
+      <TotalOutstandingAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalOutstandingAmount>
+      <TotalExecutableAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalExecutableAmount>
+      <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+    </Batch>
+  </FileHeader>
+  <Parties xmlns="">
+    <SellerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>ESA46103594</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>GD ENERGY SERVICES, SAU</CorporateName>
+        <AddressInSpain>
+          <Address>Sorolla Center, local 10
+Avda. de las Cortes Valencianas, 58</Address>
+          <PostCode>46015</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </SellerParty>
+    <BuyerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>Q2820002J</TaxIdentificationNumber>
+      </TaxIdentification>
+      <AdministrativeCentres>
+        <AdministrativeCentre>
+          <CentreCode>E00114604</CentreCode>
+          <RoleTypeCode>02</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>TOWN</Town>
+            <Province>PROVINCE</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>CENTRO INVEST.ENERGETICAS MEDIOAMBIENTALES Y TECNOLOGICAS</CentreDescription>
+        </AdministrativeCentre>
+        <AdministrativeCentre>
+          <CentreCode>E04689203</CentreCode>
+          <RoleTypeCode>03</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>TOWN</Town>
+            <Province>PROVINCE</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>DEPARTAMENTO DE TECNOLOGIA</CentreDescription>
+        </AdministrativeCentre>
+        <AdministrativeCentre>
+          <CentreCode>E04688603</CentreCode>
+          <RoleTypeCode>01</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>TOWN</Town>
+            <Province>PROVINCE</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>SECRETARIA GENERAL</CentreDescription>
+        </AdministrativeCentre>
+      </AdministrativeCentres>
+      <LegalEntity>
+        <CorporateName>C.I.E.M.A.T.</CorporateName>
+        <AddressInSpain>
+          <Address>AVDA. COMPLUTENSE, 40</Address>
+          <PostCode>28040</PostCode>
+          <Town>TOWN</Town>
+          <Province>PROVINCE</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </BuyerParty>
+  </Parties>
+  <Invoices xmlns="">
+    <Invoice>
+      <InvoiceHeader>
+        <InvoiceNumber>FPLAI018383</InvoiceNumber>
+        <InvoiceSeriesCode />
+        <InvoiceDocumentType>FC</InvoiceDocumentType>
+        <InvoiceClass>OO</InvoiceClass>
+      </InvoiceHeader>
+      <InvoiceIssueData>
+        <IssueDate>2015-01-31</IssueDate>
+        <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        <TaxCurrencyCode>EUR</TaxCurrencyCode>
+        <LanguageName>es</LanguageName>
+      </InvoiceIssueData>
+      <TaxesOutputs>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>21.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>-2101.60</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>-441.34</TotalAmount>
+          </TaxAmount>
+        </Tax>
+      </TaxesOutputs>
+      <InvoiceTotals>
+        <TotalGrossAmount>2101.60</TotalGrossAmount>
+        <TotalGeneralDiscounts>0.00</TotalGeneralDiscounts>
+        <TotalGrossAmountBeforeTaxes>2101.60</TotalGrossAmountBeforeTaxes>
+        <TotalTaxOutputs>-441.34</TotalTaxOutputs>
+        <TotalTaxesWithheld>0.00</TotalTaxesWithheld>
+        <InvoiceTotal>2542.94</InvoiceTotal>
+        <TotalOutstandingAmount>2542.94</TotalOutstandingAmount>
+        <TotalExecutableAmount>2542.94</TotalExecutableAmount>
+      </InvoiceTotals>
+      <Items>
+        <InvoiceLine>
+          <ItemDescription>Servicios de Limpieza en Laboratorios de los Edificios 3 y 70 del CIEMAT, enero de 2015.
+
+Oficina Contable: E04688603
+Órgano Gestor    : E00114604
+Unidad Tramitadora: Departamento de Tecnología E04689203</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>1.000000</UnitPriceWithoutTax>
+          <TotalCost>1.000000</TotalCost>
+          <GrossAmount>1.000000</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>1.00</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>441.34</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+      </Items>
+    </Invoice>
+  </Invoices>
+</Facturae>

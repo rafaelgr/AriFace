@@ -52,7 +52,7 @@
   <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
     <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QBANwABhgiAUHhUCAkEEABUPKCQGgUAB4RQKSZh0sgA=</HashCode>
+      <HashCode>QBANwABhgiAUHhUCAkEEABUPKCYGwUCB4RQKSZh0sgA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -70,10 +70,10 @@
       <FileName>MiniUnidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Factura" Collapsed="true">
+  <Class Name="AriFaceLib.Factura">
     <Position X="10" Y="1.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AwAECQAABAUAEAANABABChAACQIYUBAACkAQIAMACCk=</HashCode>
+      <HashCode>AwAECQAABAUAEAANABABChAACQIYUBAACkAQIQMACCk=</HashCode>
       <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -133,8 +133,8 @@
       <FileName>Parametros.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.PeriodoFactura">
-    <Position X="10" Y="2" Width="2.75" />
+  <Class Name="AriFaceLib.PeriodoFactura" Collapsed="true">
+    <Position X="13" Y="2.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>QAAAAgQAAACGAAAAgBAAAAAQAAAAAAACAQgAAEMIAAA=</HashCode>
       <FileName>PeriodoFactura.cs</FileName>

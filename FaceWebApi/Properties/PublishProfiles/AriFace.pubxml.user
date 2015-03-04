@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>02/12/2015 18:09:42</publishTime>
+      <publishTime>02/19/2015 17:02:35</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>02/16/2015 16:50:31</publishTime>
+      <publishTime>02/19/2015 17:02:35</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>02/16/2015 16:50:32</publishTime>
+      <publishTime>02/19/2015 17:02:36</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -106,7 +106,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/21/2014 12:22:42</publishTime>
     </File>
     <File Include="Descarga.html">
-      <publishTime>02/13/2015 08:44:02</publishTime>
+      <publishTime>02/19/2015 16:35:20</publishTime>
     </File>
     <File Include="EmpresaRaizApi.aspx">
       <publishTime>12/15/2014 11:59:01</publishTime>
@@ -1354,7 +1354,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/26/2014 18:53:09</publishTime>
     </File>
     <File Include="js/ariface/clienteDetalle.js">
-      <publishTime>02/13/2015 12:16:15</publishTime>
+      <publishTime>02/19/2015 16:52:42</publishTime>
     </File>
     <File Include="js/ariface/clienteGeneral.js">
       <publishTime>12/19/2014 17:18:10</publishTime>
@@ -2773,7 +2773,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/12/2015 11:39:43</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>02/16/2015 16:50:46</publishTime>
+      <publishTime>02/20/2015 08:40:05</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>

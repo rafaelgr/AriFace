@@ -190,15 +190,19 @@ function loadComboOficinaContable(organoGestorCodigo, unidadTramitadoraCodigo, o
 
 // se dispara cuando cambia el órgano
 function cambioOrgano() {
-    loadComboUnidadTramitadora(vm.OrganoGestor().Codigo);
+    var codOg = vm.OrganoGestor().Codigo;
+    if (codOg == null) codOg = vm.CodOrganoGestor();
+    loadComboUnidadTramitadora(codOg);
     vm.OficinaContable(new miniUnidad('', ''));
-    vm.CodOrganoGestor(vm.OrganoGestor().Codigo);
+    vm.CodOrganoGestor(codOg);
     vm.CodUnidadTramitadora('');
     vm.CodOficinaContable('');
 }
 
 function cambioUnidad() {
-    loadComboOficinaContable(vm.OrganoGestor().Codigo, vm.UnidadTramitadora().Codigo);
+    var codUt = vm.UnidadTramitadora().Codigo;
+    if (codUt == null) codUt = vm.CodUnidadTramitadora().Codigo;
+    loadComboOficinaContable(vm.OrganoGestor().Codigo, codUt);
     vm.CodUnidadTramitadora(vm.UnidadTramitadora().Codigo);
     vm.CodOficinaContable('');
 }

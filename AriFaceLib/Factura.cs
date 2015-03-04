@@ -159,5 +159,13 @@ namespace AriFaceLib
             get { return estado; }
             set { estado = value; }
         }
+
+        private string codGdes;
+
+        public string CodGdes
+        {
+            get { return codGdes; }
+            set { codGdes = value; }
+        }
     }
 }

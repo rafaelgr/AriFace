@@ -1096,6 +1096,8 @@ namespace AriFaceLib
                 f.Departamento = rdr.GetString("DEPARTAMENTO");
             f.RegistroFace = rdr.GetString("REGISTRO_FACE");
             f.MotivoFace = rdr.GetString("MOTIVO_FACE");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CODGDES")))
+                f.CodGdes = rdr.GetString("CODGDES");
             return f;
         }
 
@@ -1120,6 +1122,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1162,6 +1165,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1205,6 +1209,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1373,6 +1378,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1494,6 +1500,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1541,6 +1548,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1662,6 +1670,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1709,6 +1718,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1754,6 +1764,7 @@ namespace AriFaceLib
                 s.descripcion AS SISTEMA,
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
+                f.coddirec_gdes AS CODGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -2191,6 +2202,10 @@ namespace AriFaceLib
                     serie = String.Format(@"{0:000000}{1}", c.CodSocioAritaxi, f.Serie);
                 }
                 n = String.Format("{0}{1}_{2:00}{3:0000}{4}", serie, f.NumFactura, mes, ano, f.LetraProveedor);
+            }
+            if (f.CodGdes != null && f.CodGdes != "")
+            {
+                n = String.Format("{0}_{1}", "GDES", f.CodGdes);
             }
             return n;
         }
