@@ -138,15 +138,15 @@ Oficina Contable: E04688603
 Órgano Gestor    : E00114604
 Unidad Tramitadora: Departamento de Tecnología E04689203</ItemDescription>
           <Quantity>1</Quantity>
-          <UnitPriceWithoutTax>1.000000</UnitPriceWithoutTax>
-          <TotalCost>1.000000</TotalCost>
-          <GrossAmount>1.000000</GrossAmount>
+          <UnitPriceWithoutTax>2101.600000</UnitPriceWithoutTax>
+          <TotalCost>2101.600000</TotalCost>
+          <GrossAmount>2101.600000</GrossAmount>
           <TaxesOutputs>
             <Tax>
               <TaxTypeCode>01</TaxTypeCode>
               <TaxRate>21.00</TaxRate>
               <TaxableBase>
-                <TotalAmount>1.00</TotalAmount>
+                <TotalAmount>2101.60</TotalAmount>
               </TaxableBase>
               <TaxAmount>
                 <TotalAmount>441.34</TotalAmount>

@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>02/19/2015 17:02:35</publishTime>
+      <publishTime>03/06/2015 17:58:25</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>02/19/2015 17:02:35</publishTime>
+      <publishTime>03/06/2015 17:58:26</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>02/19/2015 17:02:36</publishTime>
+      <publishTime>03/06/2015 17:58:27</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -2773,7 +2773,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/12/2015 11:39:43</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>02/20/2015 08:40:05</publishTime>
+      <publishTime>03/06/2015 17:58:45</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>
@@ -2857,7 +2857,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/16/2015 13:18:59</publishTime>
+      <publishTime>03/06/2015 17:58:34</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>01/07/2015 17:58:49</publishTime>
+      <publishTime>03/05/2015 18:52:39</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>01/07/2015 17:58:49</publishTime>
+      <publishTime>03/05/2015 18:52:40</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>12/23/2014 16:36:21</publishTime>
@@ -2722,7 +2722,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/24/2014 10:33:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>02/05/2015 16:06:10</publishTime>
+      <publishTime>03/05/2015 18:52:47</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>12/23/2014 18:14:29</publishTime>
