@@ -106,7 +106,7 @@ namespace FaceWebApi
                     try
                     {
                         //RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
-                        RespuestaFactura rs = EnviarFacturaAdjunto(certSN, fichero, dirNotificacion, email, ficheroPdf);
+                        RespuestaFactura rs = EnviarFacturaAdjunto(certSN, fichero, dirNotificacion, email, ficheroPdf, f.SistemaGdes);
                         CntAriFaceLib.MarcarFacturaEnviadaFace(f.FacturaId, rs.CodigoRegistro, rs.StrFechaRecepcion, conn);
                         DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                             int.Parse(f.StrFecha.Substring(4, 2)),
@@ -127,13 +127,13 @@ namespace FaceWebApi
             return mens;
         }
 
-        public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email)
+        public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email, string sistema)
         {
             RespuestaFactura rf = null;
             try
             {
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
+                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email, sistema);
                 rf = new RespuestaFactura();
                 rf.CodigoRegistro = res.codigo_registro;
                 rf.StrFechaRecepcion = res.fecha_recepcion;
@@ -152,14 +152,14 @@ namespace FaceWebApi
             return rf;
         }
 
-        public static RespuestaFactura EnviarFacturaAdjunto(string certSn, string fE, string dA, string email, string ficheroPdf)
+        public static RespuestaFactura EnviarFacturaAdjunto(string certSn, string fE, string dA, string email, string ficheroPdf, string sistema)
         {
             RespuestaFactura rf = null;
             try
             {
                 SenderFace sf = new SenderFace(certSn);
                 //SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
-                SSPPResultadoEnviarFactura res = sf.EnviarFacturaAdjunto(fE, dA, email,ficheroPdf);
+                SSPPResultadoEnviarFactura res = sf.EnviarFacturaAdjunto(fE, dA, email,ficheroPdf, sistema);
                 rf = new RespuestaFactura();
                 rf.CodigoRegistro = res.codigo_registro;
                 rf.StrFechaRecepcion = res.fecha_recepcion;

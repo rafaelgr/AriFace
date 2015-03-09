@@ -167,5 +167,13 @@ namespace AriFaceLib
             get { return codGdes; }
             set { codGdes = value; }
         }
+
+        private string sistemaGdes;
+
+        public string SistemaGdes
+        {
+            get { return sistemaGdes; }
+            set { sistemaGdes = value; }
+        }
     }
 }

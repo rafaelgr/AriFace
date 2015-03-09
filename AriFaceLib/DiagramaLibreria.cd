@@ -73,7 +73,7 @@
   <Class Name="AriFaceLib.Factura">
     <Position X="10" Y="1.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AwAECQAABAUAEAANABABChAACQIYUBAACkAQIQMACCk=</HashCode>
+      <HashCode>AwAECQAABAUAEAANABABChAACQIYUhAACkIQIQMACCk=</HashCode>
       <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>

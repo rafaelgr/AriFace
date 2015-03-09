@@ -71,8 +71,9 @@ namespace FaceWebApi
             try
             {
                 w.WriteLine("GetEstados-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
+                string sistema = ConfigurationSettings.AppSettings["gdes_sistema"];
                 SenderFace sf = new SenderFace(certSn);
-                SSPPEstados resEstados = sf.ConsultarEstados();
+                SSPPEstados resEstados = sf.ConsultarEstados(sistema);
                 if (resEstados != null)
                 {
                     XmlElement xel;
@@ -106,8 +107,9 @@ namespace FaceWebApi
             try
             {
                 w.WriteLine("GetUnidades-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
+                string sistema = ConfigurationSettings.AppSettings["gdes_sistema"];
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoConsultarUnidades resUnidades = sf.ConsultarUnidades();
+                SSPPResultadoConsultarUnidades resUnidades = sf.ConsultarUnidades(sistema);
                 if (resUnidades != null)
                 {
                     XmlElement xel;
@@ -155,13 +157,13 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email)
+        public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email, string sistema)
         {
             RespuestaFactura rf = null;
             try
             {
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
+                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email, sistema);
                 rf = new RespuestaFactura();
                 rf.CodigoRegistro = res.codigo_registro;
                 rf.StrFechaRecepcion = res.fecha_recepcion;
@@ -182,11 +184,11 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static RespuestaConsultaFactura ConsultaFactura(string certSn, string codRegistro)
+        public static RespuestaConsultaFactura ConsultaFactura(string certSn, string codRegistro, string sistema)
         {
             RespuestaConsultaFactura rcf = new RespuestaConsultaFactura();
             SenderFace sf = new SenderFace(certSn);
-            SSPPResultadoConsultarFactura res = sf.ConsultarFactura(codRegistro);
+            SSPPResultadoConsultarFactura res = sf.ConsultarFactura(codRegistro, sistema);
             if (res != null)
             {
                 rcf.NumeroRegistro = res.numero_registro;
@@ -203,11 +205,11 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static RespuestaAnularFactura AnularFactura(string certSn, string codRegistro, string motivo)
+        public static RespuestaAnularFactura AnularFactura(string certSn, string codRegistro, string motivo, string sistema)
         {
             RespuestaAnularFactura raf = new RespuestaAnularFactura();
             SenderFace sf = new SenderFace(certSn);
-            SSPPResultadoAnularFactura res = sf.AnularFactura(codRegistro, motivo);
+            SSPPResultadoAnularFactura res = sf.AnularFactura(codRegistro, motivo, sistema);
             if (res != null)
             {
                 raf = new RespuestaAnularFactura();

@@ -1098,6 +1098,10 @@ namespace AriFaceLib
             f.MotivoFace = rdr.GetString("MOTIVO_FACE");
             if (!rdr.IsDBNull(rdr.GetOrdinal("CODGDES")))
                 f.CodGdes = rdr.GetString("CODGDES");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("SISGDES")))
+                f.SistemaGdes = rdr.GetString("SISGDES");
+            else
+                f.SistemaGdes = "";
             return f;
         }
 
@@ -1123,6 +1127,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1166,6 +1171,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1210,6 +1216,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1332,6 +1339,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1380,6 +1388,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1502,6 +1511,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1550,6 +1560,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1672,6 +1683,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1720,6 +1732,7 @@ namespace AriFaceLib
                 f.ttal AS TOTAL,
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
+                f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,

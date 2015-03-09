@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriFaceLib", "AriFaceLib\Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceWebCli", "FaceWebCli\FaceWebCli.csproj", "{0038D810-A85E-46F3-9551-30F41861DCE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encriptador", "Encriptador\Encriptador.csproj", "{692CE820-5E59-444E-9412-FAD6DE4587A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{0038D810-A85E-46F3-9551-30F41861DCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0038D810-A85E-46F3-9551-30F41861DCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0038D810-A85E-46F3-9551-30F41861DCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692CE820-5E59-444E-9412-FAD6DE4587A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692CE820-5E59-444E-9412-FAD6DE4587A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692CE820-5E59-444E-9412-FAD6DE4587A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692CE820-5E59-444E-9412-FAD6DE4587A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

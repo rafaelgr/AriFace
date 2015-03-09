@@ -1,0 +1,6 @@
+C:\Proyectos\FaceTest\Encriptador\bin\Debug\Encriptador.exe.config
+C:\Proyectos\FaceTest\Encriptador\bin\Debug\Encriptador.exe
+C:\Proyectos\FaceTest\Encriptador\bin\Debug\Encriptador.pdb
+C:\Proyectos\FaceTest\Encriptador\obj\Debug\Encriptador.csprojResolveAssemblyReference.cache
+C:\Proyectos\FaceTest\Encriptador\obj\Debug\Encriptador.exe
+C:\Proyectos\FaceTest\Encriptador\obj\Debug\Encriptador.pdb

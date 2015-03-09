@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using FaceWebApi.SPP2;
 using System.Security.Cryptography.X509Certificates;
@@ -11,6 +12,7 @@ using Microsoft.Web.Services3.Security.Tokens;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace FaceWebApi
 {
@@ -22,6 +24,10 @@ namespace FaceWebApi
         private SSPPWebServiceProxyService objSender;
         private string strNumeroSerie;
         private X509Certificate2 objX509;
+        // desencriptador
+        static readonly string PasswordHash = "P@@Sw0rd";
+        static readonly string SaltKey = "S@LT&KEY";
+        static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
         public SenderFace(string numSerie)
         {
@@ -76,10 +82,33 @@ namespace FaceWebApi
             return securityToken;
         }
 
-        private void FirmarEnvio()
+
+        private X509SecurityToken GetSecurityTokenGdes(string sistemaGdes)
+        {
+            X509Certificate2 cer2 = new X509Certificate2();
+            string cert_file = String.Format(ConfigurationSettings.AppSettings["cert_file"], sistemaGdes);
+            string cert_pass = Decrypt(ConfigurationSettings.AppSettings["cert_pass"]);
+            cer2.Import(cert_file, cert_pass, X509KeyStorageFlags.MachineKeySet);
+            //cer2.Import(cert_file, cert_pass, X509KeyStorageFlags.DefaultKeySet);
+            this.objX509 = cer2;
+            X509SecurityToken securityToken = null;
+            securityToken = new X509SecurityToken(this.objX509);
+            return securityToken;
+        }
+
+        private void FirmarEnvio(string sistema)
         {
             MessageSignature sig;
-            X509SecurityToken sigToken = GetSecurityToken();
+            X509SecurityToken sigToken;
+            if (sistema == "")
+            {
+                sigToken = GetSecurityToken();
+            }
+            else
+            {
+                sigToken = GetSecurityTokenGdes(sistema);
+            }
+
             SoapContext rqContext = objSender.RequestSoapContext;
 
             objSender.RequestSoapContext.Security.Tokens.Add(sigToken);
@@ -90,12 +119,12 @@ namespace FaceWebApi
         #endregion
 
         #region Mensajes a FACE
-        public SSPPEstados ConsultarEstados()
+        public SSPPEstados ConsultarEstados(string sistema)
         {
             SSPPEstados res = null;
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.consultarEstados();
                 //TODO: Hay que añadir algo a correcto?
             }
@@ -108,12 +137,12 @@ namespace FaceWebApi
             return res;
         }
 
-        public SSPPResultadoConsultarUnidades ConsultarUnidades()
+        public SSPPResultadoConsultarUnidades ConsultarUnidades(string sistema)
         {
             SSPPResultadoConsultarUnidades res = null;
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.consultarUnidades();
             }
             catch (Exception ex)
@@ -122,7 +151,7 @@ namespace FaceWebApi
             }
             return res;
         }
-        public SSPPResultadoEnviarFactura EnviarFactura(string pathFacturae, string carpetaAcuseRecibo, string correo)
+        public SSPPResultadoEnviarFactura EnviarFactura(string pathFacturae, string carpetaAcuseRecibo, string correo, string sistema)
         {
             SSPPFactura req;
             SSPPResultadoEnviarFactura res;
@@ -146,7 +175,7 @@ namespace FaceWebApi
             req.correo = correo;
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.enviarFactura(req);
                 return res;
             }
@@ -155,7 +184,7 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoEnviarFactura EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF)
+        public SSPPResultadoEnviarFactura EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF, string sistema)
         {
             SSPPFactura req;
             SSPPResultadoEnviarFactura res;
@@ -205,7 +234,7 @@ namespace FaceWebApi
             //
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.enviarFactura(req);
                 return res;
             }
@@ -214,12 +243,12 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoConsultarFactura ConsultarFactura(string numRegistro)
+        public SSPPResultadoConsultarFactura ConsultarFactura(string numRegistro, string sistema)
         {
             SSPPResultadoConsultarFactura res = null;
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.consultarFactura(numRegistro);
                 return res;
             }
@@ -228,12 +257,12 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoAnularFactura AnularFactura(string numRegistro, string motivo)
+        public SSPPResultadoAnularFactura AnularFactura(string numRegistro, string motivo, string sistema)
         {
             SSPPResultadoAnularFactura res = null;
             try
             {
-                FirmarEnvio();
+                FirmarEnvio(sistema);
                 res = objSender.anularFactura(numRegistro, motivo);
                 return res;
             }
@@ -251,6 +280,23 @@ namespace FaceWebApi
             int pos2 = xml.IndexOf(endTg);
             string valor = xml.Substring(pos1 + iniTg.Length, pos2 - (pos1 + iniTg.Length));
             return valor;
+        }
+
+        public static string Decrypt(string encryptedText)
+        {
+            byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);
+            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
+            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.None };
+
+            var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
+            var memoryStream = new MemoryStream(cipherTextBytes);
+            var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
 
     }
