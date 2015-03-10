@@ -16,14 +16,33 @@ namespace Encriptador
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Intrduzca el texto a encriptar: ");
-            string toEncrypt = Console.ReadLine();
-            string encrypted = Encrypt(toEncrypt);
-            Console.WriteLine("Texto encriptado: {0}", encrypted);
-            string decrypted = Decrypt(encrypted);
-            Console.WriteLine("Texto descifrado: {0}", decrypted);
-            Console.WriteLine("Pulse INTRO para finalizar");
-            Console.ReadLine();
+            if (args.Length != 2)
+            {
+                Console.WriteLine("Número de parámetros incorrecto: uso Encriptador p1 p2");
+                Console.WriteLine("p1 = 0 Encriptar / p1 = 1 Desencriptar");
+                Console.WriteLine("p2 = Texto a encriptar o desencriptar");
+                Console.WriteLine(" --> Pulse INTRO para terminar");
+                Console.ReadLine();
+                return;
+            }
+            int opcion = int.Parse(args[0]);
+            if (opcion == 0)
+            {
+                string toEncrypt = args[1];
+                string encrypted = Encrypt(toEncrypt);
+                Console.WriteLine("El texto encriptado es ({0}) [sin paréntesis], cópielo en lugar seguro", encrypted);
+                Console.WriteLine(" --> Pulse INTRO para terminar");
+                Console.ReadLine();
+                return;
+            }
+            else
+            {
+                string encrypted = args[1];
+                string decrypted = Decrypt(encrypted);
+                Console.WriteLine("Texto descifrado: ({0}) [sin paréntesis]", decrypted);
+                Console.WriteLine("--> Pulse INTRO para finalizar");
+                Console.ReadLine();
+            }
         }
 
         public static string Encrypt(string plainText)
