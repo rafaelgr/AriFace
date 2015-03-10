@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Facturae xmlns="http://www.facturae.es/Facturae/2009/v3.2/Facturae" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FileHeader xmlns="">
+    <SchemaVersion>3.2</SchemaVersion>
+    <Modality>I</Modality>
+    <InvoiceIssuerType>EM</InvoiceIssuerType>
+    <Batch>
+      <BatchIdentifier>ESA46103594FPLAI01838320150131</BatchIdentifier>
+      <InvoicesCount>1</InvoicesCount>
+      <TotalInvoicesAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalInvoicesAmount>
+      <TotalOutstandingAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalOutstandingAmount>
+      <TotalExecutableAmount>
+        <TotalAmount>2542.94</TotalAmount>
+      </TotalExecutableAmount>
+      <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+    </Batch>
+  </FileHeader>
+  <Parties xmlns="">
+    <SellerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>ESA46103594</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>GD ENERGY SERVICES, SAU</CorporateName>
+        <AddressInSpain>
+          <Address>Sorolla Center, local 10
+Avda. de las Cortes Valencianas, 58</Address>
+          <PostCode>46015</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </SellerParty>
+    <BuyerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>Q2820002J</TaxIdentificationNumber>
+      </TaxIdentification>
+      <AdministrativeCentres>
+        <AdministrativeCentre>
+          <CentreCode>E00114604</CentreCode>
+          <RoleTypeCode>02</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>MADRID</Town>
+            <Province>MADRID</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>CENTRO INVEST.ENERGETICAS MEDIOAMBIENTALES Y TECNOLOGICAS</CentreDescription>
+        </AdministrativeCentre>
+        <AdministrativeCentre>
+          <CentreCode>E04689203</CentreCode>
+          <RoleTypeCode>03</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>MADRID</Town>
+            <Province>MADRID</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>DEPARTAMENTO DE TECNOLOGIA</CentreDescription>
+        </AdministrativeCentre>
+        <AdministrativeCentre>
+          <CentreCode>E04688603</CentreCode>
+          <RoleTypeCode>01</RoleTypeCode>
+          <AddressInSpain>
+            <Address>AVDA. COMPLUTENSE, 40</Address>
+            <PostCode>28040</PostCode>
+            <Town>MADRID</Town>
+            <Province>MADRID</Province>
+            <CountryCode>ESP</CountryCode>
+          </AddressInSpain>
+          <CentreDescription>SECRETARIA GENERAL</CentreDescription>
+        </AdministrativeCentre>
+      </AdministrativeCentres>
+      <LegalEntity>
+        <CorporateName>C.I.E.M.A.T.</CorporateName>
+        <AddressInSpain>
+          <Address>AVDA. COMPLUTENSE, 40</Address>
+          <PostCode>28040</PostCode>
+          <Town>MADRID</Town>
+          <Province>MADRID</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </BuyerParty>
+  </Parties>
+  <Invoices xmlns="">
+    <Invoice>
+      <InvoiceHeader>
+        <InvoiceNumber>FPLAI018383</InvoiceNumber>
+        <InvoiceSeriesCode></InvoiceSeriesCode>
+        <InvoiceDocumentType>FC</InvoiceDocumentType>
+        <InvoiceClass>OO</InvoiceClass>
+      </InvoiceHeader>
+      <InvoiceIssueData>
+        <IssueDate>2015-01-31</IssueDate>
+        <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        <TaxCurrencyCode>EUR</TaxCurrencyCode>
+        <LanguageName>es</LanguageName>
+      </InvoiceIssueData>
+      <TaxesOutputs>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>21.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>2101.60</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>441.34</TotalAmount>
+          </TaxAmount>
+        </Tax>
+      </TaxesOutputs>
+      <InvoiceTotals>
+        <TotalGrossAmount>2101.60</TotalGrossAmount>
+        <TotalGeneralDiscounts>0.00</TotalGeneralDiscounts>
+        <TotalGrossAmountBeforeTaxes>2101.60</TotalGrossAmountBeforeTaxes>
+        <TotalTaxOutputs>441.34</TotalTaxOutputs>
+        <TotalTaxesWithheld>0.00</TotalTaxesWithheld>
+        <InvoiceTotal>2542.94</InvoiceTotal>
+        <TotalOutstandingAmount>2542.94</TotalOutstandingAmount>
+        <TotalExecutableAmount>2542.94</TotalExecutableAmount>
+      </InvoiceTotals>
+      <Items>
+        <InvoiceLine>
+          <ItemDescription>Servicios de Limpieza en Laboratorios de los Edificios 3 y 70 del CIEMAT, enero de 2015.
+
+Oficina Contable: E04688603
+Órgano Gestor    : E00114604
+Unidad Tramitadora: Departamento de Tecnología E04689203</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>2101.600000</UnitPriceWithoutTax>
+          <TotalCost>2101.600000</TotalCost>
+          <GrossAmount>2101.600000</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>2101.60</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>441.34</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+      </Items>
+      <PaymentDetails>
+        <Installment>
+          <InstallmentDueDate>2015-03-31</InstallmentDueDate>
+          <InstallmentAmount>2542.94</InstallmentAmount>
+          <PaymentMeans>04</PaymentMeans>
+          <AccountToBeCredited>
+            <AccountNumber>ES9301822339620013934306</AccountNumber>
+          </AccountToBeCredited>
+        </Installment>
+      </PaymentDetails>
+    </Invoice>
+  </Invoices>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature736576">
+<ds:SignedInfo Id="Signature-SignedInfo616799">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
+<ds:Reference Id="SignedPropertiesID7872" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature736576-SignedProperties177571">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>vA+7JA8H5LFjAASmGklBG/o7l+c=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate1869455">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>wO8qBB26e8QXrjr00vUIjEtKyZg=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-335366" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>JPlM2cuZ5YFXoz4sO0fLRAVA/tc=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue814321">
+dpJAs+yAlX2oWN8oUvXeMxpp2J7MlZMgyUuSMgnb51J5kDKrnU5C7lpEmumsTIqNUyKgj+IGiuwx
+qfiUAipmerych69a1unCKOKumcO6/S+JKYOd66INncFrQeyjIHtwXuKakxiTbWYUEcGxsY7nO2BU
+OT0RfPOZsgMnJocZNXM=
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate1869455">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIEijCCA/OgAwIBAgIEPRawuTANBgkqhkiG9w0BAQUFADA2MQswCQYDVQQGEwJFUzENMAsGA1UE
+ChMERk5NVDEYMBYGA1UECxMPRk5NVCBDbGFzZSAyIENBMB4XDTE0MDYyMzA3NTEwNVoXDTE2MDYy
+MzA3NTEwNVowgc4xCzAJBgNVBAYTAmVzMQ0wCwYDVQQKEwRGTk1UMRgwFgYDVQQLEw9mbm10IGNs
+YXNlIDIgY2ExEjAQBgNVBAsTCTcwMzAxOTE4NjGBgTB/BgNVBAMTeEVOVElEQUQgTE9HSVNUSUNB
+IFkgQUNPTkRJQ0lPTkFNSUVOVE9TIElORFVTVFJJQUxFUyBTQSAtIENJRiBBNDYxMDM1OTQgLSBO
+T01CUkUgRkVSUkVSIFRPUk1PUyBKT1NFIFJBTU9OIC0gTklGIDUyNzA0NjE1VDCBnzANBgkqhkiG
+9w0BAQEFAAOBjQAwgYkCgYEA3aNVRlEbBdWjft9fIs5rFeqKatqi8DDak7QYP1eruWaWeObXb14r
+nN/ckqGJjEWA7X3ksU+5UVKVlANAFROvxhavdCXHdkTar4rM8n0U3h7bC3TFwVXH9WVvzLKI9FTw
+SaSQVht0bNSaHiBXgMP72cTleT4WhtcFqsNUFefNli0CAwEAAaOCAgowggIGMIHNBgNVHREEgcUw
+gcKkgb8wgbwxGDAWBgkrBgEEAaxmAQcTCUE0NjEwMzU5NDE9MDsGCSsGAQQBrGYBBhMuTE9HSVNU
+SUNBIFkgQUNPTkRJQ0lPTkFNSUVOVE9TIElORFVTVFJJQUxFUyBTQTEYMBYGCSsGAQQBrGYBBBMJ
+NTI3MDQ2MTVUMRUwEwYJKwYBBAGsZgEDEwZUT1JNT1MxFTATBgkrBgEEAaxmAQITBkZFUlJFUjEZ
+MBcGCSsGAQQBrGYBARMKSk9TRSBSQU1PTjAJBgNVHRMEAjAAMCsGA1UdEAQkMCKADzIwMTQwNjIz
+MDc1MTA1WoEPMjAxNjA2MjMwNzUxMDVaMAsGA1UdDwQEAwIFoDARBglghkgBhvhCAQEEBAMCBaAw
+HQYDVR0OBBYEFGo0urK4TpsrynM+1xVx8ay68rB3MB8GA1UdIwQYMBaAFECadkSXdAfErBTLHo1P
+OkV8MNdhMD4GCSsGAQQBrGYBIQQxFi9DRVJUSUZJQ0FETyBFWENMVVNJVk8gUEFSQSBFTCBBTUJJ
+VE8gVFJJQlVUQVJJTzBcBgNVHR8EVTBTMFGgT6BNpEswSTELMAkGA1UEBhMCRVMxDTALBgNVBAoT
+BEZOTVQxGDAWBgNVBAsTD0ZOTVQgQ2xhc2UgMiBDQTERMA8GA1UEAxMIQ1JMMTQ5NzIwDQYJKoZI
+hvcNAQEFBQADgYEAbcVkRApszx+RPo/RnywldkUmLamoDwy9ls7Dp1agp79Mzpm4VoCd/cz3TwZM
+YaSrw+YgEDLy3kn76bT98UWHma5Thxd9bvcTLnmooU4rO+ADSsGn1BcQNiEZEg+DTeooZ+9+d1GI
+nrkdgnHxmdtM55cgoGDrialZF38UAR1itrQ=
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+3aNVRlEbBdWjft9fIs5rFeqKatqi8DDak7QYP1eruWaWeObXb14rnN/ckqGJjEWA7X3ksU+5UVKV
+lANAFROvxhavdCXHdkTar4rM8n0U3h7bC3TFwVXH9WVvzLKI9FTwSaSQVht0bNSaHiBXgMP72cTl
+eT4WhtcFqsNUFefNli0=
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature736576-Object656886"><etsi:QualifyingProperties Target="#Signature736576"><etsi:SignedProperties Id="Signature736576-SignedProperties177571"><etsi:SignedSignatureProperties><etsi:SigningTime>2015-03-10T16:08:00+01:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>h7DpCTckkMTAocMXPKMAytiOLHc=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>OU=FNMT Clase 2 CA,O=FNMT,C=ES</ds:X509IssuerName><ds:X509SerialNumber>1024897209</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate><etsi:SignaturePolicyIdentifier><etsi:SignaturePolicyId><etsi:SigPolicyId><etsi:Identifier>http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf</etsi:Identifier><etsi:Description>Política de Firma FacturaE v3.1</etsi:Description></etsi:SigPolicyId><etsi:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ohixl6upD6av8N7pEvDABhEL6hM=</ds:DigestValue></etsi:SigPolicyHash></etsi:SignaturePolicyId></etsi:SignaturePolicyIdentifier></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-335366"><etsi:Description>Descripcion del documento</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></Facturae>

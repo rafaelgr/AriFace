@@ -50,6 +50,38 @@ namespace FaceWebApi
             }
             return lf;
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<Factura> GetFacturasAx(string cif, string empresa)
+        {
+            IList<Factura> lf = new List<Factura>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                lf = CntAriFaceLib.GetFacturasAx(cif, empresa, conn);
+                conn.Close();
+            }
+            return lf;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static IList<Factura> GetFacturasNoEnviadasAx(string cif, string empresa)
+        {
+            IList<Factura> lf = new List<Factura>();
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                lf = CntAriFaceLib.GetFacturasNoEnviadasAx(cif, empresa,conn);
+                conn.Close();
+            }
+            return lf;
+        }
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IList<Factura> GetFacturasCliente(int clienteId)
