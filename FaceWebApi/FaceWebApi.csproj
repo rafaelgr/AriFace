@@ -94,6 +94,8 @@
     <Content Include="js\ariface\usuarioDetalle.js" />
     <Content Include="js\numeral.min.js" />
     <Content Include="login.html" />
+    <Content Include="LoginSSO.aspx" />
+    <Content Include="LoginSSOTest.aspx" />
     <Content Include="UsuarioDetalle.html" />
     <Content Include="js\ariface\usuarioGeneral.js" />
     <Content Include="UsuarioGeneral.html" />
@@ -1007,6 +1009,20 @@
     <Compile Include="EstadisticaApi.aspx.designer.cs">
       <DependentUpon>EstadisticaApi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LoginSSO.aspx.cs">
+      <DependentUpon>LoginSSO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginSSO.aspx.designer.cs">
+      <DependentUpon>LoginSSO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginSSOTest.aspx.cs">
+      <DependentUpon>LoginSSOTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginSSOTest.aspx.designer.cs">
+      <DependentUpon>LoginSSOTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioApi.aspx.cs">
       <DependentUpon>UsuarioApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1221,7 +1237,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65222</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

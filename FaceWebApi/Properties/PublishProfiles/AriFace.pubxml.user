@@ -55,10 +55,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/10/2015 17:19:12</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>03/10/2015 17:19:13</publishTime>
+      <publishTime>03/12/2015 12:41:55</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>03/10/2015 17:19:14</publishTime>
+      <publishTime>03/12/2015 12:41:56</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>11/26/2014 18:40:28</publishTime>
@@ -109,7 +109,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/19/2015 16:35:20</publishTime>
     </File>
     <File Include="DescargaAx.html">
-      <publishTime>03/10/2015 17:00:39</publishTime>
+      <publishTime>03/10/2015 17:25:13</publishTime>
     </File>
     <File Include="EmpresaRaizApi.aspx">
       <publishTime>12/15/2014 11:59:01</publishTime>
@@ -148,7 +148,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/16/2015 13:08:12</publishTime>
     </File>
     <File Include="FacturaGeneralAx.html">
-      <publishTime>03/10/2015 17:00:07</publishTime>
+      <publishTime>03/10/2015 17:44:47</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>05/23/2014 18:22:34</publishTime>
@@ -1366,7 +1366,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/19/2014 17:18:10</publishTime>
     </File>
     <File Include="js/ariface/descarga.js">
-      <publishTime>02/12/2015 17:53:05</publishTime>
+      <publishTime>03/10/2015 17:47:13</publishTime>
     </File>
     <File Include="js/ariface/empresaRaizDetalle.js">
       <publishTime>12/19/2014 17:09:26</publishTime>
@@ -1387,7 +1387,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/16/2015 13:10:55</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneralAx.js">
-      <publishTime>03/10/2015 17:07:34</publishTime>
+      <publishTime>03/10/2015 17:46:53</publishTime>
     </File>
     <File Include="js/ariface/index.js">
       <publishTime>01/07/2015 17:27:33</publishTime>
@@ -2772,6 +2772,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="login2.html">
       <publishTime>12/19/2014 16:44:48</publishTime>
     </File>
+    <File Include="LoginSSO.aspx">
+      <publishTime>03/12/2015 12:41:29</publishTime>
+    </File>
+    <File Include="LoginSSOTest.aspx">
+      <publishTime>03/12/2015 11:11:42</publishTime>
+    </File>
     <File Include="PlantillaApi.aspx">
       <publishTime>12/17/2014 09:02:54</publishTime>
     </File>
@@ -2782,7 +2788,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/12/2015 11:39:43</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/10/2015 17:19:24</publishTime>
+      <publishTime>03/12/2015 12:42:00</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>11/24/2014 16:44:00</publishTime>

@@ -21,7 +21,7 @@ var breakpointDefinition = {
 
 
 function initForm() {
-    comprobarLogin();
+    //comprobarLogin();
     // de smart admin
     pageSetUp();
     cif = gup("cif");
