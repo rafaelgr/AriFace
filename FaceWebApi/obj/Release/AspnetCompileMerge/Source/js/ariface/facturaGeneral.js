@@ -21,7 +21,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
-
+    getVersionFooter();
     // numeral en español
     numeral.language('es', {
         delimiters: {
@@ -147,13 +147,14 @@ function initTablaFacturas() {
             data: "FacturaId",
             render: function (data, type, row) {
                 //var bt0 = "<button class='btn btn-circle btn-primary' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
+                var bt3 = "<button class='btn btn-circle btn-primary' onclick='sendEnvio(" + data + ");' title='Enviar directamente'> <i class='fa fa-send fa-fw'></i> </button>";
                 var bt0 = "<button class='btn btn-circle btn-primary' onclick='descargaFichero(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-download fa-fw'></i> </button>";
                 var bt1 = "<button class='btn btn-circle btn-success' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-warning' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
                 if (row.Estado == 0) {
                     bt2 = "<button class='btn btn-circle btn-warning' onclick='agregarAlEnvio(" + data + ");' title='Agregar al envío'> <i class='fa fa-undo fa-fw'></i> </button>";
                 } 
-                var html = "<div class='pull-right'>" + bt0 + " " +  bt1 + " " + bt2 + "</div>";
+                var html = "<div class='pull-right'>" + bt3 + " " + bt0 + " " +  bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }]
@@ -439,4 +440,36 @@ function descargaFichero(id) {
     var user = JSON.parse(getCookie("admin"));
     var url = "Descarga.html?facturaId=" + id + "&administradorId=" + user.AdministradorId;
     window.open(url, '_self');
+}
+
+function sendEnvio(facturaId) {
+    // 
+    var adm = JSON.parse(getCookie("admin"));
+    // obtener el n.serie del certificado para la firma.
+    var certSn = adm.Certsn;
+    var data = {
+        facturaId: facturaId,
+    };
+    $("#ldgLoader").show();
+    $.ajax({
+        type: "POST",
+        url: "EnvioApi.aspx/SendEnvioFactura",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            $("#ldgLoader").hide();
+            // hay que mostrarlo en la zona de datos
+            mostrarMensajeSmart(data.d);
+            // recargar
+            var fn = getEnvios();
+            fn();
+        },
+        error: function (xhr, textStatus, errorThrwon) {
+            $("#ldgLoader").hide();
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensaje(m);
+        }
+    });
 }

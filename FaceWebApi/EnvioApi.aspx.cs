@@ -115,6 +115,23 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string SendEnvioFactura(int facturaId)
+        {
+            string r = "";
+            // leer la cadena de conexión de los parámetros
+            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            {
+                conn.Open();
+                // el directorio de notificaciones hay que pasarlo
+                r = CntFaceApi.SendEnvioFactura(facturaId,"NOCERT", conn);
+                conn.Close();
+            }
+            return r;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SendEnvios(string certSn)
         {
             string r = "";

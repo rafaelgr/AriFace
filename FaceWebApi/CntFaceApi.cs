@@ -127,6 +127,93 @@ namespace FaceWebApi
             return mens;
         }
 
+        public static string SendEnvioFactura(int facturaId, string certSN, MySqlConnection conn)
+        {
+            // obtenemos los datos del envío
+            // la lista de facturas
+            Factura f = CntAriFaceLib.GetFactura(facturaId, conn);
+            // leemos la plantilla para envio por correo
+            Plantilla p = CntAriFaceLib.GetPlantilla(1, conn);
+            // leemos el cliente
+            Cliente c = CntAriFaceLib.GetCliente(f.ClienteId, conn);
+            // este será el mensaje de vuelta
+            string mens = String.Format("ENVIO--> Cliente: {0} Departamento: {1} Fecha: {2} TOTAL: {3:0.00} <br/>", f.ClienteNombre, f.Departamento, f.StrFecha, f.Total);
+            if (c.CodOficinaContable == null || c.CodOficinaContable == "")
+            {
+                // NO FACE: Es una simple notificación por correo electrónico.
+                // obtenemos el correo electrónico al que hay que mandar 
+                if (c.Email != null && c.Email != "")
+                {
+                    int i = 0;
+                    ArrayList adjuntos = new ArrayList();
+                    string fichero = "";
+                    string repositorio = "";
+                    string detalleFacturas = "";
+                    // Ahora preparamos las facturas
+                    i++;
+                    // Montar los adjuntos
+                    repositorio = CntAriFaceLib.GetRepositorio(conn);
+                    fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".pdf";
+                    DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
+                        int.Parse(f.StrFecha.Substring(4, 2)),
+                        int.Parse(f.StrFecha.Substring(6, 2)));
+                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong><br/>",
+                        f.Serie, f.NumFactura, fechaFactura, f.Total);
+                    adjuntos.Add(fichero);
+                    // Montamos el correo electrónico.
+                    string asunto = "[ARIFACE] Notificación de facturas electrónicas";
+                    string cuerpo = String.Format(p.Contenido, c.Nombre, detalleFacturas);
+                    try
+                    {
+                        CntAriFaceLib.SendEmailCliente(c.Email, asunto, cuerpo, adjuntos);
+                    }
+                    catch (Exception ex)
+                    {
+                        mens += String.Format("Error correo electrónico: {0}", ex.Message);
+                        return mens;
+                    }
+                    // ahora marcamos las facturas como enviadas
+                    CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                    mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
+                }
+                else
+                {
+                    mens += String.Format("El cliente {0} no tiene un correo electrónico, no se le ha podido notificar <br/>", c.Nombre);
+                }
+            }
+            else
+            {
+                // Envio Face
+                mens += "FACE (Envio a administración pública) <br/>";
+                string detalleFacturas = "";
+                string repositorio = CntAriFaceLib.GetRepositorio(conn);
+                string fichero = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".xsig";
+                string ficheroPdf = repositorio + CntAriFaceLib.NombreFicheroFactura(f, c) + ".pdf";
+                string dirNotificacion = ConfigurationSettings.AppSettings["dirNotificacion"];
+                string email = ConfigurationSettings.AppSettings["mail_address"];
+                try
+                {
+                    //RespuestaFactura rs = EnviarFactura(certSN, fichero, dirNotificacion, email);
+                    RespuestaFactura rs = EnviarFacturaAdjunto(certSN, fichero, dirNotificacion, email, ficheroPdf, f.SistemaGdes);
+                    CntAriFaceLib.MarcarFacturaEnviadaFace(f.FacturaId, rs.CodigoRegistro, rs.StrFechaRecepcion, conn);
+                    DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
+                        int.Parse(f.StrFecha.Substring(4, 2)),
+                        int.Parse(f.StrFecha.Substring(6, 2)));
+                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                        f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
+                    mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                        f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
+                }
+                catch (Exception ex)
+                {
+                    mens += String.Format("Error procesando factura {0}{1}: {2}", f.Serie, f.NumFactura, ex.Message);
+                    return mens;
+                }
+            }
+            mens += "---------------------------- <br/>";
+            return mens;
+        }
+
         public static RespuestaFactura EnviarFactura(string certSn, string fE, string dA, string email, string sistema)
         {
             RespuestaFactura rf = null;

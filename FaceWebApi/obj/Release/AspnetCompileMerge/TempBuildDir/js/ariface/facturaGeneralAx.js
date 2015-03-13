@@ -24,6 +24,7 @@ function initForm() {
     //comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     cif = gup("cif");
     empresa = gup("empresa");
     // numeral en español

@@ -6,6 +6,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     // 
     vm = new plantillaData();
     ko.applyBindings(vm);

@@ -5,6 +5,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     // buscar estadísticas
     $.ajax({
         type: "POST",

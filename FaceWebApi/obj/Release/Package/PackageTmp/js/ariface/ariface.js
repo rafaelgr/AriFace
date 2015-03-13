@@ -104,3 +104,23 @@ function getCookie(c_name) {
         }
     }
 }
+
+
+function getVersionFooter() {
+    $.ajax({
+        type: "POST",
+        url: "VersionApi.aspx/GetVersion",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (data, status) {
+            // Regresa el mensaje
+            if (!data.d) {
+                mostrarMensaje('No se pudo obtener la versión ');
+            }
+            var a = data.d;
+            $("#versionFooter").text(a);
+
+        },
+        error: errorAjax
+    });
+}

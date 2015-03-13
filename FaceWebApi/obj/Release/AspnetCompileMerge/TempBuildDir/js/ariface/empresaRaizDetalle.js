@@ -9,6 +9,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     // 
     vm = new empData();
     ko.applyBindings(vm);

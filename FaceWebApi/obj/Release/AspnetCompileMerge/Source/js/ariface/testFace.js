@@ -18,6 +18,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     //
     $('#btnCertificados').click(sendConsultarCertificados());
     $('#frmCertificados').submit(function () {

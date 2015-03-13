@@ -22,6 +22,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     //
     $('#btnEnvio').click(sendEnvios());
     $('#frmEnvio').submit(function () {

@@ -13,6 +13,7 @@ function initForm() {
     //comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     // 
     $("#btnSalir").click(salir());
     var facturaId = gup("facturaId");

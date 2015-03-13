@@ -7,6 +7,7 @@ function initForm() {
     // de smart admin
     pageSetUp();
     // 
+    getVersionFooter();
     vm = new admData();
     ko.applyBindings(vm);
     // asignación de eventos al clic

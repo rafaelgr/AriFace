@@ -21,6 +21,7 @@ function initForm() {
     comprobarLogin();
     // de smart admin
     pageSetUp();
+    getVersionFooter();
     //
     $('#btnBuscar').click(buscarClientes());
     $('#btnAlta').click(crearCliente());
