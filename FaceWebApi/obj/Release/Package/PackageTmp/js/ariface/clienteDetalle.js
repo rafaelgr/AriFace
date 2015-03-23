@@ -69,6 +69,8 @@ function cliData() {
     self.CodOrganoGestor = ko.observable();
     self.CodUnidadTramitadora = ko.observable();
     self.CodOficinaContable = ko.observable();
+    // Iban
+    self.Iban = ko.observable();
 }
 
 function loadData(data) {
@@ -82,6 +84,7 @@ function loadData(data) {
     vm.OrganoGestor(data.CodOrganoGestor);
     vm.UnidadTramitadora(data.CodUnidadTramitadora);
     vm.OficinaContable(data.CodOficinaContable);
+    vm.Iban(data.Iban);
     loadComboOrganoGestor(data.CodOrganoGestor);
     loadComboUnidadTramitadora(data.CodOrganoGestor, data.CodUnidadTramitadora);
     loadComboOficinaContable(data.CodOrganoGestor, data.CodUnidadTramitadora, data.CodOficinaContable)
@@ -267,7 +270,8 @@ function aceptar() {
                 "CodOrganoGestor": cog,
                 "CodUnidadTramitadora": cut,
                 "Email": vm.Email(),
-                "Nombre": vm.Nombre()
+                "Nombre": vm.Nombre(),
+                "Iban": vm.Iban()
             }
         };
         $.ajax({

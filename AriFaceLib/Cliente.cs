@@ -79,5 +79,13 @@ namespace AriFaceLib
             get { return codClienAriges; }
             set { codClienAriges = value; }
         }
+
+        private string iban;
+
+        public string Iban
+        {
+            get { return iban; }
+            set { iban = value; }
+        }
     }
 }

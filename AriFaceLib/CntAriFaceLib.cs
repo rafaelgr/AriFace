@@ -930,6 +930,10 @@ namespace AriFaceLib
                 c.CodSocioAritaxi = rdr.GetInt32("cod_socio_aritaxi");
             if (!rdr.IsDBNull(rdr.GetOrdinal("codclien_ariges")))
                 c.CodClienAriges = rdr.GetInt32("codclien_ariges");
+            //
+            if (!rdr.IsDBNull(rdr.GetOrdinal("iban")))
+                c.Iban = rdr.GetString("iban");
+ 
             return c;
         }
             
@@ -1007,8 +1011,8 @@ namespace AriFaceLib
             {
                 sql = @"
                     INSERT INTO cliente
-                    (nombre, cif, email, organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo)
-                    VALUES ('{1}','{2}','{3}','{4}','{5}','{6}');
+                    (nombre, cif, email, organoGestorCodigo, unidadTramitadoraCodigo, oficinaContableCodigo, iban)
+                    VALUES ('{1}','{2}','{3}','{4}','{5}','{6}', '{7}');
                 ";
             }
             else
@@ -1021,11 +1025,12 @@ namespace AriFaceLib
                     email='{3}',
                     organoGestorCodigo='{4}',
                     unidadTramitadoraCodigo='{5}',
-                    oficinaContableCodigo='{6}'
+                    oficinaContableCodigo='{6}',
+                    iban = '{7}'
                     WHERE i_d={0};
                 ";
             }
-            sql = String.Format(sql, c.ClienteId, c.Nombre, c.Cif, c.Email, c.CodOrganoGestor, c.CodUnidadTramitadora, c.CodOficinaContable);
+            sql = String.Format(sql, c.ClienteId, c.Nombre, c.Cif, c.Email, c.CodOrganoGestor, c.CodUnidadTramitadora, c.CodOficinaContable, c.Iban);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             // y vamos rápidamente a por la recién creada
