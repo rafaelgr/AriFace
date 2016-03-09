@@ -24,21 +24,31 @@ namespace FaceWebApi
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static Administrador GetAdministradorLogin(string login, string password)
         {
-            Administrador a = null;
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            try
             {
-                conn.Open();
-                a = CntAriFaceLib.GetAdministradorLogin(login, password, conn);
-                if (a != null)
+                Administrador a = null;
+                // leer la cadena de conexión de los parámetros
+                string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+                using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
                 {
-                    string localPath = HostingEnvironment.ApplicationPhysicalPath;
-                    CntAriFaceLib.PrepararDirectorio(a.AdministradorId, localPath);
+                    conn.Open();
+                    a = CntAriFaceLib.GetAdministradorLogin(login, password, conn);
+                    if (a != null)
+                    {
+                        string localPath = HostingEnvironment.ApplicationPhysicalPath;
+                        CntAriFaceLib.PrepararDirectorio(a.AdministradorId, localPath);
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+                return a;
             }
-            return a;
+            catch (Exception ex)
+            {
+                Administrador a2 = new Administrador();
+                a2.Nombre = ex.Message;
+                return a2;
+            }
+            
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]

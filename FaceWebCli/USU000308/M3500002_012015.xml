@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Facturae xmlns="http://www.facturae.es/Facturae/2007/v3.1/Facturae" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FileHeader xmlns="">
+    <SchemaVersion>3.1</SchemaVersion>
+    <Modality>I</Modality>
+    <InvoiceIssuerType>EM</InvoiceIssuerType>
+    <Batch>
+      <BatchIdentifier>F46026621M350000220150101</BatchIdentifier>
+      <InvoicesCount>1</InvoicesCount>
+      <TotalInvoicesAmount>
+        <TotalAmount>229.90</TotalAmount>
+      </TotalInvoicesAmount>
+      <TotalOutstandingAmount>
+        <TotalAmount>229.90</TotalAmount>
+      </TotalOutstandingAmount>
+      <TotalExecutableAmount>
+        <TotalAmount>229.90</TotalAmount>
+      </TotalExecutableAmount>
+      <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+    </Batch>
+  </FileHeader>
+  <Parties xmlns="">
+    <SellerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>B96470190</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>Ariadna Software S.L.</CorporateName>
+        <AddressInSpain>
+          <Address>C/ Uruguay, 11 - Despacho 710</Address>
+          <PostCode>46007</PostCode>
+          <Town>VALENCIA</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </SellerParty>
+    <BuyerParty>
+      <TaxIdentification>
+        <PersonTypeCode>J</PersonTypeCode>
+        <ResidenceTypeCode>R</ResidenceTypeCode>
+        <TaxIdentificationNumber>F46026621</TaxIdentificationNumber>
+      </TaxIdentification>
+      <LegalEntity>
+        <CorporateName>COOP. PICASSENT</CorporateName>
+        <AddressInSpain>
+          <Address>Pol. Ind. C/6, nro.3</Address>
+          <PostCode>46220</PostCode>
+          <Town>PICASSENT</Town>
+          <Province>VALENCIA</Province>
+          <CountryCode>ESP</CountryCode>
+        </AddressInSpain>
+      </LegalEntity>
+    </BuyerParty>
+  </Parties>
+  <Invoices xmlns="">
+    <Invoice>
+      <InvoiceHeader>
+        <InvoiceNumber>3500002</InvoiceNumber>
+        <InvoiceSeriesCode>M</InvoiceSeriesCode>
+        <InvoiceDocumentType>FC</InvoiceDocumentType>
+        <InvoiceClass>OO</InvoiceClass>
+      </InvoiceHeader>
+      <InvoiceIssueData>
+        <IssueDate>2015-01-01</IssueDate>
+        <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        <TaxCurrencyCode>EUR</TaxCurrencyCode>
+        <LanguageName>es</LanguageName>
+      </InvoiceIssueData>
+      <TaxesOutputs>
+        <Tax>
+          <TaxTypeCode>01</TaxTypeCode>
+          <TaxRate>21.00</TaxRate>
+          <TaxableBase>
+            <TotalAmount>190.00</TotalAmount>
+          </TaxableBase>
+          <TaxAmount>
+            <TotalAmount>39.90</TotalAmount>
+          </TaxAmount>
+        </Tax>
+      </TaxesOutputs>
+      <InvoiceTotals>
+        <TotalGrossAmount>190.00</TotalGrossAmount>
+        <TotalGeneralDiscounts>0.00</TotalGeneralDiscounts>
+        <TotalGrossAmountBeforeTaxes>190.00</TotalGrossAmountBeforeTaxes>
+        <TotalTaxOutputs>39.90</TotalTaxOutputs>
+        <TotalTaxesWithheld>0.00</TotalTaxesWithheld>
+        <InvoiceTotal>229.90</InvoiceTotal>
+        <TotalOutstandingAmount>229.90</TotalOutstandingAmount>
+        <TotalExecutableAmount>229.90</TotalExecutableAmount>
+      </InvoiceTotals>
+      <Items>
+        <InvoiceLine>
+          <ItemDescription>MANT. SOFTWARE CORRESPONDIENTE A</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>155.000000</UnitPriceWithoutTax>
+          <TotalCost>155.00</TotalCost>
+          <GrossAmount>155.00</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>155.00</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>-32.55</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+        <InvoiceLine>
+          <ItemDescription>SOPORTE DE COPIAS DE SEGURIDAD</ItemDescription>
+          <Quantity>1</Quantity>
+          <UnitPriceWithoutTax>35.000000</UnitPriceWithoutTax>
+          <TotalCost>35.00</TotalCost>
+          <GrossAmount>35.00</GrossAmount>
+          <TaxesOutputs>
+            <Tax>
+              <TaxTypeCode>01</TaxTypeCode>
+              <TaxRate>21.00</TaxRate>
+              <TaxableBase>
+                <TotalAmount>35.00</TotalAmount>
+              </TaxableBase>
+              <TaxAmount>
+                <TotalAmount>-7.35</TotalAmount>
+              </TaxAmount>
+            </Tax>
+          </TaxesOutputs>
+        </InvoiceLine>
+      </Items>
+    </Invoice>
+  </Invoices>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature736597">
+<ds:SignedInfo Id="Signature-SignedInfo907864">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
+<ds:Reference Id="SignedPropertiesID391710" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature736597-SignedProperties834232">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>MjYmWm2SAF+Q/NxarsPrn3G5V4w=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate1656902">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>raKWEvPWlMLljVaLXtt1FAr5bVE=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-330000" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>K/9URZtjGXiw/9w5DdpS2hg/SYU=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue133966">
+lUm5fz204y4zKDIgB0z+JR3oBxiqPDtOFEkiDWyBg4Okrb/0SZqeU1JFBKIcWXDGAIVzWYK75I+V
+aP/miiBA7EtxM8TzZDPStThTMy0JFkUm1AuKBH6y6CVASmgTWNptBg8Tk189tCZaGFOmm3rMkcWH
+zBUZXNDCAFZbXEIGlprD2nogNrAE+EBW4MqIkYIcOzbsRIDIcRsVSgt4eAOecAmb9/Z1yqEnLZb4
+pc6T35Nh6FL+u+O5DhS2L+6kcGeLtrddcpzXMuFHw6HPPO0Mcq9MSx5476LI9EsAWmKVK31a+mOD
+ZzBhTLO8wgbSnNCq1Bdlahd8+ap5StloxFGvxw==
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate1656902">
+<ds:X509Data>
+<ds:X509Certificate>
+MIII8DCCB9igAwIBAgIITug8zBREkKQwDQYJKoZIhvcNAQEFBQAwgeAxCzAJBgNVBAYTAkVTMS4w
+LAYJKoZIhvcNAQkBFh9hY19jYW1lcmZpcm1hX2NjQGNhbWVyZmlybWEuY29tMUMwQQYDVQQHEzpN
+YWRyaWQgKHNlZSBjdXJyZW50IGFkZHJlc3MgYXQgd3d3LmNhbWVyZmlybWEuY29tL2FkZHJlc3Mp
+MRIwEAYDVQQFEwlBODI3NDMyODcxGTAXBgNVBAoTEEFDIENhbWVyZmlybWEgU0ExLTArBgNVBAMT
+JEFDIENhbWVyZmlybWEgQ2VydGlmaWNhZG9zIENhbWVyYWxlczAeFw0xMTA1MDMxMTI3NDZaFw0x
+MzA1MDIxMTI3NDZaMIIBNTELMAkGA1UEBhMCRVMxHzAdBgNVBAMTFkFyaWFkbmEgU29mdHdhcmUg
+IFMuTC4xMDAuBgkqhkiG9w0BCQEWIXJhZmFlbC5nYXJjaWFAYXJpYWRuYXNvZnR3YXJlLmNvbTES
+MBAGA1UEBRMJQjk2NDcwMTkwMRcwFQYDVQQEFA5HYXJj7WEgUmVkb25kbzEPMA0GA1UEKhMGUmFm
+YWVsMRkwFwYKKwYBBAGBkxYBARMJMjUzNzU1ODZQMR8wHQYDVQQKExZBcmlhZG5hIFNvZnR3YXJl
+ICBTLkwuMREwDwYDVQQLEwhnZXJlbmNpYTEWMBQGA1UEDBMNYWRtaW5pc3RyYWRvcjEuMCwGA1UE
+DRMlUXVhbGlmaWVkIENlcnRpZmljYXRlOiBDQU0tUEotU1ctS1BTQzCCASIwDQYJKoZIhvcNAQEB
+BQADggEPADCCAQoCggEBANLXYpQGfgiRvCJ4HQ+gpbSGlqd0K7oXid50FJeB3Grx2NrqRNgcgD6B
+vwlDbLPhOKnjQRW2ptuqBekX3FBI3g2Ciim0xdDp454NwqqxqwAtXEtEfB1tAP/1F6hHITnx2/BH
+QpCZZxr96gND81Q+xZrtj3Fkgx3BY4Qd6NGyy8CU8D73z1aLVyqrBMBnGT/KU7g1pi+hxqnKgply
+pu/D4NZStaSuASSWi1iChGLgKq+M6fVhxPNsCodMpUasn3P7I5trWiEwpjeCM0Ex6PhFQyFVG21M
+iTe3R88KcT9tqrZKJ+awpbl4x5aXYwdwRa2DoaH26mAk62lo+xBYX4NxjFcCAwEAAaOCBFQwggRQ
+MAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgP4MB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBglghkgBhvhCAQEEBAMCBaAwQgYJYIZIAYb4QgEDBDUWM1VSSTpodHRwOi8vd3d3LmNh
+bWVyZmlybWEuY29tL2FjX2NhbWVyZmlybWFfY2MuY2dpPzBGBglghkgBhvhCAQgEORY3VVJJOmh0
+dHA6Ly9jcHMuY2FtZXJmaXJtYS5jb20vY3BzL2FjX2NhbWVyZmlybWFfY2MuaHRtbDAdBgNVHQ4E
+FgQUrt8Sz7nHFbB/absfUWfblGjnQ/sweAYIKwYBBQUHAQEEbDBqMEAGCCsGAQUFBzAChjRodHRw
+Oi8vd3d3LmNhbWVyZmlybWEuY29tL2NlcnRzL2FjX2NhbWVyZmlybWFfY2MuY3J0MCYGCCsGAQUF
+BzABhhpodHRwOi8vb2NzcC5jYW1lcmZpcm1hLmNvbTCBqwYDVR0jBIGjMIGggBS2H06dHGiRLjdy
+YOFGj1qlKjExuaGBhKSBgTB/MQswCQYDVQQGEwJFVTEnMCUGA1UEChMeQUMgQ2FtZXJmaXJtYSBT
+QSBDSUYgQTgyNzQzMjg3MSMwIQYDVQQLExpodHRwOi8vd3d3LmNoYW1iZXJzaWduLm9yZzEiMCAG
+A1UEAxMZQ2hhbWJlcnMgb2YgQ29tbWVyY2UgUm9vdIIBBTB2BgNVHR8EbzBtMDSgMqAwhi5odHRw
+Oi8vY3JsLmNhbWVyZmlybWEuY29tL2FjX2NhbWVyZmlybWFfY2MuY3JsMDWgM6Axhi9odHRwOi8v
+Y3JsMS5jYW1lcmZpcm1hLmNvbS9hY19jYW1lcmZpcm1hX2NjLmNybDAsBgNVHREEJTAjgSFyYWZh
+ZWwuZ2FyY2lhQGFyaWFkbmFzb2Z0d2FyZS5jb20wKgYDVR0SBCMwIYEfYWNfY2FtZXJmaXJtYV9j
+Y0BjYW1lcmZpcm1hLmNvbTCB3AYDVR0gBIHUMIHRMIHOBg0rBgEEAYGHLgoJBAEBMIG8MD8GCCsG
+AQUFBwIBFjNodHRwOi8vY3BzLmNhbWVyZmlybWEuY29tL2Nwcy9hY19jYW1lcmZpcm1hX2NjLmh0
+bWwweQYIKwYBBQUHAgIwbRprUkE6IENDNDYgLSBERUNMQVJBQ0lPTiBBRElDSU9OQUw6IGh0dHBz
+Oi8vcmFvbmxpbmUuY2FtZXJmaXJtYS5jb20vcGRvY2UvZGVjbGFyYWNpb25lcy80RUU4M0NDQzE0
+NDQ5MEE0Lmh0bWwwegYJYIZIAYb4QgENBG0Wa1JBOiBDQzQ2IC0gREVDTEFSQUNJT04gQURJQ0lP
+TkFMOiBodHRwczovL3Jhb25saW5lLmNhbWVyZmlybWEuY29tL3Bkb2NlL2RlY2xhcmFjaW9uZXMv
+NEVFODNDQ0MxNDQ0OTBBNC5odG1sMA0GCSqGSIb3DQEBBQUAA4IBAQCEMFYMo4/zOmfp+vCsk4Cw
+UPOHTavNfGByLSELxQqwUWLkmf8xpTsrlS5l/s5ig0Lpy/TTmWD4xJdeShZG4hzFTaP2Ms2Kk2TE
+ePZd05ljiBk4JI8E7V4XkCs4YUooMl3C9Ddl/BDL7kogwO+7D/tZ5PzplHDVn92ChGSd8loC56Re
+dr+S7W4Wdkc5/tV7pHmOyQYLopRUUzfECJ7KDsR7sAu8qdeEi6jGqXOtbPvlMem2OZpJDWYIKpWX
+XlmMK7IY8Mn48R/hz4vVHj/9aUqtHH1kS54mLcLLOznQDNqfcHJbIIeQXWo02IwC0lxSQq7mU2iG
+6DPd+xoHUv1ZzYVY
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+0tdilAZ+CJG8IngdD6CltIaWp3QruheJ3nQUl4HcavHY2upE2ByAPoG/CUNss+E4qeNBFbam26oF
+6RfcUEjeDYKKKbTF0Onjng3CqrGrAC1cS0R8HW0A//UXqEchOfHb8EdCkJlnGv3qA0PzVD7Fmu2P
+cWSDHcFjhB3o0bLLwJTwPvfPVotXKqsEwGcZP8pTuDWmL6HGqcqCmXKm78Pg1lK1pK4BJJaLWIKE
+YuAqr4zp9WHE82wKh0ylRqyfc/sjm2taITCmN4IzQTHo+EVDIVUbbUyJN7dHzwpxP22qtkon5rCl
+uXjHlpdjB3BFrYOhofbqYCTraWj7EFhfg3GMVw==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature736597-Object945228"><etsi:QualifyingProperties Target="#Signature736597"><etsi:SignedProperties Id="Signature736597-SignedProperties834232"><etsi:SignedSignatureProperties><etsi:SigningTime>2015-01-02T11:06:31+01:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>SI46S4Y7Sope3slGld684nYqF2U=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AC Camerfirma Certificados Camerales,O=AC Camerfirma SA,2.5.4.5=#1309413832373433323837,L=Madrid (see current address at www.camerfirma.com/address),1.2.840.113549.1.9.1=#161f61635f63616d65726669726d615f63634063616d65726669726d612e636f6d,C=ES</ds:X509IssuerName><ds:X509SerialNumber>5685861376766283940</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate><etsi:SignaturePolicyIdentifier><etsi:SignaturePolicyId><etsi:SigPolicyId><etsi:Identifier>http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf</etsi:Identifier><etsi:Description>Política de Firma FacturaE v3.1</etsi:Description></etsi:SigPolicyId><etsi:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ohixl6upD6av8N7pEvDABhEL6hM=</ds:DigestValue></etsi:SigPolicyHash></etsi:SignaturePolicyId></etsi:SignaturePolicyIdentifier></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-330000"><etsi:Description>Descripcion del documento</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></Facturae>

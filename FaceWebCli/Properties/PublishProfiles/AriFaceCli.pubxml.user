@@ -43,10 +43,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>03/05/2015 18:52:39</publishTime>
+      <publishTime>03/09/2016 12:44:46</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>03/05/2015 18:52:40</publishTime>
+      <publishTime>03/09/2016 16:25:34</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>02/17/2015 18:47:08</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>12/23/2014 16:36:21</publishTime>
@@ -1333,7 +1336,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 16:36:13</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>01/07/2015 17:51:52</publishTime>
+      <publishTime>03/09/2016 11:42:04</publishTime>
     </File>
     <File Include="js/ariface/facturaProveedor.js">
       <publishTime>12/29/2014 17:56:54</publishTime>
@@ -2722,7 +2725,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/24/2014 10:33:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/05/2015 18:52:47</publishTime>
+      <publishTime>03/09/2016 16:25:42</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>12/23/2014 18:14:29</publishTime>
@@ -2731,7 +2734,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/23/2014 18:14:14</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/12/2015 17:06:17</publishTime>
+      <publishTime>03/09/2016 12:46:24</publishTime>
     </File>
   </ItemGroup>
 </Project>

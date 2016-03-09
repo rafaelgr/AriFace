@@ -52,13 +52,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>03/23/2015 13:16:06</publishTime>
+      <publishTime>03/09/2016 18:03:23</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>03/23/2015 13:16:07</publishTime>
+      <publishTime>03/09/2016 18:03:24</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>03/23/2015 13:16:08</publishTime>
+      <publishTime>03/09/2016 18:03:26</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>02/17/2015 18:47:08</publishTime>
     </File>
     <File Include="blank_.html">
       <publishTime>03/13/2015 09:21:14</publishTime>
@@ -145,7 +148,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/11/2014 17:49:09</publishTime>
     </File>
     <File Include="FacturaGeneral.html">
-      <publishTime>03/13/2015 09:21:14</publishTime>
+      <publishTime>03/09/2016 12:37:23</publishTime>
     </File>
     <File Include="FacturaGeneralAx.html">
       <publishTime>03/13/2015 09:21:14</publishTime>
@@ -2788,7 +2791,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/13/2015 09:21:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/23/2015 13:16:21</publishTime>
+      <publishTime>03/09/2016 18:03:34</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>03/13/2015 09:21:14</publishTime>
@@ -2872,7 +2875,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/10/2015 17:19:16</publishTime>
+      <publishTime>03/09/2016 12:44:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -5,3 +5,4 @@ C:\Proyectos\FaceTest\FaceWebCli\bin\AriFaceLib.pdb
 C:\Proyectos\FaceTest\FaceWebCli\obj\Release\FaceWebCli.csprojResolveAssemblyReference.cache
 C:\Proyectos\FaceTest\FaceWebCli\obj\Release\FaceWebCli.dll
 C:\Proyectos\FaceTest\FaceWebCli\obj\Release\FaceWebCli.pdb
+C:\Proyectos\FaceTest\FaceWebCli\bin\MySql.Data.dll

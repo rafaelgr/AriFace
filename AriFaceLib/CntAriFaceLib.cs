@@ -1076,7 +1076,8 @@ namespace AriFaceLib
             if (rdr.IsDBNull(rdr.GetOrdinal("FACTURA_ID")))
                 return null;
             Factura f = new Factura();
-            f.Aportacion = rdr.GetDecimal("APORTACION");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("APORTACION")))
+                f.Aportacion = rdr.GetDecimal("APORTACION");
             f.BaseIva = rdr.GetDecimal("BASE_IVA");
             f.ClienteId = rdr.GetInt32("CLIENTE_ID");
             f.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
@@ -1086,11 +1087,14 @@ namespace AriFaceLib
                 f.EsDeCliente = true;
             f.FacturaId = rdr.GetInt32("FACTURA_ID");
             f.StrFecha = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("FECHA"));
-            f.LetraProveedor = rdr.GetString("LETRA_PROVEEDOR");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("LETRA_PROVEEDOR")))
+                f.LetraProveedor = rdr.GetString("LETRA_PROVEEDOR");
             f.NumFactura = rdr.GetInt32("NUMFACTURA");
-            f.Retencion = rdr.GetDecimal("RETENCION");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("RETENCION")))
+                f.Retencion = rdr.GetDecimal("RETENCION");
             f.Serie = rdr.GetString("SERIE");
-            f.Sistema = rdr.GetString("SISTEMA");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("SISTEMA")))
+                f.Sistema = rdr.GetString("SISTEMA");
             f.Total = rdr.GetDecimal("TOTAL");
             if (rdr.GetInt16("NUEVA") == 1)
                 f.Nueva = true;
@@ -1312,7 +1316,7 @@ namespace AriFaceLib
             {
                 anoSql = String.Format(" AND YEAR(f.fecha)={0} ", a);
             }
-            else if (q != 0)
+            if (q != 0)
             {
                 switch (q)
                 {
@@ -1330,7 +1334,7 @@ namespace AriFaceLib
                         break;
                 }
             }
-            else if (m != 0)
+            if (m != 0)
             {
                 mesSql = String.Format(" AND MONTH(f.fecha) = {0} ", m);
             }
@@ -1402,7 +1406,7 @@ namespace AriFaceLib
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                WHERE c.cif = '{0}'";
             sql = String.Format(sql, nif);
-            sql += anoSql + mesSql + esClienteSql;
+            sql += anoSql + mesSql + esClienteSql + " ORDER BY f.fecha DESC";
             cmd.CommandText = sql;
             rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -1508,11 +1512,11 @@ namespace AriFaceLib
             }
             // primero los totales
             string sql = @"SELECT 
-                SUM(f.`imp_gastos_a_fo`) AS SUM_APORTACION,
-                SUM(f.`base_total`) AS SUM_BASE_IVA,
-                SUM(f.cuota_total) AS SUM_CUOTA_IVA,
-                SUM(f.imp_retencion) AS SUM_RETENCION,
-                SUM(f.ttal) AS SUM_TOTAL,
+                COALESCE(SUM(f.`imp_gastos_a_fo`),0) AS SUM_APORTACION,
+                COALESCE(SUM(f.`base_total`),0) AS SUM_BASE_IVA,
+                COALESCE(SUM(f.cuota_total),0) AS SUM_CUOTA_IVA,
+                COALESCE(SUM(f.imp_retencion),0) AS SUM_RETENCION,
+                COALESCE(SUM(f.ttal),0) AS SUM_TOTAL,
                 MIN(f.fecha) AS MIN_FECHA,
                 MAX(f.fecha) AS MAX_FECHA
                 FROM factura AS f
@@ -1574,7 +1578,7 @@ namespace AriFaceLib
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
                 WHERE f.id_cliente = {0}";
             sql = String.Format(sql, idCliente);
-            sql += anoSql + mesSql + esClienteSql;
+            sql += anoSql + mesSql + esClienteSql + " ORDER BY f.fecha DESC";
             cmd.CommandText = sql;
             rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -1793,7 +1797,7 @@ namespace AriFaceLib
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
-                WHERE f.nueva < 2";
+                WHERE f.nueva = 1";
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -2105,9 +2109,9 @@ namespace AriFaceLib
                         MIN(f.fecha) AS FECHA_INICIAL,
                         MAX(f.fecha) AS FECHA_FINAL,
                         SUM(f.base_total) AS BASES,
-                        SUM(f.cuota_total) AS CUOTAS,
-                        SUM(f.imp_retencion) AS RETENCIONES,
-                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(SUM(f.cuota_total),0) AS CUOTAS,
+                        COALESCE(SUM(f.imp_retencion),0) AS RETENCIONES,
+                        COALESCE(SUM(f.ttal), 0) AS TOTAL,
                         COALESCE(c.organoGestorCodigo, '') AS FACE
                         FROM factura AS f
                         LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
@@ -2127,10 +2131,10 @@ namespace AriFaceLib
                         COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
                         MIN(f.fecha) AS FECHA_INICIAL,
                         MAX(f.fecha) AS FECHA_FINAL,
-                        SUM(f.base_total) AS BASES,
-                        SUM(f.cuota_total) AS CUOTAS,
-                        SUM(f.imp_retencion) AS RETENCIONES,
-                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(SUM(f.base_total),0) AS BASES,
+                        COALESCE(SUM(f.cuota_total),0) AS CUOTAS,
+                        COALESCE(SUM(f.imp_retencion),0) AS RETENCIONES,
+                        COALESCE(SUM(f.ttal),0) AS TOTAL,
                         COALESCE(c.organoGestorCodigo, '') AS FACE
                         FROM factura AS f
                         LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
@@ -2163,10 +2167,10 @@ namespace AriFaceLib
                         COALESCE(d.nombre, '') AS DEPARTAMENTO_NOMBRE,
                         MIN(f.fecha) AS FECHA_INICIAL,
                         MAX(f.fecha) AS FECHA_FINAL,
-                        SUM(f.base_total) AS BASES,
-                        SUM(f.cuota_total) AS CUOTAS,
-                        SUM(f.imp_retencion) AS RETENCIONES,
-                        SUM(f.ttal) AS TOTAL,
+                        COALESCE(SUM(f.base_total),0) AS BASES,
+                        COALESCE(SUM(f.cuota_total),0) AS CUOTAS,
+                        COALESCE(SUM(f.imp_retencion),0) AS RETENCIONES,
+                        COALESCE(SUM(f.ttal),0) AS TOTAL,
                         COALESCE(c.organoGestorCodigo, '') AS FACE
                         FROM factura AS f
                         LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
@@ -2593,6 +2597,7 @@ namespace AriFaceLib
                 foreach (string fileName in adjuntos)
                 {
                     Attachment data = new Attachment(fileName);
+                    data.Name = Path.GetFileName(fileName);
                     // Add time stamp information for the file.
                     // Add the file attachment to this e-mail message.
                     correo.Attachments.Add(data);

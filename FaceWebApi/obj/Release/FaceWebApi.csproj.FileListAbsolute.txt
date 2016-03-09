@@ -7,3 +7,4 @@ C:\Proyectos\FaceTest\FaceWebApi\obj\Release\FaceWebApi.dll
 C:\Proyectos\FaceTest\FaceWebApi\obj\Release\FaceWebApi.pdb
 C:\Proyectos\FaceTest\FaceWebApi\bin\FaceWebApi.XmlSerializers.dll
 C:\Proyectos\FaceTest\FaceWebApi\obj\Release\FaceWebApi.XmlSerializers.dll
+C:\Proyectos\FaceTest\FaceWebApi\bin\MySql.Data.dll

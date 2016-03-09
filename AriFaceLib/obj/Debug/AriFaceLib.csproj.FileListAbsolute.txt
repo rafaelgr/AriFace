@@ -2,5 +2,4 @@ C:\Proyectos\FaceTest\AriFaceLib\bin\Debug\AriFaceLib.dll
 C:\Proyectos\FaceTest\AriFaceLib\bin\Debug\AriFaceLib.pdb
 C:\Proyectos\FaceTest\AriFaceLib\obj\Debug\AriFaceLib.dll
 C:\Proyectos\FaceTest\AriFaceLib\obj\Debug\AriFaceLib.pdb
-C:\Proyectos\FaceTest\AriFaceLib\bin\Debug\MySql.Data.dll
 C:\Proyectos\FaceTest\AriFaceLib\obj\Debug\AriFaceLib.csprojResolveAssemblyReference.cache

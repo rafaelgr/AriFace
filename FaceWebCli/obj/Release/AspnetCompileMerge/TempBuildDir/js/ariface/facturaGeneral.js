@@ -33,11 +33,16 @@ function initForm(proveedor) {
         return false
     });
     $('#cmbTrimestre').change(function () {
-        loadComboMeses(Number(vm.Trimestre().Codigo));
+        //loadComboMeses(Number(vm.Trimestre().Codigo));
     });
     // 
     vm = new facData();
     ko.applyBindings(vm);
+
+    vm.Trimestre.subscribe(function (trimestre) {
+        //alert(" Nuevo: " + JSON.stringify(newValue));
+        loadComboMeses(Number(trimestre.Codigo));
+    });
     // numeral en español
     numeral.language('es', {
         delimiters: {
@@ -53,7 +58,7 @@ function initForm(proveedor) {
     // cargamos las facturas que puede ver ese usuario
     var data = {
         usuarioId: usuario.UsuarioId,
-        a: 0,
+        a: moment().format('YYYY'),
         q: 0,
         m: 0,
         esCliente: !proveedor
@@ -102,7 +107,9 @@ function facData() {
 }
 
 function loadComboAnos(ano) {
-    if (ano == null) ano = 0;
+    if (ano == null) {
+        ano = moment().format('YYYY');
+    }
     data = { "usuarioId": usuario.UsuarioId};
     $.ajax({
         type: "POST",
@@ -112,8 +119,8 @@ function loadComboAnos(ano) {
         contentType: "application/json",
         success: function (data, status) {
             var v = [];
-            var mu2 = new miniUnidad('0', 'Todos los años');
-            v.push(mu2);
+            //var mu2 = new miniUnidad('0', 'Todos los años');
+            //v.push(mu2);
             // hay que mostrarlo en la zona de datos
             for (var i = 0; i < data.d.length; i++) {
                 var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
@@ -125,9 +132,9 @@ function loadComboAnos(ano) {
                 }
             }
             // en las altas hay que dejar una selección en vacío.
-            if (ano == 0) {
-                vm.Ano(mu2);
-            }
+            //if (ano == 0) {
+            //    vm.Ano(mu2);
+            //}
             vm.PosiblesAnos(v);
         },
         error: errorAjax

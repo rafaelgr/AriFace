@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -100,16 +101,27 @@ namespace FaceWebApi
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SendEnvio(int clienteId, int departamentoId, string certSn)
         {
+            StreamWriter w = File.AppendText("C:\\Intercambio\\log.txt");
             string r = "";
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            try
             {
-                conn.Open();
-                // el directorio de notificaciones hay que pasarlo
-                r = CntFaceApi.SendEnvio(clienteId, departamentoId, certSn, conn);
-                conn.Close();
+                // leer la cadena de conexión de los parámetros
+                string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+                using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+                {
+                    conn.Open();
+                    // el directorio de notificaciones hay que pasarlo
+                    r = CntFaceApi.SendEnvio(clienteId, departamentoId, certSn, conn);
+                    conn.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                w.WriteLine("[{0:dd/MM/yyyy hh:mm:ss}] (EXCEPCION SENDENVIO) {1}", DateTime.Now, ex.ToString());
+                w.Close();
+                throw ex;
+            }
+            w.Close();
             return r;
         }
 
@@ -134,16 +146,27 @@ namespace FaceWebApi
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string SendEnvios(string certSn)
         {
+            StreamWriter w = File.AppendText("C:\\Intercambio\\log.txt");
             string r = "";
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+            try
             {
-                conn.Open();
-                // el directorio de notificaciones hay que pasarlo
-                r = CntFaceApi.SendEnvios(certSn, conn);
-                conn.Close();
+                // leer la cadena de conexión de los parámetros
+                string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+                using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
+                {
+                    conn.Open();
+                    // el directorio de notificaciones hay que pasarlo
+                    r = CntFaceApi.SendEnvios(certSn, conn);
+                    conn.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                w.WriteLine("[{0:dd/MM/yyyy hh:mm:ss}] (EXCEPCION SENDENVIOS) {1}", DateTime.Now, ex.ToString());
+                w.Close();
+                throw ex;
+            }
+            w.Close();
             return r;
         }
 
