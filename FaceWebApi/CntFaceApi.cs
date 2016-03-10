@@ -63,7 +63,7 @@ namespace FaceWebApi
                         DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                             int.Parse(f.StrFecha.Substring(4, 2)),
                             int.Parse(f.StrFecha.Substring(6, 2)));
-                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong><br/>",
+                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong><br/>",
                             f.Serie, f.NumFactura, fechaFactura, f.Total);
                         adjuntos.Add(fichero);
                     }
@@ -111,9 +111,9 @@ namespace FaceWebApi
                         DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                             int.Parse(f.StrFecha.Substring(4, 2)),
                             int.Parse(f.StrFecha.Substring(6, 2)));
-                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                        detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
                             f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
-                        mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                        mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
                             f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
                     }
                     catch (Exception ex)
@@ -157,7 +157,7 @@ namespace FaceWebApi
                     DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                         int.Parse(f.StrFecha.Substring(4, 2)),
                         int.Parse(f.StrFecha.Substring(6, 2)));
-                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong><br/>",
+                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong><br/>",
                         f.Serie, f.NumFactura, fechaFactura, f.Total);
                     adjuntos.Add(fichero);
                     // Montamos el correo electrónico.
@@ -199,9 +199,9 @@ namespace FaceWebApi
                     DateTime fechaFactura = new DateTime(int.Parse(f.StrFecha.Substring(0, 4)),
                         int.Parse(f.StrFecha.Substring(4, 2)),
                         int.Parse(f.StrFecha.Substring(6, 2)));
-                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                    detalleFacturas += String.Format("Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
                         f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
-                    mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe (con IVA):<strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
+                    mens += String.Format("PROCESADA --> Serie:<strong>{0}</strong> Número:<strong>{1}</strong> Fecha:<strong>{2:dd/MM/yyyy}</strong> Importe: <strong>{3:0.00}</strong> REGISTRO:{4} <br/>",
                         f.Serie, f.NumFactura, fechaFactura, f.Total, rs.CodigoRegistro);
                 }
                 catch (Exception ex)

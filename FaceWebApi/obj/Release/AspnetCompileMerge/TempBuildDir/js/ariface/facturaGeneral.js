@@ -331,17 +331,13 @@ function eliminarDeEnvio(id) {
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function (data, status) {
-                    $.ajax({
-                        type: "POST",
-                        url: "FacturaApi.aspx/GetFacturas",
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function (data, status) {
-                            // hay que mostrarlo en la zona de datos
-                            loadTablaFacturas(data.d);
-                        },
-                        error: errorAjax
-                    });
+                    if ($('#chkEnviadas').attr('checked')) {
+                        var mf = getFacturas();
+                        mf();
+                    } else {
+                        var mf = getFacturasNoEnviadas();
+                        mf();
+                    }
                 },
                 error: errorAjax
             });
