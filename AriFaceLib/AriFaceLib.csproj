@@ -50,7 +50,7 @@
     <Compile Include="EmpresaRaiz.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="Estadistica.cs" />
-    <Compile Include="Estado.cs" />
+    <Compile Include="Estado2.cs" />
     <Compile Include="EstFacMes.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="item.cs" />

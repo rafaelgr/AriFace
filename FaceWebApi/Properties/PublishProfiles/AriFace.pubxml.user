@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/16/2013 12:27:10</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>03/09/2016 18:03:23</publishTime>
+      <publishTime>05/11/2016 17:48:45</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>03/10/2016 11:01:55</publishTime>
+      <publishTime>05/11/2016 18:33:55</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>03/10/2016 11:01:57</publishTime>
+      <publishTime>05/11/2016 18:33:56</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>02/17/2015 18:47:08</publishTime>
@@ -2791,7 +2791,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/13/2015 09:21:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/10/2016 11:02:06</publishTime>
+      <publishTime>05/11/2016 18:33:59</publishTime>
     </File>
     <File Include="prueba_cargas.html">
       <publishTime>03/13/2015 09:21:14</publishTime>
@@ -2823,11 +2823,53 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="VersionApi.aspx">
       <publishTime>11/25/2014 18:06:47</publishTime>
     </File>
+    <File Include="Web References/SPP2/AnularFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
     <File Include="Web References/SPP2/ArrayOfSSPPResultadoConsultarFactura.datasource">
       <publishTime>12/03/2014 18:18:57</publishTime>
     </File>
     <File Include="Web References/SPP2/ArrayOfSSPPUnidadDir.datasource">
       <publishTime>12/03/2014 18:18:57</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarAdministracionesRepositorioResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarAdministracionesResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarEstadosResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarListadoFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:05:47</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarListadoFacturasOffLineResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarNIFsPorAdministracionResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarNIFsResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarRelacionesPorAdministracionResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/ConsultarRelacionesResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/EnviarFacturaOffLineResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/EnviarFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:05:48</publishTime>
+    </File>
+    <File Include="Web References/SPP2/FacturaSSPPWebServiceProxy.wsdl">
+      <publishTime>05/11/2016 12:05:47</publishTime>
     </File>
     <File Include="Web References/SPP2/Reference.map">
       <publishTime>12/03/2014 18:18:54</publishTime>
@@ -2849,6 +2891,45 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Web References/SPP2/SSPPWebServiceProxy.wsdl">
       <publishTime>12/03/2014 18:18:54</publishTime>
+    </File>
+    <File Include="Web References/SSPP/AnularFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultaListadoFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:06:01</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarAdministracionesRepositorioResponse.datasource">
+      <publishTime>05/11/2016 12:06:01</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarAdministracionesResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarEstadosResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarListadoFacturasOffLineResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarNIFsPorAdministracionResponse.datasource">
+      <publishTime>05/11/2016 12:06:01</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarNIFsResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarRelacionesPorAdministracionResponse.datasource">
+      <publishTime>05/11/2016 12:06:01</publishTime>
+    </File>
+    <File Include="Web References/SSPP/ConsultarRelacionesResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/EnviarFacturaOffLineResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
+    </File>
+    <File Include="Web References/SSPP/EnviarFacturaResponse.datasource">
+      <publishTime>05/11/2016 12:06:02</publishTime>
     </File>
     <File Include="Web References/SSPP/Reference.map">
       <publishTime>11/25/2014 18:50:16</publishTime>
@@ -2875,7 +2956,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/09/2016 12:44:59</publishTime>
+      <publishTime>05/11/2016 17:48:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

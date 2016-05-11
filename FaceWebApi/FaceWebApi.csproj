@@ -1027,6 +1027,7 @@
     <Compile Include="LoginSSOTest.aspx.designer.cs">
       <DependentUpon>LoginSSOTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Prober.cs" />
     <Compile Include="UsuarioApi.aspx.cs">
       <DependentUpon>UsuarioApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1135,55 +1136,94 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\SSPP\Reference.map">
+    <Content Include="Web References\SSPP\AnularFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultaListadoFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarAdministracionesRepositorioResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarAdministracionesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarEstadosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarListadoFacturasOffLineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarNIFsPorAdministracionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarNIFsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarRelacionesPorAdministracionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\ConsultarRelacionesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\EnviarFacturaOffLineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SSPP\EnviarFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\AnularFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarAdministracionesRepositorioResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarAdministracionesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarEstadosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarListadoFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarListadoFacturasOffLineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarNIFsPorAdministracionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarNIFsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarRelacionesPorAdministracionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\ConsultarRelacionesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\EnviarFacturaOffLineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\EnviarFacturaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SPP2\FacturaSSPPWebServiceProxy.wsdl" />
+    <None Include="Web References\SSPP\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPEstados.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPResultadoAnularFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPResultadoConsultarFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPResultadoConsultarUnidades.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPResultadoEnviarFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPUnidadDir.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SSPP\SSPPWebServiceProxy.wsdl" />
-    <Content Include="Web References\SPP2\ArrayOfSSPPResultadoConsultarFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\ArrayOfSSPPUnidadDir.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\Reference.map">
+    </None>
+    <None Include="Web References\SPP2\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPEstados.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPResultadoAnularFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPResultadoConsultarFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPResultadoConsultarUnidades.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPResultadoEnviarFactura.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\SPP2\SSPPWebServiceProxy.wsdl" />
+    </None>
+    <None Include="Web References\SSPP\item.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1204,10 +1244,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://se-face-webservice.redsara.es/sspp%3fwsdl">
+    <WebReferenceUrl Include="https://se-face-webservice.redsara.es/facturasspp%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\SSPP\</RelPath>
-      <UpdateFromURL>https://se-face-webservice.redsara.es/sspp%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>https://se-face-webservice.redsara.es/facturasspp%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1215,10 +1255,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>FaceWebApi_SSPP_SSPPWebServiceProxyService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="https://se-face-webservice.redsara.es/sspp2%3fwsdl">
+    <WebReferenceUrl Include="https://se-face-webservice.redsara.es/facturasspp2%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\SPP2\</RelPath>
-      <UpdateFromURL>https://se-face-webservice.redsara.es/sspp2%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>https://se-face-webservice.redsara.es/facturasspp2%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

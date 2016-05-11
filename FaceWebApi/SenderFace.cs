@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
-using FaceWebApi.SPP2;
+using FaceWebApi.SSPP;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Security;
@@ -21,7 +21,7 @@ namespace FaceWebApi
     /// </summary>
     public class SenderFace
     {
-        private SSPPWebServiceProxyService objSender;
+        private Service objSender;
         private string strNumeroSerie;
         private X509Certificate2 objX509;
         // desencriptador
@@ -32,8 +32,8 @@ namespace FaceWebApi
         public SenderFace(string numSerie)
         {
             strNumeroSerie = numSerie;
-            objSender = new SSPPWebServiceProxyService();
-            objSender.RequireMtom = false;
+            objSender = new Service();
+            // objSender.RequireMtom = false;
         }
 
         #region Funciones auxiliares
@@ -110,6 +110,7 @@ namespace FaceWebApi
             }
 
             SoapContext rqContext = objSender.RequestSoapContext;
+            
 
             objSender.RequestSoapContext.Security.Tokens.Add(sigToken);
             sig = new MessageSignature(sigToken);
@@ -119,9 +120,9 @@ namespace FaceWebApi
         #endregion
 
         #region Mensajes a FACE
-        public SSPPEstados ConsultarEstados(string sistema)
+        public ConsultarEstadosResponse ConsultarEstados(string sistema)
         {
-            SSPPEstados res = null;
+            ConsultarEstadosResponse res = null;
             try
             {
                 FirmarEnvio(sistema);
@@ -137,9 +138,9 @@ namespace FaceWebApi
             return res;
         }
 
-        public SSPPResultadoConsultarUnidades ConsultarUnidades(string sistema)
+        public ConsultarRelacionesResponse ConsultarUnidades(string sistema)
         {
-            SSPPResultadoConsultarUnidades res = null;
+            ConsultarRelacionesResponse res = null;
             try
             {
                 FirmarEnvio(sistema);
@@ -151,10 +152,10 @@ namespace FaceWebApi
             }
             return res;
         }
-        public SSPPResultadoEnviarFactura EnviarFactura(string pathFacturae, string carpetaAcuseRecibo, string correo, string sistema)
+        public EnviarFacturaResponse EnviarFactura(string pathFacturae, string carpetaAcuseRecibo, string correo, string sistema)
         {
-            SSPPFactura req;
-            SSPPResultadoEnviarFactura res;
+            EnviarFacturaRequest req;
+            EnviarFacturaResponse res;
             ClsEncoder64 encoder64;
             string expediente = string.Empty;
             bool blnTry = true;
@@ -167,11 +168,11 @@ namespace FaceWebApi
                 return null;
             }
             encoder64 = new ClsEncoder64();
-            req = new SSPPFactura();
-            req.fichero_factura = new SSPPFicheroFactura();
-            req.fichero_factura.factura = encoder64.EncodeTo64File(pathFacturae);
-            req.fichero_factura.mime = "application/xml";
-            req.fichero_factura.nombre = "signed.xml";
+            req = new EnviarFacturaRequest();
+            req.factura = new FacturaFile();
+            req.factura.factura = encoder64.EncodeTo64File(pathFacturae);
+            req.factura.mime = "application/xml";
+            req.factura.nombre = "signed.xml";
             req.correo = correo;
             try
             {
@@ -184,10 +185,10 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoEnviarFactura EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF, string sistema)
+        public EnviarFacturaResponse EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF, string sistema)
         {
-            SSPPFactura req;
-            SSPPResultadoEnviarFactura res;
+            EnviarFacturaRequest req;
+            EnviarFacturaResponse res;
             ClsEncoder64 encoder64;
             string expediente = string.Empty;
             bool blnTry = true;
@@ -201,23 +202,14 @@ namespace FaceWebApi
                 return null;
             }
             encoder64 = new ClsEncoder64();
-            req = new SSPPFactura();
-            req.fichero_factura = new SSPPFicheroFactura();
-            req.fichero_factura.factura = encoder64.EncodeTo64File(pathFacturae);
-            req.fichero_factura.mime = "application/xml";
-            req.fichero_factura.nombre = "signed.xml";
+            req = new EnviarFacturaRequest();
+            req.factura = new FacturaFile();
+            req.factura.factura = encoder64.EncodeTo64File(pathFacturae);
+            req.factura.mime = "application/xml";
+            req.factura.nombre = "signed.xml";
             req.correo = correo;
             // manejo de anexos
-            AriFaceLib.item item = new AriFaceLib.item();
-            //byte[] pdfBytes = File.ReadAllBytes(pathPDF);
-            //item.anexo = encoder64.EncodeTo64File(pathPDF);
-            //using (System.IO.FileStream fs = new System.IO.FileStream(pathPDF, System.IO.FileMode.Open, System.IO.FileAccess.Read))
-            //{
-            //    byte[] filebytes = new byte[fs.Length];
-            //    fs.Read(filebytes, 0, Convert.ToInt32(fs.Length));
-            //    item.anexo = System.Text.Encoding.Default.GetString(filebytes);
-            //}
-            //item.anexo = pdfBytes.ToString();
+            AnexoFile item = new AnexoFile();
             item.anexo = encoder64.EncodeTo64File(pathPDF);
             item.nombre = pathPDF.Substring(pathPDF.LastIndexOf("\\") + 1);
             item.mime = "application/pdf";
@@ -228,9 +220,10 @@ namespace FaceWebApi
                 new XmlSerializer(item.GetType()).Serialize(writer, item);
             }
             XmlElement ele = doc.DocumentElement;
-            req.ficheros_anexos = new ArrayOfSSPPFicheroAnexo();
-            req.ficheros_anexos.Any = new XmlElement[1];
-            req.ficheros_anexos.Any[0] = ele;
+            AnexoFile af = new AnexoFile();
+            
+            req.anexos = new AnexoFile[1];
+            req.anexos[0] = item;
             //
             try
             {
@@ -243,9 +236,10 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoConsultarFactura ConsultarFactura(string numRegistro, string sistema)
+
+        public ConsultarFacturaResponse ConsultarFactura(string numRegistro, string sistema)
         {
-            SSPPResultadoConsultarFactura res = null;
+            ConsultarFacturaResponse res = null;
             try
             {
                 FirmarEnvio(sistema);
@@ -257,9 +251,10 @@ namespace FaceWebApi
                 throw ex;
             }
         }
-        public SSPPResultadoAnularFactura AnularFactura(string numRegistro, string motivo, string sistema)
+
+        public AnularFacturaResponse AnularFactura(string numRegistro, string motivo, string sistema)
         {
-            SSPPResultadoAnularFactura res = null;
+            AnularFacturaResponse res = null;
             try
             {
                 FirmarEnvio(sistema);
@@ -271,6 +266,7 @@ namespace FaceWebApi
                 throw ex;
             }
         }
+
         #endregion
         public string LeerXmlElemento(string tg, string xml)
         {

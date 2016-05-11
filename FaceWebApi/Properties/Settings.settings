@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="FaceWebApi_SSPP_SSPPWebServiceProxyService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://se-face-webservice.redsara.es/sspp</Value>
+      <Value Profile="(Default)">https://se-face-webservice.redsara.es/facturasspp</Value>
     </Setting>
     <Setting Name="FaceWebApi_SPP2_SSPPWebServiceProxyService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://se-face-webservice.redsara.es/sspp2</Value>
+      <Value Profile="(Default)">https://se-face-webservice.redsara.es/facturasspp2</Value>
     </Setting>
   </Settings>
 </SettingsFile>

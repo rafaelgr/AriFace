@@ -7,7 +7,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using FaceWebApi.SPP2;
+using FaceWebApi.SSPP;
 using AriFaceLib;
 using System.Xml;
 using System.Diagnostics;
@@ -73,17 +73,20 @@ namespace FaceWebApi
                 w.WriteLine("GetEstados-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                 string sistema = ConfigurationSettings.AppSettings["gdes_sistema"];
                 SenderFace sf = new SenderFace(certSn);
-                SSPPEstados resEstados = sf.ConsultarEstados(sistema);
+                ConsultarEstadosResponse resEstados = sf.ConsultarEstados(sistema);
                 if (resEstados != null)
                 {
-                    XmlElement xel;
-                    ArrayOfSSPPEstado estados = resEstados.estados;
-                    for(int i = 0; i < estados.Any.Length; i++){
-                        xel = estados.Any[i];
-                        Estado e = new Estado();
-                        e.Codigo = sf.LeerXmlElemento("codigo",xel.InnerXml);
-                        e.Nombre = sf.LeerXmlElemento("nombre",xel.InnerXml);
-                        e.Descripcion = sf.LeerXmlElemento("descripcion",xel.InnerXml);
+                    if (resEstados.resultado.codigo != "0")
+                    {
+                        Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", resEstados.resultado.codigo, resEstados.resultado.descripcion));
+                        throw ex;
+                    }
+                    Estado[] estados = resEstados.estados;
+                    for(int i = 0; i < estados.Length; i++){
+                        Estado e = estados[i];
+                        //e.Codigo = sf.LeerXmlElemento("codigo",xel.InnerXml);
+                        //e.Nombre = sf.LeerXmlElemento("nombre",xel.InnerXml);
+                        //e.Descripcion = sf.LeerXmlElemento("descripcion",xel.InnerXml);
                         lu.Add(e);
                     }
                 }
@@ -109,22 +112,26 @@ namespace FaceWebApi
                 w.WriteLine("GetUnidades-----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
                 string sistema = ConfigurationSettings.AppSettings["gdes_sistema"];
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoConsultarUnidades resUnidades = sf.ConsultarUnidades(sistema);
+                ConsultarRelacionesResponse resUnidades = sf.ConsultarUnidades(sistema);
                 if (resUnidades != null)
                 {
-                    XmlElement xel;
-                    ArrayOfSSPPOrganoGestorUnidadTramitadora unidades = resUnidades.unidades;
-                    w.WriteLine("GetUnidades (unidades obtenidas) -----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
-                    for (int i = 0; i < unidades.Any.Length; i++)
+                    if (resUnidades.resultado.codigo != "0")
                     {
-                        xel = unidades.Any[i];
+                        Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", resUnidades.resultado.codigo, resUnidades.resultado.descripcion));
+                        throw ex;
+                    }
+                    OGUTOC[] unidades = resUnidades.relaciones;
+                    w.WriteLine("GetUnidades (unidades obtenidas) -----------{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now);
+                    for (int i = 0; i < unidades.Length; i++)
+                    {
+                        OGUTOC u1 = unidades[i];
                         Unidad u = new Unidad();
-                        u.OrganoGestorCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("organo_gestor", xel.InnerXml));
-                        u.OrganoGestorNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("organo_gestor", xel.InnerXml));
-                        u.UnidadTramitadoraCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("unidad_tramitadora", xel.InnerXml));
-                        u.UnidadTramitadoraNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("unidad_tramitadora", xel.InnerXml));
-                        u.OficinaContableCodigo = sf.LeerXmlElemento("codigo_dir", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
-                        u.OficinaContableNombre = sf.LeerXmlElemento("nombre", sf.LeerXmlElemento("oficina_contable", xel.InnerXml));
+                        u.OrganoGestorCodigo = u1.organoGestor.codigo;
+                        u.OrganoGestorNombre = u1.organoGestor.nombre;
+                        u.UnidadTramitadoraCodigo = u1.unidadTramitadora.codigo;
+                        u.UnidadTramitadoraNombre = u1.unidadTramitadora.nombre;
+                        u.OficinaContableCodigo = u1.oficinaContable.codigo;
+                        u.OficinaContableNombre = u1.oficinaContable.nombre;
                         lu.Add(u);
                     }
                     // leer la cadena de conexión de los parámetros
@@ -163,17 +170,22 @@ namespace FaceWebApi
             try
             {
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email, sistema);
+                EnviarFacturaResponse res = sf.EnviarFactura(fE, dA, email, sistema);
+                if (res.resultado.codigo != "0")
+                {
+                    Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", res.resultado.codigo, res.resultado.descripcion));
+                    throw ex;
+                }
                 rf = new RespuestaFactura();
-                rf.CodigoRegistro = res.codigo_registro;
-                rf.StrFechaRecepcion = res.fecha_recepcion;
-                rf.IdentificadorEmisor = res.identificador_emisor;
-                rf.NumeroFactura = res.numero_factura;
-                rf.CodOficinaContable = res.oficina_contable;
-                rf.CodOrganoGestor = res.organo_gestor;
-                rf.PdfJustificante = res.pdf_justificante;
-                rf.Seriefactura = res.serie_factura;
-                rf.CodUnidadTramitadora = res.unidad_tramitadora;
+                rf.CodigoRegistro = res.factura.numeroRegistro;
+                rf.StrFechaRecepcion = res.factura.fechaRecepcion;
+                rf.IdentificadorEmisor = res.factura.identificadorEmisor;
+                rf.NumeroFactura = res.factura.numeroFactura;
+                rf.CodOficinaContable = res.factura.oficinaContable;
+                rf.CodOrganoGestor = res.factura.organoGestor;
+                //rf.PdfJustificante = res.factura.?;
+                rf.Seriefactura = res.factura.serieFactura;
+                rf.CodUnidadTramitadora = res.factura.unidadTramitadora;
             }
             catch (Exception ex)
             {
@@ -188,18 +200,23 @@ namespace FaceWebApi
         {
             RespuestaConsultaFactura rcf = new RespuestaConsultaFactura();
             SenderFace sf = new SenderFace(certSn);
-            SSPPResultadoConsultarFactura res = sf.ConsultarFactura(codRegistro, sistema);
+            ConsultarFacturaResponse res = sf.ConsultarFactura(codRegistro, sistema);
             if (res != null)
             {
-                rcf.NumeroRegistro = res.numero_registro;
-                rcf.AnulacionCodigo = res.anulacion.codigo_estado;
-                rcf.AnulacionDescripcion = res.anulacion.descripcion_estado;
-                rcf.AnulacionMotivo = res.anulacion.motivo_estado;
-                rcf.TramitacionCodigo = res.tramitacion.codigo_estado;
-                rcf.TramitacionDescripcion = res.tramitacion.descripcion_estado;
-                rcf.TramitacionMotivo = res.tramitacion.motivo_estado;
+                if (res.resultado.codigo != "0")
+                {
+                    Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", res.resultado.codigo, res.resultado.descripcion));
+                    throw ex;
+                }
+                rcf.NumeroRegistro = res.factura.numeroRegistro;
+                rcf.AnulacionCodigo = res.factura.anulacion.codigo;
+                rcf.AnulacionDescripcion = res.factura.anulacion.descripcion;
+                rcf.AnulacionMotivo = res.factura.anulacion.motivo;
+                rcf.TramitacionCodigo = res.factura.tramitacion.codigo;
+                rcf.TramitacionDescripcion = res.factura.tramitacion.descripcion;
+                rcf.TramitacionMotivo = res.factura.tramitacion.motivo;
             }
-            SSPPResultadoAnularFactura ra;
+            AnularFactura ra;
             return rcf;
         }
 
@@ -209,12 +226,17 @@ namespace FaceWebApi
         {
             RespuestaAnularFactura raf = new RespuestaAnularFactura();
             SenderFace sf = new SenderFace(certSn);
-            SSPPResultadoAnularFactura res = sf.AnularFactura(codRegistro, motivo, sistema);
+            AnularFacturaResponse res = sf.AnularFactura(codRegistro, motivo, sistema);
             if (res != null)
             {
+                if (res.resultado.codigo != "0")
+                {
+                    Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", res.resultado.codigo, res.resultado.descripcion));
+                    throw ex;
+                }
                 raf = new RespuestaAnularFactura();
-                raf.NumRegistro = res.numero_registro;
-                raf.Mensaje = res.mensaje;
+                raf.NumRegistro = res.factura.numeroRegistro;
+                raf.Mensaje = res.factura.mensaje;
             }
             return raf;
         }

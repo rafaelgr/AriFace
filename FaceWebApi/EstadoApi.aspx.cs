@@ -21,9 +21,9 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static Estado GetEstado(string codigo)
+        public static Estado2 GetEstado(string codigo)
         {
-            Estado e = null;
+            Estado2 e = null;
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
@@ -37,9 +37,9 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Estado> GetEstados()
+        public static IList<Estado2> GetEstados()
         {
-            IList<Estado> le = new List<Estado>();
+            IList<Estado2> le = new List<Estado2>();
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
@@ -53,7 +53,7 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static Estado SetEstado(Estado estado)
+        public static Estado2 SetEstado(Estado2 estado)
         {
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
@@ -68,7 +68,7 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static void SetEstados(IList<Estado> estados)
+        public static void SetEstados(IList<Estado2> estados)
         {
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
@@ -82,9 +82,9 @@ namespace FaceWebApi
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static Estado DeleteEstado(string codigo)
+        public static Estado2 DeleteEstado(string codigo)
         {
-            Estado e = null;
+            Estado2 e = null;
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))

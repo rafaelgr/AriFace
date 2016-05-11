@@ -569,11 +569,11 @@ namespace AriFaceLib
         
         #region Estados
         
-        public static Estado GetEstado(MySqlDataReader rdr)
+        public static Estado2 GetEstado(MySqlDataReader rdr)
         {
             if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
                 return null;
-            Estado e = new Estado();
+            Estado2 e = new Estado2();
             e.Codigo = rdr.GetString("codigo");
             if (!rdr.IsDBNull(rdr.GetOrdinal("nombre")))
                 e.Nombre = rdr.GetString("nombre");
@@ -582,9 +582,9 @@ namespace AriFaceLib
             return e;
         }
         
-        public static Estado GetEstado(string codigo, MySqlConnection conn)
+        public static Estado2 GetEstado(string codigo, MySqlConnection conn)
         {
-            Estado e = null;
+            Estado2 e = null;
             MySqlCommand cmd = conn.CreateCommand();
             string sql = @"SELECT * FROM estado WHERE codigo = '{0}'";
             sql = String.Format(sql, codigo);
@@ -599,9 +599,9 @@ namespace AriFaceLib
             return e;
         }
         
-        public static IList<Estado> GetEstados(MySqlConnection conn)
+        public static IList<Estado2> GetEstados(MySqlConnection conn)
         {
-            IList<Estado> le = new List<Estado>();
+            IList<Estado2> le = new List<Estado2>();
             MySqlCommand cmd = conn.CreateCommand();
             string sql = "SELECT * FROM estado";
             cmd.CommandText = sql;
@@ -610,7 +610,7 @@ namespace AriFaceLib
             {
                 while (rdr.Read())
                 {
-                    Estado e = GetEstado(rdr);
+                    Estado2 e = GetEstado(rdr);
                     le.Add(e);
                 }
             }
@@ -618,7 +618,7 @@ namespace AriFaceLib
             return le;
         }
         
-        public static Estado SetEstado(Estado e, MySqlConnection conn)
+        public static Estado2 SetEstado(Estado2 e, MySqlConnection conn)
         {
             // si el id es 0 se crea el objeto, si no se actualiza.
             MySqlCommand cmd = conn.CreateCommand();
@@ -647,9 +647,9 @@ namespace AriFaceLib
             return e;
         }
         
-        public static void SetEstados(IList<Estado> le, MySqlConnection conn)
+        public static void SetEstados(IList<Estado2> le, MySqlConnection conn)
         {
-            foreach (Estado e in le)
+            foreach (Estado2 e in le)
             {
                 SetEstado(e, conn);
             }

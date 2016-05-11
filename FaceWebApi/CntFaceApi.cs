@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AriFaceLib;
-using FaceWebApi.SPP2;
+using FaceWebApi.SSPP;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.IO;
@@ -220,17 +220,22 @@ namespace FaceWebApi
             try
             {
                 SenderFace sf = new SenderFace(certSn);
-                SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email, sistema);
+                EnviarFacturaResponse res = sf.EnviarFactura(fE, dA, email, sistema);
+                if (res.resultado.codigo != "0")
+                {
+                    Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", res.resultado.codigo, res.resultado.descripcion));
+                    throw ex;
+                }
                 rf = new RespuestaFactura();
-                rf.CodigoRegistro = res.codigo_registro;
-                rf.StrFechaRecepcion = res.fecha_recepcion;
-                rf.IdentificadorEmisor = res.identificador_emisor;
-                rf.NumeroFactura = res.numero_factura;
-                rf.CodOficinaContable = res.oficina_contable;
-                rf.CodOrganoGestor = res.organo_gestor;
-                rf.PdfJustificante = res.pdf_justificante;
-                rf.Seriefactura = res.serie_factura;
-                rf.CodUnidadTramitadora = res.unidad_tramitadora;
+                rf.CodigoRegistro = res.factura.numeroRegistro;
+                rf.StrFechaRecepcion = res.factura.fechaRecepcion;
+                rf.IdentificadorEmisor = res.factura.identificadorEmisor;
+                rf.NumeroFactura = res.factura.numeroFactura;
+                rf.CodOficinaContable = res.factura.oficinaContable;
+                rf.CodOrganoGestor = res.factura.organoGestor;
+                //rf.PdfJustificante = res.?;
+                rf.Seriefactura = res.factura.serieFactura;
+                rf.CodUnidadTramitadora = res.factura.unidadTramitadora;
             }
             catch (Exception ex)
             {
@@ -246,17 +251,22 @@ namespace FaceWebApi
             {
                 SenderFace sf = new SenderFace(certSn);
                 //SSPPResultadoEnviarFactura res = sf.EnviarFactura(fE, dA, email);
-                SSPPResultadoEnviarFactura res = sf.EnviarFacturaAdjunto(fE, dA, email,ficheroPdf, sistema);
+                EnviarFacturaResponse res = sf.EnviarFacturaAdjunto(fE, dA, email, ficheroPdf, sistema);
+                if (res.resultado.codigo != "0")
+                {
+                    Exception ex = new Exception(String.Format("RESPUESTA FACe: ({0}) {1}", res.resultado.codigo, res.resultado.descripcion));
+                    throw ex;
+                }
                 rf = new RespuestaFactura();
-                rf.CodigoRegistro = res.codigo_registro;
-                rf.StrFechaRecepcion = res.fecha_recepcion;
-                rf.IdentificadorEmisor = res.identificador_emisor;
-                rf.NumeroFactura = res.numero_factura;
-                rf.CodOficinaContable = res.oficina_contable;
-                rf.CodOrganoGestor = res.organo_gestor;
-                rf.PdfJustificante = res.pdf_justificante;
-                rf.Seriefactura = res.serie_factura;
-                rf.CodUnidadTramitadora = res.unidad_tramitadora;
+                rf.CodigoRegistro = res.factura.numeroRegistro;
+                rf.StrFechaRecepcion = res.factura.fechaRecepcion;
+                rf.IdentificadorEmisor = res.factura.identificadorEmisor;
+                rf.NumeroFactura = res.factura.numeroFactura;
+                rf.CodOficinaContable = res.factura.oficinaContable;
+                rf.CodOrganoGestor = res.factura.organoGestor;
+                //rf.PdfJustificante = res.?;
+                rf.Seriefactura = res.factura.serieFactura;
+                rf.CodUnidadTramitadora = res.factura.unidadTramitadora;
             }
             catch (Exception ex)
             {
