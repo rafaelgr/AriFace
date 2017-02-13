@@ -6,3 +6,14 @@ C:\Proyectos\FaceTest\FaceWebApi\obj\Debug\FaceWebApi.pdb
 C:\Proyectos\FaceTest\FaceWebApi\bin\AriFaceLib.dll
 C:\Proyectos\FaceTest\FaceWebApi\bin\AriFaceLib.pdb
 C:\Proyectos\FaceTest\FaceWebApi\bin\MySql.Data.dll
+C:\Proyectos\AriFace\FaceWebApi\obj\Debug\FaceWebApi.csprojResolveAssemblyReference.cache
+C:\Proyectos\AriFace\FaceWebApi\obj\Debug\FaceWebApi.dll
+C:\Proyectos\AriFace\FaceWebApi\obj\Debug\FaceWebApi.pdb
+C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.dll.config
+C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.dll
+C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.pdb
+C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.dll
+C:\Proyectos\AriFace\FaceWebApi\bin\Microsoft.Web.Services3.dll
+C:\Proyectos\AriFace\FaceWebApi\bin\MySql.Data.dll
+C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.pdb
+C:\Proyectos\AriFace\FaceWebApi\bin\MySql.Data.xml
