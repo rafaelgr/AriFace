@@ -216,15 +216,9 @@
                 <!-- breadcrumb -->
                 <ol class="breadcrumb">
                     <li>Inicio</li>
-                    <li>
-                        <span class="empresa_raiz"></span>
-                    </li>
-                    <li>
-                        <span class="empresa_cliente"></span>
-                    </li>
-                    <li>
-                        <span class="empresa_departamento"></span>
-                    </li>
+                    <li><span class="empresa_raiz"></span></li>
+                    <li><span class="empresa_cliente"></span></li>
+                    <li><span class="empresa_departamento"></span></li>
                 </ol>
                 <!-- end breadcrumb -->
 
@@ -253,11 +247,8 @@
                         <h1 class="page-title txt-color-blueDark">
 
                             <!-- PAGE HEADER -->
-                            <i class="fa-fw fa fa-home"></i>
-                            Inicio
-                            <a href="http://ariface.ariadnasw.com/help2/AriFace%202015%20(Clientes).html?Introduccion.html" title="Ayuda">
-                                <i class="fa fa-question"></i>
-                            </a>
+                            <i class="fa-fw fa fa-gift"></i>
+                            Información de puntos. <a href="http://ariface.ariadnasw.com/help2/AriFace%202015%20(Clientes).html?Facturascomocliente.html" title="Ayuda"><i class="fa fa-question"></i></a>
                         </h1>
                     </div>
                     <!-- end col -->
@@ -265,6 +256,14 @@
                     <!-- right side of the page with the sparkline graphs -->
                     <!-- col -->
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+                                                <!-- sparks -->
+                        <ul id="sparks">
+                            <li class="sparks-info">
+                                <h5>
+                                    Total <span id="facE" class="txt-color-green" data-bind="text: SumTotal">--</span>
+                                </h5>
+                            </li>
+                        </ul>
                         <!-- end sparks -->
                     </div>
                     <!-- end col -->
@@ -283,49 +282,76 @@
 
                     <!-- row -->
                     <div class="row">
-                        <div class="col col-md-2">
 
-                        </div>
-                        <div class="col col-md-8">
-                            <div class="well">
-                                <h1 class="semi-bold">
-                                    Bienvenido a <span class="titulo_app"></span>
-                                </h1>
-                                <p>
-                                    En este sitio web podrá consultar las facturas emitidas por nuestra empresa tanto como cliente como proveedor, así como modificar algunos de sus datos como usuarios.
-                                    Puede acceder a cada uno de los apartados haciendo clic en el los elementos del menú superior
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-user"></i> Datos de usuario:
-                                    </h2> Acceda
-                                    <a href="DatosUsuario.html">aquí</a> para modificar su correo electrónico o contraseña , en el momento que desee.
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-folder"></i> Cliente:
-                                    </h2> Acceda
-                                    <a href="FacturasCliente.html">aquí</a> para consultar o descargar las facturas emitidas en el sistema como cliente.
-                                </p>
-                                <p>
-                                    <h2>
-                                        <i class="fa fa-lg fa-fw fa-folder-o"></i> Proveedor:
-                                    </h2> Acceda
-                                    <a href="FacturasProveedor.html">aquí</a> para consultar o descargar las facturas emitidas en el sistema como proveedor.
-                                </p>
-                                <div  id="pPuntos" style="display:none;">
-                                    <p>
-                                        <h2>
-                                            <i class="fa fa-lg fa-fw fa-gift"></i> Puntos:
-                                        </h2> Acceda
-                                        <a href="Puntos.html">aquí</a> para consultar su saldo de puntos y movimientos.
-                                    </p>
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+                                data-widget-colorbutton="false"	
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true" 
+                                data-widget-sortable="false"
+									
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>Movimientos de puntos</h2>
+
+                                </header>
+
+                                <!-- widget div-->
+                                <div>
+
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                                        <input class="form-control" type="text">
+                                    </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- widget content -->
+                                    <div class="widget-body">
+                                        <!-- this is what the user will see -->
+                                        <div id="tbPuntos" style="display:none;">
+                                            <table id="dt_puntos" class="table table-striped table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-class="expand" style="text-align:center">
+                                                            <i class="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Fecha
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Concepto
+                                                        </th>
+                                                         <th data-hide="phone">
+                                                            Puntos
+                                                        </th>
+                                                        <th data-hide="phone">
+                                                            Observaciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- end widget content -->
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-2">
+                                <!-- end widget div -->
 
-                        </div>
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                        <!-- WIDGET END -->
+
                     </div>
 
                     <!-- end row -->
@@ -422,8 +448,7 @@
 
         <!-- Demo purpose only -->
         <!--<script src="js/demo.min.js"></script>-->
-        <!-- Numeral para manipular números -->
-        <script src="js/numeral.min.js"></script>
+
 
         <!-- MAIN APP JS FILE -->
         <script src="js/app.min.js"></script>
@@ -441,13 +466,27 @@
 
         <!-- PAGE RELATED PLUGIN(S) 
         <script src="..."></script>-->
+        <!-- Moment (para manipulación de fechas -->
+        <script src="js/moment.js"></script>
+        <!-- Numeral para manipular números -->
+        <script src="js/numeral.min.js"></script>
+        <!--- KNOCKOUT JS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+
         <script src="js/ariface/ariface.js"></script>
-        <script src="js/ariface/index.js"></script>
+        <script src="js/ariface/puntos.js"></script>
+        
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.colVis.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
+        <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
         <script type="text/javascript">
             (function ($) {
                 $(document).ready(function () {
-                    initForm();
+                    initForm(false);
                 });
             })(jQuery);
         </script>

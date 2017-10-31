@@ -25,6 +25,7 @@ var miniUnidad = function (codigo, nombre) {
 
 function initForm(proveedor) {
     usuario = comprobarLogin();
+    comprobarClientePuntos(usuario.CodClienAriges);
     // de smart admin
     pageSetUp();
     //

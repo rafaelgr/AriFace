@@ -156,3 +156,34 @@ function getParametros() {
         }
     });
 }
+
+function comprobarClientePuntos(codclien) {
+    var data = {
+        "codclien": codclien
+    };
+    $.ajax({
+        type: "POST",
+        url: "PuntosApi.aspx/GetClientePuntos",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            // Regresa el mensaje
+            if (!data.d) {
+                mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
+            }
+            var a = data.d;
+            if (a.TienePuntos == 1) {
+                $('#menuPuntos').show();
+                $('#pPuntos').show();
+            }
+
+        },
+        error: function (xhr, textStatus, errorThrwon) {
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensajeSmart(m);
+        }
+    });
+}
+

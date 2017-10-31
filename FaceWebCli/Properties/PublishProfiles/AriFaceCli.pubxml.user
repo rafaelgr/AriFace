@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>07/05/2017 09:51:50</publishTime>
+      <publishTime>10/31/2017 18:08:23</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>07/05/2017 09:53:16</publishTime>
+      <publishTime>10/31/2017 18:08:24</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>12/11/2013 21:52:58</publishTime>
@@ -82,16 +82,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="DatosUsuario.html">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>10/31/2017 16:32:38</publishTime>
     </File>
     <File Include="FacturaApi.aspx">
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="FacturasCliente.html">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>10/31/2017 16:32:38</publishTime>
     </File>
     <File Include="FacturasProveedor.html">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>10/31/2017 16:32:38</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>07/05/2017 09:32:23</publishTime>
@@ -1294,7 +1294,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>10/31/2017 16:38:49</publishTime>
     </File>
     <File Include="js/app.config.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -1309,7 +1309,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="js/ariface/ariface.js">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>10/31/2017 16:51:56</publishTime>
     </File>
     <File Include="js/ariface/blank.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -1336,13 +1336,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="js/ariface/facturaGeneral.js">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>10/31/2017 16:41:29</publishTime>
     </File>
     <File Include="js/ariface/facturaProveedor.js">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>10/31/2017 16:42:12</publishTime>
     </File>
     <File Include="js/ariface/index.js">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>10/31/2017 16:22:26</publishTime>
     </File>
     <File Include="js/ariface/login.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -1353,6 +1353,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/ariface/plantillaGeneral.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
+    <File Include="js/ariface/puntos.js">
+      <publishTime>10/31/2017 18:01:47</publishTime>
+    </File>
     <File Include="js/ariface/testFace.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
@@ -1360,7 +1363,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="js/ariface/usuarioDetalle.js">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>10/31/2017 16:40:45</publishTime>
     </File>
     <File Include="js/ariface/usuarioGeneral.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -2725,7 +2728,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/05/2017 09:53:22</publishTime>
+      <publishTime>10/31/2017 18:08:33</publishTime>
+    </File>
+    <File Include="Puntos.html">
+      <publishTime>10/31/2017 18:03:30</publishTime>
+    </File>
+    <File Include="PuntosApi.aspx">
+      <publishTime>10/31/2017 13:18:46</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>07/05/2017 09:32:23</publishTime>
@@ -2734,7 +2743,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/05/2017 09:53:19</publishTime>
+      <publishTime>10/31/2017 18:08:27</publishTime>
     </File>
   </ItemGroup>
 </Project>
