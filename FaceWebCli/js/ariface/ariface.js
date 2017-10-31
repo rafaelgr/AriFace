@@ -157,19 +157,26 @@ function getParametros() {
     });
 }
 
-function comprobarClientePuntos() {
+function comprobarClientePuntos(codclien) {
+    var data = {
+        "codclien": codclien
+    };
     $.ajax({
         type: "POST",
-        url: "ParametrosApi.aspx/GetParametros",
+        url: "PuntosApi.aspx/GetClientePuntos",
         dataType: "json",
+        data: JSON.stringify(data),
         contentType: "application/json",
         success: function (data, status) {
             // Regresa el mensaje
             if (!data.d) {
-                mostrarMensajeSmart('No se ha podido acceder a los parámetros');
+                mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
             }
             var a = data.d;
-            $(".titulo_app").text(a.TituloApp);
+            if (a.TienePuntos == 1) {
+                $('#menuPuntos').show();
+                $('#pPuntos').show();
+            }
 
         },
         error: function (xhr, textStatus, errorThrwon) {

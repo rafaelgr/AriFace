@@ -2905,7 +2905,7 @@ namespace AriFaceLib
             MySqlCommand cmd = conn.CreateCommand();
             string sql = @"SELECT 
                     codclien, nomclien, TienePuntos AS tienePuntos, COALESCE(puntos, 0) AS puntos
-                    FROM sclien; WHERE codclien = {0}";
+                    FROM sclien WHERE codclien = {0}";
             sql = String.Format(sql, codclien);
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -2924,8 +2924,8 @@ namespace AriFaceLib
             MySqlCommand cmd = conn.CreateCommand();
             string sql = @"SELECT  
                 mp.codclien, c.nomclien, mp.numero, mp.codtipom,
-                mp.fechaalb, IF(mp.concepto = 0, 'ALABARAN', 'CANJE') AS concepto, COALESCE(mp.puntos, 0),
-                mp.fecMov, mp.observaciones
+                mp.fechaalb, IF(mp.concepto = 0, 'ALABARAN', 'CANJE') AS concepto, COALESCE(mp.puntos, 0) AS puntos,
+                mp.fecMov, COALESCE(mp.observaciones, '') AS observaciones
                 FROM smovalpuntos AS mp
                 LEFT JOIN sclien AS c ON c.codclien = mp.codclien
                 WHERE mp.codclien = {0}
@@ -2943,10 +2943,10 @@ namespace AriFaceLib
                         NomClien = rdr.GetString("nomclien"),
                         Numero = rdr.GetInt32("numero"),
                         CodTipom = rdr.GetString("codtipom"),
-                        FechaAlb = rdr.GetDateTime("fechaalb"),
+                        FechaAlb = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("fechaalb")),
                         Concepto = rdr.GetString("concepto"),
                         Puntos = rdr.GetDecimal("puntos"),
-                        FecMov = rdr.GetDateTime("fecMov"),
+                        FecMov = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("fecMov")),
                         Observaciones = rdr.GetString("observaciones")
                     };
                     lp.Add(p);

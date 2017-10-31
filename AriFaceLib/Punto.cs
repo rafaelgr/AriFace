@@ -35,9 +35,9 @@ namespace AriFaceLib
             get { return codtipom; }
             set { codtipom = value; }
         }
-        private DateTime fechaalb;
+        private string fechaalb;
 
-        public DateTime FechaAlb
+        public string FechaAlb
         {
             get { return fechaalb; }
             set { fechaalb = value; }
@@ -57,8 +57,8 @@ namespace AriFaceLib
             set { puntos = value; }
         }
 
-        public DateTime fecMov;
-        public DateTime FecMov
+        public string fecMov;
+        public string FecMov
         {
             get { return fecMov; }
             set { fecMov = value; }

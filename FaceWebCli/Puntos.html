@@ -191,7 +191,7 @@
                             <i class="fa fa-lg fa-fw fa-folder-o"></i> <span class="menu-item-parent">Proveedor</span>
                         </a>
                     </li>
-                    <li id="menuPuntos">
+                    <li id="menuPuntos" style="display:none;">
                         <a href="Puntos.html">
                             <i class="fa fa-lg fa-fw fa-gift"></i> <span class="menu-item-parent">Puntos</span>
                         </a>
@@ -247,8 +247,8 @@
                         <h1 class="page-title txt-color-blueDark">
 
                             <!-- PAGE HEADER -->
-                            <i class="fa-fw fa fa-folder"></i>
-                            Facturas como cliente. <a href="http://ariface.ariadnasw.com/help2/AriFace%202015%20(Clientes).html?Facturascomocliente.html" title="Ayuda"><i class="fa fa-question"></i></a>
+                            <i class="fa-fw fa fa-gift"></i>
+                            Información de puntos. <a href="http://ariface.ariadnasw.com/help2/AriFace%202015%20(Clientes).html?Facturascomocliente.html" title="Ayuda"><i class="fa fa-question"></i></a>
                         </h1>
                     </div>
                     <!-- end col -->
@@ -258,16 +258,6 @@
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
                                                 <!-- sparks -->
                         <ul id="sparks">
-                            <li class="sparks-info">
-                                <h5>
-                                    Bases <span id="facP" class="txt-color-blue" data-bind="text: SumBases">--</span>
-                                </h5>
-                            </li>
-                            <li class="sparks-info">
-                                <h5>
-                                    Cuotas <span id="facA" class="txt-color-orange" data-bind="text: SumCuotas">--</span>
-                                </h5>
-                            </li>
                             <li class="sparks-info">
                                 <h5>
                                     Total <span id="facE" class="txt-color-green" data-bind="text: SumTotal">--</span>
@@ -313,7 +303,7 @@
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                    <h2>Facturas en el sistema</h2>
+                                    <h2>Movimientos de puntos</h2>
 
                                 </header>
 
@@ -330,46 +320,8 @@
                                     <!-- widget content -->
                                     <div class="widget-body">
                                         <!-- this is what the user will see -->
-                                        <form id="frmBuscar" class="smart-form">
-                                            <header>
-                                                Seleccione periodo
-                                            </header>
-                                            <fieldset>
-                                                <section class="col-md-3">
-                                                    <label class="label">Año</label>
-                                                    <label class="select">
-                                                        <select id="cmbAno" data-bind="options: PosiblesAnos, optionsText: 'Nombre', value: Ano, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                                <section class="col col-md-3">
-                                                    <label class="label">Trimestre</label>
-                                                    <label class="select">
-                                                        <select id="cmbTrimestre" data-bind="options: PosiblesTrimestres, optionsText: 'Nombre', value: Trimestre, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                                <section class="col col-md-3">
-                                                    <label class="label">Mes</label>
-                                                    <label class="select">
-                                                        <select id="cmbMes" data-bind="options: PosiblesMeses, optionsText: 'Nombre', value: Mes, valueAllowUnset: true">
-                                                        </select><i></i>
-                                                    </label>
-                                                </section>
-                                                <section class="col col-md-3">
-                                                <div class="pull-right">
-                                                    <button id="btnBuscar" title="Buscar" class="btn btn-primary btn-circle btn-lg">
-                                                        <i class="fa fa-lg fa-search"></i>
-                                                    </button>
-                                                    <div id="ldgBuscar" style="display:none;">
-                                                        <img src="img/loading-animation.gif" style="width:50px;" />
-                                                    </div>
-                                                </div>
-                                                </section>
-                                            </fieldset>
-                                        </form>
-                                        <div id="tbFactura" style="display:none;">
-                                            <table id="dt_factura" class="table table-striped table-bordered table-hover" width="100%">
+                                        <div id="tbPuntos" style="display:none;">
+                                            <table id="dt_puntos" class="table table-striped table-bordered table-hover" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th data-class="expand">
@@ -543,7 +495,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
 
         <script src="js/ariface/ariface.js"></script>
-        <script src="js/ariface/facturaGeneral.js"></script>
+        <script src="js/ariface/puntos.js"></script>
         
         <!-- PAGE RELATED PLUGIN(S) -->
         <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>

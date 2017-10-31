@@ -73,6 +73,7 @@
     <Content Include="ajax\notify\notifications.html" />
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
+    <Content Include="js\ariface\puntos.js" />
     <Content Include="PuntosApi.aspx" />
     <Content Include="Puntos.html" />
     <Content Include="FacturasProveedor.html" />

@@ -8,9 +8,10 @@ var responsiveHelper_datatable_fixed_column = undefined;
 var responsiveHelper_datatable_col_reorder = undefined;
 var responsiveHelper_datatable_tabletools = undefined;
 
-var dataFacturas;
+var dataPuntos;
 var facturaId;
 var usuario;
+var clientePuntos;
 
 var breakpointDefinition = {
     tablet: 1024,
@@ -28,17 +29,10 @@ function initForm(proveedor) {
     comprobarClientePuntos(usuario.CodClienAriges);
     // de smart admin
     pageSetUp();
-    //
-    $('#btnBuscar').click(buscarFacturas());
-    $('#frmBuscar').submit(function () {
-        return false
-    });
-    $('#cmbTrimestre').change(function () {
-        loadComboMeses(Number(vm.Trimestre().Codigo));
-    });
     // 
     vm = new facData();
     ko.applyBindings(vm);
+
     // numeral en español
     numeral.language('es', {
         delimiters: {
@@ -50,158 +44,62 @@ function initForm(proveedor) {
 
     //
     //
-    initTablaFacturas();
-    // cargamos las facturas que puede ver ese usuario
+    initTablaPuntos();
+    // cargamos los datos de cliente con sus puntos
     var data = {
-        usuarioId: usuario.UsuarioId,
-        a: 0,
-        q: 0,
-        m: 0,
-        esCliente: false
-    }
-    // hay que buscar ese elemento en concreto
+        codclien: usuario.CodClienAriges
+    };
     $.ajax({
         type: "POST",
-        url: "FacturaApi.aspx/GetFacturasUsuarioPeriodo",
+        url: "PuntosApi.aspx/GetClientePuntos",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (data, status) {
+            // Regresa el mensaje
+            if (!data.d) {
+                mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
+            }
+            var a = data.d;
+            vm.SumTotal(numeral(a.Puntos).format('#,###,##0.00'));
+
+        },
+        error: function (xhr, textStatus, errorThrwon) {
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensajeSmart(m);
+        }
+    });
+    //
+    var data = {
+        codclien: usuario.CodClienAriges
+    };
+    $.ajax({
+        type: "POST",
+        url: "PuntosApi.aspx/GetPuntosCliente",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (data, status) {
             var pf = data.d;
-            vm.SumBases(numeral(pf.SumBase).format('#,###,##0.00'));
-            vm.SumCuotas(numeral(pf.SumCuota).format('#,###,##0.00'));
-            vm.SumTotal(numeral(pf.SumTotal).format('#,###,##0.00'));
-            vm.SumRetencion(numeral(pf.SumRetencion).format('#,###,##0.00'));
-            vm.SumAportacion(numeral(pf.SumAportacion).format('#,###,##0.00'));
             // esta es la zona de carga de valores
-            loadTablaFacturas(pf.Facturas);
+            loadTablaPuntos(pf.Facturas);
         },
-        error: errorAjax
+        error: function (xhr, textStatus, errorThrwon) {
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensajeSmart(m);
+        }
     });
-    vm.Ano(new miniUnidad('0', 'Todos los años'));
-    vm.Trimestre(new miniUnidad('0', 'Todos los trimestres'));
-    vm.Mes(new miniUnidad('0', 'Todos los meses'));
-    loadComboAnos();
-    loadComboTrimestres();
-    loadComboMeses();
 }
 
 function facData() {
     var self = this;
-    self.SumBases = ko.observable();
-    self.SumCuotas = ko.observable();
     self.SumTotal = ko.observable();
-    self.SumRetencion = ko.observable();
-    self.SumAportacion = ko.observable();
-    self.Ano = ko.observable();
-    self.Trimestre = ko.observable();
-    self.Mes = ko.observable();
-    // apoyo para desplegables
-    self.PosiblesAnos = ko.observableArray([]);
-    self.PosiblesTrimestres = ko.observableArray([]);
-    self.PosiblesMeses = ko.observableArray([]);
-}
-
-function loadComboAnos(ano) {
-    if (ano == null) ano = 0;
-    data = { "usuarioId": usuario.UsuarioId};
-    $.ajax({
-        type: "POST",
-        url: "FacturaApi.aspx/GetAnosFacturados",
-        dataType: "json",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function (data, status) {
-            var v = [];
-            var mu2 = new miniUnidad('0', 'Todos los años');
-            v.push(mu2);
-            // hay que mostrarlo en la zona de datos
-            for (var i = 0; i < data.d.length; i++) {
-                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
-                v.push(mu);
-                if (ano != null) {
-                    if (data.d[i].Codigo === ano) {
-                        vm.Ano(mu);
-                    }
-                }
-            }
-            // en las altas hay que dejar una selección en vacío.
-            if (ano == 0) {
-                vm.Ano(mu2);
-            }
-            vm.PosiblesAnos(v);
-        },
-        error: errorAjax
-    });
-}
-
-function loadComboTrimestres(t) {
-    if (t == null) t = 0;
-    $.ajax({
-        type: "POST",
-        url: "FacturaApi.aspx/GetTrimestres",
-        dataType: "json",
-        contentType: "application/json",
-        success: function (data, status) {
-            var v = [];
-            // hay que mostrarlo en la zona de datos
-            vm.PosiblesTrimestres(v);
-            var mu2 = new miniUnidad('0', 'Todos los trimestres');
-            v.push(mu2);
-            // hay que mostrarlo en la zona de datos
-            for (var i = 0; i < data.d.length; i++) {
-                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
-                v.push(mu);
-                if (t != null) {
-                    if (data.d[i].Codigo === t) {
-                        vm.Trimestre(mu);
-                    }
-                }
-            }
-            // en las altas hay que dejar una selección en vacío.
-            if (t == 0) {
-                vm.Trimestre(mu2);
-            }
-            vm.PosiblesTrimestres(v);
-        },
-        error: errorAjax
-    });
-}
-
-function loadComboMeses(t) {
-    if (t == null) t = 0;
-    data = { "t": t };
-    $.ajax({
-        type: "POST",
-        url: "FacturaApi.aspx/GetMeses",
-        dataType: "json",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function (data, status) {
-            var v = [];
-            // hay que mostrarlo en la zona de datos
-            vm.PosiblesMeses(v);
-            var mu2 = new miniUnidad('0', 'Todos los meses');
-            v.push(mu2);            // hay que mostrarlo en la zona de datos
-            for (var i = 0; i < data.d.length; i++) {
-                var mu = new miniUnidad(data.d[i].Codigo, data.d[i].Nombre);
-                v.push(mu);
-                //if (t != null) {
-                //    if (data.d[i].Codigo === t) {
-                //        vm.Mes(mu);
-                //    }
-                //}
-            }
-            // en las altas hay que dejar una selección en vacío.
-            vm.Mes(mu2);
-            vm.PosiblesMeses(v);
-        },
-        error: errorAjax
-    });
 }
 
 
-function initTablaFacturas() {
+function initTablaPuntos() {
     tablaCarro = $('#dt_factura').dataTable({
         autoWidth: true,
         preDrawCallback: function () {
@@ -241,7 +139,7 @@ function initTablaFacturas() {
             decimal: ',',
             thousands: '.'
         },
-        data: dataFacturas,
+        data: dataPuntos,
         columns: [{ data: "ClienteNombre" },
             { data: "Sistema" },
             { data: "Departamento" },
@@ -267,12 +165,13 @@ function initTablaFacturas() {
             {
             data: "FacturaId",
             render: function (data, type, row) {
+                var bt0 = "<button class='btn btn-circle btn-primary' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
                 var bt1 = "<button class='btn btn-circle btn-success' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-warning' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
                 if (row.Estado == 0) {
                     bt2 = "<button class='btn btn-circle btn-warning' onclick='agregarAlEnvio(" + data + ");' title='Agregar al envío'> <i class='fa fa-undo fa-fw'></i> </button>";
                 } 
-                var html = "<div class='pull-right'>" + bt1 + "</div>";
+                var html = "<div class='pull-right'>" + bt0 + " " + bt1 + "</div>";
                 return html;
             }
         }]
@@ -299,7 +198,7 @@ function datosOK() {
     return $('#frmBuscar').valid();
 }
 
-function loadTablaFacturas(data) {
+function loadTablaPuntos(data) {
     var dt = $('#dt_factura').dataTable();
     if (data !== null && data.length === 0) {
         mostrarMensajeSmart('No se han encontrado registros');
@@ -319,7 +218,7 @@ function buscarFacturas() {
             a: Number(vm.Ano().Codigo),
             q: Number(vm.Trimestre().Codigo),
             m: Number(vm.Mes().Codigo),
-            esCliente: false
+            esCliente: true
         }
         // hay que buscar ese elemento en concreto
         $.ajax({
@@ -336,7 +235,7 @@ function buscarFacturas() {
                 vm.SumRetencion(numeral(pf.SumRetencion).format('#,###,##0.00'));
                 vm.SumAportacion(numeral(pf.SumAportacion).format('#,###,##0.00'));
                 // esta es la zona de carga de valores
-                loadTablaFacturas(pf.Facturas);
+                loadTablaPuntos(pf.Facturas);
             },
             error: errorAjax
         });
@@ -354,7 +253,7 @@ function getFacturas() {
             contentType: "application/json",
             success: function (data, status) {
                 // hay que mostrarlo en la zona de datos
-                loadTablaFacturas(data.d);
+                loadTablaPuntos(data.d);
             },
             error: errorAjax
         });
@@ -371,7 +270,7 @@ function getFacturasNoEnviadas() {
             contentType: "application/json",
             success: function (data, status) {
                 // hay que mostrarlo en la zona de datos
-                loadTablaFacturas(data.d);
+                loadTablaPuntos(data.d);
             },
             error: errorAjax
         });
@@ -460,7 +359,7 @@ function eliminarDeEnvio(id) {
                         contentType: "application/json",
                         success: function (data, status) {
                             // hay que mostrarlo en la zona de datos
-                            loadTablaFacturas(data.d);
+                            loadTablaPuntos(data.d);
                         },
                         error: errorAjax
                     });
@@ -500,7 +399,7 @@ function agregarAlEnvio(id) {
                         contentType: "application/json",
                         success: function (data, status) {
                             // hay que mostrarlo en la zona de datos
-                            loadTablaFacturas(data.d);
+                            loadTablaPuntos(data.d);
                         },
                         error: errorAjax
                     });
@@ -524,6 +423,27 @@ function verPdf(id) {
     $.ajax({
         type: "POST",
         url: "FacturaApi.aspx/VerPdf",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (data, status) {
+            var url = data.d;
+            window.open(url, '_blank');
+        },
+        error: errorAjax
+    });
+
+}
+
+function verXml(id) {
+    var user = JSON.parse(getCookie("usu"));
+    var data = {
+        facturaId: id,
+        usuarioId: user.UsuarioId
+    };
+    $.ajax({
+        type: "POST",
+        url: "FacturaApi.aspx/VerXml",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(data),
