@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Puntos.aspx.cs" Inherits="FaceWebCli.PuntosApi" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PuntosApi.aspx.cs" Inherits="FaceWebCli.PuntosApi" %>
 
 <!DOCTYPE html>
 

@@ -73,7 +73,7 @@
     <Content Include="ajax\notify\notifications.html" />
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
-    <Content Include="Puntos.aspx" />
+    <Content Include="PuntosApi.aspx" />
     <Content Include="Puntos.html" />
     <Content Include="FacturasProveedor.html" />
     <Content Include="FacturaApi.aspx" />
@@ -950,12 +950,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Puntos.aspx.cs">
-      <DependentUpon>Puntos.aspx</DependentUpon>
+    <Compile Include="PuntosApi.aspx.cs">
+      <DependentUpon>PuntosApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Puntos.aspx.designer.cs">
-      <DependentUpon>Puntos.aspx</DependentUpon>
+    <Compile Include="PuntosApi.aspx.designer.cs">
+      <DependentUpon>PuntosApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="FacturaApi.aspx.cs">
       <DependentUpon>FacturaApi.aspx</DependentUpon>
