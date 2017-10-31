@@ -81,9 +81,9 @@ function initForm(proveedor) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (data, status) {
-            var pf = data.d;
+            var puntos = data.d;
             // esta es la zona de carga de valores
-            loadTablaPuntos(pf.Facturas);
+            loadTablaPuntos(puntos);
         },
         error: function (xhr, textStatus, errorThrwon) {
             var m = xhr.responseText;
@@ -100,12 +100,12 @@ function facData() {
 
 
 function initTablaPuntos() {
-    tablaCarro = $('#dt_factura').dataTable({
+    tablaPuntos = $('#dt_puntos').dataTable({
         autoWidth: true,
         preDrawCallback: function () {
             // Initialize the responsive datatables helper once.
             if (!responsiveHelper_dt_basic) {
-                responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_factura'), breakpointDefinition);
+                responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_puntos'), breakpointDefinition);
             }
         },
         rowCallback: function (nRow, data) {
@@ -140,41 +140,28 @@ function initTablaPuntos() {
             thousands: '.'
         },
         data: dataPuntos,
-        columns: [{ data: "ClienteNombre" },
-            { data: "Sistema" },
-            { data: "Departamento" },
-            { data: "Serie" },
-            { data: "NumFactura" },
+        columns: [
             {
-                data: "StrFecha",
+                data: "FechaAlb",
                 render: function (data, type, row) {
                     var html = "<div style='text-align:center'>" + moment(data, 'YYYYMMDD').format('DD/MM/YYYY') + "</div>";
                     return html;
                 }
             },
             {
-                data: "Total",
+                data: "Concepto"
+            },
+            {
+                data: "Puntos",
                 render: function (data, type, row) {
                     var html = "<div style='text-align:right'>" + numeral(data).format('#,###,##0.00') + " €</div>";
                     return html;
                 }
             },
-            { data: "Estado" },
-            { data: "RegistroFace" },
-            { data: "MotivoFace" },
             {
-            data: "FacturaId",
-            render: function (data, type, row) {
-                var bt0 = "<button class='btn btn-circle btn-primary' onclick='verXml(" + data + ");' title='Ver / descargar XML'> <i class='fa fa-file-code-o fa-fw'></i> </button>";
-                var bt1 = "<button class='btn btn-circle btn-success' onclick='verPdf(" + data + ");' title='Ver / descargar PDF'> <i class='fa fa-file-pdf-o fa-fw'></i> </button>";
-                var bt2 = "<button class='btn btn-circle btn-warning' onclick='eliminarDeEnvio(" + data + ");' title='Eliminar del envío'> <i class='fa fa-remove fa-fw'></i> </button>";
-                if (row.Estado == 0) {
-                    bt2 = "<button class='btn btn-circle btn-warning' onclick='agregarAlEnvio(" + data + ");' title='Agregar al envío'> <i class='fa fa-undo fa-fw'></i> </button>";
-                } 
-                var html = "<div class='pull-right'>" + bt0 + " " + bt1 + "</div>";
-                return html;
+                data: "Observaciones"
             }
-        }]
+        ]
     });
 }
 
@@ -199,14 +186,14 @@ function datosOK() {
 }
 
 function loadTablaPuntos(data) {
-    var dt = $('#dt_factura').dataTable();
+    var dt = $('#dt_puntos').dataTable();
     if (data !== null && data.length === 0) {
         mostrarMensajeSmart('No se han encontrado registros');
     } else {
         dt.fnClearTable();
         dt.fnAddData(data);
         dt.fnDraw();
-        $("#tbFactura").show();
+        $("#tbPuntos").show();
     }
 }
 
