@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="https://webservice.face.gob.es" xmlns:types="https://webservice.face.gob.es/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <soap:Header>
+    <wsa:Action>https://se-face-webservice.redsara.es#consultarEstados</wsa:Action>
+    <wsa:MessageID>urn:uuid:f9cc51b7-b346-47f6-a82e-3222399aeb78</wsa:MessageID>
+    <wsa:ReplyTo>
+      <wsa:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:Address>
+    </wsa:ReplyTo>
+    <wsa:To>https://se-face-webservice.redsara.es/sspp</wsa:To>
+    <wsse:Security soap:mustUnderstand="1">
+      <wsu:Timestamp wsu:Id="Timestamp-44119b47-e12a-4e63-a953-d79dc560848f">
+        <wsu:Created>2014-12-01T08:08:03Z</wsu:Created>
+        <wsu:Expires>2014-12-01T08:13:03Z</wsu:Expires>
+      </wsu:Timestamp>
+      <wsse:BinarySecurityToken ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="SecurityToken-9c7295bd-cf57-4345-bbf8-5b21e89e0e31">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</wsse:BinarySecurityToken>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+          <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="#Timestamp-44119b47-e12a-4e63-a953-d79dc560848f">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>yHCYitwX9xAZATm9D6ER3U0NVgI=</DigestValue>
+          </Reference>
+          <Reference URI="#Id-0f45203a-2bec-496b-bf1e-7a3a8b0c0410">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>GHphnXQ9BKj0ffxEBu2QOOp2ve8=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>DaDCBp6VCaZ2f48z38pqgvLW0uqKtcmGfsGjOVpNVk41bF7Tgc0xmoMLw/v/lIFKuBhs7GETdOehkMhiWYv5SbMGt0saM6Inok0mugyd2iNzxMcP2l/eWKyWjuNj3XOr8KnTa9JzVQe1fO9b7GEbhpcDOqmZNNzNyPNDglus6iNroxson9m5sg5AYujuSObYot3yLppwl5bjpfxDGvgBvMRcgjJlm8hX3BCJVAWUpUvWW2FDHpJhrur8pidR04edMK8CBSNrVl71aBESPeig3CxXlL2hSPeos9PgDWsQPLpoEu1EAlfrH0sGeIv2oJkDtxoSYxMxdC5YRnWHoVBu0g==</SignatureValue>
+        <KeyInfo>
+          <wsse:SecurityTokenReference>
+            <wsse:Reference URI="#SecurityToken-9c7295bd-cf57-4345-bbf8-5b21e89e0e31" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" />
+          </wsse:SecurityTokenReference>
+        </KeyInfo>
+      </Signature>
+    </wsse:Security>
+  </soap:Header>
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" wsu:Id="Id-0f45203a-2bec-496b-bf1e-7a3a8b0c0410">
+    <tns:consultarEstados />
+  </soap:Body>
+</soap:Envelope>

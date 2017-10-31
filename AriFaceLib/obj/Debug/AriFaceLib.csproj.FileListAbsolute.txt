@@ -5,8 +5,6 @@ C:\Proyectos\FaceTest\AriFaceLib\obj\Debug\AriFaceLib.pdb
 C:\Proyectos\FaceTest\AriFaceLib\obj\Debug\AriFaceLib.csprojResolveAssemblyReference.cache
 C:\Proyectos\AriFace\AriFaceLib\bin\Debug\AriFaceLib.dll
 C:\Proyectos\AriFace\AriFaceLib\bin\Debug\AriFaceLib.pdb
-C:\Proyectos\AriFace\AriFaceLib\bin\Debug\MySql.Data.dll
-C:\Proyectos\AriFace\AriFaceLib\bin\Debug\MySql.Data.xml
 C:\Proyectos\AriFace\AriFaceLib\obj\Debug\AriFaceLib.csprojResolveAssemblyReference.cache
 C:\Proyectos\AriFace\AriFaceLib\obj\Debug\AriFaceLib.dll
 C:\Proyectos\AriFace\AriFaceLib\obj\Debug\AriFaceLib.pdb

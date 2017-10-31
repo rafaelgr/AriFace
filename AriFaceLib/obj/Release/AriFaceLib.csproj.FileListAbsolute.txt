@@ -3,3 +3,8 @@ C:\Proyectos\FaceTest\AriFaceLib\bin\Release\AriFaceLib.pdb
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.csprojResolveAssemblyReference.cache
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.dll
 C:\Proyectos\FaceTest\AriFaceLib\obj\Release\AriFaceLib.pdb
+C:\PROYECTOS\AriFace\AriFaceLib\bin\Release\AriFaceLib.dll
+C:\PROYECTOS\AriFace\AriFaceLib\bin\Release\AriFaceLib.pdb
+C:\PROYECTOS\AriFace\AriFaceLib\obj\Release\AriFaceLib.csprojResolveAssemblyReference.cache
+C:\PROYECTOS\AriFace\AriFaceLib\obj\Release\AriFaceLib.dll
+C:\PROYECTOS\AriFace\AriFaceLib\obj\Release\AriFaceLib.pdb

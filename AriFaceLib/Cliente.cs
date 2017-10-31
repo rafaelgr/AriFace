@@ -87,5 +87,23 @@ namespace AriFaceLib
             get { return iban; }
             set { iban = value; }
         }
+
+        private int tienePuntos = 0;
+
+        public int TienePuntos
+        {
+            get { return tienePuntos; }
+            set { tienePuntos = value; }
+
+        }
+
+        private decimal puntos = 0;
+
+        public decimal Puntos
+        {
+            get { return puntos; }
+            set { puntos = value; }
+
+        }
     }
 }

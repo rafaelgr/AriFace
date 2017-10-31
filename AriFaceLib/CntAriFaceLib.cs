@@ -933,6 +933,10 @@ namespace AriFaceLib
             //
             if (!rdr.IsDBNull(rdr.GetOrdinal("iban")))
                 c.Iban = rdr.GetString("iban");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("TienePuntos")))
+                c.TienePuntos = rdr.GetInt32("TienePuntos");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("puntos")))
+                c.Puntos = rdr.GetDecimal("puntos");
  
             return c;
         }
