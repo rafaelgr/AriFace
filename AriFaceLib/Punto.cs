@@ -7,47 +7,69 @@ namespace AriFaceLib
 {
     public class Punto
     {
-        private string organoGestorCodigo;
+        private int codclien;
 
-        public string OrganoGestorCodigo
+        public int CodClien
         {
-            get { return organoGestorCodigo; }
-            set { organoGestorCodigo = value; }
+            get { return codclien; }
+            set { codclien = value; }
         }
-        private string organoGestorNombre;
+        private string nomClien;
 
-        public string OrganoGestorNombre
+        public string NomClien
         {
-            get { return organoGestorNombre; }
-            set { organoGestorNombre = value; }
+            get { return nomClien; }
+            set { nomClien = value; }
         }
-        private string unidadTramitadoraCodigo;
+        private int numero;
 
-        public string UnidadTramitadoraCodigo
+        public int Numero
         {
-            get { return unidadTramitadoraCodigo; }
-            set { unidadTramitadoraCodigo = value; }
+            get { return numero; }
+            set { numero = value; }
         }
-        private string unidadTramitadoraNombre;
+        private string codtipom;
 
-        public string UnidadTramitadoraNombre
+        public string CodTipom
         {
-            get { return unidadTramitadoraNombre; }
-            set { unidadTramitadoraNombre = value; }
+            get { return codtipom; }
+            set { codtipom = value; }
         }
-        private string oficinaContableCodigo;
+        private DateTime fechaalb;
 
-        public string OficinaContableCodigo
+        public DateTime FechaAlb
         {
-            get { return oficinaContableCodigo; }
-            set { oficinaContableCodigo = value; }
+            get { return fechaalb; }
+            set { fechaalb = value; }
         }
-        private string oficinaContableNombre;
+        private string concepto;
 
-        public string OficinaContableNombre
+        public string Concepto
         {
-            get { return oficinaContableNombre; }
-            set { oficinaContableNombre = value; }
+            get { return concepto; }
+            set { concepto = value; }
         }
+
+        public Decimal puntos;
+        public Decimal Puntos
+        {
+            get { return puntos; }
+            set { puntos = value; }
+        }
+
+        public DateTime fecMov;
+        public DateTime FecMov
+        {
+            get { return fecMov; }
+            set { fecMov = value; }
+        }
+
+        public string observaciones;
+        public string Observaciones
+        {
+            get { return observaciones; }
+            set { observaciones = value; }
+        }
+
     }
 }

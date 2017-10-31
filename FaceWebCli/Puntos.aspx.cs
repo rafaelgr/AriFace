@@ -20,45 +20,14 @@ namespace FaceWebCli
 
         }
         #region WebMethods
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Factura> GetFacturas()
-        {
-            IList<Factura> lf = new List<Factura>();
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
-            {
-                conn.Open();
-                lf = CntAriFaceLib.GetFacturas(conn);
-                conn.Close();
-            }
-            return lf;
-        }
-
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Factura> GetFacturasNoEnviadas()
-        {
-            IList<Factura> lf = new List<Factura>();
-            // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
-            using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
-            {
-                conn.Open();
-                lf = CntAriFaceLib.GetFacturasNoEnviadas(conn);
-                conn.Close();
-            }
-            return lf;
-        }
         
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static IList<Factura> GetFacturasCliente(int clienteId)
+        public static IList<Factura> GetClientePuntos(int clienteId)
         {
             IList<Factura> lf = new List<Factura>();
             // leer la cadena de conexión de los parámetros
-            string connectionString = ConfigurationManager.ConnectionStrings["FacElec"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["ArigesPuntos"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
             {
                 conn.Open();

@@ -47,6 +47,7 @@
     <Compile Include="Certificado.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CntAriFaceLib.cs" />
+    <Compile Include="Punto.cs" />
     <Compile Include="EmpresaRaiz.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="Estadistica.cs" />

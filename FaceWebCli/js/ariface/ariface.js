@@ -156,3 +156,27 @@ function getParametros() {
         }
     });
 }
+
+function comprobarClientePuntos() {
+    $.ajax({
+        type: "POST",
+        url: "ParametrosApi.aspx/GetParametros",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (data, status) {
+            // Regresa el mensaje
+            if (!data.d) {
+                mostrarMensajeSmart('No se ha podido acceder a los parámetros');
+            }
+            var a = data.d;
+            $(".titulo_app").text(a.TituloApp);
+
+        },
+        error: function (xhr, textStatus, errorThrwon) {
+            var m = xhr.responseText;
+            if (!m) m = "Error general posiblemente falla la conexión";
+            mostrarMensajeSmart(m);
+        }
+    });
+}
+

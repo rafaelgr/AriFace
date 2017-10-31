@@ -2880,5 +2880,82 @@ namespace AriFaceLib
         }
 
         #endregion
+
+        #region Puntos
+
+
+        public static ClientePuntos GetClientePuntos(MySqlDataReader rdr)
+        {
+            if (rdr.IsDBNull(rdr.GetOrdinal("codclien")))
+                return null;
+            ClientePuntos cp = new ClientePuntos();
+            cp.CodClien = rdr.GetInt32("codclien");
+            cp.NomClien = rdr.GetString("nomclien");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("TienePuntos")))
+                cp.TienePuntos = rdr.GetInt32("TienePuntos");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("puntos")))
+                cp.Puntos = rdr.GetDecimal("puntos");
+
+            return cp;
+        }
+
+        public static ClientePuntos GetClientePuntos(int codclien, MySqlConnection conn)
+        {
+            ClientePuntos cp = null;
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT 
+                    codclien, nomclien, TienePuntos AS tienePuntos, COALESCE(puntos, 0) AS puntos
+                    FROM sclien; WHERE codclien = {0}";
+            sql = String.Format(sql, codclien);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                cp = GetClientePuntos(rdr);
+            }
+            rdr.Close();
+            return cp;
+        }
+
+        public static IList<Punto> GetPuntosCliente(int codclien, MySqlConnection conn)
+        {
+            IList<Punto> lp = new List<Punto>();
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"SELECT  
+                mp.codclien, c.nomclien, mp.numero, mp.codtipom,
+                mp.fechaalb, IF(mp.concepto = 0, 'ALABARAN', 'CANJE') AS concepto, COALESCE(mp.puntos, 0),
+                mp.fecMov, mp.observaciones
+                FROM smovalpuntos AS mp
+                LEFT JOIN sclien AS c ON c.codclien = mp.codclien
+                WHERE mp.codclien = {0}
+                ORDER BY fechaalb DESC";
+            sql = String.Format(sql, codclien);
+            cmd.CommandText = sql;
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    Punto p = new Punto()
+                    {
+                        CodClien = rdr.GetInt32("codclien"),
+                        NomClien = rdr.GetString("nomclien"),
+                        Numero = rdr.GetInt32("numero"),
+                        CodTipom = rdr.GetString("codtipom"),
+                        FechaAlb = rdr.GetDateTime("fechaalb"),
+                        Concepto = rdr.GetString("concepto"),
+                        Puntos = rdr.GetDecimal("puntos"),
+                        FecMov = rdr.GetDateTime("fecMov"),
+                        Observaciones = rdr.GetString("observaciones")
+                    };
+                    lp.Add(p);
+                }
+            }
+            rdr.Close();
+            return lp;
+        }
+
+        #endregion
     }
 }
