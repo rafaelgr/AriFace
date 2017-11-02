@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>10/31/2017 18:08:23</publishTime>
+      <publishTime>11/02/2017 10:18:56</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>10/31/2017 18:08:24</publishTime>
+      <publishTime>11/02/2017 10:18:57</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>12/11/2013 21:52:58</publishTime>
@@ -1000,10 +1000,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="img/logo_cliente.jpg">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>11/02/2017 09:51:05</publishTime>
     </File>
     <File Include="img/logo_cliente_login.jpg">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>11/02/2017 09:51:13</publishTime>
     </File>
     <File Include="img/logo_teletaxi.png">
       <publishTime>07/05/2017 09:32:23</publishTime>
@@ -1294,7 +1294,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>10/31/2017 16:38:49</publishTime>
+      <publishTime>10/31/2017 18:20:36</publishTime>
     </File>
     <File Include="js/app.config.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -1354,7 +1354,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="js/ariface/puntos.js">
-      <publishTime>10/31/2017 18:01:47</publishTime>
+      <publishTime>11/02/2017 09:23:05</publishTime>
     </File>
     <File Include="js/ariface/testFace.js">
       <publishTime>07/05/2017 09:32:24</publishTime>
@@ -2722,16 +2722,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>07/05/2017 09:32:24</publishTime>
+      <publishTime>11/02/2017 10:10:35</publishTime>
     </File>
     <File Include="ParametrosApi.aspx">
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/31/2017 18:08:33</publishTime>
+      <publishTime>11/02/2017 10:19:01</publishTime>
     </File>
     <File Include="Puntos.html">
-      <publishTime>10/31/2017 18:03:30</publishTime>
+      <publishTime>11/02/2017 09:21:55</publishTime>
     </File>
     <File Include="PuntosApi.aspx">
       <publishTime>10/31/2017 13:18:46</publishTime>
@@ -2743,7 +2743,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/31/2017 18:08:27</publishTime>
+      <publishTime>11/02/2017 10:18:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

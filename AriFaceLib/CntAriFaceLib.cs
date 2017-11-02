@@ -933,11 +933,6 @@ namespace AriFaceLib
             //
             if (!rdr.IsDBNull(rdr.GetOrdinal("iban")))
                 c.Iban = rdr.GetString("iban");
-            if (!rdr.IsDBNull(rdr.GetOrdinal("TienePuntos")))
-                c.TienePuntos = rdr.GetInt32("TienePuntos");
-            if (!rdr.IsDBNull(rdr.GetOrdinal("puntos")))
-                c.Puntos = rdr.GetDecimal("puntos");
- 
             return c;
         }
             
@@ -2923,11 +2918,12 @@ namespace AriFaceLib
             IList<Punto> lp = new List<Punto>();
             MySqlCommand cmd = conn.CreateCommand();
             string sql = @"SELECT  
-                mp.codclien, c.nomclien, mp.numero, mp.codtipom,
-                mp.fechaalb, IF(mp.concepto = 0, 'ALABARAN', 'CANJE') AS concepto, COALESCE(mp.puntos, 0) AS puntos,
+                mp.codclien, c.nomclien, mp.numero, mp.codtipom, mp.numalbar,
+                mp.fechaalb, COALESCE(cp.denominacion, '') AS concepto, COALESCE(mp.puntos, 0) AS puntos,
                 mp.fecMov, COALESCE(mp.observaciones, '') AS observaciones
                 FROM smovalpuntos AS mp
                 LEFT JOIN sclien AS c ON c.codclien = mp.codclien
+                LEFT JOIN conceptopuntos AS cp ON cp.codigo = mp.concepto
                 WHERE mp.codclien = {0}
                 ORDER BY fechaalb DESC";
             sql = String.Format(sql, codclien);
@@ -2947,7 +2943,8 @@ namespace AriFaceLib
                         Concepto = rdr.GetString("concepto"),
                         Puntos = rdr.GetDecimal("puntos"),
                         FecMov = String.Format("{0:yyyyMMdd}", rdr.GetDateTime("fecMov")),
-                        Observaciones = rdr.GetString("observaciones")
+                        Observaciones = rdr.GetString("observaciones"),
+                        NumAlbar = rdr.GetInt32("numalbar")
                     };
                     lp.Add(p);
                 }

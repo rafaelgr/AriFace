@@ -101,6 +101,7 @@ function facData() {
 
 function initTablaPuntos() {
     tablaPuntos = $('#dt_puntos').dataTable({
+        bSort: false,
         autoWidth: true,
         preDrawCallback: function () {
             // Initialize the responsive datatables helper once.
@@ -152,14 +153,17 @@ function initTablaPuntos() {
                 data: "Concepto"
             },
             {
-                data: "Puntos",
-                render: function (data, type, row) {
-                    var html = "<div style='text-align:right'>" + numeral(data).format('#,###,##0.00') + " €</div>";
-                    return html;
-                }
+                data: "NumAlbar"
             },
             {
                 data: "Observaciones"
+            },
+            {
+                data: "Puntos",
+                render: function (data, type, row) {
+                    var html = "<div style='text-align:right'>" + numeral(data).format('#,###,##0.00') + " </div>";
+                    return html;
+                }
             }
         ]
     });

@@ -70,6 +70,13 @@ namespace AriFaceLib
             get { return observaciones; }
             set { observaciones = value; }
         }
+        private int numalbar;
+
+        public int NumAlbar
+        {
+            get { return numalbar; }
+            set { numalbar = value; }
+        }
 
     }
 }
