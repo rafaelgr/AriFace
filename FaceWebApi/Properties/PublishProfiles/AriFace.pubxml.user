@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:16</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>07/05/2017 09:51:50</publishTime>
+      <publishTime>11/15/2017 11:15:52</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>07/05/2017 09:51:50</publishTime>
+      <publishTime>11/15/2017 11:15:53</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>07/05/2017 09:51:53</publishTime>
+      <publishTime>11/15/2017 11:15:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Services3.dll">
       <publishTime>07/05/2017 09:32:16</publishTime>
@@ -1360,7 +1360,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:16</publishTime>
     </File>
     <File Include="js/ariface/ariface.js">
-      <publishTime>07/05/2017 09:32:16</publishTime>
+      <publishTime>10/31/2017 13:22:50</publishTime>
     </File>
     <File Include="js/ariface/blank.js">
       <publishTime>07/05/2017 09:32:16</publishTime>
@@ -2794,7 +2794,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:16</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/05/2017 09:52:04</publishTime>
+      <publishTime>11/15/2017 11:16:02</publishTime>
     </File>
     <File Include="Properties/Settings.settings">
       <publishTime>07/05/2017 09:32:16</publishTime>
@@ -2962,7 +2962,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/05/2017 09:51:57</publishTime>
+      <publishTime>11/15/2017 11:15:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -16,6 +16,8 @@ function comprobarLogin() {
     }
     // cargar el nombre en la zona correspondiente
     $('#userName').text(user.Nombre);
+    // devolver el usuario
+    return user;
 }
 
 

@@ -12,5 +12,4 @@ C:\Proyectos\AriFace\FaceWebApi\obj\Debug\FaceWebApi.pdb
 C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.dll
 C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.pdb
 C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.dll
-C:\Proyectos\AriFace\FaceWebApi\bin\MySql.Data.dll
 C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.pdb

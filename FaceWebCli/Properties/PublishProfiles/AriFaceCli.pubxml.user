@@ -874,7 +874,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="img/fondo_login.jpg">
-      <publishTime>07/05/2017 09:32:23</publishTime>
+      <publishTime>11/14/2017 13:24:27</publishTime>
     </File>
     <File Include="img/glass.jpg">
       <publishTime>07/05/2017 09:32:23</publishTime>
@@ -1000,10 +1000,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="img/logo_cliente.jpg">
-      <publishTime>11/02/2017 09:51:05</publishTime>
+      <publishTime>11/14/2017 13:27:17</publishTime>
     </File>
     <File Include="img/logo_cliente_login.jpg">
-      <publishTime>11/02/2017 09:51:13</publishTime>
+      <publishTime>11/14/2017 13:27:31</publishTime>
     </File>
     <File Include="img/logo_teletaxi.png">
       <publishTime>07/05/2017 09:32:23</publishTime>
@@ -2722,13 +2722,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:24</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>11/02/2017 10:10:35</publishTime>
+      <publishTime>11/14/2017 13:26:02</publishTime>
     </File>
     <File Include="ParametrosApi.aspx">
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/02/2017 10:19:01</publishTime>
+      <publishTime>11/15/2017 11:08:39</publishTime>
     </File>
     <File Include="Puntos.html">
       <publishTime>11/02/2017 09:21:55</publishTime>
@@ -2743,7 +2743,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/05/2017 09:32:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/02/2017 10:18:58</publishTime>
+      <publishTime>11/15/2017 11:08:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

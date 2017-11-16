@@ -12,7 +12,6 @@ C:\PROYECTOS\AriFace\FaceWebApi\bin\FaceWebApi.dll
 C:\PROYECTOS\AriFace\FaceWebApi\bin\FaceWebApi.XmlSerializers.dll
 C:\PROYECTOS\AriFace\FaceWebApi\bin\FaceWebApi.pdb
 C:\PROYECTOS\AriFace\FaceWebApi\bin\AriFaceLib.dll
-C:\PROYECTOS\AriFace\FaceWebApi\bin\MySql.Data.dll
 C:\PROYECTOS\AriFace\FaceWebApi\bin\AriFaceLib.pdb
 C:\PROYECTOS\AriFace\FaceWebApi\obj\Release\FaceWebApi.csprojResolveAssemblyReference.cache
 C:\PROYECTOS\AriFace\FaceWebApi\obj\Release\FaceWebApi.dll

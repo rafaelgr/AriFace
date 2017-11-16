@@ -9,7 +9,6 @@ C:\Proyectos\FaceTest\FaceWebCli\bin\MySql.Data.dll
 C:\PROYECTOS\AriFace\FaceWebCli\bin\FaceWebCli.dll
 C:\PROYECTOS\AriFace\FaceWebCli\bin\FaceWebCli.pdb
 C:\PROYECTOS\AriFace\FaceWebCli\bin\AriFaceLib.dll
-C:\PROYECTOS\AriFace\FaceWebCli\bin\MySql.Data.dll
 C:\PROYECTOS\AriFace\FaceWebCli\bin\AriFaceLib.pdb
 C:\PROYECTOS\AriFace\FaceWebCli\obj\Release\FaceWebCli.csprojResolveAssemblyReference.cache
 C:\PROYECTOS\AriFace\FaceWebCli\obj\Release\FaceWebCli.dll
