@@ -170,12 +170,13 @@ function comprobarClientePuntos(codclien) {
         success: function (data, status) {
             // Regresa el mensaje
             if (!data.d) {
-                mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
-            }
-            var a = data.d;
-            if (a.TienePuntos == 1) {
-                $('#menuPuntos').show();
-                $('#pPuntos').show();
+                // mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
+            } else {
+                var a = data.d;
+                if (a.TienePuntos == 1) {
+                    $('#menuPuntos').show();
+                    $('#pPuntos').show();
+                }
             }
 
         },

@@ -7,3 +7,4 @@ C:\Proyectos\AriFace\AriFaceLib\bin\Debug\AriFaceLib.dll
 C:\Proyectos\AriFace\AriFaceLib\bin\Debug\AriFaceLib.pdb
 C:\Proyectos\AriFace\AriFaceLib\obj\Debug\AriFaceLib.dll
 C:\Proyectos\AriFace\AriFaceLib\obj\Debug\AriFaceLib.pdb
+C:\PROYECTOS\AriFace\AriFaceLib\obj\Debug\AriFaceLib.csprojResolveAssemblyReference.cache
