@@ -947,7 +947,9 @@
     <Content Include="login.html" />
     <Content Include="UsuarioApi.aspx" />
     <Content Include="VersionApi.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PuntosApi.aspx.cs">
