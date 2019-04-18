@@ -1842,7 +1842,7 @@ namespace AriFaceLib
                 LEFT JOIN sistema AS s ON s.sistema_id = f.sistema_id
                 LEFT JOIN cliente AS c ON c.i_d = f.id_cliente
                 LEFT JOIN departamento AS d ON d.codclien = c.codclien_ariges AND d.coddirec = f.coddirec_ariges
-                WHERE f.nueva = 1 AND NOT c.organoGestorCodigo IS NULL";
+                WHERE f.nueva = 1 AND LENGTH(c.organoGestorCodigo) > 0";
             cmd.CommandText = sql;
             MySqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
