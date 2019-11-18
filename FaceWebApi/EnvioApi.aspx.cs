@@ -111,7 +111,7 @@ namespace FaceWebApi
                 {
                     conn.Open();
                     // el directorio de notificaciones hay que pasarlo
-                    r = CntFaceApi.SendEnvio(clienteId, departamentoId, certSn, conn);
+                    r = CntFaceApi.SendEnvioMulti(clienteId, departamentoId, certSn, conn);
                     conn.Close();
                 }
             }
@@ -136,7 +136,7 @@ namespace FaceWebApi
             {
                 conn.Open();
                 // el directorio de notificaciones hay que pasarlo
-                r = CntFaceApi.SendEnvioFactura(facturaId,"NOCERT", conn);
+                r = CntFaceApi.SendEnvioFacturaMulti(facturaId,"NOCERT", conn);
                 conn.Close();
             }
             return r;
@@ -156,7 +156,7 @@ namespace FaceWebApi
                 {
                     conn.Open();
                     // el directorio de notificaciones hay que pasarlo
-                    r = CntFaceApi.SendEnvios(certSn, conn);
+                    r = CntFaceApi.SendEnviosMulti(certSn, conn);
                     conn.Close();
                 }
             }

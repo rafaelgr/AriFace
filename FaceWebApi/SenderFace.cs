@@ -82,6 +82,26 @@ namespace FaceWebApi
             return securityToken;
         }
 
+        private X509SecurityToken GetSecurityTokenMulti(string nif)
+        {
+            X509Certificate2 cer2 = new X509Certificate2();
+            string cert_file = ConfigurationSettings.AppSettings["cert_file"];
+            string cert_pass = ConfigurationSettings.AppSettings["cert_pass"];
+            string cert2_file = ConfigurationSettings.AppSettings[nif + "_file"];
+            string cert2_pass = ConfigurationSettings.AppSettings[nif + "_pass"];
+            if (cert2_file != null && cert2_pass != null)
+            {
+                cert_file = cert2_file;
+                cert_pass = cert2_pass;
+            }
+            cer2.Import(cert_file, cert_pass, X509KeyStorageFlags.MachineKeySet);
+            //cer2.Import(cert_file, cert_pass, X509KeyStorageFlags.DefaultKeySet);
+            this.objX509 = cer2;
+            X509SecurityToken securityToken = null;
+            securityToken = new X509SecurityToken(this.objX509);
+            return securityToken;
+        }
+
 
         private X509SecurityToken GetSecurityTokenGdes(string sistemaGdes)
         {
@@ -117,6 +137,28 @@ namespace FaceWebApi
             sig.SignatureOptions = SignatureOptions.IncludeSoapBody | SignatureOptions.IncludeTimestamp;
             objSender.RequestSoapContext.Security.Elements.Add(sig);
         }
+
+        private void FirmarEnvioMulti(string sistema, string nif)
+        {
+            MessageSignature sig;
+            X509SecurityToken sigToken;
+            if (sistema == "")
+            {
+                sigToken = GetSecurityTokenMulti(nif);
+            }
+            else
+            {
+                sigToken = GetSecurityTokenGdes(sistema);
+            }
+
+            SoapContext rqContext = objSender.RequestSoapContext;
+
+
+            objSender.RequestSoapContext.Security.Tokens.Add(sigToken);
+            sig = new MessageSignature(sigToken);
+            sig.SignatureOptions = SignatureOptions.IncludeSoapBody | SignatureOptions.IncludeTimestamp;
+            objSender.RequestSoapContext.Security.Elements.Add(sig);
+        }
         #endregion
 
         #region Mensajes a FACE
@@ -126,6 +168,24 @@ namespace FaceWebApi
             try
             {
                 FirmarEnvio(sistema);
+                res = objSender.consultarEstados();
+                //TODO: Hay que añadir algo a correcto?
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                res = null;
+                //TODO: tratar el error
+            }
+            return res;
+        }
+
+        public ConsultarEstadosResponse ConsultarEstadosMulti(string sistema, string nif)
+        {
+            ConsultarEstadosResponse res = null;
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
                 res = objSender.consultarEstados();
                 //TODO: Hay que añadir algo a correcto?
             }
@@ -152,6 +212,22 @@ namespace FaceWebApi
             }
             return res;
         }
+
+        public ConsultarRelacionesResponse ConsultarUnidadesMulti(string sistema, string nif)
+        {
+            ConsultarRelacionesResponse res = null;
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
+                res = objSender.consultarUnidades();
+            }
+            catch (Exception ex)
+            {
+                res = null;
+            }
+            return res;
+        }
+
         public EnviarFacturaResponse EnviarFactura(string pathFacturae, string carpetaAcuseRecibo, string correo, string sistema)
         {
             EnviarFacturaRequest req;
@@ -185,6 +261,41 @@ namespace FaceWebApi
                 throw ex;
             }
         }
+
+        public EnviarFacturaResponse EnviarFacturaMulti(string pathFacturae, string carpetaAcuseRecibo, string correo, string sistema, string nif)
+        {
+            EnviarFacturaRequest req;
+            EnviarFacturaResponse res;
+            ClsEncoder64 encoder64;
+            string expediente = string.Empty;
+            bool blnTry = true;
+            if (System.IO.File.Exists(pathFacturae) == false) blnTry = false;
+            if (System.IO.Directory.Exists(carpetaAcuseRecibo) == false) blnTry = false;
+            if (!blnTry)
+            {
+                // O no existe en fichero o la carpeta en la que se encuentra
+                throw new Exception(String.Format("El fichero {0} o la carpeta {1} no existen.", pathFacturae, carpetaAcuseRecibo));
+                return null;
+            }
+            encoder64 = new ClsEncoder64();
+            req = new EnviarFacturaRequest();
+            req.factura = new FacturaFile();
+            req.factura.factura = encoder64.EncodeTo64File(pathFacturae);
+            req.factura.mime = "application/xml";
+            req.factura.nombre = "signed.xml";
+            req.correo = correo;
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
+                res = objSender.enviarFactura(req);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public EnviarFacturaResponse EnviarFacturaAdjunto(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF, string sistema)
         {
             EnviarFacturaRequest req;
@@ -237,12 +348,79 @@ namespace FaceWebApi
             }
         }
 
+        public EnviarFacturaResponse EnviarFacturaAdjuntoMulti(string pathFacturae, string carpetaAcuseRecibo, string correo, string pathPDF, string sistema, string nif)
+        {
+            EnviarFacturaRequest req;
+            EnviarFacturaResponse res;
+            ClsEncoder64 encoder64;
+            string expediente = string.Empty;
+            bool blnTry = true;
+            if (System.IO.File.Exists(pathFacturae) == false) blnTry = false;
+            if (System.IO.File.Exists(pathPDF) == false) blnTry = false;
+            if (System.IO.Directory.Exists(carpetaAcuseRecibo) == false) blnTry = false;
+            if (!blnTry)
+            {
+                // O no existe en fichero o la carpeta en la que se encuentra
+                throw new Exception(String.Format("El fichero {0} o la carpeta {1} no existen.", pathFacturae, carpetaAcuseRecibo));
+                return null;
+            }
+            encoder64 = new ClsEncoder64();
+            req = new EnviarFacturaRequest();
+            req.factura = new FacturaFile();
+            req.factura.factura = encoder64.EncodeTo64File(pathFacturae);
+            req.factura.mime = "application/xml";
+            req.factura.nombre = "signed.xml";
+            req.correo = correo;
+            // manejo de anexos
+            AnexoFile item = new AnexoFile();
+            item.anexo = encoder64.EncodeTo64File(pathPDF);
+            item.nombre = pathPDF.Substring(pathPDF.LastIndexOf("\\") + 1);
+            item.mime = "application/pdf";
+            //
+            XmlDocument doc = new XmlDocument();
+            using (XmlWriter writer = doc.CreateNavigator().AppendChild())
+            {
+                new XmlSerializer(item.GetType()).Serialize(writer, item);
+            }
+            XmlElement ele = doc.DocumentElement;
+            AnexoFile af = new AnexoFile();
+
+            req.anexos = new AnexoFile[1];
+            req.anexos[0] = item;
+            //
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
+                res = objSender.enviarFactura(req);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public ConsultarFacturaResponse ConsultarFactura(string numRegistro, string sistema)
         {
             ConsultarFacturaResponse res = null;
             try
             {
                 FirmarEnvio(sistema);
+                res = objSender.consultarFactura(numRegistro);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ConsultarFacturaResponse ConsultarFacturaMulti(string numRegistro, string sistema, string nif)
+        {
+            ConsultarFacturaResponse res = null;
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
                 res = objSender.consultarFactura(numRegistro);
                 return res;
             }
@@ -266,6 +444,22 @@ namespace FaceWebApi
                 throw ex;
             }
         }
+
+        public AnularFacturaResponse AnularFacturaMulti(string numRegistro, string motivo, string sistema, string nif)
+        {
+            AnularFacturaResponse res = null;
+            try
+            {
+                FirmarEnvioMulti(sistema, nif);
+                res = objSender.anularFactura(numRegistro, motivo);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         #endregion
         public string LeerXmlElemento(string tg, string xml)

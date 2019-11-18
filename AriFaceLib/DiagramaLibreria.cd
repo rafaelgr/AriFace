@@ -14,11 +14,11 @@
       <FileName>Unidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.Estado" Collapsed="true">
+  <Class Name="AriFaceLib.Estado2" Collapsed="true">
     <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAQAAAACAAAEAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Estado.cs</FileName>
+      <FileName>Estado2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.RespuestaFactura" Collapsed="true">
@@ -36,7 +36,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.RespuestaAnularFactura" Collapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAIAAAACA=</HashCode>
       <FileName>RespuestaAnularFactura.cs</FileName>
@@ -49,17 +49,17 @@
       <FileName>Certificado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AriFaceLib.CntAriFaceLib" Collapsed="true">
-    <Position X="13.5" Y="1.25" Width="1.5" />
+  <Class Name="AriFaceLib.CntAriFaceLib">
+    <Position X="13.25" Y="0.5" Width="5.75" />
     <TypeIdentifier>
-      <HashCode>QBANwABhgiAUHhUCAkEEABUPKCYGwUCB4RQKSZh0sgA=</HashCode>
+      <HashCode>QBANwABhgiAUHhUCwkEEAFUPOCYGwUCB4RQKSZh0siA=</HashCode>
       <FileName>CntAriFaceLib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Cliente" Collapsed="true">
     <Position X="7.25" Y="1.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAACAEEACgjBACgAAAQgAAAEAggAAAAAAAABA=</HashCode>
+      <HashCode>AAAAABAAADAEEACwjBACgCAAQgAgAEAggAIAAAACABA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,7 +73,7 @@
   <Class Name="AriFaceLib.Factura">
     <Position X="10" Y="1.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AwAECQAABAUAEAANABABChAACQIYUhAACkIQIQMACCk=</HashCode>
+      <HashCode>AwAECQAABAUAEAANABABChgACQIYUhAACkIQIQsACCk=</HashCode>
       <FileName>Factura.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -113,7 +113,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.Estadistica" Collapsed="true">
-    <Position X="13.25" Y="2" Width="1.5" />
+    <Position X="8" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAEAAQAAAAAQAAAAAAEAAQAAAAAAAAAA=</HashCode>
       <FileName>Estadistica.cs</FileName>
@@ -134,7 +134,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AriFaceLib.PeriodoFactura" Collapsed="true">
-    <Position X="13" Y="2.75" Width="2.75" />
+    <Position X="6.25" Y="4.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>QAAAAgQAAACGAAAAgBAAAAAQAAAAAAACAQgAAEMIAAA=</HashCode>
       <FileName>PeriodoFactura.cs</FileName>

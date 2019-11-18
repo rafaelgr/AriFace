@@ -25,7 +25,11 @@ namespace FaceWebCli
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static ClientePuntos GetClientePuntos(int codclien)
         {
+            
             ClientePuntos cp = new ClientePuntos();
+            string usaPuntos = ConfigurationManager.AppSettings["usaPuntos"];
+            if (usaPuntos != "true") return cp;
+
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["ArigesPuntos"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))
@@ -42,6 +46,9 @@ namespace FaceWebCli
         public static IList<Punto> GetPuntosCliente(int codclien)
         {
             IList<Punto> lp = new List<Punto>();
+            string usaPuntos = ConfigurationManager.AppSettings["usaPuntos"];
+            if (usaPuntos != "true") return lp;
+
             // leer la cadena de conexión de los parámetros
             string connectionString = ConfigurationManager.ConnectionStrings["ArigesPuntos"].ConnectionString;
             using (MySqlConnection conn = CntAriFaceLib.GetConnection(connectionString))

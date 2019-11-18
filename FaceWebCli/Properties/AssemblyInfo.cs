@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
 // mediante el carácter '*', como se muestra a continuación:
-[assembly: AssemblyVersion("2019.2.0.1")]
-[assembly: AssemblyFileVersion("2019.2.0.1")]
+[assembly: AssemblyVersion("2019.2.2.1")]
+[assembly: AssemblyFileVersion("2019.2.2.1")]

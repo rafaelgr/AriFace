@@ -245,7 +245,7 @@ namespace AriFaceLib
             u.CodClienAriges = rdr.GetInt32("CODCLIEN_ARIGES");
             return u;
         }
-        
+
         public static Usuario GetUsuarioLogin(string login, string password, MySqlConnection conn)
         {
             // Se entiene que la conexión se recibe abierta y es responsabilidad del llamante
@@ -1110,6 +1110,8 @@ namespace AriFaceLib
                 f.SistemaGdes = rdr.GetString("SISGDES");
             else
                 f.SistemaGdes = "";
+            if (!rdr.IsDBNull(rdr.GetOrdinal("NIFEMISOR")))
+                f.NifEmisor = rdr.GetString("NIFEMISOR");
             return f;
         }
 
@@ -1136,6 +1138,7 @@ namespace AriFaceLib
                 f.nueva AS NUEVA,
                 f.coddirec_gdes AS CODGDES,
                 f.sistema_gdes AS SISGDES,
+                s.nif AS NIFEMISOR,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
@@ -1182,6 +1185,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1274,6 +1278,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1397,6 +1402,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1446,6 +1452,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1569,6 +1576,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1618,6 +1626,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1741,6 +1750,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1790,6 +1800,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1836,6 +1847,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -1882,6 +1894,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -2261,6 +2274,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f
@@ -2292,6 +2306,7 @@ namespace AriFaceLib
                 f.sistema_gdes AS SISGDES,
                 d.coddirec AS CODDIREC,
                 d.nombre AS DEPARTAMENTO,
+                s.nif AS NIFEMISOR,
                 COALESCE(f.registroFace,'') AS REGISTRO_FACE,
                 COALESCE(f.motivoFace,'') AS MOTIVO_FACE
                 FROM factura AS f

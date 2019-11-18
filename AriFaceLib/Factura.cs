@@ -175,5 +175,13 @@ namespace AriFaceLib
             get { return sistemaGdes; }
             set { sistemaGdes = value; }
         }
+
+        private string nifEmisor;
+
+        public string NifEmisor
+        {
+            get { return nifEmisor; }
+            set { nifEmisor = value; }
+        }
     }
 }

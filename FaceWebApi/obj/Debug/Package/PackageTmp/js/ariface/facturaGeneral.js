@@ -46,6 +46,15 @@ function initForm() {
         }
         fn();
     });
+    $('#chkFACE').change(function () {
+        var fn;
+        if (this.checked) {
+            fn = getFacturasNoEnviadasFACE();
+        } else {
+            fn = getFacturasNoEnviadas();
+        }
+        fn();
+    });
     //
     initTablaFacturas();
     // comprobamos parámetros
@@ -245,6 +254,23 @@ function getFacturasNoEnviadas() {
         $.ajax({
             type: "POST",
             url: "FacturaApi.aspx/GetFacturasNoEnviadas",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data, status) {
+                // hay que mostrarlo en la zona de datos
+                loadTablaFacturas(data.d);
+            },
+            error: errorAjax
+        });
+    };
+    return mf;
+}
+
+function getFacturasNoEnviadasFACE() {
+    var mf = function () {
+        $.ajax({
+            type: "POST",
+            url: "FacturaApi.aspx/GetFacturasNoEnviadasFACE",
             dataType: "json",
             contentType: "application/json",
             success: function (data, status) {
