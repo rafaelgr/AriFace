@@ -232,17 +232,17 @@ namespace AriFaceLib
                 return null;
             Usuario u = new Usuario();
             u.UsuarioId = rdr.GetInt32("USUARIO_ID");
-            u.Nombre = rdr.GetString("NOMBRE");
-            u.Password = rdr.GetString("PASSWORD");
-            u.NifNombre = rdr.GetString("NIF_NOMBRE");
-            u.Nif = rdr.GetString("NIF");
-            u.Login = rdr.GetString("LOGIN");
-            u.Email = rdr.GetString("EMAIL");
-            u.DepartamentoNombre = rdr.GetString("DEPARTAMENTO_NOMBRE");
-            u.DepartamentoId = rdr.GetInt32("DEPARTAMENTO_ID");
-            u.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
-            u.ClienteId = rdr.GetInt32("CLIENTE_ID");
-            u.CodClienAriges = rdr.GetInt32("CODCLIEN_ARIGES");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("NOMBRE"))) u.Nombre = rdr.GetString("NOMBRE");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("PASSWORD"))) u.Password = rdr.GetString("PASSWORD");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("NIF_NOMBRE"))) u.NifNombre = rdr.GetString("NIF_NOMBRE");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("NIF"))) u.Nif = rdr.GetString("NIF");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("LOGIN"))) u.Login = rdr.GetString("LOGIN");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("EMAIL"))) u.Email = rdr.GetString("EMAIL");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("DEPARTAMENTO_NOMBRE"))) u.DepartamentoNombre = rdr.GetString("DEPARTAMENTO_NOMBRE");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("DEPARTAMENTO_ID"))) u.DepartamentoId = rdr.GetInt32("DEPARTAMENTO_ID");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CLIENTE_NOMBRE"))) u.ClienteNombre = rdr.GetString("CLIENTE_NOMBRE");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CLIENTE_ID"))) u.ClienteId = rdr.GetInt32("CLIENTE_ID");
+            if (!rdr.IsDBNull(rdr.GetOrdinal("CODCLIEN_ARIGES"))) u.CodClienAriges = rdr.GetInt32("CODCLIEN_ARIGES");
             return u;
         }
 
@@ -2356,6 +2356,15 @@ namespace AriFaceLib
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
+
+        public static void MarcarFacturaAparcada(int facturaId, MySqlConnection conn)
+        {
+            MySqlCommand cmd = conn.CreateCommand();
+            string sql = @"UPDATE factura SET nueva = 0 WHERE id_factura = {0}";
+            sql = String.Format(sql, facturaId);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
             
         public static void MarcarFacturaEnviadaFace(int facturaId, string numRegistro, string motivoRegistro, MySqlConnection conn)
         {
@@ -2667,6 +2676,8 @@ namespace AriFaceLib
             correo.Body = cuerpo;
             correo.IsBodyHtml = true;
             correo.Priority = System.Net.Mail.MailPriority.Normal;
+            // wait ses amazon max 14 email / sec
+            System.Threading.Thread.Sleep(100);
             smtp.Send(correo);
         }
                     

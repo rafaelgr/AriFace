@@ -13,10 +13,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="AdministradorDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="AdministradorGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="ajax/demowidget.php">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -52,13 +52,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>11/06/2019 16:05:20</publishTime>
+      <publishTime>07/09/2020 13:03:21</publishTime>
     </File>
     <File Include="bin/FaceWebApi.dll">
-      <publishTime>11/06/2019 16:05:21</publishTime>
+      <publishTime>07/09/2020 13:03:21</publishTime>
     </File>
     <File Include="bin/FaceWebApi.XmlSerializers.dll">
-      <publishTime>11/06/2019 16:05:23</publishTime>
+      <publishTime>07/09/2020 13:03:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Services3.dll">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -67,7 +67,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/11/2013 21:52:58</publishTime>
     </File>
     <File Include="blank_.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="CertificadoApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -76,10 +76,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="ClienteDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="ClienteGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -112,28 +112,28 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:02</publishTime>
     </File>
     <File Include="Descarga.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="DescargaAx.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="EmpresaRaizApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="EmpresaRaizDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="EmpresaRaizGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="EnvioApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="EnvioDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="EnvioGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="EstadisticaApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -142,7 +142,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="EstadoGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="FaceApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -151,10 +151,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="FacturaGeneral.html">
-      <publishTime>10/03/2018 16:31:03</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="FacturaGeneralAx.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>05/23/2018 16:57:02</publishTime>
@@ -1345,7 +1345,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:02</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="js/app.config.js">
       <publishTime>05/23/2018 16:57:02</publishTime>
@@ -1417,7 +1417,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:02</publishTime>
     </File>
     <File Include="js/ariface/usuarioGeneral.js">
-      <publishTime>05/23/2018 16:57:02</publishTime>
+      <publishTime>02/18/2020 18:03:50</publishTime>
     </File>
     <File Include="js/bootstrap/bootstrap.min.js">
       <publishTime>05/23/2018 16:57:02</publishTime>
@@ -2773,10 +2773,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:03</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>05/23/2018 16:57:03</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="login2.html">
-      <publishTime>05/23/2018 16:57:03</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="LoginSSO.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -2788,19 +2788,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="PlantillaDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="PlantillaGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/06/2019 16:05:29</publishTime>
+      <publishTime>07/09/2020 13:03:27</publishTime>
     </File>
     <File Include="Properties/Settings.settings">
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="prueba_cargas.html">
-      <publishTime>05/23/2018 16:57:17</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="Request.xml">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -2809,22 +2809,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="TestFace.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="UnidadApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="UnidadGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="UsuarioApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
     </File>
     <File Include="UsuarioDetalle.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="UsuarioGeneral.html">
-      <publishTime>05/23/2018 16:57:01</publishTime>
+      <publishTime>03/09/2020 15:49:07</publishTime>
     </File>
     <File Include="VersionApi.aspx">
       <publishTime>05/23/2018 16:57:01</publishTime>
@@ -2962,7 +2962,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2014 18:50:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/06/2019 16:05:26</publishTime>
+      <publishTime>07/09/2020 13:03:24</publishTime>
     </File>
   </ItemGroup>
 </Project>

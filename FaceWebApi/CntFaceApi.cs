@@ -66,6 +66,7 @@ namespace FaceWebApi
                 if (c.Email != null && c.Email != "")
                 {
                     int i = 0;
+                    bool conError = false;
                     ArrayList adjuntos = new ArrayList();
                     string fichero = "";
                     string repositorio = "";
@@ -93,13 +94,22 @@ namespace FaceWebApi
                     }
                     catch (Exception ex)
                     {
+                        conError = true;
                         mens += String.Format("Error correo electrónico: {0}", ex.Message);
-                        return mens;
+                        //return mens;
                     }
                     // ahora marcamos las facturas como enviadas
                     foreach (Factura f in lf)
                     {
-                        CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                        if (conError)
+                        {
+                            CntAriFaceLib.MarcarFacturaAparcada(f.FacturaId, conn);
+                        }
+                        else
+                        {
+                            CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                        }
+                        
                     }
                     mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
                 }
@@ -163,6 +173,7 @@ namespace FaceWebApi
                 if (c.Email != null && c.Email != "")
                 {
                     int i = 0;
+                    bool conError = false;
                     ArrayList adjuntos = new ArrayList();
                     string fichero = "";
                     string repositorio = "";
@@ -191,18 +202,31 @@ namespace FaceWebApi
                     catch (Exception ex)
                     {
                         mens += String.Format("Error correo electrónico: {0}", ex.Message);
-                        return mens;
+                        conError = true;
+                        //return mens;
                     }
                     // ahora marcamos las facturas como enviadas
                     foreach (Factura f in lf)
                     {
-                        CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                        if (conError)
+                        {
+                            CntAriFaceLib.MarcarFacturaAparcada(f.FacturaId, conn);
+                        }
+                        else
+                        {
+                            CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                        }
+                        
                     }
                     mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
                 }
                 else
                 {
                     mens += String.Format("El cliente {0} no tiene un correo electrónico, no se le ha podido notificar <br/>", c.Nombre);
+                    foreach (Factura f in lf)
+                    {
+                        CntAriFaceLib.MarcarFacturaAparcada(f.FacturaId, conn);
+                    }
                 }
             }
             else
@@ -258,6 +282,7 @@ namespace FaceWebApi
                 // obtenemos el correo electrónico al que hay que mandar 
                 if (c.Email != null && c.Email != "")
                 {
+                    bool conError = false;
                     int i = 0;
                     ArrayList adjuntos = new ArrayList();
                     string fichero = "";
@@ -277,6 +302,8 @@ namespace FaceWebApi
                     // Montamos el correo electrónico.
                     string asunto = "[ARIFACE] Notificación de facturas electrónicas";
                     string cuerpo = String.Format(p.Contenido, c.Nombre, detalleFacturas);
+
+
                     try
                     {
                         CntAriFaceLib.SendEmailCliente(c.Email, asunto, cuerpo, adjuntos);
@@ -284,10 +311,21 @@ namespace FaceWebApi
                     catch (Exception ex)
                     {
                         mens += String.Format("Error correo electrónico: {0}", ex.Message);
-                        return mens;
+                        conError = true;
+                        //return mens;
                     }
+
+
                     // ahora marcamos las facturas como enviadas
-                    CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                    if (conError)
+                    {
+                        CntAriFaceLib.MarcarFacturaAparcada(f.FacturaId, conn);
+                    }
+                    else
+                    {
+                        CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                    }
+                    
                     mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
                 }
                 else
@@ -346,6 +384,7 @@ namespace FaceWebApi
                 if (c.Email != null && c.Email != "")
                 {
                     int i = 0;
+                    bool conError = false;
                     ArrayList adjuntos = new ArrayList();
                     string fichero = "";
                     string repositorio = "";
@@ -370,11 +409,19 @@ namespace FaceWebApi
                     }
                     catch (Exception ex)
                     {
+                        conError = true;
                         mens += String.Format("Error correo electrónico: {0}", ex.Message);
-                        return mens;
+                        // return mens;
                     }
                     // ahora marcamos las facturas como enviadas
-                    CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                    if (conError)
+                    {
+                        CntAriFaceLib.MarcarFacturaAparcada(f.FacturaId, conn);
+                    }
+                    else
+                    {
+                        CntAriFaceLib.MarcarFacturaEnviada(f.FacturaId, conn);
+                    }
                     mens += String.Format("({0}) {1} facturas CORRECTAS <br/>", c.Email, i);
                 }
                 else
