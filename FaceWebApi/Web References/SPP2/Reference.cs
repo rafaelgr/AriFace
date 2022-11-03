@@ -23,18 +23,13 @@ namespace FaceWebApi.SPP2 {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="FacturaSSPPWebServiceProxyBinding", Namespace="https://webservice.face.gob.es")]
-    public partial class FacturaSSPPWebServiceProxyService : Microsoft.Web.Services3.WebServicesClientProtocol
-        {
+    public partial class FacturaSSPPWebServiceProxyService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback enviarFacturaOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback enviarListadoFacturasOffLineOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback consultarListadoFacturasOffLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback consultarFacturaOperationCompleted;
         
@@ -98,12 +93,6 @@ namespace FaceWebApi.SPP2 {
         public event enviarFacturaCompletedEventHandler enviarFacturaCompleted;
         
         /// <remarks/>
-        public event enviarListadoFacturasOffLineCompletedEventHandler enviarListadoFacturasOffLineCompleted;
-        
-        /// <remarks/>
-        public event consultarListadoFacturasOffLineCompletedEventHandler consultarListadoFacturasOffLineCompleted;
-        
-        /// <remarks/>
         public event consultarFacturaCompletedEventHandler consultarFacturaCompleted;
         
         /// <remarks/>
@@ -160,66 +149,6 @@ namespace FaceWebApi.SPP2 {
             if ((this.enviarFacturaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.enviarFacturaCompleted(this, new enviarFacturaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservice.face.gob.es#enviarListadoFacturasOffLine", RequestNamespace="https://webservice.face.gob.es", ResponseNamespace="https://webservice.face.gob.es", Use=System.Web.Services.Description.SoapBindingUse.Literal)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return")]
-        public EnviarFacturaOffLineResponse enviarListadoFacturasOffLine([System.Xml.Serialization.XmlArrayItemAttribute("facturas", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)] EnviarFacturaRequest[] request) {
-            object[] results = this.Invoke("enviarListadoFacturasOffLine", new object[] {
-                        request});
-            return ((EnviarFacturaOffLineResponse)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void enviarListadoFacturasOffLineAsync(EnviarFacturaRequest[] request) {
-            this.enviarListadoFacturasOffLineAsync(request, null);
-        }
-        
-        /// <remarks/>
-        public void enviarListadoFacturasOffLineAsync(EnviarFacturaRequest[] request, object userState) {
-            if ((this.enviarListadoFacturasOffLineOperationCompleted == null)) {
-                this.enviarListadoFacturasOffLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnenviarListadoFacturasOffLineOperationCompleted);
-            }
-            this.InvokeAsync("enviarListadoFacturasOffLine", new object[] {
-                        request}, this.enviarListadoFacturasOffLineOperationCompleted, userState);
-        }
-        
-        private void OnenviarListadoFacturasOffLineOperationCompleted(object arg) {
-            if ((this.enviarListadoFacturasOffLineCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.enviarListadoFacturasOffLineCompleted(this, new enviarListadoFacturasOffLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservice.face.gob.es#consultarListadoFacturasOffLine", RequestNamespace="https://webservice.face.gob.es", ResponseNamespace="https://webservice.face.gob.es", Use=System.Web.Services.Description.SoapBindingUse.Literal)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return")]
-        public ConsultarListadoFacturasOffLineResponse consultarListadoFacturasOffLine(string idSolicitud) {
-            object[] results = this.Invoke("consultarListadoFacturasOffLine", new object[] {
-                        idSolicitud});
-            return ((ConsultarListadoFacturasOffLineResponse)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void consultarListadoFacturasOffLineAsync(string idSolicitud) {
-            this.consultarListadoFacturasOffLineAsync(idSolicitud, null);
-        }
-        
-        /// <remarks/>
-        public void consultarListadoFacturasOffLineAsync(string idSolicitud, object userState) {
-            if ((this.consultarListadoFacturasOffLineOperationCompleted == null)) {
-                this.consultarListadoFacturasOffLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconsultarListadoFacturasOffLineOperationCompleted);
-            }
-            this.InvokeAsync("consultarListadoFacturasOffLine", new object[] {
-                        idSolicitud}, this.consultarListadoFacturasOffLineOperationCompleted, userState);
-        }
-        
-        private void OnconsultarListadoFacturasOffLineOperationCompleted(object arg) {
-            if ((this.consultarListadoFacturasOffLineCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.consultarListadoFacturasOffLineCompleted(this, new consultarListadoFacturasOffLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -534,8 +463,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -548,7 +477,7 @@ namespace FaceWebApi.SPP2 {
         
         private AnexoFile[] anexosField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string correo {
             get {
@@ -559,7 +488,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public FacturaFile factura {
             get {
@@ -570,7 +499,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("anexo", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public AnexoFile[] anexos {
@@ -583,8 +512,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -597,7 +526,7 @@ namespace FaceWebApi.SPP2 {
         
         private string mimeField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string factura {
             get {
@@ -608,7 +537,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string nombre {
             get {
@@ -619,7 +548,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string mime {
             get {
@@ -631,8 +560,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -645,7 +574,7 @@ namespace FaceWebApi.SPP2 {
         
         private ConsultarFactura facturaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string codigo {
             get {
@@ -656,7 +585,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string descripcion {
             get {
@@ -667,7 +596,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public ConsultarFactura factura {
             get {
@@ -679,8 +608,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -693,7 +622,7 @@ namespace FaceWebApi.SPP2 {
         
         private EstadoFactura anulacionField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string numeroRegistro {
             get {
@@ -704,7 +633,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public EstadoFactura tramitacion {
             get {
@@ -715,7 +644,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public EstadoFactura anulacion {
             get {
@@ -727,8 +656,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -741,7 +670,7 @@ namespace FaceWebApi.SPP2 {
         
         private string motivoField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string codigo {
             get {
@@ -752,7 +681,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string descripcion {
             get {
@@ -763,7 +692,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string motivo {
             get {
@@ -775,8 +704,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -787,7 +716,7 @@ namespace FaceWebApi.SPP2 {
         
         private ConsultarListadoFactura[] facturasField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -798,7 +727,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("consultarListadoFactura", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public ConsultarListadoFactura[] facturas {
@@ -811,8 +740,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -825,7 +754,7 @@ namespace FaceWebApi.SPP2 {
         
         private string codigoSeguimientoField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string codigo {
             get {
@@ -836,7 +765,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string descripcion {
             get {
@@ -847,7 +776,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string codigoSeguimiento {
             get {
@@ -859,8 +788,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -871,7 +800,7 @@ namespace FaceWebApi.SPP2 {
         
         private OGNIFs[] nifsField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -882,7 +811,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("info", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public OGNIFs[] nifs {
@@ -895,8 +824,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -907,7 +836,7 @@ namespace FaceWebApi.SPP2 {
         
         private string nifField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public UnidadDir3 organoGestor {
             get {
@@ -918,7 +847,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string nif {
             get {
@@ -930,8 +859,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -942,7 +871,7 @@ namespace FaceWebApi.SPP2 {
         
         private string nombreField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string codigo {
             get {
@@ -953,7 +882,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string nombre {
             get {
@@ -965,8 +894,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -977,7 +906,7 @@ namespace FaceWebApi.SPP2 {
         
         private OGUTOC[] relacionesField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -988,7 +917,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("relacion", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public OGUTOC[] relaciones {
@@ -1001,8 +930,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1015,7 +944,7 @@ namespace FaceWebApi.SPP2 {
         
         private UnidadDir3 oficinaContableField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public UnidadDir3 organoGestor {
             get {
@@ -1026,7 +955,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public UnidadDir3 unidadTramitadora {
             get {
@@ -1037,7 +966,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public UnidadDir3 oficinaContable {
             get {
@@ -1049,8 +978,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1061,7 +990,7 @@ namespace FaceWebApi.SPP2 {
         
         private UnidadDir3[] administracionesField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1072,7 +1001,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("administracion", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public UnidadDir3[] administraciones {
@@ -1085,8 +1014,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1097,7 +1026,7 @@ namespace FaceWebApi.SPP2 {
         
         private UnidadDir3[] administracionesField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1108,7 +1037,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("administracion", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public UnidadDir3[] administraciones {
@@ -1121,8 +1050,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1133,7 +1062,7 @@ namespace FaceWebApi.SPP2 {
         
         private OGNIFs[] nifsField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1144,7 +1073,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("info", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public OGNIFs[] nifs {
@@ -1157,8 +1086,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1169,7 +1098,7 @@ namespace FaceWebApi.SPP2 {
         
         private OGUTOC[] relacionesField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1180,7 +1109,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("relacion", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public OGUTOC[] relaciones {
@@ -1193,8 +1122,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1207,7 +1136,7 @@ namespace FaceWebApi.SPP2 {
         
         private string descripcionField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string nombre {
             get {
@@ -1218,7 +1147,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string codigo {
             get {
@@ -1229,7 +1158,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string descripcion {
             get {
@@ -1241,8 +1170,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1253,7 +1182,7 @@ namespace FaceWebApi.SPP2 {
         
         private Estado[] estadosField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1264,7 +1193,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("estado", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
         public Estado[] estados {
@@ -1277,8 +1206,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1289,7 +1218,7 @@ namespace FaceWebApi.SPP2 {
         
         private string mensajeField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string numeroRegistro {
             get {
@@ -1300,7 +1229,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string mensaje {
             get {
@@ -1312,8 +1241,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1324,7 +1253,7 @@ namespace FaceWebApi.SPP2 {
         
         private AnularFactura facturaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1335,7 +1264,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public AnularFactura factura {
             get {
@@ -1347,8 +1276,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1359,7 +1288,7 @@ namespace FaceWebApi.SPP2 {
         
         private ConsultarFactura facturaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1370,7 +1299,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public ConsultarFactura factura {
             get {
@@ -1382,56 +1311,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://webservice.face.gob.es")]
-    public partial class FacturaOffLine {
-        
-        private string codigoField;
-        
-        private string descripcionField;
-        
-        private EnviarFactura facturaField;
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string codigo {
-            get {
-                return this.codigoField;
-            }
-            set {
-                this.codigoField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                this.descripcionField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public EnviarFactura factura {
-            get {
-                return this.facturaField;
-            }
-            set {
-                this.facturaField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1454,7 +1335,7 @@ namespace FaceWebApi.SPP2 {
         
         private string fechaRecepcionField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string numeroRegistro {
             get {
@@ -1465,7 +1346,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string organoGestor {
             get {
@@ -1476,7 +1357,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string unidadTramitadora {
             get {
@@ -1487,7 +1368,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string oficinaContable {
             get {
@@ -1498,7 +1379,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string identificadorEmisor {
             get {
@@ -1509,7 +1390,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string numeroFactura {
             get {
@@ -1520,7 +1401,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string serieFactura {
             get {
@@ -1531,7 +1412,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string fechaRecepcion {
             get {
@@ -1543,136 +1424,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://webservice.face.gob.es")]
-    public partial class ConsultarListadoFacturasOffLine {
-        
-        private string estadoField;
-        
-        private FacturaOffLine[] facturasField;
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string estado {
-            get {
-                return this.estadoField;
-            }
-            set {
-                this.estadoField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("facturaOffLine", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public FacturaOffLine[] facturas {
-            get {
-                return this.facturasField;
-            }
-            set {
-                this.facturasField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://webservice.face.gob.es")]
-    public partial class ConsultarListadoFacturasOffLineResponse {
-        
-        private Resultado resultadoField;
-        
-        private ConsultarListadoFacturasOffLine solicitudField;
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Resultado resultado {
-            get {
-                return this.resultadoField;
-            }
-            set {
-                this.resultadoField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public ConsultarListadoFacturasOffLine solicitud {
-            get {
-                return this.solicitudField;
-            }
-            set {
-                this.solicitudField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://webservice.face.gob.es")]
-    public partial class Solicitud {
-        
-        private string numSolicitudField;
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string numSolicitud {
-            get {
-                return this.numSolicitudField;
-            }
-            set {
-                this.numSolicitudField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://webservice.face.gob.es")]
-    public partial class EnviarFacturaOffLineResponse {
-        
-        private Resultado resultadoField;
-        
-        private Solicitud solicitudField;
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Resultado resultado {
-            get {
-                return this.resultadoField;
-            }
-            set {
-                this.resultadoField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public Solicitud solicitud {
-            get {
-                return this.solicitudField;
-            }
-            set {
-                this.solicitudField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1683,7 +1436,7 @@ namespace FaceWebApi.SPP2 {
         
         private EnviarFactura facturaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Resultado resultado {
             get {
@@ -1694,7 +1447,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public EnviarFactura factura {
             get {
@@ -1706,8 +1459,8 @@ namespace FaceWebApi.SPP2 {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1720,7 +1473,7 @@ namespace FaceWebApi.SPP2 {
         
         private string mimeField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string anexo {
             get {
@@ -1731,7 +1484,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string nombre {
             get {
@@ -1742,7 +1495,7 @@ namespace FaceWebApi.SPP2 {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string mime {
             get {
@@ -1755,11 +1508,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void enviarFacturaCompletedEventHandler(object sender, enviarFacturaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class enviarFacturaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1781,63 +1534,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    public delegate void enviarListadoFacturasOffLineCompletedEventHandler(object sender, enviarListadoFacturasOffLineCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class enviarListadoFacturasOffLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal enviarListadoFacturasOffLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public EnviarFacturaOffLineResponse Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((EnviarFacturaOffLineResponse)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    public delegate void consultarListadoFacturasOffLineCompletedEventHandler(object sender, consultarListadoFacturasOffLineCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class consultarListadoFacturasOffLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal consultarListadoFacturasOffLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ConsultarListadoFacturasOffLineResponse Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ConsultarListadoFacturasOffLineResponse)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarFacturaCompletedEventHandler(object sender, consultarFacturaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarFacturaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1859,11 +1560,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void anularFacturaCompletedEventHandler(object sender, anularFacturaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class anularFacturaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1885,11 +1586,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarEstadosCompletedEventHandler(object sender, consultarEstadosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarEstadosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1911,11 +1612,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarUnidadesCompletedEventHandler(object sender, consultarUnidadesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarUnidadesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1937,11 +1638,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarNIFsCompletedEventHandler(object sender, consultarNIFsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarNIFsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1963,11 +1664,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarAdministracionesCompletedEventHandler(object sender, consultarAdministracionesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarAdministracionesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1989,11 +1690,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarAdministracionesRepositorioCompletedEventHandler(object sender, consultarAdministracionesRepositorioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarAdministracionesRepositorioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2015,11 +1716,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarUnidadesPorAdministracionCompletedEventHandler(object sender, consultarUnidadesPorAdministracionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarUnidadesPorAdministracionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2041,11 +1742,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarNIFsPorAdministracionCompletedEventHandler(object sender, consultarNIFsPorAdministracionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarNIFsPorAdministracionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2067,11 +1768,11 @@ namespace FaceWebApi.SPP2 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void consultarListadoFacturasCompletedEventHandler(object sender, consultarListadoFacturasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class consultarListadoFacturasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

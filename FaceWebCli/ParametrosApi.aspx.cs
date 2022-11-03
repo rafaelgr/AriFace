@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using System.Web.Script.Services;
 using AriFaceLib;
-using MySql.Data.MySqlClient;
+
 
 namespace FaceWebCli
 {

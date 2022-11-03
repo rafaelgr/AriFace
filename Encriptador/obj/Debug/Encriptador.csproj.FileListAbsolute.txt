@@ -8,3 +8,7 @@ C:\Proyectos\AriFace\Encriptador\bin\Debug\Encriptador.exe
 C:\Proyectos\AriFace\Encriptador\bin\Debug\Encriptador.pdb
 C:\Proyectos\AriFace\Encriptador\obj\Debug\Encriptador.exe
 C:\Proyectos\AriFace\Encriptador\obj\Debug\Encriptador.pdb
+C:\PROYECTOS\AriFace\Encriptador\obj\Debug\Encriptador.csprojResolveAssemblyReference.cache
+D:\CPROYECTOS\PROYECTOS\AriFace\Encriptador\bin\Debug\Encriptador.exe.config
+D:\CPROYECTOS\PROYECTOS\AriFace\Encriptador\obj\Debug\Encriptador.exe
+D:\CPROYECTOS\PROYECTOS\AriFace\Encriptador\obj\Debug\Encriptador.pdb

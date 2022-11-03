@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:17</publishTime>
     </File>
     <File Include="bin/AriFaceLib.dll">
-      <publishTime>09/17/2020 17:34:29</publishTime>
+      <publishTime>02/11/2022 13:29:23</publishTime>
     </File>
     <File Include="bin/FaceWebCli.dll">
-      <publishTime>09/17/2020 17:34:30</publishTime>
+      <publishTime>02/11/2022 13:32:31</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>12/11/2013 21:52:58</publishTime>
@@ -2728,7 +2728,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:17</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/17/2020 17:34:40</publishTime>
+      <publishTime>02/11/2022 13:32:37</publishTime>
     </File>
     <File Include="Puntos.html">
       <publishTime>03/09/2020 15:50:49</publishTime>
@@ -2743,7 +2743,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/23/2018 16:57:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/17/2020 17:34:34</publishTime>
+      <publishTime>02/11/2022 13:32:33</publishTime>
     </File>
   </ItemGroup>
 </Project>

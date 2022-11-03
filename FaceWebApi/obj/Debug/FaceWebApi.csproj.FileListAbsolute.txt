@@ -13,3 +13,5 @@ C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.dll
 C:\Proyectos\AriFace\FaceWebApi\bin\FaceWebApi.pdb
 C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.dll
 C:\Proyectos\AriFace\FaceWebApi\bin\AriFaceLib.pdb
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebApi\obj\Debug\FaceWebApi.csprojResolveAssemblyReference.cache
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebApi\obj\Debug\FaceWebApi.dll

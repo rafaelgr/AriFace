@@ -196,46 +196,6 @@
           <xsd:element name="administraciones" nillable="true" type="tns:ArrayOfAdministracion" />
         </xsd:all>
       </xsd:complexType>
-      <xsd:complexType name="ArrayOfEnviarFacturaOffLineRequest">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" maxOccurs="unbounded" name="facturas" type="tns:EnviarFacturaRequest" />
-        </xsd:sequence>
-      </xsd:complexType>
-      <xsd:complexType name="Solicitud">
-        <xsd:all>
-          <xsd:element name="numSolicitud" nillable="true" type="xsd:string" />
-        </xsd:all>
-      </xsd:complexType>
-      <xsd:complexType name="EnviarFacturaOffLineResponse">
-        <xsd:all>
-          <xsd:element name="resultado" type="tns:Resultado" />
-          <xsd:element name="solicitud" nillable="true" type="tns:Solicitud" />
-        </xsd:all>
-      </xsd:complexType>
-      <xsd:complexType name="FacturaOffLine">
-        <xsd:all>
-          <xsd:element name="codigo" nillable="true" type="xsd:string" />
-          <xsd:element name="descripcion" nillable="true" type="xsd:string" />
-          <xsd:element name="factura" nillable="true" type="tns:EnviarFactura" />
-        </xsd:all>
-      </xsd:complexType>
-      <xsd:complexType name="ArrayOfFacturaOffLine">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" maxOccurs="unbounded" name="facturaOffLine" type="tns:FacturaOffLine" />
-        </xsd:sequence>
-      </xsd:complexType>
-      <xsd:complexType name="ConsultarListadoFacturasOffLine">
-        <xsd:all>
-          <xsd:element name="estado" nillable="true" type="xsd:string" />
-          <xsd:element name="facturas" nillable="true" type="tns:ArrayOfFacturaOffLine" />
-        </xsd:all>
-      </xsd:complexType>
-      <xsd:complexType name="ConsultarListadoFacturasOffLineResponse">
-        <xsd:all>
-          <xsd:element name="resultado" type="tns:Resultado" />
-          <xsd:element name="solicitud" nillable="true" type="tns:ConsultarListadoFacturasOffLine" />
-        </xsd:all>
-      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="enviarFacturaIn">
@@ -243,18 +203,6 @@
   </wsdl:message>
   <wsdl:message name="enviarFacturaOut">
     <wsdl:part name="return" type="tns:EnviarFacturaResponse" />
-  </wsdl:message>
-  <wsdl:message name="enviarListadoFacturasOffLineIn">
-    <wsdl:part name="request" type="tns:ArrayOfEnviarFacturaOffLineRequest" />
-  </wsdl:message>
-  <wsdl:message name="enviarListadoFacturasOffLineOut">
-    <wsdl:part name="return" type="tns:EnviarFacturaOffLineResponse" />
-  </wsdl:message>
-  <wsdl:message name="consultarListadoFacturasOffLineIn">
-    <wsdl:part name="idSolicitud" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="consultarListadoFacturasOffLineOut">
-    <wsdl:part name="return" type="tns:ConsultarListadoFacturasOffLineResponse" />
   </wsdl:message>
   <wsdl:message name="consultarFacturaIn">
     <wsdl:part name="numeroRegistro" type="xsd:string" />
@@ -313,16 +261,6 @@
       <wsdl:input message="tns:enviarFacturaIn" />
       <wsdl:output message="tns:enviarFacturaOut" />
     </wsdl:operation>
-    <wsdl:operation name="enviarListadoFacturasOffLine">
-      <documentation>Remite una lista de facturas en off-line</documentation>
-      <wsdl:input message="tns:enviarListadoFacturasOffLineIn" />
-      <wsdl:output message="tns:enviarListadoFacturasOffLineOut" />
-    </wsdl:operation>
-    <wsdl:operation name="consultarListadoFacturasOffLine">
-      <documentation>Consulta el estado de una lista de facturas enviada off-line</documentation>
-      <wsdl:input message="tns:consultarListadoFacturasOffLineIn" />
-      <wsdl:output message="tns:consultarListadoFacturasOffLineOut" />
-    </wsdl:operation>
     <wsdl:operation name="consultarFactura">
       <documentation>Consulta el estado de una factura</documentation>
       <wsdl:input message="tns:consultarFacturaIn" />
@@ -378,24 +316,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
     <wsdl:operation name="enviarFactura">
       <soap:operation soapAction="https://webservice.face.gob.es#enviarFactura" />
-      <wsdl:input>
-        <soap:body use="literal" namespace="https://webservice.face.gob.es" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" namespace="https://webservice.face.gob.es" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="enviarListadoFacturasOffLine">
-      <soap:operation soapAction="https://webservice.face.gob.es#enviarListadoFacturasOffLine" />
-      <wsdl:input>
-        <soap:body use="literal" namespace="https://webservice.face.gob.es" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" namespace="https://webservice.face.gob.es" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="consultarListadoFacturasOffLine">
-      <soap:operation soapAction="https://webservice.face.gob.es#consultarListadoFacturasOffLine" />
       <wsdl:input>
         <soap:body use="literal" namespace="https://webservice.face.gob.es" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

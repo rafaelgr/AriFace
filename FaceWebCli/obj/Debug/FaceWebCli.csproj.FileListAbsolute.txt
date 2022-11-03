@@ -13,3 +13,10 @@ C:\Proyectos\AriFace\FaceWebCli\bin\AriFaceLib.pdb
 C:\Proyectos\AriFace\FaceWebCli\obj\Debug\FaceWebCli.csprojResolveAssemblyReference.cache
 C:\Proyectos\AriFace\FaceWebCli\obj\Debug\FaceWebCli.dll
 C:\Proyectos\AriFace\FaceWebCli\obj\Debug\FaceWebCli.pdb
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\obj\Debug\FaceWebCli.csprojResolveAssemblyReference.cache
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\obj\Debug\FaceWebCli.dll
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\obj\Debug\FaceWebCli.pdb
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\bin\FaceWebCli.dll
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\bin\FaceWebCli.pdb
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\bin\AriFaceLib.dll
+D:\CPROYECTOS\PROYECTOS\AriFace\FaceWebCli\bin\AriFaceLib.pdb

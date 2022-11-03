@@ -58,10 +58,11 @@ function initForm(proveedor) {
         success: function (data, status) {
             // Regresa el mensaje
             if (!data.d) {
-                mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
+                // mostrarMensajeSmart('No se ha podido comprobar el cliente en Ariges');
+            } else {
+                var a = data.d;
+                vm.SumTotal(numeral(a.Puntos).format('#,###,##0.00'));
             }
-            var a = data.d;
-            vm.SumTotal(numeral(a.Puntos).format('#,###,##0.00'));
 
         },
         error: function (xhr, textStatus, errorThrwon) {
