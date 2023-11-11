@@ -27,7 +27,7 @@ namespace FaceWebApi.SPP2 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="FacturaSSPPWebServiceProxyBinding", Namespace="https://webservice.face.gob.es")]
-    public partial class FacturaSSPPWebServiceProxyService : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    public partial class FacturaSSPPWebServiceProxyService : Microsoft.Web.Services3.WebServicesClientProtocol {
         
         private System.Threading.SendOrPostCallback enviarFacturaOperationCompleted;
         

@@ -30,7 +30,7 @@ namespace AriFaceLib
             if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
                 return null;
             MiniUnidad2 mu = new MiniUnidad2();
-            mu.Codigo = rdr.GetInt32("codigo");
+            mu.Codigo = rdr.GetInt32("codigo");System.Net.ServicePointManager
             mu.Nombre = rdr.GetString("nombre");
             mu.Codigo2 = rdr.GetInt32("codigo2");
             return mu;
@@ -2644,6 +2644,7 @@ namespace AriFaceLib
 
         public static SmtpClient GetClienteSmtp()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             SmtpClient smtp;
             smtp = new SmtpClient(ConfigurationSettings.AppSettings["mail_server"]);
             smtp.Credentials = new NetworkCredential(ConfigurationSettings.AppSettings["mail_usr"], ConfigurationSettings.AppSettings["mail_pass"]);

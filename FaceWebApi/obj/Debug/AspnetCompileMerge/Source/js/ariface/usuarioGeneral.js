@@ -160,6 +160,7 @@ function buscarUsuarios() {
         var data = {
             "aBuscar": aBuscar
         };
+        console.log("Voy a buscar");
         $.ajax({
             type: "POST",
             url: "UsuarioApi.aspx/BuscarUsuarios",
@@ -167,6 +168,7 @@ function buscarUsuarios() {
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (data, status) {
+                console.log("Vuelve de busqueda", data);
                 // hay que mostrarlo en la zona de datos
                 loadTablaUsuarios(data.d);
             },

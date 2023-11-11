@@ -20,7 +20,6 @@ namespace FaceWebApi.SSPP {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
-    using Microsoft.Web.Services3;
     
     
     /// <remarks/>
@@ -33,7 +32,7 @@ namespace FaceWebApi.SSPP {
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(OGUTOC))]
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(Estado))]
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(AnexoFile))]
-    public partial class Service :Microsoft.Web.Services3.WebServicesClientProtocol {
+    public partial class Service : Microsoft.Web.Services3.WebServicesClientProtocol {
         
         private System.Threading.SendOrPostCallback enviarFacturaOperationCompleted;
         
