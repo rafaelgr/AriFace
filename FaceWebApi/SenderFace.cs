@@ -13,6 +13,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Security.Cryptography;
+using AriFaceLib;
 
 namespace FaceWebApi
 {
@@ -31,6 +32,7 @@ namespace FaceWebApi
 
         public SenderFace(string numSerie)
         {
+            CntAriFaceLib.CambioTls11();
             strNumeroSerie = numSerie;
             objSender = new Service();
             // objSender.RequireMtom = false;
@@ -120,6 +122,8 @@ namespace FaceWebApi
         {
             MessageSignature sig;
             X509SecurityToken sigToken;
+           
+            // System.Net.ServicePointManager.SecurityProtocol
             if (sistema == "")
             {
                 sigToken = GetSecurityToken();

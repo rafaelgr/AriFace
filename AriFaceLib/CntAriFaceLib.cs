@@ -30,7 +30,7 @@ namespace AriFaceLib
             if (rdr.IsDBNull(rdr.GetOrdinal("codigo")))
                 return null;
             MiniUnidad2 mu = new MiniUnidad2();
-            mu.Codigo = rdr.GetInt32("codigo");System.Net.ServicePointManager
+            mu.Codigo = rdr.GetInt32("codigo");
             mu.Nombre = rdr.GetString("nombre");
             mu.Codigo2 = rdr.GetInt32("codigo2");
             return mu;
@@ -2642,9 +2642,22 @@ namespace AriFaceLib
             
         #region Manejo de correos electrónicos
 
-        public static SmtpClient GetClienteSmtp()
+        public static void CambioTls12()
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            return;
+        }
+
+        public static void CambioTls11()
+        {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+            return;
+        }
+
+        public static SmtpClient GetClienteSmtp()
+        {
+            CambioTls12();
+            // System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             SmtpClient smtp;
             smtp = new SmtpClient(ConfigurationSettings.AppSettings["mail_server"]);
             smtp.Credentials = new NetworkCredential(ConfigurationSettings.AppSettings["mail_usr"], ConfigurationSettings.AppSettings["mail_pass"]);
